@@ -1,0 +1,27 @@
+{
+  "name": "mincu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./index.ts",
+    "build": "tsc ./index.ts"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "tslib": "^2.0.1",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "@types/react-native": "^0.63.6"
+  },
+  "globals": {
+    "__DEV__": true,
+    "__TEST__": true,
+    "ts-jest": {
+      "useBabelrc": true
+    }
+  }
+}

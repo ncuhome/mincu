@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es2016", "dom"],
+    "outDir": "dist",
+    "pretty": true,
+    "noEmit": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": false,
+    "alwaysStrict": true,
+    "strictNullChecks": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "types": [
+      "node",
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@packages/*": [
+        "packages/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
+  ]
+}
