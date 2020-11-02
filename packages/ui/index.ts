@@ -6,7 +6,7 @@ class UIModule {
   }
 
   alert() {
-
+    
   }
 
   setTransparentTitleBar() {

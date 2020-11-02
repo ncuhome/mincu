@@ -14,7 +14,10 @@ export interface INativeFuncs {
   ToastAndroid,
   Toast,
   Share,
-  Webview
+  Webview: {
+    handleShowHeader: (value?: boolean) => boolean, // TODO:5.5
+    disableAutoSetTitle: () => void
+  }
 }
 
 export interface MincuCoreInstanceType {

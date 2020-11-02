@@ -22,13 +22,20 @@ class EventModule {
         value += fi + `${item}=${param[item]}`
       })
     }
-    mincuCore.call("Linking", "openURL", value, () => {
-      console.log(`${screenName} 已打开`)
-    })
+    this.openUrl(value)
   }
 
-  async fetch(method, url: string, params) {
-    
+  async refreshToken() {
+    return new Promise((resolve) => {
+      mincuCore.call(
+        "Auth",
+        "refreshToken",
+        {},
+        (data: { token: string }) => {
+          resolve(data)
+        }
+      )
+    })
   }
 
   share() {
