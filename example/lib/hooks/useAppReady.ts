@@ -7,10 +7,6 @@ export const useAppReady = () => {
   )
 
   useEffect(() => {
-    isReady && Router.push('/home')
-  }, [isReady])
-
-  useEffect(() => {
     if (window.appReady === true) {
       setIsReady(true)
       return

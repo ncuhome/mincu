@@ -1,7 +1,7 @@
 import { useInfoState } from '../../store/index'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { useMemo, useEffect, useCallback, useState, useRef } from 'react'
-import EventModule from '../../packages/event/index'
+import eventModule from '../../packages/event/index'
 
 export const ax = axios.create();
 
@@ -11,7 +11,7 @@ export const useAxiosLoader = () => {
   let { current: failedQueue } = useRef([])
 
   const refreshToken = useCallback(async () => {
-    const res = await EventModule.refreshToken()
+    const res = await eventModule.refreshToken()
     handleValue("token", res.token ?? '')
     return res.token
   }, [])

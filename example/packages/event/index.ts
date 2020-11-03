@@ -24,6 +24,20 @@ class EventModule {
     })
   }
 
+  async exit(): Promise<any> {
+    return new Promise((resolve) => {
+      mincuCore.call(
+        "Webview",
+        "exitWebView",
+        null,
+        () => {
+          console.log('退出微应用')
+          resolve()
+        }
+      )
+    })
+  }
+
   share() {
 
   }

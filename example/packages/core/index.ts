@@ -54,7 +54,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
     baseClass: FuncNames,
     method: string,
     params: any,
-    success: any = noop,
+    success: (data?: any) => any = noop,
     failed = noop
   ) => {
     this.eventKey += 1

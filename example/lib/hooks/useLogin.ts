@@ -16,4 +16,6 @@ export const useLogin = () => {
       handleValue('studentID', data.user.profile.entireProfile.base_info.xh)
     }
   }, [isReady])
+
+  return { isReady }
 }
