@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react'
+import Router from 'next/router';
 
 export const useAppReady = () => {
   const [isReady, setIsReady] = useState(
     () => typeof window !== 'undefined' && window.appReady
   )
+
+  useEffect(() => {
+    isReady && Router.push('/home')
+  }, [isReady])
 
   useEffect(() => {
     if (window.appReady === true) {
@@ -21,9 +26,9 @@ export const useAppReady = () => {
 
     // 3秒超时
     setTimeout(() => {
-      if (window.appReady === false) {
+      if (!window.appReady) {
         clearInterval(scanner)
-        setIsReady(false)
+        Router.push('/nope')
       }
     }, 3000)
   }, [])

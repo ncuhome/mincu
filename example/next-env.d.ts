@@ -4,8 +4,10 @@
 declare module "*.css"
 
 interface Window {
-  appReady: boolean;
+  appReady: boolean
   appData: AppData
+  RNMessageChannel: any
+  ReactNativeWebView: any
 }
 
 interface AppData {

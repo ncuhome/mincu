@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@microsoft/tsdoc": "^0.12.21",
+    "lodash": "^4.17.20",
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
     "tslib": "^2.0.1",
