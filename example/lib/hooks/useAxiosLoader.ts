@@ -56,7 +56,7 @@ export const useAxiosLoader = () => {
             resolve(ax(originalRequest));
           })
           .catch((err) => {
-            processQueue(err, null);
+            processQueue(err);
             reject(err);
           })
           .finally(() => {

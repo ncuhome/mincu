@@ -1,5 +1,11 @@
 import mincuCore from '../core'
 
+interface ShareConfig {
+  title?: string
+  url?: string
+  imageUrl?: string
+}
+
 class EventModule {
   static Instance() {
     return new EventModule()
@@ -38,8 +44,32 @@ class EventModule {
     })
   }
 
-  share() {
+  async setShareConfig(config: ShareConfig): Promise<void> {
+    return new Promise((resolve) => {
+      mincuCore.call(
+        "Share",
+        "setShareConfig",
+        config,
+        () => {
+          console.log('配置分享设置')
+          resolve()
+        }
+      )
+    })
+  }
 
+  async showShare(): Promise<void> {
+    return new Promise((resolve) => {
+      mincuCore.call(
+        "Share",
+        "openShareMenu",
+        null,
+        () => {
+          console.log('打开分享弹框')
+          resolve()
+        }
+      )
+    })
   }
 }
 

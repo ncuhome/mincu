@@ -1,5 +1,10 @@
 import mincuCore from '../core'
 
+interface NavConfig {
+  screen: string
+  params?: object
+}
+
 class UIModule {
   static Instance() {
     return new UIModule()
@@ -17,6 +22,19 @@ class UIModule {
         value,
         (res) => {
           resolve(res.data)
+        }
+      )
+    })
+  }
+
+  async toScreen(config: NavConfig): Promise<void> {
+    return new Promise((resolve) => {
+      mincuCore.call(
+        "Webview",
+        "toScreen",
+        config,
+        () => {
+          resolve()
         }
       )
     })

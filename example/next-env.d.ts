@@ -12,6 +12,7 @@ interface Window {
 
 interface AppData {
   user: {
+    inset: EdgeInsets
     token: string,
     profile: {
       basicProfile: {
@@ -34,6 +35,13 @@ declare enum FollowEnum {
   followed = 1,
   loading = 0,
   notFollowing = -1,
+}
+
+declare interface EdgeInsets {
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
 }
 
 interface IEntireProfileResponse {

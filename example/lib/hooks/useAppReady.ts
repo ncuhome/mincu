@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Router from 'next/router';
+import { useCommonState } from '../../store/index'
 
 export const useAppReady = () => {
-  const [isReady, setIsReady] = useState(
-    () => typeof window !== 'undefined' && window.appReady
-  )
+  const [isReady, handleValue] = useCommonState(state => [state.isReady, state.handleValue])
+
+  useEffect(() => {
+    handleValue("isReady", typeof window !== 'undefined' && window.appReady)
+  }, [])
 
   useEffect(() => {
     if (window.appReady === true) {
-      setIsReady(true)
+      handleValue("isReady", true)
       return
     }
 
@@ -16,17 +19,17 @@ export const useAppReady = () => {
     const scanner = setInterval(() => {
       if (window.appReady === true) {
         clearInterval(scanner)
-        setIsReady(true)
+        handleValue("isReady", true)
       }
     }, 10)
 
-    // 3秒超时
+    // 1秒超时
     setTimeout(() => {
       if (!window.appReady) {
         clearInterval(scanner)
         Router.push('/nope')
       }
-    }, 3000)
+    }, 1000)
   }, [])
 
   return isReady
