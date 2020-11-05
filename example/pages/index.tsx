@@ -53,7 +53,7 @@ const Home = () => {
       </Head>
       <div style={{ marginTop: top }}>
         <div>学号: {studentID}</div>
-        <div>token: ...{token.slice(token.length - 10, token.length)}</div>
+        <div>token: ...{token?.slice(token.length - 10, token.length)}</div>
         <button onClick={() => fetchSchoolLife()}>测试校园生活是否能成功拉取</button>
         <button onClick={() => refreshToken()}>测试刷新token</button>
         <button onClick={() => hideHeader()}>隐藏标题</button>
