@@ -15,7 +15,7 @@ export interface INativeFuncs {
   Toast,
   Share,
   Webview: {
-    handleShowHeader: (value?: boolean) => boolean, // TODO:5.5
+    handleShowHeader: (value?: boolean) => boolean,
     disableAutoSetTitle: () => void
   }
 }

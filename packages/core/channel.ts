@@ -1,11 +1,12 @@
 import { EventEmitter } from 'events'
+import { _window } from '../../lib/utils'
 
-export const channelGenerater = (eventMap: object) => {
-  if (typeof window === 'undefined') return
+export const channelGenerator = (eventMap: object) => {
+  if (_window === 'undefined') return
   
-  window.RNMessageChannel = new EventEmitter()
+  _window.RNMessageChannel = new EventEmitter()
 
-  window.RNMessageChannel.on('call', (message) => {
+  _window.RNMessageChannel.on('call', (message) => {
     const {
       key,
       status,

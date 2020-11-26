@@ -1,4 +1,4 @@
-import mincuCore from '../core'
+// import mincuCore from '../core'
 
 class DataModule {
   static Instance() {

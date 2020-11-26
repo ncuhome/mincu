@@ -1,7 +1,8 @@
 import { noop } from 'lodash'
-import { channelGenerater } from './channel'
+import { channelGenerator } from './channel'
 import { MincuCoreInstanceType, FuncNames } from './interface'
 import { EventEmitter } from 'events'
+import { _window } from '../../lib/utils'
 
 /* 目前只支持单项通信（ Web -> Native ） **/
 class MincuCoreBase implements MincuCoreInstanceType {
@@ -9,28 +10,28 @@ class MincuCoreBase implements MincuCoreInstanceType {
     this.eventKey = eventKey
     this.eventMap = eventMap
 
-    channelGenerater(eventMap)
+    channelGenerator(eventMap)
   }
 
   private eventKey: number
   private eventMap: object
 
   get isApp() {
-    return window?.navigator?.userAgent?.indexOf('iNCU') !== -1
+    return _window?.navigator?.userAgent?.indexOf('iNCU') !== -1
   }
 
   get appData() {
-    if (!window.appReady) {
+    if (!_window.appReady) {
       console.log('请在 App 数据加载完成后，调用该方法')
     }
 
-    return window.appData
+    return _window.appData
   }
 
-  channelGenerater(eventMap: object) {
-    window.RNMessageChannel = new EventEmitter()
+  channelGenerator(eventMap: object) {
+    _window.RNMessageChannel = new EventEmitter()
 
-    window.RNMessageChannel.on('call', (message) => {
+    _window.RNMessageChannel.on('call', (message) => {
       const {
         key,
         status,
@@ -54,7 +55,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
     baseClass: FuncNames,
     method: string,
     params: any,
-    success: any = noop,
+    success: (data?: any) => any = noop,
     failed = noop
   ) => {
     this.eventKey += 1
@@ -68,7 +69,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
       type: 'call'
     }
 
-    window.ReactNativeWebView?.postMessage(JSON.stringify(data))
+    _window.ReactNativeWebView?.postMessage(JSON.stringify(data))
   }
 }
 

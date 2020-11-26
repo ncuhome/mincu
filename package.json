@@ -1,10 +1,16 @@
 {
   "name": "mincu",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "source": "packages/index.ts",
+  "files": [
+    "dist",
+    "packages"
+  ],
   "scripts": {
-    "start": "nodemon ./index.ts",
+    "start": "tsc -w",
     "build": "tsc ./index.ts"
   },
   "dependencies": {

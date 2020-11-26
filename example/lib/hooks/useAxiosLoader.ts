@@ -1,9 +1,9 @@
 import { useInfoState } from '../../store/index'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { useMemo, useEffect, useCallback, useState, useRef } from 'react'
-import eventModule from '../../packages/event/index'
+import { eventModule } from 'mincu'
 
-export const ax = axios.create();
+export const fetch = axios.create();
 
 export const useAxiosLoader = () => {
   const [token, handleValue] = useInfoState(state => [state.token, state.handleValue]);
@@ -38,7 +38,7 @@ export const useAxiosLoader = () => {
           failedQueue.push({ resolve, reject })
         }).then(_token => {
           originalRequest.headers['Authorization'] = `passport ${_token}`
-          return ax(originalRequest);
+          return fetch(originalRequest);
         }).catch(err => {
           return Promise.reject(err);
         })
@@ -50,10 +50,10 @@ export const useAxiosLoader = () => {
       return new Promise((resolve, reject) => {
         refreshToken()
           .then(_token => {
-            axios.defaults.headers.common['Authorization'] = `passport ${_token}`;
+            fetch.defaults.headers.common['Authorization'] = `passport ${_token}`;
             originalRequest.headers['Authorization'] = `passport ${_token}`;
             processQueue(null, _token);
-            resolve(ax(originalRequest));
+            resolve(fetch(originalRequest));
           })
           .catch((err) => {
             processQueue(err);
@@ -80,14 +80,14 @@ export const useAxiosLoader = () => {
   }), [token, handleTokenExpired]);
 
   useEffect(() => {
-    const reqInterceptor = ax.interceptors.request.use(interceptors.request);
-    const resInterceptor = ax.interceptors.response.use(interceptors.response, interceptors.error);
+    const reqInterceptor = fetch.interceptors.request.use(interceptors.request);
+    const resInterceptor = fetch.interceptors.response.use(interceptors.response, interceptors.error);
 
     return () => {
-      ax.interceptors.request.eject(reqInterceptor);
-      ax.interceptors.response.eject(resInterceptor);
+      fetch.interceptors.request.eject(reqInterceptor);
+      fetch.interceptors.response.eject(resInterceptor);
     };
   }, [interceptors]);
 
-  return { refreshToken }
+  return { refreshToken, fetch }
 };

@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useLogin } from '../lib/hooks/useLogin'
 import { useSafeArea } from '../lib/hooks/useSafeArea'
-import { useAxiosLoader, ax } from '../lib/hooks/useAxiosLoader'
+import { useAxiosLoader, fetch } from '../lib/hooks/useAxiosLoader'
 import { useInfoState } from '../store/index'
-import uiModule from '../packages/ui/index'
-import eventModule from '../packages/event/index'
+import { eventModule, uiModule } from 'mincu'
 
-const Home = () => {
+const Index = () => {
   const { isReady } = useLogin()
   const { refreshToken } = useAxiosLoader()
   const [studentID, token] = useInfoState(state => [state.studentID, state.token])
@@ -21,7 +20,7 @@ const Home = () => {
   }, [])
 
   const fetchSchoolLife = async () => {
-    const { status } = await ax.get('https://incu-api.ncuos.com/v2/api/schoolLife')
+    const { status } = await fetch.get('https://incu-api.ncuos.com/v2/api/schoolLife')
 
     alert(status)
   }
@@ -51,7 +50,7 @@ const Home = () => {
           content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0"
         />
       </Head>
-      <div style={{ marginTop: top }}>
+      <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
         <div>学号: {studentID}</div>
         <div>token: ...{token?.slice(token.length - 10, token.length)}</div>
         <button onClick={() => fetchSchoolLife()}>测试校园生活是否能成功拉取</button>
@@ -69,4 +68,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Index
