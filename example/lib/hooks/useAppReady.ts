@@ -27,7 +27,7 @@ export const useAppReady = () => {
     setTimeout(() => {
       if (!window.appReady) {
         clearInterval(scanner)
-        Router.push('/nope')
+        Router.push('/ote')
       }
     }, 1000)
   }, [])

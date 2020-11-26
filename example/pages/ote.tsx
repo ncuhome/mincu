@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Nope = () => {
+// 端外打开
+const OTE = () => {
   return (
     <div>
       请下载南大家园App
@@ -9,4 +10,4 @@ const Nope = () => {
   )
 }
 
-export default Nope
+export default OTE
