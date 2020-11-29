@@ -26,10 +26,13 @@ interface AppData {
         status: number;
       },
       entireProfile: IEntireProfileResponse
-      userFollow: { [key: string]: FollowEnum }
     }
+    colorScheme: ColorSchemeName
+    colors: any
   }
 }
+
+type ColorSchemeName = 'light' | 'dark' | null | undefined;
 
 declare enum FollowEnum {
   followed = 1,

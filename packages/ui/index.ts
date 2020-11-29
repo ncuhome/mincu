@@ -10,7 +10,7 @@ class UIModule {
     return new UIModule()
   }
 
-  info(title: string, during: number = 1000) {
+  info(title: string, during: number = 1) {
     return new Promise((resolve) => {
       mincuCore.call(
         "Toast",
@@ -23,7 +23,33 @@ class UIModule {
     })
   }
 
-  async handleShowHeader(value: boolean): Promise<boolean> {
+  success(title: string, during: number = 1) {
+    return new Promise((resolve) => {
+      mincuCore.call(
+        "Toast",
+        "success",
+        [title, during],
+        (res) => {
+          resolve(res.data)
+        }
+      )
+    })
+  }
+
+  fail(title: string, during: number = 1) {
+    return new Promise((resolve) => {
+      mincuCore.call(
+        "Toast",
+        "fail",
+        [title, during],
+        (res) => {
+          resolve(res.data)
+        }
+      )
+    })
+  }
+
+  handleShowHeader(value: boolean): Promise<boolean> {
     return new Promise((resolve) => {
       mincuCore.call(
         "Webview",
@@ -36,7 +62,7 @@ class UIModule {
     })
   }
 
-  async toScreen(config: NavConfig): Promise<void> {
+  toScreen(config: NavConfig): Promise<void> {
     return new Promise((resolve) => {
       mincuCore.call(
         "Webview",

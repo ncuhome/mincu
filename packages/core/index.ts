@@ -1,10 +1,9 @@
 import { noop } from 'lodash'
 import { channelGenerator } from './channel'
 import { MincuCoreInstanceType, FuncNames } from './interface'
-import { EventEmitter } from 'events'
 import { _window } from '../../lib/utils'
 
-/* 目前只支持单项通信（ Web -> Native ） **/
+/* 目前支持 web 和 native 的双向通信 **/
 class MincuCoreBase implements MincuCoreInstanceType {
   constructor(eventKey?: number, eventMap?: object) {
     this.eventKey = eventKey
@@ -28,29 +27,17 @@ class MincuCoreBase implements MincuCoreInstanceType {
     return _window.appData
   }
 
-  channelGenerator(eventMap: object) {
-    _window.RNMessageChannel = new EventEmitter()
-
-    _window.RNMessageChannel.on('call', (message) => {
-      const {
-        key,
-        status,
-        data
-      } = message || {}
-
-      const {
-        success,
-        failed
-      } = eventMap[key]
-
-      if (status === 'success') {
-        success(data)
-      } else {
-        failed(data)
-      }
-    })
+  // 添加一个原生事件监听器
+  listener = (eventName: string, fn: (data) => any) => {
+    return _window.RNMessageChannel?.on(`event-${eventName}`, fn)
   }
 
+  // 移除某个原生事件监听器
+  remove = (eventName: string, fn: (data) => any) => {
+    window.RNMessageChannel?.removeListener(eventName, fn)
+  }
+
+  // 请求并触发客户端事件
   call = (
     baseClass: FuncNames,
     method: string,

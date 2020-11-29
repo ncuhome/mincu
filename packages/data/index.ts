@@ -1,24 +1,27 @@
-// import mincuCore from '../core'
+import mincuCore from '../core'
 
 class DataModule {
   static Instance() {
     return new DataModule()
   }
 
-  // TODO
+  get colorScheme(): ColorSchemeName {
+    return mincuCore.appData.user.colorScheme
+  }
+
   get isDark() {
-    return true
+    return this.colorScheme === 'dark'
   }
 
-  get userInfo() {
-    return {}
+  get userInfo(): AppData['user'] {
+    return mincuCore.appData.user
   }
 
-  get version () {
+  get version() {
     return '5.0'
   }
 
-  
+
 }
 
 export default DataModule.Instance()

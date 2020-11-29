@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import Router from 'next/router';
 import { useCommonState } from '../../store/index'
+import Router from 'next/router'
 
 export const useAppReady = () => {
   const [isReady, handleValue] = useCommonState(state => [state.isReady, state.handleValue])

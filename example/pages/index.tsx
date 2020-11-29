@@ -2,15 +2,18 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useLogin } from '../lib/hooks/useLogin'
 import { useSafeArea } from '../lib/hooks/useSafeArea'
+import { useColorScheme } from '../lib/hooks/useColorScheme'
 import { useAxiosLoader, fetch } from '../lib/hooks/useAxiosLoader'
 import { useInfoState } from '../store/index'
 import { eventModule, uiModule } from 'mincu'
+import Loading from '../components/loading'
 
 const Index = () => {
   const { isReady } = useLogin()
   const { refreshToken } = useAxiosLoader()
   const [studentID, token] = useInfoState(state => [state.studentID, state.token])
   const { top } = useSafeArea()
+  const colorScheme = useColorScheme()
 
   useEffect(() => {
     eventModule.setShareConfig({
@@ -35,9 +38,7 @@ const Index = () => {
 
   if (!isReady) {
     return (
-      <div>
-        加载中
-      </div>
+      <Loading />
     )
   }
 
@@ -63,6 +64,8 @@ const Index = () => {
         <button onClick={() => uiModule.toScreen({ screen: '周课表' })}>周课表</button>
         <button onClick={() => uiModule.toScreen({ screen: '用户资料', params: { userId: "5504118086" } })}>他的资料</button>
         <button onClick={() => alert(localStorage.getItem('state'))}>打印缓存</button>
+        <button onClick={() => uiModule.info('23333')}>打开 Toast info</button>
+        <button onClick={() => uiModule.success('23333')}>打开 Toast success</button>
       </div>
     </div>
   )
