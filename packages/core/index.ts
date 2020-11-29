@@ -34,7 +34,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
 
   // 移除某个原生事件监听器
   remove = (eventName: string, fn: (data) => any) => {
-    window.RNMessageChannel?.removeListener(eventName, fn)
+    window.RNMessageChannel?.removeListener(`event-${eventName}`, fn)
   }
 
   // 请求并触发客户端事件

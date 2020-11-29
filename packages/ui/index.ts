@@ -62,17 +62,8 @@ class UIModule {
     })
   }
 
-  toScreen(config: NavConfig): Promise<void> {
-    return new Promise((resolve) => {
-      mincuCore.call(
-        "Webview",
-        "toScreen",
-        [config],
-        () => {
-          resolve()
-        }
-      )
-    })
+  toScreen(config: NavConfig) {
+    mincuCore.call("Webview", "toScreen", [config])
   }
 }
 

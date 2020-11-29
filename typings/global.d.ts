@@ -7,3 +7,10 @@ declare interface Window {
 
   mincu: any
 }
+
+declare interface EdgeInsets {
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
+}

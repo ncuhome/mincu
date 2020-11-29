@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useLogin } from '../lib/hooks/useLogin'
 import { useSafeArea } from '../lib/hooks/useSafeArea'
-import { useColorScheme } from '../lib/hooks/useColorScheme'
+import { useColors } from '../lib/hooks/useColors'
 import { useAxiosLoader, fetch } from '../lib/hooks/useAxiosLoader'
 import { useInfoState } from '../store/index'
-import { eventModule, uiModule } from 'mincu'
+import { dataModule, eventModule, uiModule } from 'mincu'
 import Loading from '../components/loading'
 
 const Index = () => {
@@ -13,7 +13,7 @@ const Index = () => {
   const { refreshToken } = useAxiosLoader()
   const [studentID, token] = useInfoState(state => [state.studentID, state.token])
   const { top } = useSafeArea()
-  const colorScheme = useColorScheme()
+  const colors = useColors()
 
   useEffect(() => {
     eventModule.setShareConfig({
@@ -36,6 +36,11 @@ const Index = () => {
     uiModule.handleShowHeader(true)
   }
 
+  const showVersion = async () => {
+    const version = await dataModule.getVersion()
+    alert(version)
+  }
+
   if (!isReady) {
     return (
       <Loading />
@@ -54,10 +59,10 @@ const Index = () => {
       <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
         <div>学号: {studentID}</div>
         <div>token: ...{token?.slice(token.length - 10, token.length)}</div>
-        <button onClick={() => fetchSchoolLife()}>测试校园生活是否能成功拉取</button>
-        <button onClick={() => refreshToken()}>测试刷新token</button>
-        <button onClick={() => hideHeader()}>隐藏标题</button>
-        <button onClick={() => showHeader()}>显示标题</button>
+        <button onClick={fetchSchoolLife}>测试校园生活是否能成功拉取</button>
+        <button onClick={refreshToken}>测试刷新token</button>
+        <button onClick={hideHeader}>隐藏标题</button>
+        <button onClick={showHeader}>显示标题</button>
         <button onClick={() => eventModule.exit()}>退出</button>
         <button onClick={() => eventModule.showShare()}>分享</button>
         <div>导航</div>
@@ -66,6 +71,16 @@ const Index = () => {
         <button onClick={() => alert(localStorage.getItem('state'))}>打印缓存</button>
         <button onClick={() => uiModule.info('23333')}>打开 Toast info</button>
         <button onClick={() => uiModule.success('23333')}>打开 Toast success</button>
+        <button onClick={showVersion}>获取版本号</button>
+
+        <div> colors 测试 </div>
+        <div style={{
+          width: '100%', 
+          height: '50px', 
+          backgroundColor: colors.white, 
+          border: '1px solid #2e2e2e',
+          borderRadius: 7
+        }}></div>
       </div>
     </div>
   )

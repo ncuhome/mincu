@@ -17,11 +17,26 @@ class DataModule {
     return mincuCore.appData.user
   }
 
-  get version() {
-    return '5.0'
+  get colors() {
+    return mincuCore.appData.user.colors
   }
 
+  get inset(): EdgeInsets {
+    return mincuCore.appData.user.inset
+  }
 
+  async getVersion(): Promise<string> {
+    return new Promise((resolve) => {
+      mincuCore.call(
+        "DeviceInfo",
+        "getVersion",
+        null,
+        (res) => {
+          resolve(res.data)
+        }
+      )
+    })
+  }
 }
 
 export default DataModule.Instance()
