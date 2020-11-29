@@ -1,32 +1,33 @@
 import { useInfoState } from '../../store/index'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { useMemo, useEffect, useCallback, useState, useRef } from 'react'
+import { useMemo, useEffect, useCallback } from 'react'
 import { eventModule } from 'mincu'
 
 export const fetch = axios.create();
 
+let failedQueue = []
+let isRefreshing = false
+
+const processQueue = (error: any, _token = null) => {
+  failedQueue.forEach(prom => {
+    if (error) {
+      prom.reject(error);
+    } else {
+      prom.resolve(_token);
+    }
+  })
+
+  failedQueue = [];
+}
+
 export const useAxiosLoader = () => {
   const [token, handleValue] = useInfoState(state => [state.token, state.handleValue]);
-  const [isRefreshing, setIsRefreshing] = useState(false)
-  let { current: failedQueue } = useRef([])
 
   const refreshToken = useCallback(async () => {
     const res = await eventModule.refreshToken()
     handleValue("token", res.token ?? '')
     return res.token
   }, [])
-
-  const processQueue = useCallback((error: any, _token = null) => {
-    failedQueue.forEach(prom => {
-      if (error) {
-        prom.reject(error);
-      } else {
-        prom.resolve(_token);
-      }
-    })
-
-    failedQueue = [];
-  }, [failedQueue])
 
   const handleTokenExpired = useCallback((error: any) => {
     const { response: { status } } = error;
@@ -45,7 +46,7 @@ export const useAxiosLoader = () => {
       }
 
       originalRequest._retry = true;
-      setIsRefreshing(true)
+      isRefreshing = true
 
       return new Promise((resolve, reject) => {
         refreshToken()
@@ -60,13 +61,13 @@ export const useAxiosLoader = () => {
             reject(err);
           })
           .finally(() => {
-            setIsRefreshing(false)
+            isRefreshing = false
           })
       })
     }
 
     return Promise.reject(error);
-  }, [isRefreshing, processQueue])
+  }, [])
 
   const interceptors = useMemo(() => ({
     request: (config: AxiosRequestConfig) => {
@@ -77,7 +78,7 @@ export const useAxiosLoader = () => {
     },
     response: (response: AxiosResponse) => response,
     error: handleTokenExpired,
-  }), [token, handleTokenExpired]);
+  }), [token]);
 
   useEffect(() => {
     const reqInterceptor = fetch.interceptors.request.use(interceptors.request);

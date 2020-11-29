@@ -54,7 +54,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
   call = (
     baseClass: FuncNames,
     method: string,
-    params: any,
+    params = [],
     success: (data?: any) => any = noop,
     failed = noop
   ) => {
@@ -64,7 +64,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
     const data = {
       baseClass,
       method,
-      params,
+      params: params || [],
       key: this.eventKey,
       type: 'call'
     }

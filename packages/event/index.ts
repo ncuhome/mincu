@@ -12,7 +12,7 @@ class EventModule {
   }
 
   openUrl(url: string) {
-    mincuCore.call("Linking", "openURL", url, () => {
+    mincuCore.call("Linking", "openURL", [url], () => {
       console.log(`${url} 已打开`)
     })
   }
@@ -49,7 +49,7 @@ class EventModule {
       mincuCore.call(
         "Share",
         "setShareConfig",
-        config,
+        [config],
         () => {
           console.log('配置分享设置')
           resolve()

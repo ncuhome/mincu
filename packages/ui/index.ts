@@ -10,12 +10,12 @@ class UIModule {
     return new UIModule()
   }
 
-  info() {
+  info(title: string, during: number = 1000) {
     return new Promise((resolve) => {
       mincuCore.call(
         "Toast",
         "info",
-        null,
+        [title, during],
         (res) => {
           resolve(res.data)
         }
@@ -28,7 +28,7 @@ class UIModule {
       mincuCore.call(
         "Webview",
         "handleShowHeader",
-        value,
+        [value],
         (res) => {
           resolve(res.data)
         }
@@ -41,7 +41,7 @@ class UIModule {
       mincuCore.call(
         "Webview",
         "toScreen",
-        config,
+        [config],
         () => {
           resolve()
         }
