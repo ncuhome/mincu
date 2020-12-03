@@ -1,7 +1,7 @@
 name: Publish
 
 on:
-  push: 
+  push:
     tags:
       - '*'
 
@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        
+
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-        
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-        
+
       - name: Cache yarn
         uses: actions/cache@v2
         id: cache-yarn-cache
@@ -37,4 +37,4 @@ jobs:
       - name: publish package
         run: yarn publish
         env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
