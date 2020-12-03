@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
+import React, { useEffect } from 'react'
+import Head from 'next/head'
+import Loading from '../components/loading'
 import { useLogin } from '../lib/hooks/useLogin'
 import { useSafeArea } from '../lib/hooks/useSafeArea'
 import { useColors } from '../lib/hooks/useColors'
 import { useAxiosLoader, fetch } from '../lib/hooks/useAxiosLoader'
 import { useInfoState } from '../store/index'
 import { dataModule, eventModule, uiModule } from 'mincu'
-import Loading from '../components/loading'
 
 const Index = () => {
   const { isReady } = useLogin()
@@ -75,9 +75,9 @@ const Index = () => {
 
         <div> colors 测试 </div>
         <div style={{
-          width: '100%', 
-          height: '50px', 
-          backgroundColor: colors.white, 
+          width: '100%',
+          height: '50px',
+          backgroundColor: colors.white,
           border: '1px solid #2e2e2e',
           borderRadius: 7
         }}></div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { dataModule, mincuCore } from 'mincu'
 
 export const useColors = (): any => {
-  const [colors, setColors] = useState<any>(null)
+  const [colors, setColors] = useState<any>({})
 
   const handle = (res: any) => {
     setColors(res)

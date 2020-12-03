@@ -2,7 +2,6 @@ import { stateFactory } from "../factory"
 
 type Common = {
   inset: EdgeInsets
-  isReady?: boolean
 }
 
 export const useCommonState = stateFactory({
