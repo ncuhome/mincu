@@ -11,10 +11,14 @@ class UIModule {
   }
 
   info(title: string, during: number = 1) {
+    mincuCore.call("Toast", "info", [title, during])
+  }
+
+  async loading(title: string, during: number = 1) {
     return new Promise((resolve) => {
       mincuCore.call(
         "Toast",
-        "info",
+        "loading",
         [title, during],
         (res) => {
           resolve(res.data)
@@ -24,29 +28,11 @@ class UIModule {
   }
 
   success(title: string, during: number = 1) {
-    return new Promise((resolve) => {
-      mincuCore.call(
-        "Toast",
-        "success",
-        [title, during],
-        (res) => {
-          resolve(res.data)
-        }
-      )
-    })
+    mincuCore.call("Toast", "success", [title, during])
   }
 
   fail(title: string, during: number = 1) {
-    return new Promise((resolve) => {
-      mincuCore.call(
-        "Toast",
-        "fail",
-        [title, during],
-        (res) => {
-          resolve(res.data)
-        }
-      )
-    })
+    mincuCore.call("Toast", "fail", [title, during])
   }
 
   handleShowHeader(value: boolean): Promise<boolean> {

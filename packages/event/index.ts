@@ -18,19 +18,6 @@ class EventModule {
     })
   }
 
-  async refreshToken(): Promise<{ token: string }> {
-    return new Promise((resolve) => {
-      mincuCore.call(
-        "Auth",
-        "refreshToken",
-        null,
-        (res: { data: { token: string } }) => {
-          resolve(res.data)
-        }
-      )
-    })
-  }
-
   exit() {
     mincuCore.call("Webview", "exitWebView", null, () => {
       console.log('退出微应用')

@@ -1,14 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState, } from 'react'
 import { dataModule } from 'mincu'
-import { useCommonState } from '../../store/index'
 
 export const useSafeArea = () => {
-  const [inset, handleValue] = useCommonState(state =>
-    [state.inset, state.handleValue]
-  )
+  const [inset, setInset] = useState<EdgeInsets>({} as EdgeInsets)
 
   useEffect(() => {
-    handleValue("inset", dataModule.inset)
+    setInset(dataModule.inset)
   }, [])
 
   return inset

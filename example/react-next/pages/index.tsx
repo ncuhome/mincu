@@ -4,16 +4,17 @@ import Loading from '../components/loading'
 import { useLogin } from '../lib/hooks/useLogin'
 import { useSafeArea } from '../lib/hooks/useSafeArea'
 import { useColors } from '../lib/hooks/useColors'
-import { useAxiosLoader, fetch } from '../lib/hooks/useAxiosLoader'
+import { useColorScheme } from '../lib/hooks/useColorScheme'
 import { useInfoState } from '../store/index'
-import { dataModule, eventModule, uiModule } from 'mincu'
+import { dataModule, eventModule, uiModule, networkModule } from 'mincu'
 
 const Index = () => {
   const { isReady } = useLogin()
-  const { refreshToken } = useAxiosLoader()
-  const [studentID, token] = useInfoState(state => [state.studentID, state.token])
   const { top } = useSafeArea()
+
+  const studentID = useInfoState(state => state.studentID)
   const colors = useColors()
+  const colorScheme = useColorScheme()
 
   useEffect(() => {
     eventModule.setShareConfig({
@@ -23,8 +24,7 @@ const Index = () => {
   }, [])
 
   const fetchSchoolLife = async () => {
-    const { status } = await fetch.get('https://incu-api.ncuos.com/v2/api/schoolLife')
-
+    const { status } = await networkModule.fetch.get('https://incu-api.ncuos.com/v2/api/schoolLife')
     alert(status)
   }
 
@@ -39,6 +39,16 @@ const Index = () => {
   const showVersion = async () => {
     const version = await dataModule.getVersion()
     alert(version)
+  }
+
+  const toastLoading = async () => {
+    const loadingTip = await uiModule.loading('加载中')
+    console.log(loadingTip)
+  }
+
+  const refreshToken = async () => {
+    const token = await networkModule.refreshToken()
+    alert(token)
   }
 
   if (!isReady) {
@@ -58,7 +68,6 @@ const Index = () => {
       </Head>
       <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
         <div>学号: {studentID}</div>
-        <div>token: ...{token?.slice(token.length - 10, token.length)}</div>
         <button onClick={fetchSchoolLife}>测试校园生活是否能成功拉取</button>
         <button onClick={refreshToken}>测试刷新token</button>
         <button onClick={hideHeader}>隐藏标题</button>
@@ -71,7 +80,9 @@ const Index = () => {
         <button onClick={() => alert(localStorage.getItem('state'))}>打印缓存</button>
         <button onClick={() => uiModule.info('23333')}>打开 Toast info</button>
         <button onClick={() => uiModule.success('23333')}>打开 Toast success</button>
+        <button onClick={toastLoading}>打开 Toast loading</button>
         <button onClick={showVersion}>获取版本号</button>
+        <button onClick={() => alert(colorScheme)}>获取当前主题</button>
 
         <div> colors 测试 </div>
         <div style={{

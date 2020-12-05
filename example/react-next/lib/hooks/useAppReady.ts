@@ -8,9 +8,9 @@ export const useAppReady = () => {
   useEffect(() => {
     mincuCore.initial(
       () => setIsReady(true),
-      () => Router.push('/ote')
+      () => Router.push('/outside')
     )
   }, [])
 
   return isReady
-} 
+}

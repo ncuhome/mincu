@@ -63,6 +63,11 @@ class MincuCoreBase implements MincuCoreInstanceType {
     return this.messageChannel?.on(`event-${eventName}`, fn)
   }
 
+  // 添加一个原生事件监听器 (监听一次后立即销毁)
+  once = (eventName: string, fn: (data) => any) => {
+    return this.messageChannel?.once(`event-${eventName}`, fn)
+  }
+
   // 移除某个原生事件监听器
   remove = (eventName: string, fn: (data) => any) => {
     this.messageChannel?.removeListener(`event-${eventName}`, fn)

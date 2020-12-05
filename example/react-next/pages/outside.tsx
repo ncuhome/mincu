@@ -1,7 +1,7 @@
 import React from 'react'
 
 // 端外打开
-const OTE = () => {
+const Outside = () => {
   return (
     <div>
       请下载南大家园App
@@ -10,4 +10,4 @@ const OTE = () => {
   )
 }
 
-export default OTE
+export default Outside

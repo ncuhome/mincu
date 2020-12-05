@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@microsoft/tsdoc": "^0.12.21",
+    "axios": "^0.21.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {

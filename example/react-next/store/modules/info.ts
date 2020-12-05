@@ -3,7 +3,6 @@ import { statePersistFactory } from "../factory"
 type Info = {
   studentID: string
   username: string
-  token: string
   avatar: string
 }
 
