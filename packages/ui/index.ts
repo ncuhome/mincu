@@ -14,14 +14,16 @@ class UIModule {
     mincuCore.call("Toast", "info", [title, during])
   }
 
-  async loading(title: string, during: number = 1) {
+  async loading(title: string, during: number = 1): Promise<() => void> {
     return new Promise((resolve) => {
       mincuCore.call(
         "Toast",
         "loading",
         [title, during],
         (res) => {
-          resolve(res.data)
+          resolve(() => {
+            this.removeToast(res.data)
+          })
         }
       )
     })
@@ -33,6 +35,10 @@ class UIModule {
 
   fail(title: string, during: number = 1) {
     mincuCore.call("Toast", "fail", [title, during])
+  }
+
+  removeToast(key: number) {
+    mincuCore.call("Portal", "remove", [key])
   }
 
   handleShowHeader(value: boolean): Promise<boolean> {

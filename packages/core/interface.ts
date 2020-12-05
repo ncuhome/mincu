@@ -13,6 +13,7 @@ export interface INativeFuncs {
   Vibration,
   ToastAndroid,
   Toast,
+  Portal: any
   Share,
   Webview: {
     handleShowHeader: (value?: boolean) => boolean,

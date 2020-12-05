@@ -24,7 +24,9 @@ const Index = () => {
   }, [])
 
   const fetchSchoolLife = async () => {
+    const loadingTip = await uiModule.loading('加载中', 0)
     const { status } = await networkModule.fetch.get('https://incu-api.ncuos.com/v2/api/schoolLife')
+    loadingTip()
     alert(status)
   }
 
@@ -43,7 +45,6 @@ const Index = () => {
 
   const toastLoading = async () => {
     const loadingTip = await uiModule.loading('加载中')
-    console.log(loadingTip)
   }
 
   const refreshToken = async () => {
