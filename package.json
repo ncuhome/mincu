@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "tsc -w",
-    "build": "tsc ./index.ts"
+    "build": "tsc --build tsconfig.json"
   },
   "dependencies": {
     "@microsoft/tsdoc": "^0.12.21",

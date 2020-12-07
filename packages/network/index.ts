@@ -30,7 +30,7 @@ export class NetWorkModule {
     const interceptors = {
       request: (config: AxiosRequestConfig) => {
         if (this.token) {
-          config.headers.Authorization = `passport ${this.token}`
+          config.headers.Authorization = this.getAuthorization(this.token)
         }
         return config
       },
@@ -43,13 +43,17 @@ export class NetWorkModule {
     this.fetch.interceptors.response.use(interceptors.response, interceptors.error);
   }
 
-  setToken = (token: string) => {
+  private setToken = (token: string) => {
     this.token = token
     localStorage.setItem('token', token)
   }
 
+  private getAuthorization(token: string) {
+    return `passport ${token}`
+  }
+
   /**错误处理方法 */
-  handleTokenExpired = async (error: any) => {
+  private handleTokenExpired = (error: any) => {
     const { response: { status } } = error;
     const originalRequest = error.config;
 
@@ -102,7 +106,7 @@ export class NetWorkModule {
     this.failedQueue = [];
   }
 
-  async refreshToken(): Promise<string> {
+  public async refreshToken(): Promise<string> {
     return new Promise((resolve) => {
       mincuCore.call("Auth", "refreshToken", null,
         (res: ResToken) => {
