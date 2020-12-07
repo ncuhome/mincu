@@ -44,7 +44,7 @@ const Index = () => {
   }
 
   const toastLoading = async () => {
-    const loadingTip = await uiModule.loading('加载中')
+    await uiModule.loading('加载中')
   }
 
   const refreshToken = async () => {

@@ -12,37 +12,12 @@
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.5.tgz#e92d3b8f76583efa26c1a63a21c9d3c1143daa29"
   integrity sha1-6S07j3ZYPvomwaY6IcnTwRQ9qik=
 
-"@types/prop-types@*":
-  version "15.7.3"
-  resolved "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
-  integrity sha1-KrDV2i5YFflLC51LldHl8kOrLKc=
-
-"@types/react-native@^0.63.6":
-  version "0.63.30"
-  resolved "https://registry.npm.taobao.org/@types/react-native/download/@types/react-native-0.63.30.tgz#a0bd61e61b7a020a538ea22901be2f5d178fe02f"
-  integrity sha1-oL1h5ht6AgpTjqIpAb4vXReP4C8=
-  dependencies:
-    "@types/react" "*"
-
-"@types/react@*":
-  version "16.9.54"
-  resolved "https://registry.npm.taobao.org/@types/react/download/@types/react-16.9.54.tgz?cache=0&sync_timestamp=1603825899931&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-16.9.54.tgz#140280c31825287ee74e9da95285b91c5a2e471d"
-  integrity sha1-FAKAwxglKH7nTp2pUoW5HFouRx0=
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^3.0.2"
-
 axios@^0.21.0:
   version "0.21.0"
   resolved "https://registry.npm.taobao.org/axios/download/axios-0.21.0.tgz#26df088803a2350dff2c27f96fef99fe49442aca"
   integrity sha1-Jt8IiAOiNQ3/LCf5b++Z/klEKso=
   dependencies:
     follow-redirects "^1.10.0"
-
-csstype@^3.0.2:
-  version "3.0.4"
-  resolved "https://registry.npm.taobao.org/csstype/download/csstype-3.0.4.tgz#b156d7be03b84ff425c9a0a4b1e5f4da9c5ca888"
-  integrity sha1-sVbXvgO4T/QlyaCkseX02pxcqIg=
 
 follow-redirects@^1.10.0:
   version "1.13.0"

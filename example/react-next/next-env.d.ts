@@ -34,13 +34,7 @@ interface AppData {
 
 type ColorSchemeName = 'light' | 'dark' | null | undefined;
 
-declare enum FollowEnum {
-  followed = 1,
-  loading = 0,
-  notFollowing = -1,
-}
-
-declare interface EdgeInsets {
+export interface EdgeInsets {
   top: number;
   right: number;
   bottom: number;

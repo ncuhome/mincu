@@ -1,4 +1,5 @@
 import mincuCore from '../core'
+import { ColorSchemeName, AppData, EdgeInsets } from '../core/interface'
 
 class DataModule {
   static Instance() {
