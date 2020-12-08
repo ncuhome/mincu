@@ -36,5 +36,6 @@ jobs:
         run: yarn build
 
       - name: publish package
+        run: yarn publish
         env:
             NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
