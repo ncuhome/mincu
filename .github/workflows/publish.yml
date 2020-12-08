@@ -13,6 +13,7 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
+          always-auth: true
           node-version: '14.x'
 
       - name: Get yarn cache directory path
@@ -35,6 +36,5 @@ jobs:
         run: yarn build
 
       - name: publish package
-        run: yarn publish
         env:
             NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
