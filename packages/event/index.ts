@@ -7,9 +7,11 @@ class EventModule {
   }
 
   /**
-   * 通过浏览器打开 Web 页面
+   * 通过系统默认浏览器打开 Web 页面
    *
-   * @param url 要跳转的链接
+   * 主要适配一些端内转端外场景和 deeplink
+   *
+   * @param url - 要跳转的链接
    */
   openUrl(url: string) {
     mincuCore.call('Linking', 'openURL', [url], () => {

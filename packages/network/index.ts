@@ -49,11 +49,15 @@ export class NetWorkModule {
   }
 
   /**
-   * @作用 从浏览器缓存中拿取 token
-   * @注意 一般放在挂载阶段结束后执行
+   * 从浏览器缓存中拿取 token
+   *
+   * 一般放在该组件挂载 (渲染) 阶段结束后执行
+   *
+   * @returns 取出缓存中的 token
    */
   public getStoredToken() {
-    return localStorage.getItem('token') ?? this.token
+    this.token = localStorage.getItem('token') ?? ''
+    return this.token
   }
 
   private getAuthorization(token: string) {
