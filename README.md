@@ -1,6 +1,11 @@
 # Mincu 南大家园 JS API
 
+## 文档地址
+
+https://ncuhome.github.io/mincu/
+
 ## 什么是 Mincu？
+
 iNCU 为其内嵌的 WEB 页面提供了丰富的 JS API，用来扩展内嵌页面 JS 的能力，如获取用户信息、操作原生 UI、获取原生 UI 和数据调用能力，以及解决你最头疼的认证系统。
 
 ## 为什么要用？
@@ -11,7 +16,7 @@ iNCU 为其内嵌的 WEB 页面提供了丰富的 JS API，用来扩展内嵌页
 
 3. 跨平台调用原生能力
 
-4. 可唤起系统原生的UI界面/组件，让 Web App 更 Native 化
+4. 可唤起系统原生的 UI 界面/组件，让 Web App 更 Native 化
 
 5. 使用客户端分享功能，打通用户分享转发链路
 
