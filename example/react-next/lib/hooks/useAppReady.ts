@@ -3,7 +3,7 @@ import { mincuCore } from 'mincu'
 import Router from 'next/router'
 
 export const useAppReady = (): boolean => {
-  const [isReady, setIsReady] = useState(mincuCore.appData)
+  const [isReady, setIsReady] = useState(mincuCore.isApp)
 
   useEffect(() => {
     mincuCore.initial(

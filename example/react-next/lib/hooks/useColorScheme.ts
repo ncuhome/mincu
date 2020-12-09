@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { dataModule, mincuCore } from 'mincu'
+import { ColorSchemeName } from 'mincu'
 
 export const useColorScheme = (): ColorSchemeName => {
   const [colorScheme, setColorScheme] = useState<ColorSchemeName>(null)
@@ -11,7 +12,7 @@ export const useColorScheme = (): ColorSchemeName => {
   useEffect(() => {
     setColorScheme(dataModule.colorScheme)
     mincuCore.listener('colorScheme', handle)
-    
+
     return () => {
       mincuCore.remove('colorScheme', handle)
     }

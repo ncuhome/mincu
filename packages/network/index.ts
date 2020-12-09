@@ -16,7 +16,7 @@ export class NetWorkModule {
   private failedQueue: failedItem[] = []
   private isRefreshing = false
 
-  public token: string = localStorage.getItem('token')
+  public token: string = ''
   public fetch = axios.create()
 
   static Instance() {
@@ -39,8 +39,8 @@ export class NetWorkModule {
     }
 
     /**初始化 axios 拦截器 */
-    this.fetch.interceptors.request.use(interceptors.request);
-    this.fetch.interceptors.response.use(interceptors.response, interceptors.error);
+    this.fetch.interceptors.request.use(interceptors.request)
+    this.fetch.interceptors.response.use(interceptors.response, interceptors.error)
   }
 
   private setToken = (token: string) => {
@@ -48,25 +48,37 @@ export class NetWorkModule {
     localStorage.setItem('token', token)
   }
 
+  /**
+   * @作用 从浏览器缓存中拿取 token
+   * @注意 一般放在挂载阶段结束后执行
+   */
+  public getStoredToken() {
+    return localStorage.getItem('token') ?? this.token
+  }
+
   private getAuthorization(token: string) {
     return `passport ${token}`
   }
 
-  /**错误处理方法 */
+  /** 错误处理方法 */
   private handleTokenExpired = (error: any) => {
-    const { response: { status } } = error;
-    const originalRequest = error.config;
+    const {
+      response: { status },
+    } = error
+    const originalRequest = error.config
 
     if (status === 401 && !originalRequest._retry) {
       if (this.isRefreshing) {
         return new Promise((resolve, reject) => {
           this.failedQueue.push({ resolve, reject })
-        }).then(token => {
-          originalRequest.headers['Authorization'] = `passport ${token}`
-          return this.fetch(originalRequest);
-        }).catch(err => {
-          return Promise.reject(err);
         })
+          .then((token) => {
+            originalRequest.headers['Authorization'] = `passport ${token}`
+            return this.fetch(originalRequest)
+          })
+          .catch((err) => {
+            return Promise.reject(err)
+          })
       }
 
       originalRequest._retry = true
@@ -75,14 +87,14 @@ export class NetWorkModule {
       return new Promise((resolve, reject) => {
         this.refreshToken()
           .then((token) => {
-            this.fetch.defaults.headers.common['Authorization'] = `passport ${token}`;
-            originalRequest.headers['Authorization'] = `passport ${token}`;
-            this.processQueue(null, token);
-            resolve(this.fetch(originalRequest));
+            this.fetch.defaults.headers.common['Authorization'] = `passport ${token}`
+            originalRequest.headers['Authorization'] = `passport ${token}`
+            this.processQueue(null, token)
+            resolve(this.fetch(originalRequest))
           })
           .catch((err) => {
-            this.processQueue(err);
-            reject(err);
+            this.processQueue(err)
+            reject(err)
           })
           .finally(() => {
             this.isRefreshing = false
@@ -90,12 +102,12 @@ export class NetWorkModule {
       })
     }
 
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
 
-  /**处理错误请求队列 */
+  /** 处理错误请求队列 */
   private processQueue = (error: any, token = null) => {
-    this.failedQueue.forEach(promise => {
+    this.failedQueue.forEach((promise) => {
       if (error) {
         promise.reject(error)
       } else {
@@ -103,22 +115,20 @@ export class NetWorkModule {
       }
     })
 
-    this.failedQueue = [];
+    this.failedQueue = []
   }
 
   public async refreshToken(): Promise<string> {
     return new Promise((resolve) => {
-      mincuCore.call("Auth", "refreshToken", null,
-        (res: ResToken) => {
-          const token = res.data?.token
+      mincuCore.call('Auth', 'refreshToken', null, (res: ResToken) => {
+        const token = res.data?.token
 
-          /**重新刷新 token 缓存和内存 */
-          this.setToken(token)
+        /**重新刷新 token 缓存和内存 */
+        this.setToken(token)
 
-          /**传出 token */
-          resolve(token ?? '')
-        }
-      )
+        /**传出 token */
+        resolve(token ?? '')
+      })
     })
   }
 }

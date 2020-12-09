@@ -16,21 +16,14 @@ export type EventMap = {
 
 export const channelGenerator = (eventMap: EventMap) => {
   if (_window === 'undefined') return
-  
+
   _window.RNMessageChannel = new EventEmitter()
 
   // 设置接受发送到客户端方法所返回的数值的监听器
   _window.RNMessageChannel.on('call', (message: Message) => {
-    const {
-      key,
-      status,
-      data
-    } = message ?? {}
+    const { key, status, data } = message ?? {}
 
-    const {
-      success,
-      failed
-    } = eventMap[key]
+    const { success, failed } = eventMap[key]
 
     if (status === 'success') {
       success(data)

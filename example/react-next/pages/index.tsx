@@ -12,9 +12,13 @@ const Index = () => {
   const { isReady } = useLogin()
   const { top } = useSafeArea()
 
-  const studentID = useInfoState(state => state.studentID)
+  const studentID = useInfoState((state) => state.studentID)
   const colors = useColors()
   const colorScheme = useColorScheme()
+
+  useEffect(() => {
+    networkModule.getStoredToken()
+  }, [])
 
   useEffect(() => {
     eventModule.setShareConfig({
@@ -53,19 +57,14 @@ const Index = () => {
   }
 
   if (!isReady) {
-    return (
-      <Loading />
-    )
+    return <Loading />
   }
 
   return (
     <div>
       <Head>
         <title>测试页面</title>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0"
-        />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0" />
       </Head>
       <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
         <div>学号: {studentID}</div>
@@ -77,7 +76,9 @@ const Index = () => {
         <button onClick={() => eventModule.showShare()}>分享</button>
         <div>导航</div>
         <button onClick={() => uiModule.toScreen({ screen: '周课表' })}>周课表</button>
-        <button onClick={() => uiModule.toScreen({ screen: '用户资料', params: { userId: "5504118086" } })}>他的资料</button>
+        <button onClick={() => uiModule.toScreen({ screen: '用户资料', params: { userId: '5504118086' } })}>
+          他的资料
+        </button>
         <button onClick={() => alert(localStorage.getItem('state'))}>打印缓存</button>
         <button onClick={() => uiModule.info('23333')}>打开 Toast info</button>
         <button onClick={() => uiModule.success('23333')}>打开 Toast success</button>
@@ -86,13 +87,15 @@ const Index = () => {
         <button onClick={() => alert(colorScheme)}>获取当前主题</button>
 
         <div> colors 测试 </div>
-        <div style={{
-          width: '100%',
-          height: '50px',
-          backgroundColor: colors.white,
-          border: '1px solid #2e2e2e',
-          borderRadius: 7
-        }}></div>
+        <div
+          style={{
+            width: '100%',
+            height: '50px',
+            backgroundColor: colors.white,
+            border: '1px solid #2e2e2e',
+            borderRadius: 7,
+          }}
+        ></div>
       </div>
     </div>
   )

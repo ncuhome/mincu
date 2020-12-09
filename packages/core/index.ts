@@ -1,11 +1,13 @@
 import { noop } from 'lodash'
 import { channelGenerator, EventMap } from './channel'
-import { MincuCoreInstanceType, FuncNames } from './interface'
+import { FuncNames, INativeFuncs, AppData } from './interface'
 import { EventEmitter } from 'events'
 import { _window } from '../../lib/utils'
 
-/* 目前支持 web 和 native 的双向通信 **/
-class MincuCoreBase implements MincuCoreInstanceType {
+/**
+ * @feature 目前支持 web 和 native 的双向通信
+ * */
+class MincuCoreBase {
   private eventKey: number
   private eventMap: EventMap
 
@@ -24,7 +26,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
     return _window.RNMessageChannel
   }
 
-  get appData() {
+  get appData(): AppData {
     return _window.appData
   }
 
@@ -32,10 +34,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
     return _window.ReactNativeWebView
   }
 
-  initial = (
-    resolve: (value?: unknown) => any,
-    reject: (value?: unknown) => any
-  ) => {
+  initial = (resolve: (value?: unknown) => any, reject: (value?: unknown) => any) => {
     if (this.appData) {
       resolve()
       return
@@ -58,25 +57,33 @@ class MincuCoreBase implements MincuCoreInstanceType {
     }, 1000)
   }
 
-  // 添加一个原生事件监听器
+  /**
+   * 添加一个原生事件监听器
+   * */
   listener = (eventName: string, fn: (data) => any) => {
     return this.messageChannel?.on(`event-${eventName}`, fn)
   }
 
-  // 添加一个原生事件监听器 (监听一次后立即销毁)
+  /**
+   * 添加一个原生事件监听器 (监听一次后立即销毁)
+   * */
   once = (eventName: string, fn: (data) => any) => {
-    return this.messageChannel?.once(`event-${eventName}`, fn)
+    return this.messageChannel?.once(`event-once-${eventName}`, fn)
   }
 
-  // 移除某个原生事件监听器
+  /**
+   * 移除某个原生事件监听器
+   * */
   remove = (eventName: string, fn: (data) => any) => {
     this.messageChannel?.removeListener(`event-${eventName}`, fn)
   }
 
-  // 主动请求并触发客户端事件
-  call = (
-    baseClass: FuncNames,
-    method: string,
+  /**
+   * 主动请求并触发客户端事件
+   * */
+  call = <T extends FuncNames, B extends keyof INativeFuncs[T]>(
+    baseClass: T,
+    method: B,
     params = [],
     success: (data?: any) => any = noop,
     failed = noop
@@ -89,7 +96,7 @@ class MincuCoreBase implements MincuCoreInstanceType {
       method,
       params: params || [],
       key: this.eventKey,
-      type: 'call'
+      type: 'call',
     }
 
     this.webview?.postMessage(JSON.stringify(data))
