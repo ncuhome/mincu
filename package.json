@@ -22,15 +22,21 @@
   "scripts": {
     "start": "tsc -w",
     "build": "tsc --build tsconfig.json",
-    "prettier": "pretty-quick"
+    "prettier": "pretty-quick",
+    "lint": "eslint -f unix \"package/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "axios": "^0.21.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
+    "@microsoft/tsdoc": "^0.12.24",
     "@types/node": "^14.0.27",
     "@types/react-native": "^0.63.37",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
+    "eslint-plugin-tsdoc": "^0.2.10",
     "husky": "3",
     "prettier": "^2.2.1",
     "tslib": "^2.0.1",

@@ -1,17 +1,16 @@
 import mincuCore from '../core'
-
-interface ShareConfig {
-  title?: string
-  url?: string
-  imageUrl?: string
-}
+import { ShareConfig } from '../core/interface'
 
 class EventModule {
   static Instance() {
     return new EventModule()
   }
 
-  // 通过浏览器打开 Web 页面
+  /**
+   * 通过浏览器打开 Web 页面
+   *
+   * @param url 要跳转的链接
+   */
   openUrl(url: string) {
     mincuCore.call('Linking', 'openURL', [url], () => {
       console.log(`${url} 已打开`)

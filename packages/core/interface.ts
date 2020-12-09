@@ -23,6 +23,12 @@ export interface INativeFuncs {
   }
 }
 
+export interface ShareConfig {
+  title?: string
+  url?: string
+  imageUrl?: string
+}
+
 export interface NavConfig {
   screen: string
   params?: object
