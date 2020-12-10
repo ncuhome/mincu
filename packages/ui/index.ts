@@ -1,5 +1,5 @@
-import mincuCore from '../core'
-import { NavConfig } from '../core/interface'
+import mincuCore from '@core/index'
+import { NavConfig } from '@core/interface'
 
 class UIModule {
   static Instance() {

@@ -1,4 +1,4 @@
-import mincuCore from '../core'
+import mincuCore from '@core/index'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 type failedItem = {
@@ -26,7 +26,7 @@ export class NetWorkModule {
   constructor(config?: AxiosRequestConfig) {
     this.fetch = axios.create(config)
 
-    /**设置 axios 拦截器 */
+    /** 设置 axios 拦截器 */
     const interceptors = {
       request: (config: AxiosRequestConfig) => {
         if (this.token) {
@@ -38,7 +38,7 @@ export class NetWorkModule {
       error: this.handleTokenExpired,
     }
 
-    /**初始化 axios 拦截器 */
+    /** 初始化 axios 拦截器 */
     this.fetch.interceptors.request.use(interceptors.request)
     this.fetch.interceptors.response.use(interceptors.response, interceptors.error)
   }
@@ -76,8 +76,8 @@ export class NetWorkModule {
         return new Promise((resolve, reject) => {
           this.failedQueue.push({ resolve, reject })
         })
-          .then((token) => {
-            originalRequest.headers['Authorization'] = `passport ${token}`
+          .then((token: string) => {
+            originalRequest.headers['Authorization'] = this.getAuthorization(token)
             return this.fetch(originalRequest)
           })
           .catch((err) => {
@@ -91,8 +91,8 @@ export class NetWorkModule {
       return new Promise((resolve, reject) => {
         this.refreshToken()
           .then((token) => {
-            this.fetch.defaults.headers.common['Authorization'] = `passport ${token}`
-            originalRequest.headers['Authorization'] = `passport ${token}`
+            this.fetch.defaults.headers.common['Authorization'] = this.getAuthorization(token)
+            originalRequest.headers['Authorization'] = this.getAuthorization(token)
             this.processQueue(null, token)
             resolve(this.fetch(originalRequest))
           })
@@ -122,6 +122,11 @@ export class NetWorkModule {
     this.failedQueue = []
   }
 
+  /**
+   * 刷新 token 函数
+   *
+   * @returns 返回一个新 token 的 Promise 对象
+   */
   public async refreshToken(): Promise<string> {
     return new Promise((resolve) => {
       mincuCore.call('Auth', 'refreshToken', null, (res: ResToken) => {

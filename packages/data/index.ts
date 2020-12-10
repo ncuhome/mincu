@@ -1,5 +1,5 @@
-import mincuCore from '../core'
-import { AppData, EdgeInsets } from '../core/interface'
+import mincuCore from '@core/index'
+import { AppData, EdgeInsets } from '@core/interface'
 
 class DataModule {
   static Instance() {

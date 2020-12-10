@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events'
-import { _window } from '../../lib/utils'
+import { _window } from '@lib/utils'
 
 type Message = {
   key: number

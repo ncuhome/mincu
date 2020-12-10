@@ -1,12 +1,12 @@
 import { noop } from 'lodash'
-import { channelGenerator, EventMap } from './channel'
-import { FuncNames, INativeFuncs, AppData } from './interface'
+import { channelGenerator, EventMap } from '@core/channel'
+import { FuncNames, INativeFuncs, AppData } from '@core/interface'
+import { _window } from '@lib/utils'
 import { EventEmitter } from 'events'
-import { _window } from '../../lib/utils'
 
 /**
- * @feature 目前支持 web 和 native 的双向通信
- * */
+ * 目前支持 web 和 native 的双向通信
+ */
 class MincuCoreBase {
   private eventKey: number
   private eventMap: EventMap

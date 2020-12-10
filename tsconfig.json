@@ -18,11 +18,16 @@
     "noUnusedParameters": true,
     "importHelpers": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["packages/core/*"],
+      "@data/*": ["packages/data/*"],
+      "@ui/*": ["packages/ui/*"],
+      "@event/*": ["packages/event/*"],
+      "@network/*": ["packages/network/*"],
+      "@hooks/*": ["packages/hooks/*"],
+      "@lib/*": ["packages/lib/*"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "**/__tests__/*",
-    "example",
-    "dist"
-  ]
+  "exclude": ["node_modules", "**/__tests__/*", "example", "dist"]
 }

@@ -2,6 +2,11 @@ import { LinkingStatic, ToastAndroidStatic } from 'react-native'
 
 export type FuncNames = keyof INativeFuncs
 
+export type States = {
+  colors: any
+  colorScheme: ColorSchemeName
+}
+
 export interface INativeFuncs {
   Linking: LinkingStatic
   NetInfo

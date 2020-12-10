@@ -1,5 +1,5 @@
-import mincuCore from '../core'
-import { ShareConfig } from '../core/interface'
+import mincuCore from '@core/index'
+import { ShareConfig } from '@core/interface'
 
 class EventModule {
   static Instance() {
