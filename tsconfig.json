@@ -3,6 +3,7 @@
     "target": "es5",
     "lib": ["es2016", "dom"],
     "outDir": "./dist",
+    "module": "commonjs",
     "pretty": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,

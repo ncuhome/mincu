@@ -40,7 +40,6 @@
     "eslint-plugin-tsdoc": "^0.2.10",
     "husky": "3",
     "prettier": "^2.2.1",
-    "snowpack": "^2.18.2",
     "tsc-alias": "^1.2.0",
     "tslib": "^2.0.1",
     "typedoc": "^0.19.2",

@@ -3,8 +3,7 @@ import Head from 'next/head'
 import Loading from '../components/loading'
 import { useLogin } from '../lib/hooks/useLogin'
 import { useSafeArea } from '../lib/hooks/useSafeArea'
-import { useColors } from '../lib/hooks/useColors'
-import { useColorScheme } from '../lib/hooks/useColorScheme'
+import { useNativeState } from '../lib/hooks/useNativeState'
 import { useInfoState } from '../store/index'
 import { dataModule, eventModule, uiModule, networkModule } from 'mincu'
 
@@ -13,8 +12,8 @@ const Index = () => {
   const { top } = useSafeArea()
 
   const studentID = useInfoState((state) => state.studentID)
-  const colors = useColors()
-  const colorScheme = useColorScheme()
+  const colors = useNativeState('colors')
+  const colorScheme = useNativeState('colorScheme')
 
   useEffect(() => {
     networkModule.getStoredToken()
