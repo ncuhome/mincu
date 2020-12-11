@@ -30,5 +30,5 @@
       "@lib/*": ["packages/lib/*"]
     }
   },
-  "exclude": ["node_modules", "**/__tests__/*", "example", "dist"]
+  "exclude": ["node_modules", "**/__tests__/*", "example", "dist", "docs"]
 }

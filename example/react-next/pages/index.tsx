@@ -3,9 +3,8 @@ import Head from 'next/head'
 import Loading from '../components/loading'
 import { useLogin } from '../lib/hooks/useLogin'
 import { useSafeArea } from '../lib/hooks/useSafeArea'
-import { useNativeState } from '../lib/hooks/useNativeState'
 import { useInfoState } from '../store/index'
-import { dataModule, eventModule, uiModule, networkModule } from 'mincu'
+import { dataModule, eventModule, uiModule, networkModule, useNativeState } from 'mincu'
 
 const Index = () => {
   const { isReady } = useLogin()
