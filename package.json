@@ -4,7 +4,6 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "source": "index.ts",
   "files": [
     "dist",
     "packages"
@@ -24,11 +23,14 @@
     "build": "tsc && tsc-alias",
     "prettier": "pretty-quick",
     "lint": "eslint -f unix \"package/**/*.{ts,tsx}\"",
-    "docs": "typedoc --out docs/ packages/ && touch docs/.nojekyll"
+    "docs": "typedoc --out docs/ packages/ && touch docs/.nojekyll",
+    "prepare": "install-peers"
   },
   "dependencies": {
     "axios": "^0.21.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.20"
+  },
+  "peerDependencies": {
     "react": "^17.0.1"
   },
   "devDependencies": {
@@ -39,6 +41,7 @@
     "eslint": "^7.15.0",
     "eslint-plugin-tsdoc": "^0.2.10",
     "husky": "3",
+    "install-peers-cli": "^2.2.0",
     "prettier": "^2.2.1",
     "tsc-alias": "^1.2.0",
     "tslib": "^2.0.1",
