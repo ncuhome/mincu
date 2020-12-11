@@ -42,6 +42,12 @@ iNCU 为其内嵌的 WEB 页面提供了丰富的 JS API，用来扩展内嵌页
 
 等待补充
 
-## 调试方法
+## 记录遇到的错误及解决方案
 
-1.
+### 无法引入外部 hooks
+
+由于目前 mincu 主包和 next 样例引入的 react 是在不一样的 node_modules 里，所以会报错：
+
+`hooks can only be called inside the body of a function component`
+
+解决方法：https://dev.to/yvonnickfrin/how-to-handle-peer-dependencies-when-developing-modules-18fa
