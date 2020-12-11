@@ -24,7 +24,7 @@
     "build": "tsc && tsc-alias",
     "prettier": "pretty-quick",
     "lint": "eslint -f unix \"package/**/*.{ts,tsx}\"",
-    "docs": "typedoc --out docs/ packages/"
+    "docs": "typedoc --out docs/ packages/ && touch docs/.nojekyll"
   },
   "dependencies": {
     "axios": "^0.21.0",
