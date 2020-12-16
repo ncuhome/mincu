@@ -6,13 +6,14 @@
     <div>
       <div>colorScheme: {{ colorScheme }}</div>
       <button @click="toCourse">周课表</button>
+      <button @click="fetchSchoolLife">校园生活接口测试</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { computed } from 'vue'
-import { uiModule } from 'mincu'
+import { uiModule, networkModule } from 'mincu'
 import useNativeState from '../hooks/useNativeState'
 
 export default {
@@ -26,10 +27,20 @@ export default {
 
     const toCourse = () => uiModule.toScreen({ screen: '周课表' })
 
+    const fetchSchoolLife = async () => {
+      const loadingTip = await uiModule.loading('加载中', 0)
+      const { status } = await networkModule.fetch.get(
+        'https://incu-api.ncuos.com/v2/api/schoolLife'
+      )
+      loadingTip()
+      alert(status)
+    }
+
     return {
       colorScheme,
       square,
       toCourse,
+      fetchSchoolLife,
     }
   },
 }
