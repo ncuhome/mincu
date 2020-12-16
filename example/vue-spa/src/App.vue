@@ -11,8 +11,7 @@ import { namespace } from 'vuex-class'
 import 'vue-router'
 
 const userModule = namespace('user')
-
-export default class Home extends Vue {
+export default class App extends Vue {
   @userModule.State isReady!: boolean
   @userModule.Mutation changeReady!: (payload: { value: boolean }) => void
 

@@ -1,17 +1,52 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <div>{{ isReady }}</div>
+    <div class="block" :style="square">
+      <img class="logo" alt="Vue logo" src="../assets/logo.png" />
+    </div>
+    <div>
+      <div>colorScheme: {{ colorScheme }}</div>
+      <button @click="toCourse">周课表</button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component'
-import { namespace } from 'vuex-class'
+import { computed } from 'vue'
+import { uiModule } from 'mincu'
+import useNativeState from '../hooks/useNativeState'
 
-const userModule = namespace('user')
+export default {
+  setup() {
+    const colorScheme = useNativeState('colorScheme')
+    const colors = useNativeState('colors')
 
-export default class Home extends Vue {
-  @userModule.State isReady!: boolean
+    const square = computed(
+      () => `background: ${colors.value?.white};border: 3px solid ${colors.value?.black};`
+    )
+
+    const toCourse = () => uiModule.toScreen({ screen: '周课表' })
+
+    return {
+      colorScheme,
+      square,
+      toCourse,
+    }
+  },
 }
 </script>
+
+<style scoped>
+.block {
+  display: flex;
+  width: 120px;
+  height: 120px;
+  margin: 50px auto;
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  width: 85px;
+  height: 85px;
+}
+</style>
