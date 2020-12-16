@@ -7,6 +7,7 @@
       <div>colorScheme: {{ colorScheme }}</div>
       <button @click="toCourse">周课表</button>
       <button @click="fetchSchoolLife">校园生活接口测试</button>
+      <button @click="toExit">退出</button>
     </div>
   </div>
 </template>
@@ -27,6 +28,8 @@ export default {
 
     const toCourse = () => uiModule.toScreen({ screen: '周课表' })
 
+    const toExit = () => uiModule.exit()
+
     const fetchSchoolLife = async () => {
       const loadingTip = await uiModule.loading('加载中', 0)
       const { status } = await networkModule.fetch.get(
@@ -41,6 +44,7 @@ export default {
       square,
       toCourse,
       fetchSchoolLife,
+      toExit,
     }
   },
 }

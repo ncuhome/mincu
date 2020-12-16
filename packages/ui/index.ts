@@ -43,6 +43,12 @@ class UIModule {
   toScreen(config: NavConfig) {
     mincuCore.call('Webview', 'toScreen', [config])
   }
+
+  exit() {
+    mincuCore.call('Webview', 'exitWebView', null, () => {
+      console.log('退出微应用')
+    })
+  }
 }
 
 export default UIModule.Instance()

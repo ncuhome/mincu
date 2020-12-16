@@ -19,12 +19,6 @@ class EventModule {
     })
   }
 
-  exit() {
-    mincuCore.call('Webview', 'exitWebView', null, () => {
-      console.log('退出微应用')
-    })
-  }
-
   setShareConfig(config: ShareConfig) {
     mincuCore.call('Share', 'setShareConfig', [config], () => {
       console.log('配置分享设置')

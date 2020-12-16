@@ -62,7 +62,10 @@ const Index = () => {
     <div>
       <Head>
         <title>测试页面</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0"
+        />
       </Head>
       <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
         <div>学号: {studentID}</div>
@@ -70,11 +73,15 @@ const Index = () => {
         <button onClick={refreshToken}>测试刷新token</button>
         <button onClick={hideHeader}>隐藏标题</button>
         <button onClick={showHeader}>显示标题</button>
-        <button onClick={() => eventModule.exit()}>退出</button>
+        <button onClick={() => uiModule.exit()}>退出</button>
         <button onClick={() => eventModule.showShare()}>分享</button>
         <div>导航</div>
         <button onClick={() => uiModule.toScreen({ screen: '周课表' })}>周课表</button>
-        <button onClick={() => uiModule.toScreen({ screen: '用户资料', params: { userId: '5504118086' } })}>
+        <button
+          onClick={() =>
+            uiModule.toScreen({ screen: '用户资料', params: { userId: '5504118086' } })
+          }
+        >
           他的资料
         </button>
         <button onClick={() => alert(localStorage.getItem('state'))}>打印缓存</button>
