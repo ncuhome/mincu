@@ -20,17 +20,15 @@ iNCU 为其内嵌的 WEB 页面提供了丰富的 JS API，用来扩展内嵌页
 
 5. 使用客户端分享功能，打通用户分享转发链路
 
-6. ...
-
 ## 迭代计划
 
 1. 集成更多原生功能
 
-2. vue-spa example
+2. useNativeState 状态缓存
 
-3. 【RFC】基于 lerna.js 将 packages 分包
+3. 高效调试方案
 
-4. 脚手架能力
+4. 脚手架能力 (@Dollie)
 
 5. 考虑将原生代码同样集成于本仓库
 
@@ -40,7 +38,76 @@ iNCU 为其内嵌的 WEB 页面提供了丰富的 JS API，用来扩展内嵌页
 
 ## 使用说明
 
-等待补充
+### 安装依赖
+
+```
+npm install mincu
+```
+
+或者
+
+```
+yarn add mincu
+```
+
+### 引入
+
+```typescript
+import { useLogin } from 'mincu'
+
+const App = () => {
+  // 使用 App 端登录并获取是否初始化 Web 容器状态
+  // useLogin 是一个组合 hook
+  // 里面包含 useAppReady 和登录状态获取并存储的逻辑
+  const { isReady } = useLogin()
+
+  if (isReady) {
+    ;<div>Loading</div>
+  }
+
+  return <div>Thank you for using mincu</div>
+}
+```
+
+### 接收 Native -> Web 通信方法
+
+```typescript
+import { useNativeState } from 'mincu'
+
+const App = () => {
+  // 使用 Native 对 Web 的通信实现颜色主题状态共享
+  // 接收 Native 端已注册的可共享状态的变化
+  const colorScheme = useNativeState('colorScheme')
+
+  if (isReady) {
+    ;<div>Loading</div>
+  }
+
+  return <div>Current Theme is {colorScheme}</div>
+}
+```
+
+### Web -> Native 通信方法
+
+这种方法更加常用一些
+
+```typescript
+import { networkModule } from 'mincu'
+
+const App = () => {
+  const refreshToken = async () => {
+    // 向 Native 通信，并获取 Native 端的返回值
+    const token = await networkModule.refreshToken()
+    alert(token)
+  }
+
+  if (isReady) {
+    ;<div>Loading</div>
+  }
+
+  return <button onClick={refreshToken}></button>
+}
+```
 
 ## 记录遇到的错误及解决方案
 
