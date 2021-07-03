@@ -18,9 +18,6 @@
     "type": "git",
     "url": "https://github.com/ncuhome/mincu.git"
   },
-  "bin": {
-    "mincu": "./dist/cli/mincu.js"
-  },
   "scripts": {
     "start": "tsc && (tsc -w & tsc-alias -w)",
     "build": "tsc && tsc-alias",

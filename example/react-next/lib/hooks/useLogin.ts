@@ -11,9 +11,11 @@ export const useLogin = () => {
     if (isReady) {
       const data = dataModule.appData
 
-      handleValue('username', data.user.profile.basicProfile.name)
-      handleValue('avatar', data.user.profile.basicProfile.app_avatar_url)
-      handleValue('studentID', data.user.profile.entireProfile.base_info.xh)
+      if (!data) return
+
+      handleValue('username', data.user?.profile?.basicProfile?.name)
+      handleValue('avatar', data.user?.profile?.basicProfile?.app_avatar_url)
+      handleValue('studentID', data.user?.profile?.entireProfile?.base_info?.xh)
     }
   }, [isReady])
 

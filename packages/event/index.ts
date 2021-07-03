@@ -30,6 +30,12 @@ class EventModule {
       console.log('打开分享弹框')
     })
   }
+
+  login(username: string, password: string) {
+    mincuCore.call('Auth', 'login', [{ username, password }], () => {
+      console.log('登录')
+    })
+  }
 }
 
 export default EventModule.Instance()

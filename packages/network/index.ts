@@ -25,6 +25,7 @@ export class NetWorkModule {
 
   constructor(config?: AxiosRequestConfig) {
     this.fetch = axios.create(config)
+    this.fetch.defaults.timeout = 7000
 
     /** 设置 axios 拦截器 */
     const interceptors = {
@@ -84,6 +85,8 @@ export class NetWorkModule {
             return Promise.reject(err)
           })
       }
+
+      if (this.token === '') throw new Error('nmsl')
 
       originalRequest._retry = true
       this.isRefreshing = true

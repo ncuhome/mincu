@@ -27,9 +27,16 @@ const Index = () => {
 
   const fetchSchoolLife = async () => {
     const loadingTip = await uiModule.loading('加载中', 0)
-    const { status } = await networkModule.fetch.get('https://incu-api.ncuos.com/v2/api/schoolLife')
-    loadingTip()
-    alert(status)
+    try {
+      const { status } = await networkModule.fetch.get(
+        'https://incu-api.ncuos.com/v2/api/schoolLife'
+      )
+      alert(status)
+    } catch (e) {
+      alert(e)
+    } finally {
+      loadingTip()
+    }
   }
 
   const hideHeader = () => {
@@ -101,6 +108,8 @@ const Index = () => {
             borderRadius: 7,
           }}
         ></div>
+
+        <button onClick={() => eventModule.login('username', 'pwd')}>登录</button>
       </div>
     </div>
   )

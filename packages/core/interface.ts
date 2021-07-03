@@ -13,6 +13,7 @@ export interface INativeFuncs {
   NetInfo
   Auth: {
     refreshToken: () => { token: string }
+    login: (data: { username: string; password: string }) => number
   }
   DeviceInfo
   Clipboard
