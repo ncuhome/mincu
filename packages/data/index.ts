@@ -1,5 +1,6 @@
 import mincuCore from '@core/index'
 import { AppData, EdgeInsets } from '@core/interface'
+import { defaultUserData } from '@lib/constant'
 
 class DataModule {
   static Instance() {
@@ -11,6 +12,11 @@ class DataModule {
   }
 
   get appData() {
+    if (!mincuCore.isApp) {
+      return {
+        user: defaultUserData,
+      } as AppData
+    }
     return mincuCore.appData
   }
 

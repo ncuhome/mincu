@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "tsc && (tsc -w & tsc-alias -w)",
-    "build": "tsc && tsc-alias",
+    "build": "rm -rf ./dist && tsc && tsc-alias",
     "prettier": "pretty-quick",
     "lint": "eslint -f unix \"package/**/*.{ts,tsx}\"",
     "docs": "typedoc --out docs/ packages/ && touch docs/.nojekyll",
