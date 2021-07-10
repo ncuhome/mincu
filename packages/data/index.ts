@@ -12,7 +12,7 @@ class DataModule {
   }
 
   get appData() {
-    if (!mincuCore.isApp) {
+    if (!mincuCore.appData) {
       return {
         user: defaultUserData,
       } as AppData

@@ -34,6 +34,8 @@ class MincuCoreBase {
     return _window.ReactNativeWebView
   }
 
+  isReady: boolean = false
+
   initial = (resolve: (value?: unknown) => any, reject: (value?: unknown) => any) => {
     if (this.appData) {
       resolve()
