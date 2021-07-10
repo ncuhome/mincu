@@ -4,6 +4,10 @@
 
 [feat] 添加 login 方法
 
+[feat] 添加 useAppReady、useSafeArea 钩子
+
+[fix] 添加默认 userData
+
 ### 1.0.2
 
 [fix] 修复端外蜜汁报错
