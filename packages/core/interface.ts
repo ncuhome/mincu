@@ -1,4 +1,4 @@
-import { LinkingStatic, ToastAndroidStatic } from 'react-native'
+import type { LinkingStatic, ToastAndroidStatic, StatusBarStyle } from 'react-native'
 import { Base_info } from './base_type'
 
 export type FuncNames = keyof INativeFuncs
@@ -20,6 +20,9 @@ export interface INativeFuncs {
   Vibration
   ToastAndroid: ToastAndroidStatic
   Toast
+  StatusBar: {
+    setBarStyle: (style: StatusBarStyle, animated?: boolean) => void
+  }
   Portal: any
   Share
   Webview: {

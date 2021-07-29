@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import mincuCore from '@core/index'
 
-export default (reject: (err: unknown) => void): boolean => {
-  const [isReady, setIsReady] = useState(mincuCore.isApp)
+export default (reject = () => {}): boolean => {
+  const [isReady, setIsReady] = useState(mincuCore.isReady && mincuCore.isApp)
 
   useEffect(() => {
     mincuCore.initial(() => setIsReady(true), reject)

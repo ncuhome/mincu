@@ -34,29 +34,32 @@ class MincuCoreBase {
     return _window.ReactNativeWebView
   }
 
-  isReady: boolean = false
+  get isReady() {
+    return _window.appReady ?? false
+  }
 
   initial = (resolve: (value?: unknown) => any, reject: (value?: unknown) => any) => {
-    if (this.appData) {
+    if (this.isReady) {
       resolve()
       return
     }
 
     // 轮询是否成功加载
     const scanner = setInterval(() => {
-      if (this.appData) {
+      if (this.isReady) {
         clearInterval(scanner)
         resolve()
+        return
       }
-    }, 10)
+    }, 50)
 
     // 1秒超时
     setTimeout(() => {
-      if (!this.appData) {
+      if (!this.isReady) {
         clearInterval(scanner)
         reject()
       }
-    }, 1000)
+    }, 5000)
   }
 
   /**

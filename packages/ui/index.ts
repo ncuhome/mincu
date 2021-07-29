@@ -1,5 +1,6 @@
 import mincuCore from '@core/index'
 import { NavConfig } from '@core/interface'
+import type { StatusBarStyle } from 'react-native'
 
 class UIModule {
   static Instance() {
@@ -30,6 +31,10 @@ class UIModule {
 
   removeToast(key: number) {
     mincuCore.call('Portal', 'remove', [key])
+  }
+
+  setBarStyle(style: StatusBarStyle) {
+    mincuCore.call('StatusBar', 'setBarStyle', [style])
   }
 
   handleShowHeader(value: boolean): Promise<boolean> {
