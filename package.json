@@ -4,6 +4,9 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "bin": {
+    "mincud": "dist/packages/debug/mincud/bin/index.js"
+  },
   "files": [
     "dist",
     "packages"
@@ -35,24 +38,31 @@
     "react": "^17.0.1"
   },
   "devDependencies": {
+    "@types/concurrently": "^6.2.1",
     "@types/node": "^14.0.27",
     "@types/react-native": "^0.63.37",
+    "@types/ws": "^7.4.7",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.1",
     "commander": "^7.1.0",
+    "concurrently": "^6.2.0",
     "eslint": "^7.15.0",
     "eslint-plugin-tsdoc": "^0.2.10",
     "fs-extra": "^9.1.0",
     "husky": "3",
     "inquirer": "^8.0.0",
     "install-peers-cli": "^2.2.0",
+    "isomorphic-ws": "^4.0.1",
     "ora": "^5.3.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.2.1",
+    "pretty-format": "^27.0.6",
     "tsc-alias": "^1.2.0",
     "tslib": "^2.0.1",
     "typedoc": "^0.19.2",
     "typescript": "^4.1.2",
+    "ws": "^8.0.0",
     "yeoman-environment": "^3.1.0"
   },
   "husky": {
