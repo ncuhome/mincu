@@ -1,9 +1,10 @@
-import { noop } from 'lodash'
-import { channelGenerator, EventMap } from '@core/channel'
-import { FuncNames, INativeFuncs, AppData } from '@core/interface'
-import { _window } from '@lib/utils'
+import { channelGenerator, EventMap } from './channel'
+import { FuncNames, INativeFuncs, AppData } from './interface'
+import { _window, noop } from 'mincu-lib'
 import { EventEmitter } from 'events'
 
+export * from './interface'
+export * from './channel'
 /**
  * 目前支持 web 和 native 的双向通信
  */

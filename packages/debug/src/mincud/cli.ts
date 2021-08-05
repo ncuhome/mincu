@@ -1,7 +1,17 @@
+import concurrently from 'concurrently'
+import path from 'path'
 import WebSocket, { Data } from 'ws';
 import chalk from 'chalk'
 import { DEBUG_PORT, LogLevel } from './shared'
 import { logToConsole } from './logToConsole';
+
+const args = process.argv.slice(2)
+
+const SERVER_BIN = path.join(__filename)
+
+const CON_OPTS: concurrently.Options = {
+  raw: true
+}
 
 type RecvType = 'log'
 
@@ -47,4 +57,11 @@ export const startServer = () => {
   
         listening on ws://localhost:2333
   `))
+}
+
+export const startCli = () => {
+  concurrently(
+    [`node -e "require('${SERVER_BIN}').startServer()"`, ...args],
+    CON_OPTS
+  )
 }

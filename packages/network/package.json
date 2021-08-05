@@ -1,0 +1,22 @@
+{
+	"name": "mincu-network",
+	"version": "1.1.0",
+	"homepage": "https://github.com/ncuhome",
+	"license": "MIT",
+	"main": "dist/mincu-network.cjs.js",
+	"module": "dist/mincu-network.esm.js",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:ncuhome/mincu.git"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+    "mincu-core": "^1.1.0",
+		"axios": "^0.21.1"
+	}
+}

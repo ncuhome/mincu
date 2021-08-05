@@ -1,4 +1,4 @@
-import { _window } from '@lib/utils'
+import { _window } from 'mincu-lib'
 
 export const DEBUG_PORT = 2333
 export const DEBUG_HOST = _window.location?.hostname || 'localhost'

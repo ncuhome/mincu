@@ -1,5 +1,5 @@
 import { ref, onBeforeUnmount, onMounted } from 'vue'
-import { States, mincuCore, dataModule } from 'mincu'
+import { States, mincuCore, dataModule } from 'mincu-vanilla'
 
 export default <T extends keyof States>(key: T) => {
   const state = ref<States[T]>(null)

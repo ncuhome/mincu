@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es2016", "dom"],
-    "outDir": "./dist",
-    "module": "commonjs",
+    "target": "ES6",
+    "lib": [
+      "es2016",
+      "dom"
+    ],
+    "moduleResolution": "node",
     "pretty": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
@@ -21,15 +23,15 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@core/*": ["packages/core/*"],
-      "@data/*": ["packages/data/*"],
-      "@ui/*": ["packages/ui/*"],
-      "@event/*": ["packages/event/*"],
-      "@network/*": ["packages/network/*"],
-      "@hooks/*": ["packages/hooks/*"],
-      "@lib/*": ["packages/lib/*"],
-      "@debug/*": ["packages/debug/*"]
-    }
+      "mincu-*": ["./packages/*/src"]
+    },
+    "isolatedModules": true
   },
-  "exclude": ["node_modules", "**/__tests__/*", "example", "dist", "docs"]
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*",
+    "example",
+    "dist",
+    "docs"
+  ]
 }

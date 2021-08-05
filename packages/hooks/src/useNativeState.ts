@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
-import { States } from '@core/interface'
-import mincuCore from '@core/index'
-import dataModule from '@data/index'
+import { States } from 'mincu-core'
+import mincuCore from 'mincu-core'
+import dataModule from 'mincu-data'
 
 /**
  * 返回当前所监听的客户端状态

@@ -1,6 +1,6 @@
-import mincuCore from '@core/index'
-import { AppData, EdgeInsets } from '@core/interface'
-import { defaultUserData } from '@lib/constant'
+import mincuCore from 'mincu-core'
+import { AppData, EdgeInsets } from 'mincu-core'
+import { defaultUserData } from 'mincu-lib'
 
 class DataModule {
   static Instance() {

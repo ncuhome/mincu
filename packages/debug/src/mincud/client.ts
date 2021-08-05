@@ -1,6 +1,6 @@
 import prettyFormat, { plugins } from 'pretty-format'
 import WebSocket from 'isomorphic-ws'
-import { _window } from '@lib/utils'
+import { _window } from 'mincu-lib'
 import { DEBUG_HOST, DEBUG_PORT, LogLevel } from './shared'
 
 export class Client {

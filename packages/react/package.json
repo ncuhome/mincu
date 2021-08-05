@@ -1,0 +1,22 @@
+{
+  "name": "mincu-react",
+  "version": "1.1.0",
+  "homepage": "https://github.com/ncuhome",
+  "license": "MIT",
+  "main": "dist/mincu-react.cjs.js",
+  "module": "dist/mincu-react.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ncuhome/mincu.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "mincu-vanilla": "^1.1.0",
+    "mincu-hooks": "^1.1.0"
+  },
+  "files": [
+    "dist"
+  ]
+}

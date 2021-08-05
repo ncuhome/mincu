@@ -1,5 +1,5 @@
-import mincuCore from '@core/index'
-import { ShareConfig } from '@core/interface'
+import mincuCore from 'mincu-core'
+import { ShareConfig } from 'mincu-core'
 
 class EventModule {
   static Instance() {
@@ -13,7 +13,7 @@ class EventModule {
    *
    * @param url - 要跳转的链接
    */
-  openUrl(url: string) {
+   openUrl(url: string) {
     mincuCore.call('Linking', 'openURL', [url], () => {
       console.log(`${url} 已打开`)
     })

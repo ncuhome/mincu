@@ -1,6 +1,6 @@
+import { _window } from 'mincu-lib'
 import { Client } from './mincud/client'
 import { LEVELS } from './mincud/shared'
-import { _window } from '@lib/utils'
 
 class DebugModule {
   static Instance() {

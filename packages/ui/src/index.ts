@@ -1,5 +1,5 @@
-import mincuCore from '@core/index'
-import { NavConfig } from '@core/interface'
+import mincuCore from 'mincu-core'
+import { NavConfig } from 'mincu-core'
 import type { StatusBarStyle } from 'react-native'
 
 class UIModule {

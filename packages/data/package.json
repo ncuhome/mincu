@@ -1,0 +1,22 @@
+{
+  "name": "mincu-data",
+  "version": "1.1.0",
+  "homepage": "https://github.com/ncuhome",
+  "license": "MIT",
+  "main": "dist/mincu-data.cjs.js",
+  "module": "dist/mincu-data.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ncuhome/mincu.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "mincu-core": "^1.1.0",
+    "mincu-lib": "^1.1.0"
+  },
+  "files": [
+    "dist"
+  ]
+}

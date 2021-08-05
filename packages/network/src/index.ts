@@ -1,4 +1,4 @@
-import mincuCore from '@core/index'
+import mincuCore from 'mincu-core'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 type failedItem = {

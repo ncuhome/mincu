@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { computed } from 'vue'
-import { uiModule, networkModule } from 'mincu'
+import { uiModule, networkModule } from 'mincu-vanilla'
 import useNativeState from '../hooks/useNativeState'
 
 export default {
