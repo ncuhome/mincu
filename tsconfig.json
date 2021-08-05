@@ -27,7 +27,8 @@
       "@event/*": ["packages/event/*"],
       "@network/*": ["packages/network/*"],
       "@hooks/*": ["packages/hooks/*"],
-      "@lib/*": ["packages/lib/*"]
+      "@lib/*": ["packages/lib/*"],
+      "@debug/*": ["packages/debug/*"]
     }
   },
   "exclude": ["node_modules", "**/__tests__/*", "example", "dist", "docs"]
