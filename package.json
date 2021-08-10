@@ -2,26 +2,7 @@
   "name": "mincu",
   "version": "1.0.5",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
   "private": true,
-  "bin": {
-    "mincud": "dist/packages/debug/mincud/bin/index.js"
-  },
-  "files": [
-    "dist",
-    "packages"
-  ],
-  "keywords": [
-    "ncuhome",
-    "incu",
-    "ncu",
-    "jsapi"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ncuhome/mincu.git"
-  },
   "scripts": {
     "start": "preconstruct watch",
     "build": "preconstruct build",
@@ -72,10 +53,6 @@
     "packages": [
       "packages/*",
       "example/*"
-    ],
-    "nohoist": [
-      "**/@vue/cli-plugin-typescript",
-      "**/@vue/cli-plugin-typescript/**"
     ]
   },
   "preconstruct": {
