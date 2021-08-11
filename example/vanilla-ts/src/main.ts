@@ -1,7 +1,11 @@
 import './style.css'
-import { debugModule } from 'mincu-vanilla'
 
-debugModule.applyConsole()
+if (import.meta.env.DEV) {
+  // only enables it in DEV mode
+  import('mincu-debug').then(({ default: debugModule }) => {
+    debugModule.applyConsole()
+  })
+}
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
