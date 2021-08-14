@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useAppReady } from './useAppReady'
 import { useInfoState } from '../../store/index'
-import { dataModule } from 'mincu'
+import { dataModule } from 'mincu-react'
 
 export const useLogin = () => {
   const isReady = useAppReady()

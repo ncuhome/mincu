@@ -2,67 +2,39 @@
   "name": "mincu",
   "version": "1.0.5",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "bin": {
-    "mincud": "dist/packages/debug/mincud/bin/index.js"
-  },
-  "files": [
-    "dist",
-    "packages"
-  ],
-  "keywords": [
-    "ncuhome",
-    "incu",
-    "ncu",
-    "jsapi"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ncuhome/mincu.git"
-  },
+  "private": true,
   "scripts": {
-    "start": "tsc && (tsc -w & tsc-alias -w)",
-    "build": "rm -rf ./dist && tsc && tsc-alias",
+    "start": "preconstruct watch",
+    "build": "preconstruct build",
     "prettier": "pretty-quick",
     "lint": "eslint -f unix \"package/**/*.{ts,tsx}\"",
-    "docs": "typedoc --out docs/ packages/ && touch docs/.nojekyll",
-    "prepare": "install-peers"
-  },
-  "dependencies": {
-    "axios": "^0.21.0",
-    "lodash": "^4.17.20",
-    "ramda": "^0.27.1"
-  },
-  "peerDependencies": {
-    "react": "^17.0.1"
+    "docs": "typedoc --out docs/ packages/ && touch docs/.nojekyll"
   },
   "devDependencies": {
-    "@types/concurrently": "^6.2.1",
+    "@babel/core": "^7.14.8",
+    "@babel/plugin-proposal-export-namespace-from": "^7.14.5",
+    "@babel/preset-env": "^7.14.9",
+    "@babel/preset-typescript": "^7.14.5",
+    "@preconstruct/cli": "^2.1.0",
     "@types/node": "^14.0.27",
-    "@types/react-native": "^0.63.37",
-    "@types/ws": "^7.4.7",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "chalk": "^4.1.1",
     "commander": "^7.1.0",
-    "concurrently": "^6.2.0",
     "eslint": "^7.15.0",
     "eslint-plugin-tsdoc": "^0.2.10",
     "fs-extra": "^9.1.0",
     "husky": "3",
     "inquirer": "^8.0.0",
-    "install-peers-cli": "^2.2.0",
-    "isomorphic-ws": "^4.0.1",
+    "lerna": "^4.0.0",
     "ora": "^5.3.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.2.1",
-    "pretty-format": "^27.0.6",
+    "pretty-quick": "^3.1.1",
     "tsc-alias": "^1.2.0",
     "tslib": "^2.0.1",
     "typedoc": "^0.19.2",
     "typescript": "^4.1.2",
-    "ws": "^8.0.0",
     "yeoman-environment": "^3.1.0"
   },
   "husky": {
@@ -76,5 +48,16 @@
     "ts-jest": {
       "useBabelrc": true
     }
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "example/*"
+    ]
+  },
+  "preconstruct": {
+    "packages": [
+      "packages/*"
+    ]
   }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { mincuCore } from 'mincu'
+import { mincuCore } from 'mincu-react'
 import Router from 'next/router'
 
 export const useAppReady = (): boolean => {

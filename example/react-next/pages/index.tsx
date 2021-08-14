@@ -4,7 +4,7 @@ import Loading from '../components/loading'
 import { useLogin } from '../lib/hooks/useLogin'
 import { useSafeArea } from '../lib/hooks/useSafeArea'
 import { useInfoState } from '../store/index'
-import { dataModule, eventModule, uiModule, networkModule, useNativeState } from 'mincu'
+import { dataModule, eventModule, uiModule, networkModule, useNativeState } from 'mincu-react'
 
 const Index = () => {
   const { isReady } = useLogin()

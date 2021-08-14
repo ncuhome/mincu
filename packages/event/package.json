@@ -1,0 +1,21 @@
+{
+  "name": "mincu-event",
+  "version": "1.1.2-alpha.2",
+  "homepage": "https://github.com/ncuhome",
+  "license": "MIT",
+  "main": "dist/mincu-event.cjs.js",
+  "module": "dist/mincu-event.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ncuhome/mincu.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "mincu-core": "^1.1.2-alpha.2"
+  },
+  "files": [
+    "dist"
+  ]
+}

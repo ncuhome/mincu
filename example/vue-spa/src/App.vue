@@ -6,9 +6,8 @@
 
 <script lang="ts">
 import { Vue } from 'vue-class-component'
-import { mincuCore } from 'mincu'
+import { mincuCore } from 'mincu-vanilla'
 import { namespace } from 'vuex-class'
-import 'vue-router'
 
 const userModule = namespace('user')
 export default class App extends Vue {

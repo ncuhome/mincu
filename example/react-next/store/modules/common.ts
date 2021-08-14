@@ -1,5 +1,5 @@
 import { stateFactory } from "../factory"
-import { EdgeInsets } from 'mincu'
+import { EdgeInsets } from 'mincu-react'
 
 type Common = {
   inset: EdgeInsets
