@@ -1,6 +1,6 @@
 {
 	"name": "mincu-lib",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"homepage": "https://github.com/ncuhome",
 	"license": "MIT",
 	"main": "dist/mincu-lib.cjs.js",

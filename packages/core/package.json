@@ -1,6 +1,6 @@
 {
 	"name": "mincu-core",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"homepage": "https://github.com/ncuhome",
 	"license": "MIT",
 	"main": "dist/mincu-core.cjs.js",
@@ -16,7 +16,7 @@
 		"dist"
 	],
 	"dependencies": {
-		"mincu-lib": "^1.2.0"
+		"mincu-lib": "^1.2.1"
 	},
 	"devDependencies": {
 		"@types/react-native": "^0.64.12"
