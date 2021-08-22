@@ -1,6 +1,6 @@
 {
   "name": "mincu-vanilla",
-  "version": "1.1.2-alpha.2",
+  "version": "1.2.1",
   "homepage": "https://github.com/ncuhome",
   "license": "MIT",
   "main": "dist/mincu-vanilla.cjs.js",
@@ -13,11 +13,11 @@
     "access": "public"
   },
   "dependencies": {
-    "mincu-core": "^1.1.2-alpha.2",
-    "mincu-data": "^1.1.2-alpha.2",
-    "mincu-event": "^1.1.2-alpha.2",
-    "mincu-network": "^1.1.2-alpha.2",
-    "mincu-ui": "^1.1.2-alpha.2"
+    "mincu-core": "^1.2.1",
+    "mincu-data": "^1.2.1",
+    "mincu-event": "^1.2.1",
+    "mincu-network": "^1.2.1",
+    "mincu-ui": "^1.2.1"
   },
   "files": [
     "dist"
