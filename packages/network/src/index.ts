@@ -1,4 +1,5 @@
 import mincuCore from 'mincu-core'
+import dataModule from 'mincu-data'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 type failedItem = {
@@ -24,6 +25,8 @@ export class NetWorkModule {
   }
 
   constructor(config?: AxiosRequestConfig) {
+    this.token = dataModule.appData.user.token || ''
+
     this.fetch = axios.create(config)
     this.fetch.defaults.timeout = 7000
 
