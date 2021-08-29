@@ -1,13 +1,13 @@
 import concurrently from 'concurrently'
-import path from 'path'
 import WebSocket, { Data } from 'ws';
 import chalk from 'chalk'
+import slash from 'slash'
 import { DEBUG_PORT, LogLevel } from './shared'
 import { logToConsole } from './logToConsole';
 
 const args = process.argv.slice(2)
 
-const SERVER_BIN = path.join(__filename)
+const SERVER_BIN = slash(__filename)
 
 const CON_OPTS: concurrently.Options = {
   raw: true
