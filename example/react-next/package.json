@@ -1,7 +1,7 @@
 {
   "name": "incu-react-next-example",
   "private": true,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
