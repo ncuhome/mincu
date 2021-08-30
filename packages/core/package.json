@@ -16,6 +16,7 @@
 		"dist"
 	],
 	"dependencies": {
+		"events": "^3.3.0",
 		"mincu-lib": "^1.2.2"
 	},
 	"devDependencies": {
