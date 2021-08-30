@@ -54,7 +54,7 @@ class MincuCoreBase {
       }
     }, 50)
 
-    // 1秒超时
+    // 5 秒超时
     setTimeout(() => {
       if (!this.isReady) {
         clearInterval(scanner)
