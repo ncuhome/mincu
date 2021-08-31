@@ -2,11 +2,33 @@ import open from 'open'
 import internalIp from 'internal-ip'
 import execa from 'execa'
 import stripAnsi from 'strip-ansi';
+import meow from 'meow'
 import { startServer } from './server';
 import { StringMatcher } from './StringMatcher';
 import { REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST } from './shared';
 
-const args = process.argv.slice(2)
+const initCli = () => {
+  return meow(`
+	Usage
+	  $ mincud <command> [options]
+
+	Options
+	  --no-qrcode Disable qrcode generation
+
+	Examples
+	  $ mincud 'npm run dev'
+`, {
+    flags: {
+      help: {
+        alias: 'h'
+      },
+      qrcode: {
+        type: 'boolean',
+        default: true
+      }
+    }
+  });
+}
 
 const openQRCode = (text: string) => {
   let origin = text
@@ -21,22 +43,29 @@ const openQRCode = (text: string) => {
 }
 
 export const startCli = () => {
+  const { input, flags, showHelp } = initCli()
+  if (flags.help) {
+    showHelp(0)
+    return
+  }
+
   startServer()
-  if (args.length === 0) return
+  
+  if (input.length === 0) return
 
-  const stringMatcher = new StringMatcher([REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST])
-  stringMatcher.onMatch(matchRes => {
-    openQRCode(matchRes[0])
-  })
+  const { stderr, stdout } = execa.command(input[0], { env: { FORCE_COLOR: 'true' } })
 
-  const { stderr, stdout } = execa.command(args[0], { env: { FORCE_COLOR: 'true' } })
+  if (flags.qrcode) {
+    const stringMatcher = new StringMatcher([REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST])
+    stringMatcher.onMatch(matchRes => {
+      openQRCode(matchRes[0])
+    })
+    stdout?.on('data', data => {
+      const str = stripAnsi(data.toString())
+      stringMatcher.put(str)
+    })
+  }
 
-  stdout?.on('data', data => {
-    const str = stripAnsi(data.toString())
-    stringMatcher.put(str)
-
-    process.stdout.write(data)
-  })
-
+  stdout?.pipe(process.stdout)
   stderr?.pipe(process.stderr)
 }
