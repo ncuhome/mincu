@@ -4,7 +4,7 @@ import execa from 'execa'
 import stripAnsi from 'strip-ansi';
 import { startServer } from './server';
 import { StringMatcher } from './StringMatcher';
-import { REGEXP_INTERNAL_IP, REGEXP_LOCALHOST } from './shared';
+import { REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST } from './shared';
 
 const args = process.argv.slice(2)
 
@@ -14,7 +14,7 @@ const openQRCode = (text: string) => {
     origin = text.replace('localhost', internalIp.v4.sync())
   }
   const url = new URL(origin)
-  url.searchParams.set('devSecrect', 'iNCUDeveloper++')
+  url.searchParams.set('devSecret', 'iNCUDeveloper++')
   const subtitle = "请打开 「南大家园」 - 「生活板块」 - 右上角「扫一扫」，扫描以上二维码，开始调试"
 
   open(`https://qrcode-function.vercel.app/api?text=${encodeURIComponent(url.toString())}&title=${origin}&subtitle=${subtitle}&type=html`)
@@ -24,7 +24,7 @@ export const startCli = () => {
   startServer()
   if (args.length === 0) return
 
-  const stringMatcher = new StringMatcher([REGEXP_INTERNAL_IP, REGEXP_LOCALHOST])
+  const stringMatcher = new StringMatcher([REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST])
   stringMatcher.onMatch(matchRes => {
     openQRCode(matchRes[0])
   })
