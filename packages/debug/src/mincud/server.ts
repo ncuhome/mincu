@@ -47,4 +47,11 @@ export const startServer = () => {
   
         listening on ws://localhost:${DEBUG_PORT}
   `))
+
+  console.log(`
+To reload the client page press "r"
+To toggle the client devtool press "d"
+  `)
+
+  return wss
 }
