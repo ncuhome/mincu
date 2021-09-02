@@ -1,6 +1,6 @@
 {
 	"name": "mincu-network",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"homepage": "https://github.com/ncuhome",
 	"license": "MIT",
 	"main": "dist/mincu-network.cjs.js",
@@ -17,7 +17,7 @@
 	],
 	"dependencies": {
 		"axios": "^0.21.1",
-		"mincu-core": "^1.2.2",
-		"mincu-data": "^1.2.2"
+		"mincu-core": "^1.2.3",
+		"mincu-data": "^1.2.3"
 	}
 }
