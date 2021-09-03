@@ -102,6 +102,10 @@ export const startCli = () => {
 
   const wss = startServer()
 
+  if (flags.serverCommand) {
+    handleServerCommand(wss)
+  }
+
   if (input.length === 0) return
 
   const { stderr, stdout } = execa.command(input[0], { env: { FORCE_COLOR: 'true' } })
@@ -119,8 +123,4 @@ export const startCli = () => {
 
   stdout?.pipe(process.stdout)
   stderr?.pipe(process.stderr)
-
-  if (flags.serverCommand) {
-    handleServerCommand(wss)
-  }
 }
