@@ -1,5 +1,10 @@
 ## Changelog
 
+### 2.0.0
+
+- **breaking** 迁移至 monorepo，原来的 `mincu` 包替换为 `mincu-react`, `mincu-vanilla` 等多个独立包
+- **feat** mincu-debug 包，提供调试功能
+
 ### 1.0.5
 
 - **fix** 修复 isReady 错误初始值的问题
