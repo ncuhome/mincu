@@ -1,6 +1,6 @@
 {
   "name": "mincu-ui",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "homepage": "https://github.com/ncuhome",
   "license": "MIT",
   "main": "dist/mincu-ui.cjs.js",
@@ -13,7 +13,7 @@
     "access": "public"
   },
   "dependencies": {
-    "mincu-core": "^2.0.0-alpha.1"
+    "mincu-core": "^2.0.0-alpha.2"
   },
   "files": [
     "dist"
