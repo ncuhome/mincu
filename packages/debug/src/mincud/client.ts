@@ -9,7 +9,7 @@ export class Client {
   private opened: boolean = false
 
   init() {
-    if (this.client || this.opened) return
+    if (this.client || this.opened) return false
     try {
       this.client = new WebSocket(`ws://${DEBUG_HOST}:${DEBUG_PORT}`)
       if (this.client) {
@@ -26,6 +26,7 @@ export class Client {
     } catch (error) {
       console.error(error)
     }
+    return true
   }
 
   bindServerCommand = (event: MessageEvent) => {
