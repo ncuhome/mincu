@@ -7,6 +7,19 @@ if (import.meta.env.DEV) {
   })
 }
 
+const fakePromise = () => new Promise((_, reject) => {
+  reject(new Error('fake error'))
+})
+
+const a = async () => {
+  const res = await fakePromise()
+  console.log(res)
+}
+
+setTimeout(() => {
+  a()
+}, 1000)
+
 const app = document.querySelector<HTMLDivElement>('#app')!
 
 app.innerHTML = `

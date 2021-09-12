@@ -17,7 +17,7 @@ class DebugModule {
    * @abstract apply our console to window.console, not replacing but appending
    * @note may causes memory leaks or maximum call stack size exceeded
    */
-  applyConsole(handleError: true) {
+  applyConsole(handleError = true) {
     if (this.client.init()) {
       LEVELS.forEach(level => {
         const tmp = _window.console[level]
