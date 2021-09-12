@@ -2,6 +2,7 @@ import WebSocket, { Data } from 'ws';
 import chalk from 'chalk'
 import { DEBUG_PORT, LogLevel } from './shared'
 import { logToConsole } from './logToConsole';
+import { Decode } from 'console-feed-node-transform';
 
 type RecvType = 'log'
 
@@ -24,7 +25,7 @@ export const startServer = () => {
     ws.on('message', message => {
       const { type, level, data } = formatMessage(message)
       if (type === 'log' && data.length > 0) {
-        logToConsole(level, data)
+        logToConsole(level, Decode(data))
       }
     });
   });

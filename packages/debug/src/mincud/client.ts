@@ -1,4 +1,4 @@
-import prettyFormat, { plugins } from 'pretty-format'
+import { Encode } from 'console-feed-node-transform'
 import WebSocket, { MessageEvent } from 'isomorphic-ws'
 import { _window } from 'mincu-lib'
 import { CMD_DEV_TOOL, CMD_RELOAD, DEBUG_HOST, DEBUG_PORT, LogLevel } from './shared'
@@ -85,17 +85,7 @@ export class Client {
         JSON.stringify({
           type: 'log',
           level,
-          data: args.map(item =>
-            typeof item === 'string'
-              ? item
-              : prettyFormat(item, {
-                escapeString: true,
-                highlight: true,
-                maxDepth: 3,
-                min: true,
-                plugins: [plugins.ReactElement],
-              }),
-          ),
+          data: Encode(args)
         }),
       );
     } catch (err) {
