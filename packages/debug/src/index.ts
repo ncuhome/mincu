@@ -17,17 +17,26 @@ class DebugModule {
    * @abstract apply our console to window.console, not replacing but appending
    * @note may causes memory leaks or maximum call stack size exceeded
    */
-  applyConsole() {
-    this.client.init()
-    LEVELS.forEach(level => {
-      const tmp = _window.console[level]
-      if (tmp) {
-        _window.console[level] = (...args: any[]) => {
-          tmp(...args)
-          this.client.log(level, ...args)
+  applyConsole(handleError = true) {
+    if (this.client.init()) {
+      LEVELS.forEach(level => {
+        const tmp = _window.console[level]
+        if (tmp) {
+          _window.console[level] = (...args: any[]) => {
+            tmp(...args)
+            this.client.log(level, ...args)
+          }
         }
+      })
+      if (handleError) {
+        _window.addEventListener('error', e => {
+          this.client.log('error', e)
+        })
+        _window.addEventListener("unhandledrejection", e => {
+          this.client.log('error', e.reason)
+        });
       }
-    })
+    }
   }
 }
 

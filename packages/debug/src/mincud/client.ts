@@ -1,4 +1,4 @@
-import prettyFormat, { plugins } from 'pretty-format'
+import { Encode } from 'console-feed-node-transform'
 import WebSocket, { MessageEvent } from 'isomorphic-ws'
 import { _window } from 'mincu-lib'
 import { CMD_DEV_TOOL, CMD_RELOAD, DEBUG_HOST, DEBUG_PORT, LogLevel } from './shared'
@@ -9,7 +9,7 @@ export class Client {
   private opened: boolean = false
 
   init() {
-    if (this.client || this.opened) return
+    if (this.client || this.opened) return false
     try {
       this.client = new WebSocket(`ws://${DEBUG_HOST}:${DEBUG_PORT}`)
       if (this.client) {
@@ -26,6 +26,7 @@ export class Client {
     } catch (error) {
       console.error(error)
     }
+    return true
   }
 
   bindServerCommand = (event: MessageEvent) => {
@@ -84,17 +85,7 @@ export class Client {
         JSON.stringify({
           type: 'log',
           level,
-          data: args.map(item =>
-            typeof item === 'string'
-              ? item
-              : prettyFormat(item, {
-                escapeString: true,
-                highlight: true,
-                maxDepth: 3,
-                min: true,
-                plugins: [plugins.ReactElement],
-              }),
-          ),
+          data: Encode(args)
         }),
       );
     } catch (err) {

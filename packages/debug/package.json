@@ -1,6 +1,6 @@
 {
 	"name": "mincu-debug",
-	"version": "2.0.0-alpha.1",
+	"version": "2.1.0",
 	"homepage": "https://github.com/ncuhome",
 	"license": "MIT",
 	"main": "dist/mincu-debug.cjs.js",
@@ -21,15 +21,16 @@
 	],
 	"dependencies": {
 		"chalk": "^4.1.2",
+		"console-feed-node-transform": "^3.3.0",
 		"execa": "^5.1.1",
 		"internal-ip": "^6.2.0",
 		"isomorphic-ws": "^4.0.1",
 		"lodash.debounce": "^4.0.8",
 		"meow": "9.0.0",
-		"mincu-lib": "^1.2.2",
+		"mincu-lib": "^2.0.0-alpha.2",
 		"open": "^8.2.1",
-		"pretty-format": "^27.0.6",
 		"strip-ansi": "6.0.0",
+		"terminate": "^2.2.2",
 		"ws": "^8.0.0"
 	},
 	"devDependencies": {
