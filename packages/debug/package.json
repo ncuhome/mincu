@@ -1,6 +1,6 @@
 {
 	"name": "mincu-debug",
-	"version": "2.1.0-alpha.0",
+	"version": "2.1.0",
 	"homepage": "https://github.com/ncuhome",
 	"license": "MIT",
 	"main": "dist/mincu-debug.cjs.js",
