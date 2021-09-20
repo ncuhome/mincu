@@ -30,6 +30,7 @@
 		"mincu-lib": "^2.0.0-alpha.2",
 		"open": "^8.2.1",
 		"strip-ansi": "6.0.0",
+		"terminate": "^2.2.2",
 		"ws": "^8.0.0"
 	},
 	"devDependencies": {

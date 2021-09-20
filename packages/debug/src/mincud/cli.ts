@@ -6,11 +6,13 @@ import meow from 'meow'
 import readline, { Key } from 'readline'
 import type { Server } from 'ws'
 import chalk from 'chalk'
+import terminate from 'terminate'
 import { startServer } from './server'
 import { StringMatcher } from './StringMatcher'
 import { REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST, CMD_RELOAD, CMD_DEV_TOOL } from './shared'
 
 const TAG = chalk.inverse.green.bold(' Server ')
+let childPid = -1
 
 const initCli = () => {
   return meow(`
@@ -64,7 +66,11 @@ const handleServerCommand = (wss: Server) => {
     if (ctrl) {
       switch (name) {
         case 'c':
-          exit()
+          // @ts-ignore
+          terminate(childPid, 'SIGINT', { timeout: 0 }, () => {
+            console.log(chalk.inverse.cyan.bold(' Mincud '), 'was shutdown')
+            exit()
+          });
         case 'z':
           break
       }
@@ -108,7 +114,9 @@ export const startCli = () => {
 
   if (input.length === 0) return
 
-  const { stderr, stdout } = execa.command(input[0], { env: { FORCE_COLOR: 'true' } })
+  const { stderr, stdout, pid } = execa.command(input[0], { env: { FORCE_COLOR: 'true' } })
+
+  childPid = pid
 
   if (flags.qrcode) {
     const stringMatcher = new StringMatcher([REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST])
