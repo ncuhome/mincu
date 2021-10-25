@@ -14,6 +14,8 @@ import { REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST, CMD_RELOAD, CMD_DEV_TOOL } from
 const TAG = chalk.inverse.green.bold(' Server ')
 let childPid = -1
 
+const rLog = (...args: any[]) => console.log(`\r` + args.join(' '))
+
 const initCli = () => {
   return meow(`
 	Usage
@@ -43,15 +45,15 @@ const initCli = () => {
 }
 
 const handleServerCommand = (wss: Server) => {
-  const { stdin, exit } = process
+  const { stdin, exit, stdout } = process
   readline.emitKeypressEvents(stdin)
   if (stdin.isTTY) stdin.setRawMode(true)
 
   const broadcast = (data: any, message) => {
     if (wss.clients.size > 0) {
-      console.log(TAG, message)
+      rLog(TAG, message)
     } else {
-      console.log(TAG, 'No client connected')
+      rLog(TAG, 'No client connected')
     }
     wss.clients.forEach(client => {
       client.send(data)
@@ -59,7 +61,7 @@ const handleServerCommand = (wss: Server) => {
   }
 
   const exitWithLog = () => {
-    console.log(chalk.inverse.cyan.bold(' Mincud '), 'was shutdown')
+    rLog(chalk.inverse.cyan.bold(' Mincud '), 'was shutdown')
     exit()
   }
 
@@ -84,6 +86,10 @@ const handleServerCommand = (wss: Server) => {
       broadcast(CMD_RELOAD, 'Reloading app...')
     } else if (name === 'd') {
       broadcast(CMD_DEV_TOOL, 'Toggle Dev Tools...')
+    } else if (name === 'return') {
+      stdout.write('\r\n')
+    } else if (name) {
+      stdout.write(name)
     }
   })
 }
@@ -93,7 +99,7 @@ const openQRCode = (text: string) => {
   if (origin.match('localhost')) {
     const ipv4 = internalIp.v4.sync()
     if (!ipv4) {
-      console.log(TAG, 'Cannot get Network Host')
+      rLog(TAG, 'Cannot get Network Host')
       return
     }
     origin = text.replace('localhost', ipv4)
