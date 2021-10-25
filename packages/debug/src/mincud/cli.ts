@@ -58,6 +58,11 @@ const handleServerCommand = (wss: Server) => {
     })
   }
 
+  const exitWithLog = () => {
+    console.log(chalk.inverse.cyan.bold(' Mincud '), 'was shutdown')
+    exit()
+  }
+
   stdin.on('keypress', (_, data: Key) => {
     const {
       ctrl,
@@ -66,11 +71,12 @@ const handleServerCommand = (wss: Server) => {
     if (ctrl) {
       switch (name) {
         case 'c':
-          // @ts-ignore
-          terminate(childPid, 'SIGINT', { timeout: 0 }, () => {
-            console.log(chalk.inverse.cyan.bold(' Mincud '), 'was shutdown')
-            exit()
-          });
+          if (childPid >= 0) {
+            // @ts-ignore
+            terminate(childPid, 'SIGINT', { timeout: 0 }, exitWithLog);
+          } else {
+            exitWithLog()
+          }
         case 'z':
           break
       }
