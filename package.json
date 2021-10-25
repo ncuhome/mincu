@@ -53,6 +53,9 @@
     "packages": [
       "packages/*",
       "example/*"
+    ],
+    "nohoist": [
+      "**/next"
     ]
   },
   "preconstruct": {
