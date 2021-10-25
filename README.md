@@ -134,7 +134,7 @@ const App = () => {
   $ npx mincud
   ```
 
-  推荐将 `mincud` 与前端 dev server 同时启动，一方面是不需要额外开启另外一个终端，另一方面是将提供打开：
+  推荐将 `mincud` 与前端 dev server 同时启动，不需要额外开启另外一个终端：
   ```cmd
   $ npx mincud 'npm run dev'
   ```
@@ -155,8 +155,8 @@ const App = () => {
   
 - mincud 启动将会捕获终端输入事件，按 `r` 会尝试刷新页面，按 `d` 则会尝试切换（注入/取消注入）Devtool（[eruda](https://github.com/liriliri/eruda)）
   ```cmd
-  To reload the client page press "r"
-  To toggle the client devtool press "d"
+> Press "r" | Reload the client page
+> Press "d" | Toggle the client devtool
   ```
 
 完整的用法请看 [example/vanilla-ts](./example/vanilla-ts)

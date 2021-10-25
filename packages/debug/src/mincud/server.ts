@@ -50,8 +50,8 @@ export const startServer = () => {
   `))
 
   console.log(`
-To reload the client page press "r"
-To toggle the client devtool press "d"
+> Press "r" | Reload the client page
+> Press "d" | Toggle the client devtool
   `)
 
   return wss

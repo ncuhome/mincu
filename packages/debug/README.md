@@ -2,10 +2,6 @@
 
 [Mincu - 南大家园 WEB JS API](https://github.com/ncuhome/mincu)
 
-# mincu-data
-
-[Mincu - 南大家园 WEB JS API](https://github.com/ncuhome/mincu)
-
 ## Install
 
 ```cmd
@@ -33,8 +29,8 @@ $ npx mincud
         listening on ws://localhost:2333
   
 
-To reload the client page press "r"
-To toggle the client devtool press "d"
+> Press "r" | Reload the client page
+> Press "d" | Toggle the client devtool
 ```
 
 ```cmd
@@ -50,3 +46,8 @@ $ npx mincud -h
   Examples
     $ mincud 'npm run dev'
 ```
+
+## Attribute
+
+- [react-native/cli](https://github.com/react-native-community/cli), [metro](https://github.com/facebook/metro)
+- [expo/expo-cli](https://github.com/expo/expo-cli)
