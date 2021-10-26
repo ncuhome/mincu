@@ -1,4 +1,3 @@
-import open from 'open'
 import internalIp from 'internal-ip'
 import execa from 'execa'
 import stripAnsi from 'strip-ansi'
@@ -10,6 +9,8 @@ import terminate from 'terminate'
 import { startServer } from './server'
 import { StringMatcher } from './StringMatcher'
 import { REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST, CMD_RELOAD, CMD_DEV_TOOL } from './shared'
+import { DEV_TOOL_PORT } from 'mincu-debug-tools/server';
+import openBrowser from 'react-dev-utils/openBrowser'
 
 const TAG = chalk.inverse.green.bold(' Server ')
 let childPid = -1
@@ -106,9 +107,8 @@ const openQRCode = (text: string) => {
   }
   const url = new URL(origin)
   url.searchParams.set('devSecret', 'iNCUDeveloper++')
-  const subtitle = "请打开 「南大家园」 - 「生活板块」 - 右上角「扫一扫」，扫描以上二维码，开始调试"
 
-  open(`https://qrcode-function.vercel.app/api?text=${encodeURIComponent(url.toString())}&title=${origin}&subtitle=${subtitle}&type=html`)
+  openBrowser(`http://localhost:${DEV_TOOL_PORT}/?url=${encodeURIComponent(url.toString())}&origin=${origin}`)
 }
 
 export const startCli = () => {

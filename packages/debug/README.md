@@ -47,7 +47,7 @@ $ npx mincud -h
     $ mincud 'npm run dev'
 ```
 
-## Attribute
+## Thanks
 
 - [react-native/cli](https://github.com/react-native-community/cli), [metro](https://github.com/facebook/metro)
 - [expo/expo-cli](https://github.com/expo/expo-cli)

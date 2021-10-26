@@ -3,6 +3,7 @@ import chalk from 'chalk'
 import { DEBUG_PORT, LogLevel } from './shared'
 import { logToConsole } from './logToConsole';
 import { Decode } from 'console-feed-node-transform';
+import { startDevTool } from 'mincu-debug-tools/server';
 
 type RecvType = 'log'
 
@@ -17,7 +18,7 @@ const formatMessage = (message: Data) => {
   return JSON.parse(str) as Received
 }
 
-export const startServer = () => {
+const startWebSocketServer = () => {
 
   const wss = new WebSocket.Server({ port: DEBUG_PORT });
 
@@ -55,4 +56,10 @@ export const startServer = () => {
   `)
 
   return wss
+}
+
+export const startServer = () => {
+  startDevTool()
+
+  return startWebSocketServer()
 }

@@ -27,8 +27,10 @@
 		"isomorphic-ws": "^4.0.1",
 		"lodash.debounce": "^4.0.8",
 		"meow": "9.0.0",
+		"mincu-debug-tools": "^2.1.1",
 		"mincu-lib": "^2.1.1",
 		"open": "^8.2.1",
+		"react-dev-utils": "^11.0.4",
 		"strip-ansi": "6.0.0",
 		"terminate": "^2.2.2",
 		"ws": "^8.0.0"
