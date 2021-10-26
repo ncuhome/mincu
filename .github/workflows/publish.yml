@@ -40,8 +40,5 @@ jobs:
         env:
             NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
-      - name: bump
-        run: lerna version --yes
-        
       - name: publish
         run:  lerna publish from-git --yes
