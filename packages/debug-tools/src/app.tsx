@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParam } from 'react-use'
 import Button from '@/components/Button'
 import { DEFAULT_HINT, getHtmlTitle, requestHtml } from './utils'
+import debug from 'mincu-debug'
 
 export function App() {
   const [imgSrc, setImgSrc] = useState('')
@@ -12,11 +13,15 @@ export function App() {
   const origin = useSearchParam('origin')
   const hint = useSearchParam('hint') || DEFAULT_HINT
   useEffect(() => {
-    updateImgSrc(url || 'NO INPUT')
+    console.log('debugTools', debug.applyByDebugTools())
+  }, [])
+  useEffect(() => {
+    updateImgSrc()
     checkUsable()
   }, [url])
-  const updateImgSrc = async (u: string) => {
-    const nextImgSrc = await QRCode.toDataURL(u, {
+  const updateImgSrc = async () => {
+    if (!url) return
+    const nextImgSrc = await QRCode.toDataURL(decodeURIComponent(url), {
       width: 300,
       margin: 1
     })
@@ -31,6 +36,9 @@ export function App() {
       setUsable(true)
     }
   }
+  const openOnDevice = (platform: string) => {
+    debug.command('openUrl', [url, platform])
+  }
   const finalTitle = [title, origin].filter(item => item && item.length > 0).join(' | ')
   return (
     <div class="text-light-600 body-font overflow-hidden bg-dark-900 w-screen h-screen">
@@ -44,10 +52,10 @@ export function App() {
             {hint}
           </p>
           <div class="flex flex-col items-center">
-            <Button disabled={!usable}>
+            <Button onClick={() => openOnDevice('android')}>
               在 Android 上打开页面
             </Button>
-            <Button disabled={!usable}>
+            <Button onClick={() => openOnDevice('ios')}>
               在 iOS 上打开页面
             </Button>
           </div>
