@@ -24,3 +24,11 @@ export type LogLevel =
   | 'groupCollapsed'
   | 'groupEnd'
   | 'debug'
+
+export type RecvType = 'log' | 'command'
+
+export interface Received {
+  type: RecvType
+  level?: LogLevel,
+  data: string[]
+}

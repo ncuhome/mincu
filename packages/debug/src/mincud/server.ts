@@ -1,17 +1,10 @@
 import WebSocket, { Data } from 'ws';
 import chalk from 'chalk'
-import { DEBUG_PORT, LogLevel } from './shared'
+import { DEBUG_PORT, Received } from './shared'
 import { logToConsole } from './logToConsole';
 import { Decode } from 'console-feed-node-transform';
 import { startDevTool } from 'mincu-debug-tools/server';
-
-type RecvType = 'log'
-
-interface Received {
-  type: RecvType
-  level: LogLevel,
-  data: string[]
-}
+import { openUrl, Platform } from './commands'
 
 const formatMessage = (message: Data) => {
   const str = message.toString()
@@ -25,8 +18,15 @@ const startWebSocketServer = () => {
   wss.on('connection', (ws) => {
     ws.on('message', message => {
       const { type, level, data } = formatMessage(message)
-      if (type === 'log' && data.length > 0) {
+      if (data.length === 0) return
+      if (type === 'log') {
         logToConsole(level, Decode(data))
+      }
+      if (type === 'command') {
+        // ['openUrl', 'url', 'platform']
+        if (data[0] === 'openUrl') {
+          openUrl(data[1], data[2] as Platform)
+        }
       }
     });
   });
