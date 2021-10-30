@@ -31,6 +31,6 @@ export const startDevTool = () => {
       })
     }
   }).listen(DEV_TOOL_PORT, () => {
-    console.log('\r' + `listening on http://localhost:${DEV_TOOL_PORT}`)
+    console.log('\r' + `DebugTools listening on http://localhost:${DEV_TOOL_PORT}`)
   })
 }
