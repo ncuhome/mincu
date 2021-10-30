@@ -13,11 +13,14 @@ export class Client {
   private opened: boolean = false
 
   init() {
-    if (this.client || this.opened) return false
+    if (this.client || this.opened) return true
     try {
       this.client = new WebSocket(`ws://${DEBUG_HOST}:${DEBUG_PORT}`)
       if (this.client) {
-        this.client.onerror = console.error
+        this.client.onerror = (e) => {
+          console.error(e)
+          this.opened = false
+        }
         this.client.onopen = () => {
           this.opened = true
           this.log('info', `${_window.location?.origin} has connected`)
@@ -29,20 +32,24 @@ export class Client {
       }
     } catch (error) {
       console.error(error)
+      return false
     }
     return true
   }
 
   initByDebugTools() {
-    if (this.client || this.opened) return false
+    if (this.client || this.opened) return true
     try {
       this.client = new WebSocket(`ws://${DEBUG_HOST}:${DEBUG_PORT}`)
       this.client.onopen = () => {
         this.opened = true
         this.log('info', `DebugTools at ${_window.location?.origin} has connected`)
       }
+      this.client.onerror = () => {
+        this.opened = false
+      }
     } catch (error) {
-      console.error(error)
+      return false
     }
     return true
   }
