@@ -2,44 +2,55 @@ import QRCode from 'qrcode'
 import { useEffect, useState } from 'react'
 import { useSearchParam } from 'react-use'
 import Button from '@/components/Button'
-import { DEFAULT_HINT, getHtmlTitle, requestHtml } from './utils'
+import { DEFAULT_HINT, DEBUG_URL_KEY, getHtmlTitle, requestHtml, useDecodeUrl } from './utils'
 import debug from 'mincu-debug'
 
 export function App() {
   const [imgSrc, setImgSrc] = useState('')
   const [title, setTitle] = useState('')
-  const [usable, setUsable] = useState(false)
-  const url = useSearchParam('url')
+  const url = useDecodeUrl()
   const origin = useSearchParam('origin')
   const hint = useSearchParam('hint') || DEFAULT_HINT
+
   useEffect(() => {
-    console.log('debugTools', debug.applyByDebugTools())
+    if (url) {
+      localStorage.setItem(DEBUG_URL_KEY, url)
+    }
   }, [])
+
   useEffect(() => {
     updateImgSrc()
     checkUsable()
   }, [url])
+
   const updateImgSrc = async () => {
     if (!url) return
-    const nextImgSrc = await QRCode.toDataURL(decodeURIComponent(url), {
+    const nextImgSrc = await QRCode.toDataURL(url, {
       width: 300,
       margin: 1
     })
     setImgSrc(nextImgSrc)
   }
+  
   const checkUsable = async () => {
     if (!url) return
     const html = await requestHtml(url)
     if (html) {
       const title = getHtmlTitle(html)
       setTitle(title)
-      setUsable(true)
+    } else {
+      setTitle(url.split('/?')[0])
     }
   }
+  
   const openOnDevice = (platform: string) => {
     debug.command('openUrl', [url, platform])
   }
-  const finalTitle = [title, origin].filter(item => item && item.length > 0).join(' | ')
+  
+  const finalTitle = title == origin
+    ? title
+    : [title, origin].filter(item => item && item.length > 0).join(' | ')
+
   return (
     <div class="text-light-600 body-font overflow-hidden bg-dark-900 w-screen h-screen">
       <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
