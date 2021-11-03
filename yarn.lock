@@ -8167,6 +8167,39 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
+find-up@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz#4c92819ecb7083561e4f4a240a86be5198f536fc"
+  integrity sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==
+  dependencies:
+    locate-path "^6.0.0"
+    path-exists "^4.0.0"
+
+find-yarn-workspace-root2@1.2.16:
+  version "1.2.16"
+  resolved "https://registry.npmjs.org/find-yarn-workspace-root2/-/find-yarn-workspace-root2-1.2.16.tgz#60287009dd2f324f59646bdb4b7610a6b301c2a9"
+  integrity sha512-hr6hb1w8ePMpPVUK39S4RlwJzi+xPLuVuG8XlwXU3KD5Yn3qgBWVfy3AzNlDhWvE1EORCE65/Qm26rFQt3VLVA==
+  dependencies:
+    micromatch "^4.0.2"
+    pkg-dir "^4.2.0"
+
+findup-sync@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/findup-sync/-/findup-sync-4.0.0.tgz#956c9cdde804052b881b428512905c4a5f2cdef0"
+  integrity sha512-6jvvn/12IC4quLBL1KNokxC7wWTvYncaVUYSoxWw7YykPLuRrnv4qdHcSOywOI5RpkOVGeQRtWM8/q+G6W6qfQ==
+  dependencies:
+    detect-file "^1.0.0"
+    is-glob "^4.0.0"
+    micromatch "^4.0.2"
+    resolve-dir "^1.0.1"
+
+first-chunk-stream@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/first-chunk-stream/-/first-chunk-stream-2.0.0.tgz#1bdecdb8e083c0664b91945581577a43a9f31d70"
+  integrity sha1-G97NuOCDwGZLkZRVgVd6Q6nzHXA=
+  dependencies:
+    readable-stream "^2.0.2"
+
 flat-cache@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/flat-cache/-/flat-cache-2.0.1.tgz#5d296d6f04bda44a4630a301413bdbc2ec085ec0"
@@ -14238,7 +14271,12 @@ pretty-quick@^3.1.1:
     mri "^1.1.5"
     multimatch "^4.0.0"
 
-process-nextick-args@~2.0.0:
+proc-log@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/proc-log/-/proc-log-1.0.0.tgz#0d927307401f69ed79341e83a0b2c9a13395eb77"
+  integrity sha512-aCk8AO51s+4JyuYGg3Q/a6gnrlDO09NpVWePtjp7xwphcoQ04x5WAfCyugcsbLooWcMJ87CLkD4+604IckEdhg==
+
+process-nextick-args@^2.0.0, process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
