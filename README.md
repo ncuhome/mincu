@@ -115,49 +115,49 @@ const App = () => {
 为了方便在移动端 WebView 中调试，我们提供了 `mincu-debug` 来，`mincu-debug` 采用了 Client/Server 模型，实现了各种在 WebView 中打 log，刷新页面，注入/取消注入 Devtool 等功能。（参考 react-native 的 HMRClient/Server）。
 
 - 安装 `mincu-debug`
-  ```cmd
-  $ npm i --save-dev mincu-debug # or yarn add -D mincu-debug
-  ```
+```cmd
+$ npm i --save-dev mincu-debug # or yarn add -D mincu-debug
+```
 
 - 在前端代码中引入 Client，通过 applyConsole 方法来重写默认的 console 事件，实现打印事件的绑定。建议只在 dev 环境中动态引入，避免增大 bundle 体积。
-  ```js
-  // 如果你使用 vite，则通过 import.meta.env.DEV 判断 DEV 环境。
-  if (process.env.NODE_ENV === 'development') {
-    import('mincu-debug').then(({ default: debugModule }) => {
-      debugModule.applyConsole()
-    })
-  }
-  ```
+```js
+// 如果你使用 vite，则通过 import.meta.env.DEV 判断 DEV 环境。
+if (process.env.NODE_ENV === 'development') {
+  import('mincu-debug').then(({ default: debugModule }) => {
+    debugModule.applyConsole()
+  })
+}
+```
 
 - 启动 `mincud` Server，监听来自 Client 的打印事件：
-  ```cmd
-  $ npx mincud
-  ```
+```cmd
+$ npx mincud
+```
 
-  推荐将 `mincud` 与前端 dev server 同时启动，不需要额外开启另外一个终端：
-  ```cmd
-  $ npx mincud 'npm run dev'
-  ```
+推荐将 `mincud` 与前端 dev server 同时启动，不需要额外开启另外一个终端：
+```cmd
+$ npx mincud 'npm run dev'
+```
 
-  ```json
-  // package.json
-  {
-    "scripts": {
-      "start": "mincud 'npm run dev'",
-      "dev": "vite --host",
-      "build": "tsc && vite build",
-      "serve": "vite preview"
-    }
+```json
+// package.json
+{
+  "scripts": {
+    "start": "mincud 'npm run dev'",
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
   }
-  ```
+}
+```
 
 - 执行命令 `npm run start` 后，将会启动 mincud，匹配到 dev host 页面后将会打开一个二维码页面，打开南大家园，然后扫描即可跳转到该页面进行开发。
   
-- mincud 启动将会捕获终端输入事件，按 `r` 会尝试刷新页面，按 `d` 则会尝试切换（注入/取消注入）Devtool（[eruda](https://github.com/liriliri/eruda)）
-  ```cmd
+- mincud 启动后将会捕获终端输入事件，按 `r` 会尝试刷新页面，按 `d` 则会尝试切换（注入/取消注入）Devtool（[eruda](https://github.com/liriliri/eruda)）
+```cmd
 > Press "r" | Reload the client page
 > Press "d" | Toggle the client devtool
-  ```
+```
 
 完整的用法请看 [example/vanilla-ts](./example/vanilla-ts)
 
