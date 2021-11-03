@@ -38,6 +38,14 @@ class DebugModule {
       }
     }
   }
+
+  applyByDebugTools() {
+    return this.client.initByDebugTools()
+  }
+
+  command(command: string, args: any[]) {
+    return this.client.command(command, args)
+  }
 }
 
 export default DebugModule.Instance()

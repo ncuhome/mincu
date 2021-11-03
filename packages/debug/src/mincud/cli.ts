@@ -1,4 +1,3 @@
-import open from 'open'
 import internalIp from 'internal-ip'
 import execa from 'execa'
 import stripAnsi from 'strip-ansi'
@@ -10,9 +9,13 @@ import terminate from 'terminate'
 import { startServer } from './server'
 import { StringMatcher } from './StringMatcher'
 import { REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST, CMD_RELOAD, CMD_DEV_TOOL } from './shared'
+import { DEV_TOOL_PORT } from 'mincu-debug-tools/server';
+import openBrowser from 'react-dev-utils/openBrowser'
 
 const TAG = chalk.inverse.green.bold(' Server ')
 let childPid = -1
+
+const rLog = (...args: any[]) => console.log(`\r` + args.join(' '))
 
 const initCli = () => {
   return meow(`
@@ -43,15 +46,15 @@ const initCli = () => {
 }
 
 const handleServerCommand = (wss: Server) => {
-  const { stdin, exit } = process
+  const { stdin, exit, stdout } = process
   readline.emitKeypressEvents(stdin)
   if (stdin.isTTY) stdin.setRawMode(true)
 
   const broadcast = (data: any, message) => {
     if (wss.clients.size > 0) {
-      console.log(TAG, message)
+      rLog(TAG, message)
     } else {
-      console.log(TAG, 'No client connected')
+      rLog(TAG, 'No client connected')
     }
     wss.clients.forEach(client => {
       client.send(data)
@@ -59,7 +62,7 @@ const handleServerCommand = (wss: Server) => {
   }
 
   const exitWithLog = () => {
-    console.log(chalk.inverse.cyan.bold(' Mincud '), 'was shutdown')
+    rLog(chalk.inverse.cyan.bold(' Mincud '), 'was shutdown')
     exit()
   }
 
@@ -84,6 +87,10 @@ const handleServerCommand = (wss: Server) => {
       broadcast(CMD_RELOAD, 'Reloading app...')
     } else if (name === 'd') {
       broadcast(CMD_DEV_TOOL, 'Toggle Dev Tools...')
+    } else if (name === 'return') {
+      stdout.write('\r\n')
+    } else if (name) {
+      stdout.write(name)
     }
   })
 }
@@ -93,16 +100,15 @@ const openQRCode = (text: string) => {
   if (origin.match('localhost')) {
     const ipv4 = internalIp.v4.sync()
     if (!ipv4) {
-      console.log(TAG, 'Cannot get Network Host')
+      rLog(TAG, 'Cannot get Network Host')
       return
     }
     origin = text.replace('localhost', ipv4)
   }
   const url = new URL(origin)
   url.searchParams.set('devSecret', 'iNCUDeveloper++')
-  const subtitle = "请打开 「南大家园」 - 「生活板块」 - 右上角「扫一扫」，扫描以上二维码，开始调试"
 
-  open(`https://qrcode-function.vercel.app/api?text=${encodeURIComponent(url.toString())}&title=${origin}&subtitle=${subtitle}&type=html`)
+  openBrowser(`http://localhost:${DEV_TOOL_PORT}/?url=${encodeURIComponent(url.toString())}&origin=${origin}`)
 }
 
 export const startCli = () => {

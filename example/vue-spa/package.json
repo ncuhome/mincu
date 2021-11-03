@@ -1,33 +1,23 @@
 {
-  "name": "vue-spa",
-  "private": true,
-  "version": "1.2.2",
+  "name": "vue3-spa",
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0",
-    "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0",
+    "vue": "^3.2.16",
+    "vue-class-component": "^8.0.0-rc.1",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2",
     "vuex-class": "^0.3.2",
     "vuex-class-component": "^2.3.5"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "typescript": "~3.9.3"
-  },
-  "workspaces": {
-    "nohoist": [
-      "**/@vue/cli-plugin-typescript",
-      "**/@vue/cli-plugin-typescript/**"
-    ]
+    "@vitejs/plugin-vue": "^1.9.3",
+    "typescript": "^4.4.3",
+    "vite": "^2.6.4",
+    "vue-tsc": "^0.3.0"
   }
 }

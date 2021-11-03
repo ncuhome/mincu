@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <div class="block" :style="square">
-      <img class="logo" alt="Vue logo" src="../assets/logo.png" />
+  <div className="home">
+    <div className="block" :style="square">
+      <img className="logo" alt="Vue logo" src="../assets/logo.png" />
     </div>
     <div>
       <div>colorScheme: {{ colorScheme }}</div>
@@ -23,7 +23,10 @@ export default {
     const colors = useNativeState('colors')
 
     const square = computed(
-      () => `background: ${colors.value?.white};border: 3px solid ${colors.value?.black};`
+      () => ({
+        background: `${colors.value?.white}`,
+        border: `3px solid ${colors.value?.black}`
+      })
     )
 
     const toCourse = () => uiModule.toScreen({ screen: '周课表' })

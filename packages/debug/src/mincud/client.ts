@@ -1,7 +1,11 @@
 import { Encode } from 'console-feed-node-transform'
 import WebSocket, { MessageEvent } from 'isomorphic-ws'
 import { _window } from 'mincu-lib'
-import { CMD_DEV_TOOL, CMD_RELOAD, DEBUG_HOST, DEBUG_PORT, LogLevel } from './shared'
+import { CMD_DEV_TOOL, CMD_RELOAD, DEBUG_HOST, DEBUG_PORT, LogLevel, Received } from './shared'
+
+const genReceived = (recv: Received) => {
+  return JSON.stringify(recv)
+}
 
 export class Client {
   static KEY_DEV_TOOL = 'DEV_TOOL'
@@ -9,11 +13,14 @@ export class Client {
   private opened: boolean = false
 
   init() {
-    if (this.client || this.opened) return false
+    if (this.client || this.opened) return true
     try {
       this.client = new WebSocket(`ws://${DEBUG_HOST}:${DEBUG_PORT}`)
       if (this.client) {
-        this.client.onerror = console.error
+        this.client.onerror = (e) => {
+          console.error(e)
+          this.opened = false
+        }
         this.client.onopen = () => {
           this.opened = true
           this.log('info', `${_window.location?.origin} has connected`)
@@ -25,6 +32,24 @@ export class Client {
       }
     } catch (error) {
       console.error(error)
+      return false
+    }
+    return true
+  }
+
+  initByDebugTools() {
+    if (this.client || this.opened) return true
+    try {
+      this.client = new WebSocket(`ws://${DEBUG_HOST}:${DEBUG_PORT}`)
+      this.client.onopen = () => {
+        this.opened = true
+        this.log('info', `DebugTools at ${_window.location?.origin} has connected`)
+      }
+      this.client.onerror = () => {
+        this.opened = false
+      }
+    } catch (error) {
+      return false
     }
     return true
   }
@@ -61,7 +86,6 @@ export class Client {
    * @see https://github.com/liriliri/eruda
    */
   injectDevTool() {
-
     const script = document.createElement('script');
     script.src = "//cdn.jsdelivr.net/npm/eruda";
     document.body.appendChild(script);
@@ -82,7 +106,7 @@ export class Client {
     }
     try {
       this.client.send(
-        JSON.stringify({
+        genReceived({
           type: 'log',
           level,
           data: Encode(args)
@@ -91,5 +115,16 @@ export class Client {
     } catch (err) {
       console.error(err)
     }
+  }
+
+  command(command: string, args: any[]) {
+    if (this.opened) {
+      this.client.send(genReceived({
+        type: 'command',
+        data: [command, ...args]
+      }))
+      return true
+    }
+    return false
   }
 }
