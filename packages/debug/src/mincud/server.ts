@@ -4,7 +4,7 @@ import { DEBUG_PORT, Received } from './shared'
 import { logToConsole } from './logToConsole';
 import { Decode } from 'console-feed-node-transform';
 import { startDevTool } from 'mincu-debug-tools/server';
-import { openUrl, Platform, isVsCodeRunning } from './commands'
+import { openUrl, Platform } from './commands'
 
 const formatMessage = (message: Data) => {
   const str = message.toString()
@@ -59,14 +59,15 @@ const startWebSocketServer = () => {
 }
 
 export const startServer = () => {
-  isVsCodeRunning().then(isRunning => {
-    if (isRunning) {
-      // TODO: add detail doc url
-      console.log('Note: You can use the Mincu Debugger')
-    } else {
-      startDevTool()
-    }
-  })
+  startDevTool()
+  // @TODO: integrate with vscode-extension
+  // isVsCodeRunning().then(isRunning => {
+  //   if (isRunning) {
+  //     // TODO: add detail doc url
+  //     console.log('Note: You can use the Mincu Debugger')
+  //   } else {
+  //   }
+  // })
 
   return startWebSocketServer()
 }
