@@ -6,6 +6,7 @@
   "scripts": {
     "start": "preconstruct watch",
     "build": "preconstruct build",
+    "postinstall": "lerna bootstrap",
     "prettier": "pretty-quick",
     "lint": "eslint -f unix \"package/**/*.{ts,tsx}\"",
     "docs": "typedoc --out docs/ packages/ && touch docs/.nojekyll"
