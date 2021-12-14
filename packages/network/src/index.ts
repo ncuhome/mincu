@@ -70,12 +70,10 @@ export class NetWorkModule {
 
   /** 错误处理方法 */
   private handleTokenExpired = (error: any) => {
-    const {
-      response: { status },
-    } = error
-    const originalRequest = error.config
+    const { response } = error
+    const originalRequest = error?.config
 
-    if (status === 401 && !originalRequest._retry) {
+    if (response?.status === 401 && !originalRequest._retry) {
       if (this.isRefreshing) {
         return new Promise((resolve, reject) => {
           this.failedQueue.push({ resolve, reject })
@@ -88,8 +86,6 @@ export class NetWorkModule {
             return Promise.reject(err)
           })
       }
-
-      if (this.token === '') throw new Error('nmsl')
 
       originalRequest._retry = true
       this.isRefreshing = true
