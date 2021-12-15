@@ -28,10 +28,10 @@ const Index = () => {
   const fetchSchoolLife = async () => {
     const loadingTip = await uiModule.loading('加载中', 0)
     try {
-      const { status } = await networkModule.fetch.get(
-        'https://incu-api.ncuos.com/v2/api/schoolLife'
+      const res = await networkModule.fetch.get(
+        'https://os.ncuos.com/api/user/profile/basic'
       )
-      alert(status)
+      alert(JSON.stringify(res.data))
     } catch (e) {
       alert(e)
     } finally {
@@ -76,7 +76,7 @@ const Index = () => {
       </Head>
       <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
         <div>学号: {studentID}</div>
-        <button onClick={fetchSchoolLife}>测试校园生活是否能成功拉取</button>
+        <button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</button>
         <button onClick={refreshToken}>测试刷新token</button>
         <button onClick={hideHeader}>隐藏标题</button>
         <button onClick={showHeader}>显示标题</button>
