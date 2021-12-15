@@ -1,6 +1,7 @@
 {
   "name": "@alifd/scaffold-simple",
   "version": "2.2.0",
+  "private": true,
   "description": "使用 TypeScript，未使用任何 UI 库。",
   "dependencies": {
     "react": "^17.0.2",
@@ -27,6 +28,5 @@
     "type": "git",
     "url": "https://github.com/alibaba-fusion/materials/tree/master/scaffolds/simple"
   },
-  "private": true,
   "originTemplate": "@alifd/scaffold-simple"
 }
