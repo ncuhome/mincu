@@ -181,6 +181,8 @@ $ npx mincud 'npm run dev'
   基于 axios 封装的网络库，主要增加了请求拦截器，刷新 token 等功能。
 - mincu-ui
   封装了与原生界面显示有关的调用，包括 Toast, StatusBar Style, Header 标题栏, toScreen 跳转, exit 退出。
+- create-mincu 
+  mincu 模板生成 cli，开箱即用
   
 ### presets
 
@@ -199,7 +201,7 @@ $ npx mincud 'npm run dev'
 $ git clone https://github.com/ncuhome/mincu # or clone your fork
 $ cd mincu
 $ yarn # or npm
-$ yarn lerna bootstrap # or npx lerna bootstrap
+$ yarn setup # or npm run setup
 $ yarn start # or npm run start
 # then start coding in packages/*
 ```
