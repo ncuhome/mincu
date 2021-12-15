@@ -2,7 +2,7 @@
 
 ## 文档地址
 
-https://ncuhome.github.io/mincu/
+<https://ncuhome.github.io/mincu/>
 
 ## 什么是 Mincu？
 
@@ -38,17 +38,33 @@ iNCU 为其内嵌的 WEB 页面提供了丰富的 JS API，用来扩展内嵌页
 
 ## 使用说明
 
+### Quick Start
+
+快速创建 mincu 项目：
+
+```sh
+# npm
+$ npm init mincu@latest
+# yarn
+$ yarn create mincu
+# pnpm
+$ pnpm create mincu
+# or
+$ npx create-mincu
+```
+
 ### 安装依赖
 
-
 **React**
-```cmd
+
+```sh
 $ npm install mincu-react
 # or
 $ yarn add mincu
 ```
 
 **其他 (Vue、Vanilla)**
+
 ```cmd
 $ npm install mincu-vanilla
 # or
@@ -115,11 +131,13 @@ const App = () => {
 为了方便在移动端 WebView 中调试，我们提供了 `mincu-debug` 来，`mincu-debug` 采用了 Client/Server 模型，实现了各种在 WebView 中打 log，刷新页面，注入/取消注入 Devtool 等功能。（参考 react-native 的 HMRClient/Server）。
 
 - 安装 `mincu-debug`
+
 ```cmd
-$ npm i --save-dev mincu-debug # or yarn add -D mincu-debug
+npm i --save-dev mincu-debug # or yarn add -D mincu-debug
 ```
 
 - 在前端代码中引入 Client，通过 applyConsole 方法来重写默认的 console 事件，实现打印事件的绑定。建议只在 dev 环境中动态引入，避免增大 bundle 体积。
+
 ```js
 // 如果你使用 vite，则通过 import.meta.env.DEV 判断 DEV 环境。
 if (process.env.NODE_ENV === 'development') {
@@ -130,13 +148,15 @@ if (process.env.NODE_ENV === 'development') {
 ```
 
 - 启动 `mincud` Server，监听来自 Client 的打印事件：
+
 ```cmd
-$ npx mincud
+npx mincud
 ```
 
 推荐将 `mincud` 与前端 dev server 同时启动，不需要额外开启另外一个终端：
+
 ```cmd
-$ npx mincud 'npm run dev'
+npx mincud 'npm run dev'
 ```
 
 ```json
@@ -154,6 +174,7 @@ $ npx mincud 'npm run dev'
 - 执行命令 `npm run start` 后，将会启动 mincud，匹配到 dev host 页面后将会打开一个二维码页面，打开南大家园，然后扫描即可跳转到该页面进行开发。
   
 - mincud 启动后将会捕获终端输入事件，按 `r` 会尝试刷新页面，按 `d` 则会尝试切换（注入/取消注入）Devtool（[eruda](https://github.com/liriliri/eruda)）
+
 ```cmd
 > Press "r" | Reload the client page
 > Press "d" | Toggle the client devtool
@@ -165,7 +186,7 @@ $ npx mincud 'npm run dev'
 
 ### packages
 
-- mincu-core 
+- mincu-core
   核心逻辑部分，包含了常用的用户数据，提供 web 和 native 的双向通信、调用来自 App 的接口等功能。
 - mincu-data
   数据部分，基本上来自于 core 里的 appData，不过加了一层初始化默认值处理。
@@ -181,7 +202,7 @@ $ npx mincud 'npm run dev'
   基于 axios 封装的网络库，主要增加了请求拦截器，刷新 token 等功能。
 - mincu-ui
   封装了与原生界面显示有关的调用，包括 Toast, StatusBar Style, Header 标题栏, toScreen 跳转, exit 退出。
-- create-mincu 
+- create-mincu
   mincu 模板生成 cli，开箱即用
   
 ### presets
@@ -209,8 +230,8 @@ $ yarn start # or npm run start
 ### 运行示例
 
 ```cmd
-$ cd example/vanilla-ts
-$ yarn start
+cd example/vanilla-ts
+yarn start
 ```
 
 其他示例见 [example](./example)，也可参考 [使用到的项目](#使用到的项目)
@@ -218,12 +239,12 @@ $ yarn start
 ### 添加依赖
 
 ```cmd
-$ npx lerna add xxx packages/*
+npx lerna add xxx packages/*
 ```
 
 更详细的用法见 [@lerna/add](https://github.com/lerna/lerna/tree/main/commands/add#readme)
 
 ## 使用到的项目
 
-- 返校报到（学生端）- [ncuhome/back-home](https://github.com/ncuhome/back-home) 
+- 返校报到（学生端）- [ncuhome/back-home](https://github.com/ncuhome/back-home)
 - 家园工作室秋季新生招新页面 - [ncuhome/hr2019_fe_to_fresher](https://github.com/ncuhome/hr2019_fe_to_fresher/)
