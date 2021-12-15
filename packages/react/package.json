@@ -1,6 +1,6 @@
 {
   "name": "mincu-react",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "homepage": "https://github.com/ncuhome",
   "license": "MIT",
   "main": "dist/mincu-react.cjs.js",
@@ -13,8 +13,8 @@
     "access": "public"
   },
   "dependencies": {
-    "mincu-hooks": "^2.2.0",
-    "mincu-vanilla": "^2.2.0"
+    "mincu-hooks": "^2.2.1",
+    "mincu-vanilla": "^2.2.1"
   },
   "files": [
     "dist"
