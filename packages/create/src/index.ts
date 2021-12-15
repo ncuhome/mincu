@@ -1,7 +1,7 @@
 import path from 'path'
 import minimist from 'minimist'
 import { downloadWithCheck } from 'gdl'
-import { isEmpty, isValidPackageName, toValidPackageName, renameFiles } from './utils'
+import { isEmpty, isValidPackageName, toValidPackageName, renameFiles, logSuccessTips } from './utils'
 import fse from 'fs-extra'
 import prompts from 'prompts'
 import { cyan, red, green, lightMagenta, yellow } from 'kolorist'
@@ -140,6 +140,8 @@ const init = async () => {
   pkg.name = result.packageName || targetDir
 
   fse.writeJSONSync(pkgPath, pkg, { spaces: 2 })
+
+  logSuccessTips(targetDir, pkg)
 }
 
 init().catch((e) => {
