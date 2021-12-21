@@ -2,4 +2,3 @@ dist
 example
 node_modules
 .eslintrc.js
-docs

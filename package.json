@@ -8,8 +8,7 @@
     "build": "preconstruct build",
     "postinstall": "lerna bootstrap",
     "prettier": "pretty-quick",
-    "lint": "eslint -f unix \"package/**/*.{ts,tsx}\"",
-    "docs": "typedoc --out docs/ packages/ && touch docs/.nojekyll"
+    "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\""
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
@@ -21,13 +20,11 @@
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "eslint": "^7.15.0",
-    "eslint-plugin-tsdoc": "^0.2.10",
     "husky": "3",
     "lerna": "^4.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.1",
-    "typedoc": "^0.19.2",
     "typescript": "^4.4.4"
   },
   "husky": {
