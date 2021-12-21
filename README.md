@@ -2,7 +2,7 @@
 
 ## 文档地址
 
-<https://ncuhome.github.io/mincu/>
+新文档编写中……
 
 ## 什么是 Mincu？
 
