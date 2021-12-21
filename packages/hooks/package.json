@@ -2,24 +2,21 @@
   "name": "mincu-hooks",
   "version": "2.3.3",
   "homepage": "https://github.com/ncuhome",
-  "license": "MIT",
-  "main": "dist/mincu-hooks.cjs.js",
-  "module": "dist/mincu-hooks.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:ncuhome/mincu.git"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "license": "MIT",
+  "main": "dist/mincu-hooks.cjs.js",
+  "module": "dist/mincu-hooks.esm.js",
   "files": [
     "dist"
   ],
-  "peerDependencies": {
-    "react": "^17.0.2"
-  },
   "dependencies": {
     "mincu-core": "workspace:^2.3.3",
     "mincu-data": "workspace:^2.3.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
   }
 }

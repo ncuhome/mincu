@@ -2,18 +2,15 @@
   "name": "mincu-debug",
   "version": "2.3.3",
   "homepage": "https://github.com/ncuhome",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ncuhome/mincu.git"
+  },
   "license": "MIT",
   "main": "dist/mincu-debug.cjs.js",
   "module": "dist/mincu-debug.esm.js",
   "bin": {
     "mincud": "./bin.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:ncuhome/mincu.git"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "files": [
     "dist",

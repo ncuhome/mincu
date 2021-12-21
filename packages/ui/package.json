@@ -2,22 +2,19 @@
   "name": "mincu-ui",
   "version": "2.3.3",
   "homepage": "https://github.com/ncuhome",
-  "license": "MIT",
-  "main": "dist/mincu-ui.cjs.js",
-  "module": "dist/mincu-ui.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:ncuhome/mincu.git"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "mincu-core": "workspace:^2.3.3"
-  },
+  "license": "MIT",
+  "main": "dist/mincu-ui.cjs.js",
+  "module": "dist/mincu-ui.esm.js",
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "mincu-core": "workspace:^2.3.3"
+  },
   "devDependencies": {
     "@types/react-native": "^0.64.12"
   }

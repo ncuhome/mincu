@@ -2,16 +2,13 @@
   "name": "mincu-core",
   "version": "2.3.3",
   "homepage": "https://github.com/ncuhome",
-  "license": "MIT",
-  "main": "dist/mincu-core.cjs.js",
-  "module": "dist/mincu-core.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:ncuhome/mincu.git"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "license": "MIT",
+  "main": "dist/mincu-core.cjs.js",
+  "module": "dist/mincu-core.esm.js",
   "files": [
     "dist"
   ],

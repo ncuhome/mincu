@@ -1,13 +1,18 @@
 {
   "name": "mincu-monorepo",
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "start": "preconstruct watch",
     "build": "preconstruct build",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\"",
     "prettier": "pretty-quick",
-    "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\""
+    "start": "preconstruct watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
@@ -23,11 +28,6 @@
     "prettier": "^2.5.1",
     "pretty-quick": "^3.1.2",
     "typescript": "^4.5.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "globals": {
     "__DEV__": true,

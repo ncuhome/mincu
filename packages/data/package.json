@@ -2,21 +2,18 @@
   "name": "mincu-data",
   "version": "2.3.3",
   "homepage": "https://github.com/ncuhome",
-  "license": "MIT",
-  "main": "dist/mincu-data.cjs.js",
-  "module": "dist/mincu-data.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:ncuhome/mincu.git"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "license": "MIT",
+  "main": "dist/mincu-data.cjs.js",
+  "module": "dist/mincu-data.esm.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "mincu-core": "workspace:^2.3.3",
     "mincu-lib": "workspace:^2.3.3"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }
