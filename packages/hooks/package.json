@@ -1,6 +1,6 @@
 {
   "name": "mincu-hooks",
-  "version": "2.2.0",
+  "version": "2.3.2",
   "homepage": "https://github.com/ncuhome",
   "license": "MIT",
   "main": "dist/mincu-hooks.cjs.js",
@@ -19,7 +19,7 @@
     "react": "^17.0.2"
   },
   "dependencies": {
-    "mincu-core": "^2.2.0",
-    "mincu-data": "^2.2.0"
+    "mincu-core": "^2.3.2",
+    "mincu-data": "^2.3.2"
   }
 }

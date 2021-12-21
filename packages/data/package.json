@@ -1,6 +1,6 @@
 {
   "name": "mincu-data",
-  "version": "2.2.0",
+  "version": "2.3.2",
   "homepage": "https://github.com/ncuhome",
   "license": "MIT",
   "main": "dist/mincu-data.cjs.js",
@@ -13,8 +13,8 @@
     "access": "public"
   },
   "dependencies": {
-    "mincu-core": "^2.2.0",
-    "mincu-lib": "^2.2.0"
+    "mincu-core": "^2.3.2",
+    "mincu-lib": "^2.3.2"
   },
   "files": [
     "dist"
