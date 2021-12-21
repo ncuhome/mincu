@@ -6,7 +6,6 @@
   "scripts": {
     "start": "preconstruct watch",
     "build": "preconstruct build",
-    "postinstall": "lerna bootstrap",
     "prettier": "pretty-quick",
     "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\""
   },
@@ -21,7 +20,6 @@
     "@typescript-eslint/parser": "^4.9.1",
     "eslint": "^7.15.0",
     "husky": "3",
-    "lerna": "^4.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.1",
@@ -38,15 +36,6 @@
     "ts-jest": {
       "useBabelrc": true
     }
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "example/*"
-    ],
-    "nohoist": [
-      "**/next"
-    ]
   },
   "preconstruct": {
     "packages": [
