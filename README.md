@@ -2,7 +2,7 @@
 
 ## 文档地址
 
-<https://ncuhome.github.io/mincu/>
+新文档编写中……
 
 ## 什么是 Mincu？
 
@@ -55,7 +55,7 @@ $ npx create-mincu
 
 ### 安装依赖
 
-**React**
+#### React
 
 ```sh
 $ npm install mincu-react
@@ -63,7 +63,7 @@ $ npm install mincu-react
 $ yarn add mincu
 ```
 
-**其他 (Vue、Vanilla)**
+#### 其他 (Vue、Vanilla)
 
 ```cmd
 $ npm install mincu-vanilla
@@ -128,7 +128,7 @@ const App = () => {
 
 ### 调试方法
 
-为了方便在移动端 WebView 中调试，我们提供了 `mincu-debug` 来，`mincu-debug` 采用了 Client/Server 模型，实现了各种在 WebView 中打 log，刷新页面，注入/取消注入 Devtool 等功能。（参考 react-native 的 HMRClient/Server）。
+为了方便在移动端 WebView 中调试，我们提供了 `mincu-debug` ，`mincu-debug` 采用了 Client/Server 模型，实现了各种在 WebView 中打 log，刷新页面，注入/取消注入 Devtool 等功能。（参考 react-native 的 HMRClient/Server）。
 
 - 安装 `mincu-debug`
 
@@ -203,7 +203,7 @@ npx mincud 'npm run dev'
 - mincu-ui
   封装了与原生界面显示有关的调用，包括 Toast, StatusBar Style, Header 标题栏, toScreen 跳转, exit 退出。
 - create-mincu
-  mincu 模板生成 cli，开箱即用
+  mincu 模板生成 cli，开箱即用。
   
 ### presets
 
@@ -212,7 +212,7 @@ npx mincud 'npm run dev'
 - mincu-react
   依赖了 mincu-vanilla, mincu-hooks
 
-它们都可以单独地引入到你的项目中使用。你可以根据你的需求引入所需要的依。
+它们都可以单独地引入到你的项目中使用。你可以根据你的需求引入所需要的依赖。
 
 ## 贡献指南
 
