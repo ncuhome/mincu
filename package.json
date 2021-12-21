@@ -1,29 +1,28 @@
 {
-  "name": "mincu",
-  "version": "2.1.0",
+  "name": "mincu-monorepo",
   "license": "MIT",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "start": "preconstruct watch",
     "build": "preconstruct build",
     "prettier": "pretty-quick",
     "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\""
   },
   "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/plugin-proposal-export-namespace-from": "^7.14.5",
-    "@babel/preset-env": "^7.14.9",
-    "@babel/preset-typescript": "^7.14.5",
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-typescript": "^7.16.5",
     "@preconstruct/cli": "^2.1.5",
-    "@types/node": "^14.0.27",
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
-    "@typescript-eslint/parser": "^4.9.1",
-    "eslint": "^7.15.0",
-    "husky": "3",
+    "@types/node": "^14.18.2",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
+    "husky": "^7.0.4",
     "pre-commit": "^1.2.2",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.1",
-    "typescript": "^4.4.4"
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.2",
+    "typescript": "^4.5.4"
   },
   "husky": {
     "hooks": {

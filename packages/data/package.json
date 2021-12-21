@@ -13,8 +13,8 @@
     "access": "public"
   },
   "dependencies": {
-    "mincu-core": "^2.3.3",
-    "mincu-lib": "^2.3.3"
+    "mincu-core": "workspace:^2.3.3",
+    "mincu-lib": "workspace:^2.3.3"
   },
   "files": [
     "dist"

@@ -1,47 +1,47 @@
 {
-	"name": "mincu-debug",
-	"version": "2.3.3",
-	"homepage": "https://github.com/ncuhome",
-	"license": "MIT",
-	"main": "dist/mincu-debug.cjs.js",
-	"module": "dist/mincu-debug.esm.js",
-	"bin": {
-		"mincud": "./bin.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:ncuhome/mincu.git"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"files": [
-		"dist",
-		"mincud"
-	],
-	"dependencies": {
-		"chalk": "^4.1.2",
-		"console-feed-node-transform": "^3.3.0",
-		"execa": "^5.1.1",
-		"internal-ip": "^6.2.0",
-		"isomorphic-ws": "^4.0.1",
-		"lodash.debounce": "^4.0.8",
-		"meow": "9.0.0",
-		"mincu-debug-tools": "^2.3.3",
-		"mincu-lib": "^2.3.3",
-		"react-dev-utils": "^11.0.4",
-		"strip-ansi": "6.0.0",
-		"terminate": "^2.2.2",
-		"ws": "^8.0.0"
-	},
-	"devDependencies": {
-		"@types/lodash.debounce": "^4.0.6",
-		"@types/ws": "^7.4.7"
-	},
-	"preconstruct": {
-		"entrypoints": [
-			"index.ts",
-			"mincud/cli.ts"
-		]
-	}
+  "name": "mincu-debug",
+  "version": "2.3.3",
+  "homepage": "https://github.com/ncuhome",
+  "license": "MIT",
+  "main": "dist/mincu-debug.cjs.js",
+  "module": "dist/mincu-debug.esm.js",
+  "bin": {
+    "mincud": "./bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ncuhome/mincu.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "mincud"
+  ],
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "console-feed-node-transform": "^3.3.0",
+    "execa": "^5.1.1",
+    "internal-ip": "^6.2.0",
+    "isomorphic-ws": "^4.0.1",
+    "lodash.debounce": "^4.0.8",
+    "meow": "9.0.0",
+    "mincu-debug-tools": "workspace:^2.3.3",
+    "mincu-lib": "workspace:^2.3.3",
+    "react-dev-utils": "^11.0.4",
+    "strip-ansi": "6.0.0",
+    "terminate": "^2.2.2",
+    "ws": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/lodash.debounce": "^4.0.6",
+    "@types/ws": "^7.4.7"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "mincud/cli.ts"
+    ]
+  }
 }

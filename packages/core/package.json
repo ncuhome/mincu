@@ -1,25 +1,25 @@
 {
-	"name": "mincu-core",
-	"version": "2.3.3",
-	"homepage": "https://github.com/ncuhome",
-	"license": "MIT",
-	"main": "dist/mincu-core.cjs.js",
-	"module": "dist/mincu-core.esm.js",
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:ncuhome/mincu.git"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"files": [
-		"dist"
-	],
-	"dependencies": {
-		"events": "^3.3.0",
-		"mincu-lib": "^2.3.3"
-	},
-	"devDependencies": {
-		"@types/react-native": "^0.64.12"
-	}
+  "name": "mincu-core",
+  "version": "2.3.3",
+  "homepage": "https://github.com/ncuhome",
+  "license": "MIT",
+  "main": "dist/mincu-core.cjs.js",
+  "module": "dist/mincu-core.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ncuhome/mincu.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "events": "^3.3.0",
+    "mincu-lib": "workspace:^2.3.3"
+  },
+  "devDependencies": {
+    "@types/react-native": "^0.64.12"
+  }
 }
