@@ -1,7 +1,7 @@
 {
   "name": "debug-module",
   "private": true,
-  "version": "2.3.2",
+  "version": "2.3.3",
   "scripts": {
     "start": "mincud 'npm run dev'",
     "dev": "vite --host",

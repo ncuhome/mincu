@@ -1,6 +1,6 @@
 {
   "name": "vite-react-typescript-starter",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "private": true,
   "scripts": {
     "dev": "vite --host",
@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "mincu-react": "^2.3.2",
+    "mincu-react": "^2.3.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "6"
