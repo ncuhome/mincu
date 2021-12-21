@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
+    "mincu-vanilla": "workspace:^2.3.3",
     "vue": "^3.2.16",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-router": "^4.0.12",
