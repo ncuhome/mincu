@@ -13,7 +13,7 @@
     "output"
   ],
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "vite build",
     "dev": "vite",
     "server": "node -e \"require(\"./dist/mincu-debug-tools.cjs.js\").startDevTool()\""
   },

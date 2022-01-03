@@ -3,8 +3,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "preconstruct build",
     "preinstall": "npx only-allow pnpm",
+    "build": "preconstruct build",
+    "build:debug-tools": "pnpm run build --filter mincu-debug-tools",
     "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\"",
     "prettier": "pretty-quick",
     "start": "preconstruct watch"
@@ -28,6 +29,7 @@
     "pre-commit": "^1.2.2",
     "prettier": "^2.5.1",
     "pretty-quick": "^3.1.2",
+    "tslib": "^2.3.1",
     "typescript": "^4.5.4"
   },
   "globals": {
