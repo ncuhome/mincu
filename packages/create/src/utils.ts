@@ -67,6 +67,32 @@ export function logSuccessTips(name: string, pkg: Record<string, any>) {
   console.log()
 }
 
+/**
+ * transform package.json dependencies and devDependencies 
+ * with pnpm `workspace:` prefix back to normal npm format
+ * 
+ * @param {Record<string, any>} pkg package.json
+ */
+export function transformDeps(pkg: Record<string, any>) {
+  const { dependencies, devDependencies } = pkg
+
+  const replacePrefix = (dep) => {
+    return dep.replace('workspace:', '')
+  }
+
+  if (dependencies) {
+    Object.keys(dependencies).forEach((key) => {
+      dependencies[key] = replacePrefix(dependencies[key])
+    })
+  }
+
+  if (devDependencies) {
+    Object.keys(devDependencies).forEach((key) => {
+      devDependencies[key] = replacePrefix(devDependencies[key])
+    })
+  }
+}
+
 export const renameFiles = {
   _gitignore: '.gitignore',
 }
