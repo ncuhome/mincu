@@ -8,7 +8,8 @@
     "build:debug-tools": "pnpm run build --filter mincu-debug-tools",
     "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\"",
     "prettier": "pretty-quick",
-    "start": "preconstruct watch"
+    "start": "preconstruct watch",
+    "test:example": "ts-node ./tests/run_example_scripts.ts"
   },
   "husky": {
     "hooks": {
@@ -25,10 +26,12 @@
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "eslint": "^8.5.0",
+    "execa": "^5.1.1",
     "husky": "^7.0.4",
     "pre-commit": "^1.2.2",
     "prettier": "^2.5.1",
     "pretty-quick": "^3.1.2",
+    "ts-node": "^10.4.0",
     "tslib": "^2.3.1",
     "typescript": "^4.5.4"
   },
