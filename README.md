@@ -214,36 +214,6 @@ npx mincud npm run dev
 
 它们都可以单独地引入到你的项目中使用。你可以根据你的需求引入所需要的依赖。
 
-## 贡献指南
-
-### 项目初始化
-
-```cmd
-$ git clone https://github.com/ncuhome/mincu # or clone your fork
-$ cd mincu
-$ yarn # or npm
-$ yarn setup # or npm run setup
-$ yarn start # or npm run start
-# then start coding in packages/*
-```
-
-### 运行示例
-
-```cmd
-cd example/vanilla-ts
-yarn start
-```
-
-其他示例见 [example](./example)，也可参考 [使用到的项目](#使用到的项目)
-
-### 添加依赖
-
-```cmd
-npx lerna add xxx packages/*
-```
-
-更详细的用法见 [@lerna/add](https://github.com/lerna/lerna/tree/main/commands/add#readme)
-
 ## 使用到的项目
 
 - 返校报到（学生端）- [ncuhome/back-home](https://github.com/ncuhome/back-home)
