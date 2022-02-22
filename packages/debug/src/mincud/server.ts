@@ -11,6 +11,29 @@ const formatMessage = (message: Data) => {
   return JSON.parse(str) as Received
 }
 
+const logLogo = () => {
+  console.log(chalk.cyan(`
+  ****     **** ** ****     **   ******  **     **
+  /**/**   **/**/**/**/**   /**  **////**/**    /**
+  /**//** ** /**/**/**//**  /** **    // /**    /**
+  /** //***  /**/**/** //** /**/**       /**    /**
+  /**  //*   /**/**/**  //**/**/**       /**    /**
+  /**   /    /**/**/**   //****//**    **/**    /**
+  /**        /**/**/**    //*** //****** //******* 
+  //         // // //      ///   //////   ///////  
+            Welcome to MINCU Damon!
+        !Fast - !Scalable - !Integrated
+  
+        Mincud listening on ws://localhost:${DEBUG_PORT}
+  `))
+
+
+  console.log(`
+> Press "r" | Reload the client page
+> Press "d" | Toggle the client devtool
+  `)
+}
+
 const startWebSocketServer = () => {
 
   const wss = new WebSocket.Server({ port: DEBUG_PORT });
@@ -35,25 +58,7 @@ const startWebSocketServer = () => {
     console.log(err)
   })
 
-  console.log(chalk.cyan(`
-  ****     **** ** ****     **   ******  **     **
-  /**/**   **/**/**/**/**   /**  **////**/**    /**
-  /**//** ** /**/**/**//**  /** **    // /**    /**
-  /** //***  /**/**/** //** /**/**       /**    /**
-  /**  //*   /**/**/**  //**/**/**       /**    /**
-  /**   /    /**/**/**   //****//**    **/**    /**
-  /**        /**/**/**    //*** //****** //******* 
-  //         // // //      ///   //////   ///////  
-            Welcome to MINCU Damon!
-        !Fast - !Scalable - !Integrated
-  
-        Mincud listening on ws://localhost:${DEBUG_PORT}
-  `))
-
-  console.log(`
-> Press "r" | Reload the client page
-> Press "d" | Toggle the client devtool
-  `)
+  logLogo()
 
   return wss
 }

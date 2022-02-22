@@ -156,14 +156,14 @@ npx mincud
 推荐将 `mincud` 与前端 dev server 同时启动，不需要额外开启另外一个终端：
 
 ```cmd
-npx mincud 'npm run dev'
+npx mincud npm run dev
 ```
 
 ```json
 // package.json
 {
   "scripts": {
-    "start": "mincud 'npm run dev'",
+    "start": "mincud npm run dev",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview"
@@ -171,7 +171,7 @@ npx mincud 'npm run dev'
 }
 ```
 
-- 执行命令 `npm run start` 后，将会启动 mincud，匹配到 dev host 页面后将会打开一个二维码页面，打开南大家园，然后扫描即可跳转到该页面进行开发。
+- 执行命令 `npm run start` 后，`mincud` 将会启动并执行后面的 `npm run dev` 命令，然后对该命令执行的结果进行相应操作，对目标命令的输出结果匹配，匹配到 dev host（比如 <http://localhost:8081>）后将会打开一个二维码页面，这时打开南大家园，在生活 Tab，打开右上角 - 扫一扫页面进行扫描即可在南大家园内跳转到该页面进行开发。
   
 - mincud 启动后将会捕获终端输入事件，按 `r` 会尝试刷新页面，按 `d` 则会尝试切换（注入/取消注入）Devtool（[eruda](https://github.com/liriliri/eruda)）
 
