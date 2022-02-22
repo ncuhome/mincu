@@ -3,13 +3,14 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "preconstruct build",
     "build:debug-tools": "pnpm run build --filter mincu-debug-tools",
+    "preinstall": "npx only-allow pnpm",
     "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\"",
     "prepare": "husky install",
     "prettier": "pretty-quick",
     "start": "preconstruct watch",
+    "start:debug-tools": "pnpm run dev --filter mincu-debug-tools",
     "test:example": "ts-node ./tests/run_example_scripts.ts"
   },
   "husky": {
