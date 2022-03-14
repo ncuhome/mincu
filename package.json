@@ -9,6 +9,7 @@
     "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\"",
     "prepare": "husky install",
     "prettier": "pretty-quick",
+    "dev": "preconstruct dev",
     "start": "preconstruct watch",
     "start:debug-tools": "pnpm run dev --filter mincu-debug-tools",
     "test:example": "ts-node ./tests/run_example_scripts.ts"
