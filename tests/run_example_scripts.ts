@@ -24,7 +24,7 @@ const runCmd = (cwd: string, name: string, cmdContent: string) => {
     cmd += ' -- --no-qrcode'
   }
 
-  console.log(`  Running \`${cmd}\` at ${cwd}
+  console.log(`  Running \`${cmd}\`
     ${cmdContent}`)
 
   return new Promise((resolve) => {
@@ -68,11 +68,13 @@ const runScripts = async (pkgPath: string) => {
 const main = async () => {
   for (const name of fs.readdirSync(EXAMPLE_ROOT)) {
     const pkgPath = path.join(EXAMPLE_ROOT, name, 'package.json')
+    console.log(name)
     await runScripts(pkgPath)
+    console.log()
   }
 
   console.log(`
-  Ran example templates scripts done
+  Test example templates scripts done
 `)
 }
 
