@@ -3,7 +3,7 @@ import path from 'path'
 import serveHandler from 'serve-handler'
 import { fetch } from './api/fetch'
 
-const PUBLIC_PATH = path.resolve(__dirname, '../../output')
+const PUBLIC_PATH = path.resolve(__dirname, __dirname.includes('dist') ? '../' : '', '../output')
 export const DEV_TOOL_PORT = 23333
 
 const cors = (req: IncomingMessage, res: ServerResponse) => {
