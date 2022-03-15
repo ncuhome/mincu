@@ -30,6 +30,7 @@ export interface INativeFuncs {
     disableAutoSetTitle: () => void
     exitWebView: () => void
     toScreen: (e: NavConfig) => void
+    bindBackPress: (value: boolean) => void
   }
 }
 
