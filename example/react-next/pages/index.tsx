@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import Loading from '../components/loading'
-import { useLogin } from '../lib/hooks/useLogin'
-import { useSafeArea } from '../lib/hooks/useSafeArea'
 import { useInfoState } from '../store/index'
-import { dataModule, eventModule, uiModule, networkModule, useNativeState } from 'mincu-react'
+import {
+  useAppReady,
+  dataModule,
+  eventModule,
+  uiModule,
+  networkModule,
+  useNativeState,
+} from 'mincu-react'
 
 const Index = () => {
-  const { isReady } = useLogin()
-  const { top } = useSafeArea()
+  const isReady = useAppReady()
 
   const studentID = useInfoState((state) => state.studentID)
   const colors = useNativeState('colors')
@@ -28,9 +32,7 @@ const Index = () => {
   const fetchSchoolLife = async () => {
     const loadingTip = await uiModule.loading('加载中', 0)
     try {
-      const res = await networkModule.fetch.get(
-        'https://os.ncuos.com/api/user/profile/basic'
-      )
+      const res = await networkModule.fetch.get('https://os.ncuos.com/api/user/profile/basic')
       alert(JSON.stringify(res.data))
     } catch (e) {
       alert(e)
@@ -74,7 +76,7 @@ const Index = () => {
           content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0"
         />
       </Head>
-      <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
+      <div style={{ marginTop: dataModule.inset.top, marginRight: 10, marginLeft: 10 }}>
         <div>学号: {studentID}</div>
         <button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</button>
         <button onClick={refreshToken}>测试刷新token</button>

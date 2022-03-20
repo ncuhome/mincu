@@ -1,12 +1,16 @@
 import { useEffect } from 'react'
 import Loading from './components/loading'
-import { useLogin } from './hooks/useLogin'
-import { useSafeArea } from './hooks/useSafeArea'
-import { dataModule, eventModule, uiModule, networkModule, useNativeState } from 'mincu-react'
+import {
+  useAppReady,
+  dataModule,
+  eventModule,
+  uiModule,
+  networkModule,
+  useNativeState,
+} from 'mincu-react'
 
 const App = () => {
-  const { isReady } = useLogin()
-  const { top } = useSafeArea()
+  const isReady = useAppReady()
 
   const colors = useNativeState('colors')
   const colorScheme = useNativeState('colorScheme')
@@ -25,9 +29,7 @@ const App = () => {
   const fetchSchoolLife = async () => {
     const loadingTip = await uiModule.loading('加载中', 0)
     try {
-      const res = await networkModule.fetch.get(
-        'https://os.ncuos.com/api/user/profile/basic'
-      )
+      const res = await networkModule.fetch.get('https://os.ncuos.com/api/user/profile/basic')
       alert(JSON.stringify(res.data))
     } catch (e) {
       alert(e)
@@ -64,7 +66,7 @@ const App = () => {
 
   return (
     <div>
-      <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
+      <div style={{ marginTop: dataModule.inset.top, marginRight: 10, marginLeft: 10 }}>
         <div>学号: {localStorage.getItem('studentID')}</div>
         <button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</button>
         <button onClick={refreshToken}>测试刷新token</button>
