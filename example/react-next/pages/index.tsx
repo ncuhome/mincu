@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import Loading from '../components/loading'
-import { useInfoState } from '../store/index'
 import {
   useAppReady,
   dataModule,
@@ -9,18 +8,14 @@ import {
   uiModule,
   networkModule,
   useNativeState,
+  useSafeArea,
 } from 'mincu-react'
 
 const Index = () => {
   const isReady = useAppReady()
-
-  const studentID = useInfoState((state) => state.studentID)
   const colors = useNativeState('colors')
   const colorScheme = useNativeState('colorScheme')
-
-  useEffect(() => {
-    networkModule.getStoredToken()
-  }, [])
+  const { top } = useSafeArea()
 
   useEffect(() => {
     eventModule.setShareConfig({
@@ -76,8 +71,8 @@ const Index = () => {
           content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0"
         />
       </Head>
-      <div style={{ marginTop: dataModule.inset.top, marginRight: 10, marginLeft: 10 }}>
-        <div>学号: {studentID}</div>
+      <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
+        <div>学号: {dataModule.appData.user.profile.entireProfile?.base_info?.xh}</div>
         <button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</button>
         <button onClick={refreshToken}>测试刷新token</button>
         <button onClick={hideHeader}>隐藏标题</button>
