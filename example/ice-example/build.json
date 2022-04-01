@@ -1,6 +1,0 @@
-{
-  "esbuild": {
-    "target": ["es2015"]
-  },
-  "plugins": []
-}

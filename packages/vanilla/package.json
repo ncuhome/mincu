@@ -1,25 +1,22 @@
 {
   "name": "mincu-vanilla",
-  "version": "2.3.3",
+  "version": "2.3.4-alpha.2",
   "homepage": "https://github.com/ncuhome",
-  "license": "MIT",
-  "main": "dist/mincu-vanilla.cjs.js",
-  "module": "dist/mincu-vanilla.esm.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:ncuhome/mincu.git"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "mincu-core": "^2.3.3",
-    "mincu-data": "^2.3.3",
-    "mincu-event": "^2.3.3",
-    "mincu-network": "^2.3.3",
-    "mincu-ui": "^2.3.3"
-  },
+  "license": "MIT",
+  "main": "dist/mincu-vanilla.cjs.js",
+  "module": "dist/mincu-vanilla.esm.js",
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "mincu-core": "2.3.4-alpha.2",
+    "mincu-data": "2.3.4-alpha.2",
+    "mincu-event": "2.3.4-alpha.2",
+    "mincu-network": "2.3.4-alpha.2",
+    "mincu-ui": "2.3.4-alpha.2"
+  }
 }

@@ -27,7 +27,7 @@ const initCli = () => {
     --no-server-command, Disable handling server command
 
 	Examples
-	  $ mincud 'npm run dev'
+	  $ mincud npm run dev
 `, {
     flags: {
       help: {
@@ -45,7 +45,7 @@ const initCli = () => {
   })
 }
 
-const handleServerCommand = (wss: Server) => {
+const bindServerCommand = (wss: Server) => {
   const { stdin, exit, stdout } = process
   readline.emitKeypressEvents(stdin)
   if (stdin.isTTY) stdin.setRawMode(true)
@@ -118,28 +118,41 @@ export const startCli = () => {
     return
   }
 
-  const wss = startServer()
+  const startAndBind = () => {
+    const wss = startServer()
 
-  if (flags.serverCommand) {
-    handleServerCommand(wss)
+    if (flags.serverCommand) {
+      bindServerCommand(wss)
+    }
   }
 
-  if (input.length === 0) return
+  // Directly start if no input
+  if (input.length === 0) {
+    startAndBind()
+    return
+  }
 
-  const { stderr, stdout, pid } = execa.command(input[0], { env: { FORCE_COLOR: 'true' } })
+  const finalCmd = input.length > 1 ? input.join(' ') : input[0]
+
+  const { stderr, stdout, pid } = execa.command(finalCmd, { env: { FORCE_COLOR: 'true' } })
 
   childPid = pid
 
-  if (flags.qrcode) {
-    const stringMatcher = new StringMatcher([REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST])
-    stringMatcher.onMatch(matchRes => {
-      openQRCode(matchRes[0])
-    })
-    stdout?.on('data', data => {
-      const str = stripAnsi(data.toString())
-      stringMatcher.put(str)
-    })
-  }
+  // Only start after child process running successfully
+  stdout.once('data', () => {
+    startAndBind()
+
+    if (flags.qrcode) {
+      const stringMatcher = new StringMatcher([REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST])
+      stringMatcher.onMatch(matchRes => {
+        openQRCode(matchRes[0])
+      })
+      stdout?.on('data', data => {
+        const str = stripAnsi(data.toString())
+        stringMatcher.put(str)
+      })
+    }
+  })
 
   stdout?.pipe(process.stdout)
   stderr?.pipe(process.stderr)

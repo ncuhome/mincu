@@ -61,6 +61,8 @@ const App = () => {
     alert(token)
   }
 
+  const backPressCb = () => uiModule.success('onBackPress 回调触发', 1)
+
   if (!isReady) {
     return <Loading />
   }
@@ -89,6 +91,16 @@ const App = () => {
         <button onClick={toastLoading}>打开 Toast loading</button>
         <button onClick={showVersion}>获取版本号</button>
         <button onClick={() => alert(colorScheme)}>获取当前主题</button>
+        <button onClick={() => uiModule.bindBackPress(backPressCb, (success) => {
+          if (success) {
+            uiModule.success('绑定原生返回事件成功，请自行处理返回事件', 1)
+          } else {
+            uiModule.fail('绑定原生返回事件失败， 请先显示 header', 1)
+          }
+        })}>
+          绑定原生返回事件
+        </button>
+        <button onClick={() => uiModule.unBindBackPress(backPressCb)}>取消绑定原生返回事件</button>
 
         <div> colors 测试 </div>
         <div

@@ -1,18 +1,18 @@
 {
-	"name": "mincu-lib",
-	"version": "2.3.3",
-	"homepage": "https://github.com/ncuhome",
-	"license": "MIT",
-	"main": "dist/mincu-lib.cjs.js",
-	"module": "dist/mincu-lib.esm.js",
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:ncuhome/mincu.git"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"files": [
-		"dist"
-	]
+  "name": "mincu-lib",
+  "version": "2.3.4-alpha.2",
+  "homepage": "https://github.com/ncuhome",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ncuhome/mincu.git"
+  },
+  "license": "MIT",
+  "main": "dist/mincu-lib.cjs.js",
+  "module": "dist/mincu-lib.esm.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

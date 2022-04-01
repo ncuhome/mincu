@@ -5,11 +5,14 @@
   "scripts": {
     "start": "mincud 'npm run dev'",
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "serve": "vite preview"
   },
   "devDependencies": {
     "typescript": "^4.3.2",
-    "vite": "^2.4.4"
+    "vite": "^2.7.4"
+  },
+  "dependencies": {
+    "mincu-debug": "workspace:^2.3.3"
   }
 }

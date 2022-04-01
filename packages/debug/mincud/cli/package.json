@@ -1,4 +1,5 @@
 {
+	"name": "mincu-debug-mincud-cli",
 	"main": "dist/mincu-debug-mincud-cli.cjs.js",
 	"module": "dist/mincu-debug-mincud-cli.esm.js"
 }
