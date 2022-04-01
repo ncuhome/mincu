@@ -8,14 +8,15 @@ mincu 的项目结构为 monorepo，使用 pnpm + workspaces 管理（之前为 
 $ git clone https://github.com/ncuhome/mincu # or clone your fork
 $ cd mincu
 $ pnpm i
-$ pnpm start
+$ pnpm dev
+
 # then start coding in packages/*
 ```
 
 ## 如何调试 debug, debug-tools
 
 ```cmd
-$ pnpm start
+$ pnpm dev
 $ pnpm start:debug-tools
 # then start coding in packages/debug or packages/debug-tools
 ```
@@ -24,7 +25,7 @@ $ pnpm start:debug-tools
 
 ```cmd
 # example/vanilla-ts
-$ pnpm start --filter
+$ pnpm start
 ```
 
 其他示例见 [example](./example)，也可参考 [使用到的项目](#使用到的项目)
@@ -43,4 +44,12 @@ pnpm add -DW <package-name>
 pnpm add <package-name> --filter <target-package-name>
 ```
 
-更详细的用法见 [@lerna/add](https://github.com/lerna/lerna/tree/main/commands/add#readme)
+## 发版（需要 NPM 账号权限）
+
+```cmd
+pnpm build
+```
+
+```cmd
+pnpm release
+```
