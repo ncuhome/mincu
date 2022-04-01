@@ -39,7 +39,7 @@ class MincuCoreBase {
     return _window.appReady ?? false
   }
 
-  initial = (resolve: (value?: unknown) => any, reject: (value?: unknown) => any) => {
+  initial = (resolve: (value?: unknown) => any, reject?: (value?: unknown) => any) => {
     if (this.isReady) {
       resolve()
       return
@@ -58,7 +58,7 @@ class MincuCoreBase {
     setTimeout(() => {
       if (!this.isReady) {
         clearInterval(scanner)
-        reject()
+        reject?.()
       }
     }, 5000)
   }

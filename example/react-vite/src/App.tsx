@@ -1,13 +1,18 @@
 import { useEffect } from 'react'
 import Loading from './components/loading'
-import { useLogin } from './hooks/useLogin'
-import { useSafeArea } from './hooks/useSafeArea'
-import { dataModule, eventModule, uiModule, networkModule, useNativeState } from 'mincu-react'
+import {
+  useAppReady,
+  useSafeArea,
+  dataModule,
+  eventModule,
+  uiModule,
+  networkModule,
+  useNativeState,
+} from 'mincu-react'
 
 const App = () => {
-  const { isReady } = useLogin()
+  const isReady = useAppReady()
   const { top } = useSafeArea()
-
   const colors = useNativeState('colors')
   const colorScheme = useNativeState('colorScheme')
 
@@ -25,9 +30,7 @@ const App = () => {
   const fetchSchoolLife = async () => {
     const loadingTip = await uiModule.loading('加载中', 0)
     try {
-      const res = await networkModule.fetch.get(
-        'https://os.ncuos.com/api/user/profile/basic'
-      )
+      const res = await networkModule.fetch.get('https://os.ncuos.com/api/user/profile/basic')
       alert(JSON.stringify(res.data))
     } catch (e) {
       alert(e)

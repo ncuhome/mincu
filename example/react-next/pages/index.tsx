@@ -1,22 +1,21 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import Loading from '../components/loading'
-import { useLogin } from '../lib/hooks/useLogin'
-import { useSafeArea } from '../lib/hooks/useSafeArea'
-import { useInfoState } from '../store/index'
-import { dataModule, eventModule, uiModule, networkModule, useNativeState } from 'mincu-react'
+import {
+  useAppReady,
+  dataModule,
+  eventModule,
+  uiModule,
+  networkModule,
+  useNativeState,
+  useSafeArea,
+} from 'mincu-react'
 
 const Index = () => {
-  const { isReady } = useLogin()
-  const { top } = useSafeArea()
-
-  const studentID = useInfoState((state) => state.studentID)
+  const isReady = useAppReady()
   const colors = useNativeState('colors')
   const colorScheme = useNativeState('colorScheme')
-
-  useEffect(() => {
-    networkModule.getStoredToken()
-  }, [])
+  const { top } = useSafeArea()
 
   useEffect(() => {
     eventModule.setShareConfig({
@@ -28,9 +27,7 @@ const Index = () => {
   const fetchSchoolLife = async () => {
     const loadingTip = await uiModule.loading('加载中', 0)
     try {
-      const res = await networkModule.fetch.get(
-        'https://os.ncuos.com/api/user/profile/basic'
-      )
+      const res = await networkModule.fetch.get('https://os.ncuos.com/api/user/profile/basic')
       alert(JSON.stringify(res.data))
     } catch (e) {
       alert(e)
@@ -75,7 +72,7 @@ const Index = () => {
         />
       </Head>
       <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
-        <div>学号: {studentID}</div>
+        <div>学号: {dataModule.appData.user.profile.entireProfile?.base_info?.xh}</div>
         <button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</button>
         <button onClick={refreshToken}>测试刷新token</button>
         <button onClick={hideHeader}>隐藏标题</button>
