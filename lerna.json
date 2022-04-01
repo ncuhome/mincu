@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "publish": {
+      "exact": true
+    }
+  },
+  "version": "2.3.3"
+}
