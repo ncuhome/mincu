@@ -1,6 +1,6 @@
 {
   "name": "mincu-core",
-  "version": "2.3.4-alpha.1",
+  "version": "2.3.4-alpha.2",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "events": "^3.3.0",
-    "mincu-lib": "2.3.4-alpha.1"
+    "mincu-lib": "2.3.4-alpha.2"
   },
   "devDependencies": {
     "@types/react-native": "^0.64.12"

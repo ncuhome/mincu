@@ -4,8 +4,10 @@
   ],
   "command": {
     "publish": {
-      "exact": true
+      "exact": true,
+      "message": ":bookmark: release: publish %s",
+      "registry": "https://registry.npmjs.org/"
     }
   },
-  "version": "2.3.4-alpha.1"
+  "version": "2.3.4-alpha.2"
 }
