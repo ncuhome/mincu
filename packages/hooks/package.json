@@ -13,8 +13,8 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-core": "workspace:^2.3.3",
-    "mincu-data": "workspace:^2.3.3"
+    "mincu-core": "^2.3.3",
+    "mincu-data": "^2.3.3"
   },
   "peerDependencies": {
     "react": "^17.0.2"

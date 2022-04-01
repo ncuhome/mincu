@@ -13,6 +13,6 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-core": "workspace:^2.3.3"
+    "mincu-core": "^2.3.3"
   }
 }

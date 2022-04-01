@@ -13,7 +13,7 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-hooks": "workspace:^2.3.3",
-    "mincu-vanilla": "workspace:^2.3.3"
+    "mincu-hooks": "^2.3.3",
+    "mincu-vanilla": "^2.3.3"
   }
 }
