@@ -13,6 +13,7 @@
     "dist"
   ],
   "dependencies": {
+    "lodash": "^4.17.21",
     "mincu-core": "2.3.4-alpha.2",
     "mincu-data": "2.3.4-alpha.2"
   },
