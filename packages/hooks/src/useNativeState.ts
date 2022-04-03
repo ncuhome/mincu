@@ -1,7 +1,8 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { States } from 'mincu-core'
 import mincuCore from 'mincu-core'
 import dataModule from 'mincu-data'
+import useReady from './useReady'
 
 /**
  * 返回当前所监听的客户端状态
@@ -14,7 +15,7 @@ export default <T extends keyof States>(key: T): States[T] => {
     setValue(res)
   }, [])
 
-  useEffect(() => {
+  useReady(() => {
     setValue(dataModule?.[key] ?? {})
     mincuCore.listener(key, handle)
 

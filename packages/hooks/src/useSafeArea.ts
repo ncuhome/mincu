@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { EdgeInsets } from 'mincu-core'
+import useReady from './useReady'
 import dataModule from 'mincu-data'
-import mincuCore from 'mincu-core'
 
 export default () => {
   const [inset, setInset] = useState<EdgeInsets>({} as EdgeInsets)
 
-  useEffect(() => {
-    mincuCore.initial(() => {
-      setInset(dataModule.inset)
-    })
+  useReady(() => {
+    setInset(dataModule.inset)
   }, [])
 
   return inset
