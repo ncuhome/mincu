@@ -44,7 +44,7 @@ importers:
     specifiers:
       '@types/react-native': ^0.64.12
       events: ^3.3.0
-      mincu-lib: ^2.3.3
+      mincu-lib: 2.3.4-alpha.2
     dependencies:
       events: 3.3.0
       mincu-lib: link:../lib
@@ -72,8 +72,8 @@ importers:
 
   packages/data:
     specifiers:
-      mincu-core: ^2.3.3
-      mincu-lib: ^2.3.3
+      mincu-core: 2.3.4-alpha.2
+      mincu-lib: 2.3.4-alpha.2
     dependencies:
       mincu-core: link:../core
       mincu-lib: link:../lib
@@ -89,8 +89,8 @@ importers:
       isomorphic-ws: ^4.0.1
       lodash.debounce: ^4.0.8
       meow: 9.0.0
-      mincu-debug-tools: ^2.3.3
-      mincu-lib: ^2.3.3
+      mincu-debug-tools: 2.3.4-alpha.2
+      mincu-lib: 2.3.4-alpha.2
       react-dev-utils: ^11.0.4
       strip-ansi: 6.0.0
       terminate: ^2.2.2
@@ -121,7 +121,7 @@ importers:
       '@types/tough-cookie': ^4.0.1
       clsx: ^1.1.1
       got: ^11.8.2
-      mincu-debug: ^2.3.3
+      mincu-debug: 2.3.4-alpha.2
       preact: ^10.5.13
       qrcode: ^1.4.4
       react: npm:@preact/compat
@@ -162,15 +162,17 @@ importers:
 
   packages/event:
     specifiers:
-      mincu-core: ^2.3.3
+      mincu-core: 2.3.4-alpha.2
     dependencies:
       mincu-core: link:../core
 
   packages/hooks:
     specifiers:
-      mincu-core: ^2.3.3
-      mincu-data: ^2.3.3
+      lodash: ^4.17.21
+      mincu-core: 2.3.4-alpha.2
+      mincu-data: 2.3.4-alpha.2
     dependencies:
+      lodash: 4.17.21
       mincu-core: link:../core
       mincu-data: link:../data
 
@@ -180,8 +182,8 @@ importers:
   packages/network:
     specifiers:
       axios: ^0.24.0
-      mincu-core: ^2.3.3
-      mincu-data: ^2.3.3
+      mincu-core: 2.3.4-alpha.2
+      mincu-data: 2.3.4-alpha.2
     dependencies:
       axios: 0.24.0
       mincu-core: link:../core
@@ -189,8 +191,8 @@ importers:
 
   packages/react:
     specifiers:
-      mincu-hooks: ^2.3.3
-      mincu-vanilla: ^2.3.3
+      mincu-hooks: 2.3.4-alpha.2
+      mincu-vanilla: 2.3.4-alpha.2
     dependencies:
       mincu-hooks: link:../hooks
       mincu-vanilla: link:../vanilla
@@ -198,7 +200,7 @@ importers:
   packages/ui:
     specifiers:
       '@types/react-native': ^0.64.12
-      mincu-core: ^2.3.3
+      mincu-core: 2.3.4-alpha.2
     dependencies:
       mincu-core: link:../core
     devDependencies:
@@ -206,11 +208,11 @@ importers:
 
   packages/vanilla:
     specifiers:
-      mincu-core: ^2.3.3
-      mincu-data: ^2.3.3
-      mincu-event: ^2.3.3
-      mincu-network: ^2.3.3
-      mincu-ui: ^2.3.3
+      mincu-core: 2.3.4-alpha.2
+      mincu-data: 2.3.4-alpha.2
+      mincu-event: 2.3.4-alpha.2
+      mincu-network: 2.3.4-alpha.2
+      mincu-ui: 2.3.4-alpha.2
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
@@ -6169,7 +6171,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /lowercase-keys/2.0.0:
     resolution: {integrity: sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==}
