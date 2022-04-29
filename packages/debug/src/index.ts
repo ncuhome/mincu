@@ -16,8 +16,10 @@ class DebugModule {
   /**
    * @abstract apply our console to window.console, not replacing but appending
    * @note may causes memory leaks or maximum call stack size exceeded
+   * @param {boolean} handleError true
+   * @param {function} errorFormatter (event: ErrorEvent) => `${event.type}: ${event.message}\n`
    */
-  applyConsole(handleError = true) {
+  applyConsole(handleError = true, errorFormatter = (event: ErrorEvent) => `${event.type}: ${event.message}\n`) {
     if (this.client.init()) {
       LEVELS.forEach(level => {
         const tmp = _window.console[level]
@@ -30,7 +32,7 @@ class DebugModule {
       })
       if (handleError) {
         _window.addEventListener('error', e => {
-          this.client.log('error', e)
+          this.client.log('error', errorFormatter(e))
         })
         _window.addEventListener("unhandledrejection", e => {
           this.client.log('error', e.reason)
@@ -43,6 +45,12 @@ class DebugModule {
     return this.client.initByDebugTools()
   }
 
+  /**
+   * Commands to send to the server
+   * @param {string} command 
+   * @param {any[]} args 
+   * @returns 
+   */
   command(command: string, args: any[]) {
     return this.client.command(command, args)
   }
