@@ -21,6 +21,7 @@
     "noUnusedParameters": true,
     "importHelpers": true,
     "skipLibCheck": true,
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "mincu-*": ["./packages/*/src"]

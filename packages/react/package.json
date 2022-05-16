@@ -15,5 +15,8 @@
   "dependencies": {
     "mincu-hooks": "2.3.4",
     "mincu-vanilla": "2.3.4"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
   }
 }
