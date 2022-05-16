@@ -6,16 +6,19 @@ function useIsReady(resolve: () => void, deps?: any[]): void
 function useIsReady(resolve: () => void, reject: () => void, deps?: any[]): void
 
 function useIsReady(...args: any[]) {
+  const [resolve, rejectOrDeps, deps] = args
   let _deps: any[]
 
-  if (isFunction(args[1])) {
-    _deps = args[2]
+  const hasReject = isFunction(rejectOrDeps)
+
+  if (hasReject) {
+    _deps = deps
   } else {
-    _deps = args[1]
+    _deps = rejectOrDeps
   }
 
   useEffect(() => {
-    mincuCore.initial(args[0], args[1])
+    mincuCore.initial(resolve, hasReject ? rejectOrDeps : undefined)
   }, _deps)
 }
 
