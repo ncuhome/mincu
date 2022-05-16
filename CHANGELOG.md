@@ -1,5 +1,15 @@
 ## Changelog
 
+### 2.4.0
+
+- **feat** mincu-react 添加 `ReadySSR` 组件，封装了在 nextjs SSR 环境下使用 useAppReady 判断的逻辑，避免 `Unhandled Runtime Error: Hydration failed……`(参考 [https://github.com/vercel/next.js/discussions/35773]) 用法类似 react 的 Suspense，如：
+  
+  ```ts
+  <ReadySSR fallback={<div>Loading...</div>}>
+    <Component {...pageProps} />
+  </ReadySSR>
+  ```
+
 ### 2.0.0
 
 - **breaking** 迁移至 monorepo，原来的 `mincu` 包替换为 `mincu-react`, `mincu-vanilla` 等多个独立包
