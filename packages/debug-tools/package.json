@@ -1,6 +1,6 @@
 {
   "name": "mincu-debug-tools",
-  "version": "2.3.4",
+  "version": "2.4.0",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   "dependencies": {
     "clsx": "^1.1.1",
     "got": "^11.8.2",
-    "mincu-debug": "2.3.4",
+    "mincu-debug": "2.4.0",
     "react-use": "^17.3.1",
     "serve-handler": "^6.1.3",
     "tough-cookie": "^4.0.0"

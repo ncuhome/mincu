@@ -1,6 +1,6 @@
 {
   "name": "mincu-vanilla",
-  "version": "2.3.4",
+  "version": "2.4.0",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -13,10 +13,10 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-core": "2.3.4",
-    "mincu-data": "2.3.4",
-    "mincu-event": "2.3.4",
-    "mincu-network": "2.3.4",
-    "mincu-ui": "2.3.4"
+    "mincu-core": "2.4.0",
+    "mincu-data": "2.4.0",
+    "mincu-event": "2.4.0",
+    "mincu-network": "2.4.0",
+    "mincu-ui": "2.4.0"
   }
 }
