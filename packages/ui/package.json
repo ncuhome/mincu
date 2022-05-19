@@ -16,6 +16,6 @@
     "mincu-core": "2.4.1"
   },
   "devDependencies": {
-    "@types/react-native": "^0.64.12"
+    "@types/react-native": "^0.67.7"
   }
 }

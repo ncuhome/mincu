@@ -8,16 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "mincu-react": "workspace:^2.3.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "6"
+    "mincu-react": "^2.4.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "6.3.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
-    "@vitejs/plugin-react": "^1.0.7",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.4"
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@vitejs/plugin-react": "^1.3.2",
+    "resolve": "^1.22.0",
+    "typescript": "^4.6.4",
+    "vite": "^2.9.9"
   }
 }

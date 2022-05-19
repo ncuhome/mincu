@@ -17,6 +17,6 @@
     "mincu-vanilla": "2.4.1"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^18.1.0"
   }
 }
