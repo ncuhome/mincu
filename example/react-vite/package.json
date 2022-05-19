@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "mincu-react": "^2.4.1",
+    "mincu-react": "^2.5.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "6.3.0"
