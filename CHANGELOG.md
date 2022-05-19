@@ -1,5 +1,9 @@
 ## Changelog
 
+### 2.5.0
+
+- **chores** 升级依赖，添加 example/* 至 workspace
+  
 ### 2.4.1
 
 - **fix** mincu-hooks useReady `Error: reject is not a function`
