@@ -1,6 +1,6 @@
 {
   "name": "vue3-spa",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -8,7 +8,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "mincu-vanilla": "2.6.0",
+    "mincu-vanilla": "2.6.1",
     "vue": "^3.2.16",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-router": "^4.0.12",
