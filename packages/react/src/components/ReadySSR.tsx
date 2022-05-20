@@ -1,12 +1,13 @@
 import React, { FC, Fragment, useEffect, useState } from 'react'
 import { useAppReady } from 'mincu-hooks'
+import { Fallback } from './Fallback'
 
-interface Props {
+export interface Props {
   fallback?: React.ReactNode
   children?: React.ReactNode
 }
 
-const ReadySSR: FC<Props> = ({ fallback, children }) => {
+export const ReadySSR: FC<Props> = ({ fallback = <Fallback /> as any, children }) => {
   const [isSSR, setIsSSR] = useState(true);
   const isReady = useAppReady()
 
@@ -18,5 +19,3 @@ const ReadySSR: FC<Props> = ({ fallback, children }) => {
 
   return <Fragment>{!isSSR && content}</Fragment>
 }
-
-export default ReadySSR
