@@ -1,7 +1,7 @@
 {
   "name": "incu-react-next-example",
   "private": true,
-  "version": "2.3.3",
+  "version": "2.6.0",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "immer": "^9.0.14",
-    "mincu-react": "^2.5.0",
+    "mincu-react": "2.6.0",
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
