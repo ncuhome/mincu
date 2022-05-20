@@ -1,5 +1,30 @@
 ## Changelog
 
+### 2.6.1
+
+- **fix** should build before release
+
+### 2.6.0
+
+- **feat** 新增 `<Ready />` 组件，用法与 `<ReadySSR />` 一致。以及他们的 fallback 参数增加了默认值：
+
+  ```tsx
+  export const Fallback = () => (
+    <div
+      style={{
+        height: '100vh',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 18
+      }}
+    >
+      <span>请在南大家园中打开😊</span>
+    </div>
+  )
+  ```
+
 ### 2.5.0
 
 - **chores** 升级依赖，添加 example/* 至 workspace
@@ -12,7 +37,7 @@
 
 - **feat** mincu-react 添加 `ReadySSR` 组件，封装了在 nextjs SSR 环境下使用 useAppReady 判断的逻辑，避免 `Unhandled Runtime Error: Hydration failed……`(参考 [https://github.com/vercel/next.js/discussions/35773]) 用法类似 react 的 Suspense，如：
   
-  ```ts
+  ```tsx
   <ReadySSR fallback={<div>Loading...</div>}>
     <Component {...pageProps} />
   </ReadySSR>
