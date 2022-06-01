@@ -2,7 +2,7 @@
 
 ## 文档地址
 
-新文档编写中……
+<https://mincu.vercel.app/>
 
 ## 什么是 Mincu？
 
