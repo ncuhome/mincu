@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git@github.com:ncuhome/mincu.git"
   },
+  "main": "./server/dist/mincu-debug-tools-server.cjs.js",
   "license": "MIT",
   "files": [
     "dist",
