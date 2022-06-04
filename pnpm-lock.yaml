@@ -51,7 +51,7 @@ importers:
       '@types/prop-types': ^15.7.5
       '@types/react': ^18.0.9
       immer: ^9.0.14
-      mincu-react: 2.6.2
+      mincu-react: 2.6.3
       next: ^12.1.6
       react: ^18.1.0
       react-dom: ^18.1.0
@@ -77,7 +77,7 @@ importers:
       '@types/react-dom': ^18.0.4
       '@vitejs/plugin-react': ^1.3.2
       autoprefixer: ^10.4.7
-      mincu-react: 2.6.2
+      mincu-react: 2.6.3
       postcss: ^8.4.14
       qrcode.react: ^3.0.2
       react: ^18.1.0
@@ -104,7 +104,7 @@ importers:
 
   example/vanilla-ts:
     specifiers:
-      mincu-debug: 2.6.2
+      mincu-debug: 2.6.3
       typescript: ^4.6.4
       vite: ^2.9.9
     dependencies:
@@ -116,7 +116,7 @@ importers:
   example/vue-spa:
     specifiers:
       '@vitejs/plugin-vue': ^1.9.3
-      mincu-vanilla: 2.6.2
+      mincu-vanilla: 2.6.3
       typescript: ^4.4.3
       vite: ^2.7.4
       vue: ^3.2.16
@@ -144,7 +144,7 @@ importers:
     specifiers:
       '@types/react-native': ^0.67.7
       events: ^3.3.0
-      mincu-lib: 2.6.2
+      mincu-lib: 2.6.3
     dependencies:
       events: 3.3.0
       mincu-lib: link:../lib
@@ -172,8 +172,8 @@ importers:
 
   packages/data:
     specifiers:
-      mincu-core: 2.6.2
-      mincu-lib: 2.6.2
+      mincu-core: 2.6.3
+      mincu-lib: 2.6.3
     dependencies:
       mincu-core: link:../core
       mincu-lib: link:../lib
@@ -189,8 +189,8 @@ importers:
       isomorphic-ws: ^4.0.1
       lodash.debounce: ^4.0.8
       meow: 9.0.0
-      mincu-debug-tools: 2.6.2
-      mincu-lib: 2.6.2
+      mincu-debug-tools: 2.6.3
+      mincu-lib: 2.6.3
       react-dev-utils: ^12.0.1
       strip-ansi: 6.0.0
       terminate: ^2.5.0
@@ -221,7 +221,6 @@ importers:
       '@vitejs/plugin-react': ^1.3.2
       clsx: ^1.1.1
       got: ^11.8.2
-      mincu-debug: 2.6.2
       qrcode: ^1.5.0
       react: 18.1.0
       react-dom: 18.1.0
@@ -235,7 +234,6 @@ importers:
     dependencies:
       clsx: 1.1.1
       got: 11.8.3
-      mincu-debug: link:../debug
       react-use: 17.3.2_ef5jwxihqo6n7gxfmzogljlgcm
       serve-handler: 6.1.3
       tough-cookie: 4.0.0
@@ -260,15 +258,15 @@ importers:
 
   packages/event:
     specifiers:
-      mincu-core: 2.6.2
+      mincu-core: 2.6.3
     dependencies:
       mincu-core: link:../core
 
   packages/hooks:
     specifiers:
       lodash: ^4.17.21
-      mincu-core: 2.6.2
-      mincu-data: 2.6.2
+      mincu-core: 2.6.3
+      mincu-data: 2.6.3
     dependencies:
       lodash: 4.17.21
       mincu-core: link:../core
@@ -280,8 +278,8 @@ importers:
   packages/network:
     specifiers:
       axios: ^0.27.2
-      mincu-core: 2.6.2
-      mincu-data: 2.6.2
+      mincu-core: 2.6.3
+      mincu-data: 2.6.3
     dependencies:
       axios: 0.27.2
       mincu-core: link:../core
@@ -289,8 +287,8 @@ importers:
 
   packages/react:
     specifiers:
-      mincu-hooks: 2.6.2
-      mincu-vanilla: 2.6.2
+      mincu-hooks: 2.6.3
+      mincu-vanilla: 2.6.3
     dependencies:
       mincu-hooks: link:../hooks
       mincu-vanilla: link:../vanilla
@@ -298,7 +296,7 @@ importers:
   packages/ui:
     specifiers:
       '@types/react-native': ^0.67.7
-      mincu-core: 2.6.2
+      mincu-core: 2.6.3
     dependencies:
       mincu-core: link:../core
     devDependencies:
@@ -306,11 +304,11 @@ importers:
 
   packages/vanilla:
     specifiers:
-      mincu-core: 2.6.2
-      mincu-data: 2.6.2
-      mincu-event: 2.6.2
-      mincu-network: 2.6.2
-      mincu-ui: 2.6.2
+      mincu-core: 2.6.3
+      mincu-data: 2.6.3
+      mincu-event: 2.6.3
+      mincu-network: 2.6.3
+      mincu-ui: 2.6.3
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
