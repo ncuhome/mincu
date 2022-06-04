@@ -1,9 +1,7 @@
 import QRCode from 'qrcode'
 import { useEffect, useState } from 'react'
 import { useSearchParam } from 'react-use'
-import Button from '@/components/Button'
 import { DEFAULT_HINT, DEBUG_URL_KEY, getHtmlTitle, requestHtml, useDecodeUrl } from './utils'
-import debug from 'mincu-debug'
 
 export function App() {
   const [imgSrc, setImgSrc] = useState('')
@@ -43,33 +41,21 @@ export function App() {
     }
   }
   
-  const openOnDevice = (platform: string) => {
-    debug.command('openUrl', [url, platform])
-  }
-  
   const finalTitle = title == origin
     ? title
     : [title, origin].filter(item => item && item.length > 0).join(' | ')
 
   return (
-    <div class="text-light-600 body-font overflow-hidden bg-dark-900 w-screen h-screen">
-      <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-        <h1 class="title-font sm:text-2xl text-2xl mb-8 font-medium subpixel-antialiased">
+    <div className="text-light-600 body-font overflow-hidden bg-dark-900 w-screen h-screen">
+      <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+        <h1 className="title-font sm:text-2xl text-2xl mb-8 font-medium subpixel-antialiased">
           {finalTitle}
         </h1>
-        <img src={imgSrc} alt={origin || url || ''} class="lg:w-1/4 md:w-3/6 w-4/6 mb-8 object-cover object-center rounded-2xl" />
-        <div class="text-center lg:w-2/3 w-full">
-          <p class="sm:text-1xl text-2xl mb-8 text-gray-300">
+        <img src={imgSrc} alt={origin || url || ''} className="lg:w-1/4 md:w-3/6 w-4/6 mb-8 object-cover object-center rounded-2xl" />
+        <div className="text-center lg:w-2/3 w-full">
+          <p className="sm:text-1xl text-2xl mb-8 text-gray-300">
             {hint}
           </p>
-          <div class="flex flex-col items-center">
-            <Button onClick={() => openOnDevice('android')}>
-              在 Android 上打开页面
-            </Button>
-            <Button onClick={() => openOnDevice('ios')}>
-              在 iOS 上打开页面
-            </Button>
-          </div>
         </div>
       </div>
     </div>
