@@ -1,6 +1,6 @@
 {
   "name": "mincu-debug",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "isomorphic-ws": "^4.0.1",
     "lodash.debounce": "^4.0.8",
     "meow": "9.0.0",
-    "mincu-lib": "2.6.4",
+    "mincu-lib": "2.6.5",
     "open": "^8.4.0",
     "pacote": "^13.6.0",
     "strip-ansi": "6.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "mincu-data",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-core": "2.6.4",
-    "mincu-lib": "2.6.4"
+    "mincu-core": "2.6.5",
+    "mincu-lib": "2.6.5"
   }
 }
