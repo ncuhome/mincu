@@ -3,7 +3,6 @@ import chalk from 'chalk'
 import { DEBUG_PORT, Received } from './shared'
 import { logToConsole } from './logToConsole';
 import { Decode } from 'console-feed-node-transform';
-import { startDevTool } from 'mincu-debug-tools/server';
 import { openUrl, Platform } from './commands'
 
 const formatMessage = (message: Data) => {
@@ -34,9 +33,9 @@ const logLogo = () => {
   `)
 }
 
-const startWebSocketServer = () => {
+const startWebSocketServer = (baseWss?: WebSocket.WebSocketServer) => {
 
-  const wss = new WebSocket.Server({ port: DEBUG_PORT });
+  const wss = baseWss || new WebSocket.Server({ port: DEBUG_PORT });
 
   wss.on('connection', (ws) => {
     ws.on('message', message => {
@@ -63,16 +62,8 @@ const startWebSocketServer = () => {
   return wss
 }
 
-export const startServer = () => {
-  startDevTool()
-  // @TODO: integrate with vscode-extension
-  // isVsCodeRunning().then(isRunning => {
-  //   if (isRunning) {
-  //     // TODO: add detail doc url
-  //     console.log('Note: You can use the Mincu Debugger')
-  //   } else {
-  //   }
-  // })
 
-  return startWebSocketServer()
+
+export const startServer = (wss?: WebSocket.WebSocketServer) => {
+  return startWebSocketServer(wss)
 }

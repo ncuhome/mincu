@@ -13,6 +13,10 @@ class DebugModule {
     this.client = new Client()
   }
 
+  applyChii() {
+    this.client.initChii()
+  }
+  
   /**
    * @abstract apply our console to window.console, not replacing but appending
    * @note may causes memory leaks or maximum call stack size exceeded

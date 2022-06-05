@@ -12,6 +12,12 @@ export class Client {
   private client: WebSocket
   private opened: boolean = false
 
+  initChii() {
+    var script = document.createElement('script');
+    script.src = `${location.protocol}//${DEBUG_HOST}:${DEBUG_PORT}/target.js`;
+    document.body.appendChild(script);
+  }
+
   init() {
     if (this.client || this.opened) return true
     try {

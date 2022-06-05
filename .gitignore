@@ -1,3 +1,5 @@
+packages/**/package-lock.json
+
 .vscode
 ### Node ###
 # Logs

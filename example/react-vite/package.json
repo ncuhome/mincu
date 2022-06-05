@@ -3,12 +3,14 @@
   "version": "2.6.4",
   "private": true,
   "scripts": {
+    "start": "mincud npm run dev",
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
+    "mincu-debug": "^2.6.4",
     "mincu-react": "2.6.4",
     "postcss": "^8.4.14",
     "qrcode.react": "^3.0.2",

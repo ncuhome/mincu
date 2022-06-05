@@ -9,6 +9,7 @@ import {
   Ready,
 } from 'mincu-react';
 import { Fallback } from './Fallback';
+
 import { Button } from './Button';
 
 const App = () => {
