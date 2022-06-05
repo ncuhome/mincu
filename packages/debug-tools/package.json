@@ -19,21 +19,24 @@
     "server": "node -e \"require(\"./dist/mincu-debug-tools.cjs.js\").startDevTool()\""
   },
   "dependencies": {
-    "clsx": "^1.1.1",
-    "got": "^11.8.2",
-    "react-use": "^17.3.2",
+    "got": "^12.1.0",
     "serve-handler": "^6.1.3",
     "tough-cookie": "^4.0.0"
   },
   "devDependencies": {
     "@types/qrcode": "^1.4.2",
+    "@types/react": "^18.0.11",
+    "@types/react-dom": "^18.0.5",
     "@types/serve-handler": "^6.1.1",
     "@types/tough-cookie": "^4.0.2",
     "@vitejs/plugin-react": "^1.3.2",
+    "clsx": "^1.1.1",
+    "preact": "^10.7.3",
     "qrcode": "^1.5.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "typescript": "^4.6.4",
+    "react-use": "^17.4.0",
+    "typescript": "^4.7.3",
     "vite": "^2.9.9",
     "vite-plugin-windicss": "^1.8.4",
     "windicss": "^3.5.4"
