@@ -7,30 +7,12 @@ const API_HOST = import.meta.env.DEV ? `http://localhost:23333/api` : '/api'
 export const DEBUG_URL_KEY = '$DEBUG_URL';
 
 export const useDecodeUrl = () => {
-  const urlParam = useSearchParam('url')
-  const urlStorage = localStorage.getItem(DEBUG_URL_KEY)
+  const urlParam = useSearchParam('url') || ''
+  const urlStorage = localStorage.getItem(DEBUG_URL_KEY) || ''
   return urlParam ? decodeURIComponent(urlParam) : urlStorage
 }
 
-const getReallyUrl = (url: string) => {
-  return url.includes('http://localhost')
-    ? url
-    : `${API_HOST}/fetch?target=${encodeURIComponent(url)}`
-}
-
-export const requestHtml = async (url: string) => {
-  const res = await fetch(getReallyUrl(url));
-  const html = await res.text();
-
-  if (html.includes('<html')) {
-    return html
-  } else {
-    return false
-  }
-}
-
-export const getHtmlTitle = (html: string) => {
-  const parser = new DOMParser()
-  const doc = parser.parseFromString(html, 'text/html')
-  return doc.title
+export const previewUrl = async (url: string) => {
+  const res = await fetch(`${API_HOST}/preview?target=${encodeURIComponent(url)}`);
+  return res.json()
 }

@@ -1,7 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http'
 import path from 'path'
 import serveHandler from 'serve-handler'
-import { fetch } from './api/fetch'
+import { preview } from './api/preview'
 
 const PUBLIC_PATH = path.resolve(__dirname, __dirname.includes('dist') ? '../' : '', '../output')
 export const DEV_TOOL_PORT = 23333
@@ -23,8 +23,8 @@ export const startDevTool = () => {
   createServer(async (req, res) => {
     cors(req, res)
 
-    if (req.url?.includes('/api/fetch')) {
-      return fetch(req, res)
+    if (req.url?.includes('/api/preview')) {
+      return preview(req, res)
     } else {
       return serveHandler(req, res, {
         public: PUBLIC_PATH,
