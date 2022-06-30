@@ -8,7 +8,7 @@ export const Fallback = () => (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      fontSize: 18
+      fontSize: 18,
     }}
   >
     <span>请在南大家园中打开😊</span>

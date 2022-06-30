@@ -8,11 +8,17 @@ export const CMD_DEV_TOOL = 'CMD_DEV_TOOL'
 
 export const DEBUG_PORT = 2333
 export const DEBUG_HOST = _window.location?.hostname || 'localhost'
-export const LEVELS: LogLevel[] =
-  [
-    'trace', 'info', 'warn', 'error', 'log',
-    'group', 'groupCollapsed', 'groupEnd', 'debug'
-  ]
+export const LEVELS: LogLevel[] = [
+  'trace',
+  'info',
+  'warn',
+  'error',
+  'log',
+  'group',
+  'groupCollapsed',
+  'groupEnd',
+  'debug',
+]
 
 export type LogLevel =
   | 'trace'
@@ -29,6 +35,6 @@ export type RecvType = 'log' | 'command'
 
 export interface Received {
   type: RecvType
-  level?: LogLevel,
+  level?: LogLevel
   data: string[]
 }

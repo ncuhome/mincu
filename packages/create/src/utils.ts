@@ -27,7 +27,7 @@ export function pkgFromUserAgent(userAgent: string) {
   const pkgSpecArr = pkgSpec.split('/')
   return {
     name: pkgSpecArr[0],
-    version: pkgSpecArr[1]
+    version: pkgSpecArr[1],
   }
 }
 
@@ -68,9 +68,9 @@ export function logSuccessTips(name: string, pkg: Record<string, any>) {
 }
 
 /**
- * transform package.json dependencies and devDependencies 
+ * transform package.json dependencies and devDependencies
  * with pnpm `workspace:` prefix back to normal npm format
- * 
+ *
  * @param {Record<string, any>} pkg package.json
  */
 export function transformDeps(pkg: Record<string, any>) {

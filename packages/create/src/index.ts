@@ -1,7 +1,14 @@
 import path from 'path'
 import minimist from 'minimist'
 import { downloadWithCheck } from 'gdl'
-import { isEmpty, isValidPackageName, toValidPackageName, renameFiles, logSuccessTips, transformDeps } from './utils'
+import {
+  isEmpty,
+  isValidPackageName,
+  toValidPackageName,
+  renameFiles,
+  logSuccessTips,
+  transformDeps,
+} from './utils'
 import fse from 'fs-extra'
 import prompts from 'prompts'
 import { cyan, red, green, lightMagenta, yellow } from 'kolorist'

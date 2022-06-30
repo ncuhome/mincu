@@ -6,13 +6,15 @@ import path from 'path'
 export default defineConfig({
   plugins: [react(), WindiCSS()],
   resolve: {
-    alias: [{
-      find: '@',
-      replacement: path.resolve(__dirname, 'src')
-    }]
+    alias: [
+      {
+        find: '@',
+        replacement: path.resolve(__dirname, 'src'),
+      },
+    ],
   },
   build: {
     outDir: './output',
-    reportCompressedSize: false
+    reportCompressedSize: false,
   },
 })

@@ -33,7 +33,8 @@ export function App() {
   return (
     <div className="text-light-600 body-font overflow-hidden bg-dark-900 w-screen h-screen flex flex-col items-center justify-center">
       <Tooltip label={<SiteInfo preview={preview} />}>
-        <h1 className="title-font sm:text-2xl text-2xl mb-8 font-medium subpixel-antialiased cursor-pointer hover:underline"
+        <h1
+          className="title-font sm:text-2xl text-2xl mb-8 font-medium subpixel-antialiased cursor-pointer hover:underline"
           onClick={() => {
             window.open(url)
           }}
@@ -41,12 +42,15 @@ export function App() {
           {finalTitle}
         </h1>
       </Tooltip>
-      <QRCodeSVG value={url} className="mb-8 object-cover object-center rounded-2xl border-6" size={250} />
+      <QRCodeSVG
+        value={url}
+        className="mb-8 object-cover object-center rounded-2xl border-6"
+        size={250}
+      />
       <div className="text-center lg:w-2/3 w-full">
-        <p className="sm:text-1xl text-2xl mb-8 text-gray-300">
-          {hint}
-        </p>
+        <p className="sm:text-1xl text-2xl mb-8 text-gray-300">{hint}</p>
       </div>
-    </div >
+      <iframe className="w-full h-full bg-white" src="http://localhost:2333/" />
+    </div>
   )
 }

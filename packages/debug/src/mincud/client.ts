@@ -13,9 +13,9 @@ export class Client {
   private opened: boolean = false
 
   initChii() {
-    var script = document.createElement('script');
-    script.src = `${location.protocol}//${DEBUG_HOST}:${DEBUG_PORT}/target.js`;
-    document.body.appendChild(script);
+    var script = document.createElement('script')
+    script.src = `${location.protocol}//${DEBUG_HOST}:${DEBUG_PORT}/target.js`
+    document.body.appendChild(script)
   }
 
   init() {
@@ -66,10 +66,10 @@ export class Client {
     switch (cmd) {
       case CMD_RELOAD:
         _window.location?.reload()
-        break;
+        break
       case CMD_DEV_TOOL:
         this.toggleDevTool()
-        break;
+        break
     }
   }
 
@@ -92,10 +92,12 @@ export class Client {
    * @see https://github.com/liriliri/eruda
    */
   injectDevTool() {
-    const script = document.createElement('script');
-    script.src = "//cdn.jsdelivr.net/npm/eruda";
-    document.body.appendChild(script);
-    script.onload = () => { _window.eruda?.init() }
+    const script = document.createElement('script')
+    script.src = '//cdn.jsdelivr.net/npm/eruda'
+    document.body.appendChild(script)
+    script.onload = () => {
+      _window.eruda?.init()
+    }
   }
 
   /**
@@ -115,9 +117,9 @@ export class Client {
         genReceived({
           type: 'log',
           level,
-          data: Encode(args)
-        }),
-      );
+          data: Encode(args),
+        })
+      )
     } catch (err) {
       console.error(err)
     }
@@ -125,10 +127,12 @@ export class Client {
 
   command(command: string, args: any[]) {
     if (this.opened) {
-      this.client.send(genReceived({
-        type: 'command',
-        data: [command, ...args]
-      }))
+      this.client.send(
+        genReceived({
+          type: 'command',
+          data: [command, ...args],
+        })
+      )
       return true
     }
     return false

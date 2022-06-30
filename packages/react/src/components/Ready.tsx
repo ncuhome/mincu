@@ -7,8 +7,8 @@ export interface Props {
   children?: React.ReactNode
 }
 
-export const Ready: FC<Props> = ({ fallback = <Fallback /> as any, children }) => {
+export const Ready: FC<Props> = ({ fallback = (<Fallback />) as any, children }) => {
   const isReady = useAppReady()
 
-  return isReady ? children : fallback;
+  return isReady ? children : fallback
 }

@@ -7,15 +7,15 @@ export interface Props {
   children?: React.ReactNode
 }
 
-export const ReadySSR: FC<Props> = ({ fallback = <Fallback /> as any, children }) => {
-  const [isSSR, setIsSSR] = useState(true);
+export const ReadySSR: FC<Props> = ({ fallback = (<Fallback />) as any, children }) => {
+  const [isSSR, setIsSSR] = useState(true)
   const isReady = useAppReady()
 
   useEffect(() => {
-    setIsSSR(false);
-  }, []);
+    setIsSSR(false)
+  }, [])
 
-  const content = isReady ? children : fallback;
+  const content = isReady ? children : fallback
 
   return <Fragment>{!isSSR && content}</Fragment>
 }

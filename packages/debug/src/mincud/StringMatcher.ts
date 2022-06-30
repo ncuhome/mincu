@@ -52,7 +52,7 @@ export class StringMatcher {
     for (const regex of this.regexExps) {
       const matchRes = wholeStr.match(regex)
       if (matchRes?.length > 0) {
-        this.matchCallbacks.forEach(cb => cb(matchRes))
+        this.matchCallbacks.forEach((cb) => cb(matchRes))
         if (this.once) {
           this.matchCallbacks = []
         }
@@ -60,5 +60,4 @@ export class StringMatcher {
       }
     }
   }
-
 }

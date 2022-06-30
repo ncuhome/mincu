@@ -16,16 +16,19 @@ class DebugModule {
   applyChii() {
     this.client.initChii()
   }
-  
+
   /**
    * @abstract apply our console to window.console, not replacing but appending
    * @note may causes memory leaks or maximum call stack size exceeded
    * @param {boolean} handleError true
    * @param {function} errorFormatter (event: ErrorEvent) => `${event.type}: ${event.message}\n`
    */
-  applyConsole(handleError = true, errorFormatter = (event: ErrorEvent) => `${event.type}: ${event.message}\n`) {
+  applyConsole(
+    handleError = true,
+    errorFormatter = (event: ErrorEvent) => `${event.type}: ${event.message}\n`
+  ) {
     if (this.client.init()) {
-      LEVELS.forEach(level => {
+      LEVELS.forEach((level) => {
         const tmp = _window.console[level]
         if (tmp) {
           _window.console[level] = (...args: any[]) => {
@@ -35,12 +38,12 @@ class DebugModule {
         }
       })
       if (handleError) {
-        _window.addEventListener('error', e => {
+        _window.addEventListener('error', (e) => {
           this.client.log('error', errorFormatter(e))
         })
-        _window.addEventListener("unhandledrejection", e => {
+        _window.addEventListener('unhandledrejection', (e) => {
           this.client.log('error', e.reason)
-        });
+        })
       }
     }
   }
@@ -51,9 +54,9 @@ class DebugModule {
 
   /**
    * Commands to send to the server
-   * @param {string} command 
-   * @param {any[]} args 
-   * @returns 
+   * @param {string} command
+   * @param {any[]} args
+   * @returns
    */
   command(command: string, args: any[]) {
     return this.client.command(command, args)

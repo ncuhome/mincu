@@ -14,13 +14,13 @@ export type Platform = 'android' | 'ios'
 
 /**
  * open url in iNCU Webview
- * @param url 
+ * @param url
  * @param platform 'android' | 'ios'
  * @returns boolean
  */
 export const openUrl = async (url: string, platform: Platform) => {
   try {
-  const openUrl = openUrls[platform]
+    const openUrl = openUrls[platform]
     if (!openUrl) {
       throw new Error(`platform ${platform} not supported`)
     }
