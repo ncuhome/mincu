@@ -6,38 +6,25 @@ import readline, { Key } from 'readline'
 import type { Server } from 'ws'
 import chalk from 'chalk'
 import terminate from 'terminate'
+import mincuChii from 'mincu-chii'
 import { startServer } from './server'
 import { StringMatcher } from './StringMatcher'
-import { REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST, CMD_RELOAD, CMD_DEV_TOOL, DEBUG_PORT } from './shared'
-import { LazyModule } from './LazyModule'
-import { join } from 'path'
-import openBrowser from './openBrowser';
-
-const CWD = __filename.includes('.ts')
-  ? join(__dirname, '../../mincud/cli/dist')
-  : __dirname
-
-const lazyModule = new LazyModule({
-  cwd: CWD
-})
-
-const pkgInstall = async (name: string, version?: string) => {
-  const content = `${name}${version ? '@' + version : ''}`
-  try {
-    await lazyModule.install(name, version)
-    console.log(`Installed ${content}`)
-  } catch (e) {
-    console.log(`Install ${content} failed`)
-    console.error(e)
-  }
-}
+import {
+  REGEXP_NETWORK_HOST,
+  REGEXP_LOCAL_HOST,
+  CMD_RELOAD,
+  CMD_DEV_TOOL,
+  DEBUG_PORT,
+} from './shared'
+import openBrowser from './openBrowser'
 
 const TAG = chalk.inverse.green.bold(' Server ')
 
 const rLog = (...args: any[]) => console.log(`\r` + args.join(' '))
 
 const initCli = () => {
-  return meow(`
+  return meow(
+    `
 	Usage
 	  $ mincud <command> [options]
 
@@ -48,37 +35,39 @@ const initCli = () => {
 
 	Examples
 	  $ mincud npm run dev
-`, {
-    flags: {
-      help: {
-        alias: 'h'
+`,
+    {
+      flags: {
+        help: {
+          alias: 'h',
+        },
+        qrcode: {
+          type: 'boolean',
+          default: true,
+        },
+        chii: {
+          type: 'boolean',
+          default: true,
+        },
+        serverCommand: {
+          type: 'boolean',
+          default: true,
+        },
       },
-      qrcode: {
-        type: 'boolean',
-        default: true
-      },
-      chii: {
-        type: 'boolean',
-        default: true
-      },
-      serverCommand: {
-        type: 'boolean',
-        default: true
-      }
     }
-  })
+  )
 }
 
 class Cli {
-  flags: ReturnType<typeof initCli>['flags'];
-  input: string[];
-  devtoolPort?: number;
-  childPid?: number;
+  flags: ReturnType<typeof initCli>['flags']
+  input: string[]
+  devtoolPort?: number
+  childPid?: number
 
   constructor() {
     const { input, flags, showHelp } = initCli()
     this.flags = flags
-    this.input = input;
+    this.input = input
 
     if (this.flags.help) {
       showHelp(0)
@@ -98,12 +87,8 @@ class Cli {
   }
 
   async start() {
-    const flags = this.flags;
-    const input = this.input;
-
-    if (flags.chii) {
-      await pkgInstall('mincu-chii')
-    }
+    const flags = this.flags
+    const input = this.input
 
     // Directly start if no input
     if (this.input.length === 0) {
@@ -136,9 +121,8 @@ class Cli {
 
   useChii = async () => {
     try {
-      const chii = lazyModule.require('mincu-chii')
-      const res = chii.start({
-        port: DEBUG_PORT
+      const res = mincuChii.start({
+        port: DEBUG_PORT,
       })
       if (res) {
         this.startAndBindServer(res.wss)
@@ -164,19 +148,22 @@ class Cli {
     }
     const url = new URL(origin)
     url.searchParams.set('devSecret', 'iNCUDeveloper++')
-    openBrowser(`http://localhost:${this.devtoolPort}/?url=${encodeURIComponent(url.toString())}&origin=${origin}`)
+    openBrowser(
+      `http://localhost:${this.devtoolPort}/?url=${encodeURIComponent(
+        url.toString()
+      )}&origin=${origin}`
+    )
   }
 
   startDevtool = async () => {
-    await lazyModule.install('mincu-debug-tools')
     try {
-      const { DEV_TOOL_PORT, startDevTool } = lazyModule.require('mincu-debug-tools/server')
+      const { DEV_TOOL_PORT, startDevTool } = require('mincu-debug-tools/server')
 
       this.devtoolPort = DEV_TOOL_PORT
 
       startDevTool?.()
     } catch (err) {
-      console.log("TEST", err)
+      console.log('TEST', err)
     }
   }
 
@@ -184,10 +171,10 @@ class Cli {
     this.startAndBindServer()
 
     const stringMatcher = new StringMatcher([REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST])
-    stringMatcher.onMatch(matchRes => {
+    stringMatcher.onMatch((matchRes) => {
       this.openQRCode(matchRes[0])
     })
-    stdout?.on('data', data => {
+    stdout?.on('data', (data) => {
       const str = stripAnsi(data.toString())
       stringMatcher.put(str)
     })
@@ -204,7 +191,7 @@ class Cli {
       } else {
         rLog(TAG, 'No client connected')
       }
-      wss.clients.forEach(client => {
+      wss.clients.forEach((client) => {
         client.send(data)
       })
     }
@@ -215,16 +202,13 @@ class Cli {
     }
 
     stdin.on('keypress', (_, data: Key) => {
-      const {
-        ctrl,
-        name
-      } = data
+      const { ctrl, name } = data
       if (ctrl) {
         switch (name) {
           case 'c':
             if (this.childPid >= 0) {
               // @ts-ignore
-              terminate(childPid, 'SIGINT', { timeout: 0 }, exitWithLog);
+              terminate(childPid, 'SIGINT', { timeout: 0 }, exitWithLog)
             } else {
               exitWithLog()
             }

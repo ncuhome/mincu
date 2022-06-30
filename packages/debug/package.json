@@ -25,6 +25,8 @@
     "isomorphic-ws": "^4.0.1",
     "lodash.debounce": "^4.0.8",
     "meow": "9.0.0",
+    "mincu-chii": "^0.8.1",
+    "mincu-debug-tools": "2.6.5",
     "mincu-lib": "2.6.5",
     "open": "^8.4.0",
     "pacote": "^13.6.0",
