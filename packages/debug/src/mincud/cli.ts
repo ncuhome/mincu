@@ -3,7 +3,7 @@ import execa from 'execa'
 import stripAnsi from 'strip-ansi'
 import meow from 'meow'
 import readline, { Key } from 'readline'
-import type { Server } from 'ws'
+import type { WebSocketServer } from 'ws'
 import chalk from 'chalk'
 import terminate from 'terminate'
 import mincuChii from 'mincu-chii'
@@ -17,6 +17,11 @@ import {
   DEBUG_PORT,
 } from './shared'
 import openBrowser from './openBrowser'
+import { DEV_TOOL_PORT, startDevTool } from 'mincu-debug-tools/server'
+
+const IPV4 = internalIp.v4.sync()
+
+const LOCALHOST = 'http://localhost'
 
 const TAG = chalk.inverse.green.bold(' Server ')
 
@@ -63,6 +68,7 @@ class Cli {
   input: string[]
   devtoolPort?: number
   childPid?: number
+  wss: WebSocketServer
 
   constructor() {
     const { input, flags, showHelp } = initCli()
@@ -77,12 +83,10 @@ class Cli {
     this.start()
   }
 
-  startAndBindServer = async (wss?: Server) => {
+  startAndBindServer = async () => {
     if (this.flags.serverCommand) {
-      if (!wss) {
-        await this.startDevtool()
-      }
-      this.bindServerCommand(wss || startServer())
+      this.wss = startServer()
+      this.bindServerCommand()
     }
   }
 
@@ -92,10 +96,13 @@ class Cli {
 
     // Directly start if no input
     if (this.input.length === 0) {
+      this.startAndBindServer()
       if (this.flags.chii) {
         this.useChii()
-      } else {
-        this.startAndBindServer()
+      }
+      if (this.flags.qrcode) {
+        this.startDevtool()
+        openBrowser(LOCALHOST + ':' + this.devtoolPort)
       }
       return
     }
@@ -121,13 +128,34 @@ class Cli {
 
   useChii = async () => {
     try {
-      const res = mincuChii.start({
-        port: DEBUG_PORT,
-      })
-      if (res) {
-        this.startAndBindServer(res.wss)
+      const { wss: chiiWss } = mincuChii.start({
+        // port: DEBUG_PORT,
+      }) as { wss: WebSocketServer }
+      if (chiiWss) {
+        chiiWss.on('connection', (res: any) => {
+          if (res.type === 'target') {
+            if (this.wss) {
+              const { id, chiiUrl, title } = res
+              this.broadcast(
+                JSON.stringify({
+                  type: 'chiiConnected',
+                  data: {
+                    id,
+                    title,
+                    chiiUrl,
+                  },
+                })
+              )
+            }
+            return
+            console.log(
+              'TEST',
+              `http://localhost:8080/front_end/chii_app.html?ws=localhost:8080/client/asdasd?target=${id}`
+            )
+          }
+        })
       }
-      openBrowser(`http://localhost:${DEBUG_PORT}`)
+      // openBrowser(`http://localhost:${DEBUG_PORT}`)
     } catch (err) {
       console.log(err)
     }
@@ -139,32 +167,23 @@ class Cli {
 
     let origin = text
     if (origin.match('localhost')) {
-      const ipv4 = internalIp.v4.sync()
-      if (!ipv4) {
+      if (!IPV4) {
         rLog(TAG, 'Cannot get Network Host')
         return
       }
-      origin = text.replace('localhost', ipv4)
+      origin = text.replace('localhost', IPV4)
     }
     const url = new URL(origin)
     url.searchParams.set('devSecret', 'iNCUDeveloper++')
     openBrowser(
-      `http://localhost:${this.devtoolPort}/?url=${encodeURIComponent(
-        url.toString()
-      )}&origin=${origin}`
+      `${LOCALHOST}:${this.devtoolPort}/?url=${encodeURIComponent(url.toString())}&origin=${origin}`
     )
   }
 
   startDevtool = async () => {
-    try {
-      const { DEV_TOOL_PORT, startDevTool } = require('mincu-debug-tools/server')
+    this.devtoolPort = DEV_TOOL_PORT
 
-      this.devtoolPort = DEV_TOOL_PORT
-
-      startDevTool?.()
-    } catch (err) {
-      console.log('TEST', err)
-    }
+    startDevTool?.(IPV4)
   }
 
   useQrcode = async (stdout) => {
@@ -180,21 +199,23 @@ class Cli {
     })
   }
 
-  bindServerCommand = (wss: Server) => {
-    const { stdin, exit, stdout } = process
-    readline.emitKeypressEvents(stdin)
-    if (stdin.isTTY) stdin.setRawMode(true)
-
-    const broadcast = (data: any, message) => {
-      if (wss.clients.size > 0) {
+  broadcast = (data: any, message?: any) => {
+    if (message) {
+      if (this.wss.clients.size > 0) {
         rLog(TAG, message)
       } else {
         rLog(TAG, 'No client connected')
       }
-      wss.clients.forEach((client) => {
-        client.send(data)
-      })
     }
+    this.wss.clients.forEach((client) => {
+      client.send(data)
+    })
+  }
+
+  bindServerCommand = () => {
+    const { stdin, exit, stdout } = process
+    readline.emitKeypressEvents(stdin)
+    if (stdin.isTTY) stdin.setRawMode(true)
 
     const exitWithLog = () => {
       rLog(chalk.inverse.cyan.bold(' Mincud '), 'was shutdown')
@@ -216,9 +237,9 @@ class Cli {
             break
         }
       } else if (name === 'r') {
-        broadcast(CMD_RELOAD, 'Reloading app...')
+        this.broadcast(CMD_RELOAD, 'Reloading app...')
       } else if (name === 'd') {
-        broadcast(CMD_DEV_TOOL, 'Toggle Dev Tools...')
+        this.broadcast(CMD_DEV_TOOL, 'Toggle Dev Tools...')
       } else if (name === 'return') {
         stdout.write('\r\n')
       } else if (name) {
