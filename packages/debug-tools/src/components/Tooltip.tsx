@@ -40,7 +40,10 @@ const Tooltip = ({ children, label, placement = 'top' }: Props) => {
 
   return (
     <>
-      {cloneElement(children, getReferenceProps({ ref: reference, ...children.props }))}
+      {cloneElement(
+        children,
+        getReferenceProps({ ref: reference, ...children.props })
+      )}
       <AnimatePresence>
         {open && (
           <motion.div

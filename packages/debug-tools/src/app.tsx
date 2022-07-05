@@ -1,56 +1,96 @@
-import { QRCodeSVG } from 'qrcode.react'
-import { useEffect, useState } from 'react'
-import { useSearchParam } from 'react-use'
-import { DEFAULT_HINT, DEBUG_URL_KEY, useDecodeUrl, previewUrl } from './utils'
-import Tooltip from './components/Tooltip'
-import type { SitePreview } from './vite-env'
-import SiteInfo from './components/SiteInfo'
+import 'react-mosaic-component/react-mosaic-component.css'
+import './mosaic.css'
 
-export function App() {
-  const url = useDecodeUrl()
-  const hint = useSearchParam('hint') || DEFAULT_HINT
-  const [preview, setPreview] = useState<SitePreview>()
+import React, { useEffect } from 'react'
+import Debuggable from './components/Debuggable'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { Mosaic } from 'react-mosaic-component'
+
+import { useThemeWatcher } from './hooks'
+import { useTargets, useIp } from './hooks/request'
+import clsx from 'clsx'
+import CopyableScript from './components/CopyableScript'
+
+const DebugArea = () => {
+  const { targets, mutate: mutateTargets } = useTargets({
+    refreshInterval: 1000,
+  })
+  const { ip } = useIp()
+  const [parent] = useAutoAnimate<HTMLDivElement>()
+
+  useThemeWatcher()
 
   useEffect(() => {
-    if (url) {
-      localStorage.setItem(DEBUG_URL_KEY, url)
+    const ws = new WebSocket('ws://localhost:2333')
+    ws.onmessage = async ({ data }) => {
+      console.log(data)
+      try {
+        const { type, payload } = JSON.parse(data)
+        if (type === 'targchiiConnected') {
+          mutateTargets(payload)
+        }
+      } catch (e) {
+        console.error(e)
+      }
     }
   }, [])
 
-  useEffect(() => {
-    checkUsable()
-  }, [url])
-
-  const checkUsable = async () => {
-    if (!url) return
-    const res = await previewUrl(url)
-    console.log(res)
-    setPreview(res)
-  }
-
-  const finalTitle = preview?.title || ''
-
   return (
-    <div className="text-light-600 body-font overflow-hidden bg-dark-900 w-screen h-screen flex flex-col items-center justify-center">
-      <Tooltip label={<SiteInfo preview={preview} />}>
-        <h1
-          className="title-font sm:text-2xl text-2xl mb-8 font-medium subpixel-antialiased cursor-pointer hover:underline"
-          onClick={() => {
-            window.open(url)
-          }}
-        >
-          {finalTitle}
-        </h1>
-      </Tooltip>
-      <QRCodeSVG
-        value={url}
-        className="mb-8 object-cover object-center rounded-2xl border-6"
-        size={250}
-      />
-      <div className="text-center lg:w-2/3 w-full">
-        <p className="sm:text-1xl text-2xl mb-8 text-gray-300">{hint}</p>
-      </div>
-      <iframe className="w-full h-full bg-white" src="http://localhost:2333/" />
+    <div
+      ref={parent}
+      className={clsx(
+        'dark:text-white dark:bg-zinc-900',
+        'overflow-hidden items-center justify-center',
+        'w-screen h-screen flex flex-col'
+      )}
+    >
+      {targets.length > 0 ? (
+        <>
+          <div className="text-2xl mb-12">可调试应用</div>
+          {targets.map((target) => (
+            <Debuggable key={target.id} data={target} />
+          ))}
+        </>
+      ) : (
+        <div className="text-2xl flex flex-col items-center justify-center">
+          无可调试应用
+          <CopyableScript ip={ip} />
+        </div>
+      )}
     </div>
+  )
+}
+const ELEMENT_MAP: { [viewId: string]: JSX.Element } = {
+  a: <DebugArea />,
+  b: <div>Top Right</div>,
+  c: <div>Bottom Right Window</div>,
+}
+
+const Window = () => {
+  return (
+    <Mosaic<string>
+      renderTile={(id) => {
+        return ELEMENT_MAP[id]
+      }}
+      initialValue={{
+        direction: 'row',
+        first: 'a',
+        second: {
+          direction: 'column',
+          first: 'b',
+          second: 'c',
+        },
+        splitPercentage: 60,
+      }}
+    />
+  )
+}
+
+export const App = () => {
+  return (
+    <DebugArea />
+    // <div className="max-w-screen h-screen">
+    //   <Window />
+    // </div>
   )
 }

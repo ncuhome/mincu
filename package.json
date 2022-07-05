@@ -13,7 +13,7 @@
     "start": "preconstruct watch",
     "start:debug-tools": "pnpm run dev --filter mincu-debug-tools",
     "test:example": "ts-node ./tests/run_example_scripts.ts",
-    "postinstall": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
     "release": "npm run build && lerna publish --force-publish --no-push"
   },
   "husky": {

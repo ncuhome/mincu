@@ -1,0 +1,9 @@
+.mosaic-drop-target  {
+  background: unset !important;
+}
+
+.mosaic-tile {
+  @apply border-2;
+  @apply rounded-2;
+  @apply p-2;
+}

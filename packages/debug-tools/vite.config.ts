@@ -1,10 +1,28 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import WindiCSS from 'vite-plugin-windicss'
 import path from 'path'
+import Unocss from 'unocss/vite'
+import presetUno from '@unocss/preset-uno'
+import transformerDirective from '@unocss/transformer-directives'
+import presetIcons from '@unocss/preset-icons'
 
 export default defineConfig({
-  plugins: [react(), WindiCSS()],
+  plugins: [
+    Unocss({
+      presets: [
+        presetUno({}),
+        presetIcons({
+          extraProperties: {
+            display: 'inline-block',
+            'vertical-align': 'middle',
+            // ...
+          },
+        }),
+      ],
+      transformers: [transformerDirective()],
+    }),
+    react(),
+  ],
   resolve: {
     alias: [
       {
