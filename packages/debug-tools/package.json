@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "dev": "concurrently vite \"node bin.js\"",
+    "dev": "concurrently vite \"node bin.js\" \"node ../debug/bin.js --no-qrcode\"",
     "server": "node bin.js"
   },
   "dependencies": {
@@ -35,7 +35,6 @@
     "@types/react": "^18.0.11",
     "@types/react-dom": "^18.0.5",
     "@types/serve-handler": "^6.1.1",
-    "@types/tough-cookie": "^4.0.2",
     "@types/ws": "^8.5.3",
     "@unocss/preset-icons": "^0.43.0",
     "@unocss/preset-uno": "^0.43.0",

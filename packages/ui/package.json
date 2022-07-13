@@ -13,7 +13,7 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-core": "2.6.5"
+    "mincu-core": "workspace:^2.6.5"
   },
   "devDependencies": {
     "@types/react-native": "^0.67.7"

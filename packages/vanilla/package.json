@@ -13,10 +13,10 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-core": "2.6.5",
-    "mincu-data": "2.6.5",
-    "mincu-event": "2.6.5",
-    "mincu-network": "2.6.5",
-    "mincu-ui": "2.6.5"
+    "mincu-core": "workspace:^2.6.5",
+    "mincu-data": "workspace:^2.6.5",
+    "mincu-event": "workspace:^2.6.5",
+    "mincu-network": "workspace:^2.6.5",
+    "mincu-ui": "workspace:^2.6.5"
   }
 }

@@ -44,7 +44,10 @@ export class NetWorkModule {
 
     /** 初始化 axios 拦截器 */
     this.fetch.interceptors.request.use(interceptors.request)
-    this.fetch.interceptors.response.use(interceptors.response, interceptors.error)
+    this.fetch.interceptors.response.use(
+      interceptors.response,
+      interceptors.error
+    )
   }
 
   private setToken = (token: string) => {
@@ -79,7 +82,8 @@ export class NetWorkModule {
           this.failedQueue.push({ resolve, reject })
         })
           .then((token: string) => {
-            originalRequest.headers['Authorization'] = this.getAuthorization(token)
+            originalRequest.headers['Authorization'] =
+              this.getAuthorization(token)
             return this.fetch(originalRequest)
           })
           .catch((err) => {
@@ -93,8 +97,10 @@ export class NetWorkModule {
       return new Promise((resolve, reject) => {
         this.refreshToken()
           .then((token) => {
-            this.fetch.defaults.headers.common['Authorization'] = this.getAuthorization(token)
-            originalRequest.headers['Authorization'] = this.getAuthorization(token)
+            this.fetch.defaults.headers.common['Authorization'] =
+              this.getAuthorization(token)
+            originalRequest.headers['Authorization'] =
+              this.getAuthorization(token)
             this.processQueue(null, token)
             resolve(this.fetch(originalRequest))
           })

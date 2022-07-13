@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
-    "mincu-debug": "2.6.5",
-    "mincu-react": "2.6.5",
+    "mincu-debug": "workspace:^2.6.5",
+    "mincu-react": "workspace:^2.6.5",
     "postcss": "^8.4.14",
     "qrcode.react": "^3.0.2",
     "react": "^18.1.0",

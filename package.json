@@ -13,7 +13,6 @@
     "start": "preconstruct watch",
     "start:debug-tools": "pnpm run dev --filter mincu-debug-tools",
     "test:example": "ts-node ./tests/run_example_scripts.ts",
-    "bootstrap": "lerna bootstrap",
     "release": "npm run build && lerna publish --force-publish --no-push"
   },
   "husky": {
@@ -26,6 +25,7 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
+    "@lerna-lite/cli": "^1.6.0",
     "@preconstruct/cli": "^2.1.5",
     "@types/node": "^17.0.40",
     "@types/react": "^18.0.11",
@@ -36,7 +36,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "execa": "^6.1.0",
     "husky": "^8.0.1",
-    "lerna": "^5.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.6.2",
     "pretty-quick": "^3.1.3",
