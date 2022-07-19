@@ -17,6 +17,6 @@
     "mincu-vanilla": "workspace:^2.6.5"
   },
   "peerDependencies": {
-    "react": "^18.1.0"
+    "react": ">=17"
   }
 }
