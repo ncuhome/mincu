@@ -15,8 +15,9 @@
   ],
   "scripts": {
     "build": "vite build",
-    "dev": "concurrently vite \"node bin.js\" \"node ../debug/bin.js --no-qrcode\"",
-    "server": "node bin.js"
+    "dev": "concurrently vite npm:dev:debug npm:dev:debug-tools",
+    "dev:debug": "node ../debug/bin.js --no-qrcode",
+    "dev:debug-tools": "node bin.js"
   },
   "dependencies": {
     "cross-fetch": "^3.1.5",
@@ -47,7 +48,6 @@
     "qrcode.react": "^3.0.2",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-mosaic-component": "^5.1.0",
     "react-use": "^17.4.0",
     "react-use-clipboard": "^1.0.8",
     "redaxios": "^0.5.0",

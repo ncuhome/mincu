@@ -56,7 +56,8 @@ export const logToConsole = (level: LogLevel, data: any[]) => {
     }
 
     console.log(
-      color.bold(` ${logFunction.toUpperCase()} `) + ''.padEnd(groupStack.length * 2, ' '),
+      color.bold(` ${logFunction.toUpperCase()} `) +
+        ''.padEnd(groupStack.length * 2, ' '),
       // `util.format` actually accepts any arguments.
       // If the first argument is a string, it tries to format it.
       // Otherwise, it just concatenates all arguments.

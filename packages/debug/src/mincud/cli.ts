@@ -109,7 +109,9 @@ class Cli {
 
     const finalCmd = input.length > 1 ? input.join(' ') : input[0]
 
-    const { stderr, stdout, pid } = execa.command(finalCmd, { env: { FORCE_COLOR: 'true' } })
+    const { stderr, stdout, pid } = execa.command(finalCmd, {
+      env: { FORCE_COLOR: 'true' },
+    })
 
     this.childPid = pid
 
@@ -176,7 +178,9 @@ class Cli {
     const url = new URL(origin)
     url.searchParams.set('devSecret', 'iNCUDeveloper++')
     openBrowser(
-      `${LOCALHOST}:${this.devtoolPort}/?url=${encodeURIComponent(url.toString())}&origin=${origin}`
+      `${LOCALHOST}:${this.devtoolPort}/?url=${encodeURIComponent(
+        url.toString()
+      )}&origin=${origin}`
     )
   }
 
@@ -189,7 +193,10 @@ class Cli {
   useQrcode = async (stdout) => {
     this.startAndBindServer()
 
-    const stringMatcher = new StringMatcher([REGEXP_NETWORK_HOST, REGEXP_LOCAL_HOST])
+    const stringMatcher = new StringMatcher([
+      REGEXP_NETWORK_HOST,
+      REGEXP_LOCAL_HOST,
+    ])
     stringMatcher.onMatch((matchRes) => {
       this.openQRCode(matchRes[0])
     })

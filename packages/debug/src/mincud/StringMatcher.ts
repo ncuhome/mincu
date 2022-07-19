@@ -18,7 +18,10 @@ export class StringMatcher {
   private debouncedCheck: () => void
   private idx: number
 
-  constructor(regexExps: RegExp[], { cycle = 3, debounceDelay = 1000, once = true } = {}) {
+  constructor(
+    regexExps: RegExp[],
+    { cycle = 3, debounceDelay = 1000, once = true } = {}
+  ) {
     this.queue = []
     this.cycle = cycle
     this.regexExps = regexExps

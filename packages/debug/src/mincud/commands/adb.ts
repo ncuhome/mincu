@@ -21,7 +21,15 @@ export const getAdbOutputAsync = (args: string[]) => {
 }
 
 export const openUrlAdb = async (url: string) => {
-  const args = ['shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', url]
+  const args = [
+    'shell',
+    'am',
+    'start',
+    '-a',
+    'android.intent.action.VIEW',
+    '-d',
+    url,
+  ]
   try {
     const success = await getAdbOutputAsync(args)
     return !!success

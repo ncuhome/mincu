@@ -3,7 +3,8 @@ import { openUrlAdb } from './adb'
 
 export const iNCUScheme = (postfix: string) => `incu://${postfix}`
 
-export const iNCUWebViewScheme = (url: string) => iNCUScheme(`Webview?url=${url}`)
+export const iNCUWebViewScheme = (url: string) =>
+  iNCUScheme(`Webview?url=${url}`)
 
 const openUrls = {
   android: openUrlAdb,

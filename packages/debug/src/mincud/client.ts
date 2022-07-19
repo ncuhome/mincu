@@ -1,7 +1,14 @@
 import { Encode } from 'console-feed-node-transform'
 import WebSocket, { MessageEvent } from 'isomorphic-ws'
 import { _window } from 'mincu-lib'
-import { CMD_DEV_TOOL, CMD_RELOAD, DEBUG_HOST, DEBUG_PORT, LogLevel, Received } from './shared'
+import {
+  CMD_DEV_TOOL,
+  CMD_RELOAD,
+  DEBUG_HOST,
+  DEBUG_PORT,
+  LogLevel,
+  Received,
+} from './shared'
 
 const genReceived = (recv: Received) => {
   return JSON.stringify(recv)
@@ -49,7 +56,10 @@ export class Client {
       this.client = new WebSocket(`ws://${DEBUG_HOST}:${DEBUG_PORT}`)
       this.client.onopen = () => {
         this.opened = true
-        this.log('info', `DebugTools at ${_window.location?.origin} has connected`)
+        this.log(
+          'info',
+          `DebugTools at ${_window.location?.origin} has connected`
+        )
       }
       this.client.onerror = () => {
         this.opened = false

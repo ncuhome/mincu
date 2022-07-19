@@ -24,7 +24,9 @@ function getBrowserEnv() {
   // It is specific to the operating system.
   // See https://github.com/sindresorhus/open#app for documentation.
   const value = process.env.BROWSER
-  const args = process.env.BROWSER_ARGS ? process.env.BROWSER_ARGS.split(' ') : []
+  const args = process.env.BROWSER_ARGS
+    ? process.env.BROWSER_ARGS.split(' ')
+    : []
   let action
   if (!value) {
     // Default.
@@ -47,7 +49,11 @@ function executeNodeScript(scriptPath, url) {
   child.on('close', (code) => {
     if (code !== 0) {
       console.log()
-      console.log(chalk.red('The script specified as BROWSER environment variable failed.'))
+      console.log(
+        chalk.red(
+          'The script specified as BROWSER environment variable failed.'
+        )
+      )
       console.log(chalk.cyan(scriptPath) + ' exited with code ' + code + '.')
       console.log()
       return
@@ -62,7 +68,8 @@ function startBrowserProcess(browser, url, args) {
   // Chrome with AppleScript. This lets us reuse an
   // existing tab when possible instead of creating a new one.
   const shouldTryOpenChromiumWithAppleScript =
-    process.platform === 'darwin' && (typeof browser !== 'string' || browser === OSX_CHROME)
+    process.platform === 'darwin' &&
+    (typeof browser !== 'string' || browser === OSX_CHROME)
 
   if (shouldTryOpenChromiumWithAppleScript) {
     // Will use the first open browser found from list
@@ -81,7 +88,11 @@ function startBrowserProcess(browser, url, args) {
         // on OSX Chromium-based browser with AppleScript
         execSync('ps cax | grep "' + chromiumBrowser + '"')
         execSync(
-          'osascript openChrome.applescript "' + encodeURI(url) + '" "' + chromiumBrowser + '"',
+          'osascript openChrome.applescript "' +
+            encodeURI(url) +
+            '" "' +
+            chromiumBrowser +
+            '"',
           {
             cwd: __dirname,
             stdio: 'ignore',

@@ -1,4 +1,8 @@
-import type { LinkingStatic, ToastAndroidStatic, StatusBarStyle } from 'react-native'
+import type {
+  LinkingStatic,
+  ToastAndroidStatic,
+  StatusBarStyle,
+} from 'react-native'
 import { Base_info } from './base_type'
 
 export type FuncNames = keyof INativeFuncs

@@ -1,10 +1,6 @@
-import 'react-mosaic-component/react-mosaic-component.css'
-import './mosaic.css'
-
 import React, { useEffect } from 'react'
 import Debuggable from './components/Debuggable'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { Mosaic } from 'react-mosaic-component'
 
 import { useThemeWatcher } from './hooks'
 import { useTargets, useIp } from './hooks/request'
@@ -66,31 +62,6 @@ const ELEMENT_MAP: { [viewId: string]: JSX.Element } = {
   c: <div>Bottom Right Window</div>,
 }
 
-const Window = () => {
-  return (
-    <Mosaic<string>
-      renderTile={(id) => {
-        return ELEMENT_MAP[id]
-      }}
-      initialValue={{
-        direction: 'row',
-        first: 'a',
-        second: {
-          direction: 'column',
-          first: 'b',
-          second: 'c',
-        },
-        splitPercentage: 60,
-      }}
-    />
-  )
-}
-
 export const App = () => {
-  return (
-    <DebugArea />
-    // <div className="max-w-screen h-screen">
-    //   <Window />
-    // </div>
-  )
+  return <DebugArea />
 }

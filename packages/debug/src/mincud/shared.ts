@@ -1,6 +1,7 @@
 import { _window } from 'mincu-lib'
 
-export const REGEXP_NETWORK_HOST = /(http:\/\/([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+):([0-9]+))/g
+export const REGEXP_NETWORK_HOST =
+  /(http:\/\/([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+):([0-9]+))/g
 export const REGEXP_LOCAL_HOST = /(http:\/\/localhost:([0-9]+))/g
 
 export const CMD_RELOAD = 'CMD_RELOAD'

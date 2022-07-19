@@ -70,10 +70,12 @@ const init = async () => {
           name: 'projectName',
           message: '项目名称:',
           initial: defaultProjectName,
-          onState: (state) => (targetDir = state.value.trim() || defaultProjectName),
+          onState: (state) =>
+            (targetDir = state.value.trim() || defaultProjectName),
         },
         {
-          type: () => (!fse.existsSync(targetDir) || isEmpty(targetDir) ? null : 'confirm'),
+          type: () =>
+            !fse.existsSync(targetDir) || isEmpty(targetDir) ? null : 'confirm',
           name: 'overwrite',
           message: () =>
             (targetDir === '.' ? '当前目录' : `目标目录 "${targetDir}"`) +
@@ -93,13 +95,18 @@ const init = async () => {
           name: 'packageName',
           message: 'package.json 的包名(packageName):',
           initial: () => toValidPackageName(targetDir),
-          validate: (dir) => isValidPackageName(dir) || '非法的 package.json 名',
+          validate: (dir) =>
+            isValidPackageName(dir) || '非法的 package.json 名',
         },
         {
-          type: template && TEMPLATES.some((item) => template !== item.name) ? null : 'select',
+          type:
+            template && TEMPLATES.some((item) => template !== item.name)
+              ? null
+              : 'select',
           name: 'template',
           message:
-            typeof template === 'string' && !TEMPLATES.some((item) => template !== item.name)
+            typeof template === 'string' &&
+            !TEMPLATES.some((item) => template !== item.name)
               ? `"${template}" 并不是一个有效的模板. 请选择以上模板: `
               : '选择一个模板:',
           initial: 0,
