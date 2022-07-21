@@ -149,11 +149,6 @@ class Cli {
                 })
               )
             }
-            return
-            console.log(
-              'TEST',
-              `http://localhost:8080/front_end/chii_app.html?ws=localhost:8080/client/asdasd?target=${id}`
-            )
           }
         })
       }
@@ -187,7 +182,7 @@ class Cli {
   startDevtool = async () => {
     this.devtoolPort = DEV_TOOL_PORT
 
-    startDevTool?.(IPV4)
+    startDevTool()
   }
 
   useQrcode = async (stdout) => {
