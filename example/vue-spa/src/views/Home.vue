@@ -16,6 +16,9 @@
 import { computed } from 'vue'
 import { uiModule, networkModule } from 'mincu-vanilla'
 import useNativeState from '../hooks/useNativeState'
+import axios from 'axios';
+const fetcher = axios.create()
+networkModule.useAxiosInterceptors(fetcher)
 
 export default {
   setup() {
@@ -35,7 +38,7 @@ export default {
 
     const fetchSchoolLife = async () => {
       const loadingTip = await uiModule.loading('加载中', 0)
-      const { status } = await networkModule.fetch.get(
+      const { status } = await fetcher.get(
         'https://incu-api.ncuos.com/v2/api/schoolLife'
       )
       loadingTip()

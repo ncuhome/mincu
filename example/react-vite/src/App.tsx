@@ -11,6 +11,10 @@ import {
 import { Fallback } from './Fallback';
 
 import { Button } from './Button';
+import axios from 'axios';
+
+const fetcher = axios.create()
+networkModule.useAxiosInterceptors(fetcher)
 
 const App = () => {
   const { top } = useSafeArea();
@@ -36,7 +40,7 @@ const App = () => {
   const fetchSchoolLife = async () => {
     const loadingTip = await uiModule.loading('加载中', 0);
     try {
-      const res = await networkModule.fetch.get(
+      const res = await fetcher.get(
         'https://os.ncuos.com/api/user/profile/basic'
       );
       alert(JSON.stringify(res.data));

@@ -13,8 +13,10 @@
     "dist"
   ],
   "dependencies": {
-    "axios": "^0.27.2",
     "mincu-core": "workspace:^2.6.5",
     "mincu-data": "workspace:^2.6.5"
+  },
+  "devDependencies": {
+    "axios": "^0.27.2"
   }
 }

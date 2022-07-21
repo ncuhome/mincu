@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
+    "axios": "^0.27.2",
     "mincu-debug": "workspace:^2.6.5",
     "mincu-react": "workspace:^2.6.5",
     "postcss": "^8.4.14",
