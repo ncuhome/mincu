@@ -44,6 +44,11 @@ export class NetWorkModule {
     error: this.handleTokenExpired,
   })
 
+  /**
+   * @exmaple
+   * const fetcher = axios.create()
+   * networkModule.useAxiosInterceptors(fetcher)
+   */
   public useAxiosInterceptors(axiosInstance: AxiosInstance) {
     const interceptors = this.axiosInterceptors()
     axiosInstance.interceptors.request.use(interceptors.request)
