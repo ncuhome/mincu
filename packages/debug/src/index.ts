@@ -1,6 +1,6 @@
 import { _window } from 'mincu-lib'
 import { Client } from './mincud/client'
-import { LEVELS } from './mincud/shared'
+import { LOG_LEVELS } from 'mincu-lib/debug'
 
 class DebugModule {
   static Instance() {
@@ -28,7 +28,7 @@ class DebugModule {
     errorFormatter = (event: ErrorEvent) => `${event.type}: ${event.message}\n`
   ) {
     if (this.client.init()) {
-      LEVELS.forEach((level) => {
+      LOG_LEVELS.forEach((level) => {
         const tmp = _window.console[level]
         if (tmp) {
           _window.console[level] = (...args: any[]) => {

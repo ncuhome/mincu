@@ -8,7 +8,7 @@
  */
 import chalk from 'chalk'
 import util from 'util'
-import { LogLevel } from './shared'
+import { LogLevel } from 'mincu-lib/debug'
 
 const groupStack = []
 let collapsedGuardTimer

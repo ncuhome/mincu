@@ -14,8 +14,8 @@ import {
   REGEXP_LOCAL_HOST,
   CMD_RELOAD,
   CMD_DEV_TOOL,
-  DEBUG_PORT,
-} from './shared'
+  DEBUG_CHII_PORT,
+} from 'mincu-lib/debug'
 import openBrowser from './openBrowser'
 import { DEV_TOOL_PORT, startDevTool } from 'mincu-debug-tools/server'
 
@@ -131,7 +131,7 @@ class Cli {
   useChii = async () => {
     try {
       const { wss: chiiWss } = mincuChii.start({
-        // port: DEBUG_PORT,
+        port: DEBUG_CHII_PORT,
       }) as { wss: WebSocketServer }
       if (chiiWss) {
         chiiWss.on('connection', (res: any) => {

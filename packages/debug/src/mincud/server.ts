@@ -1,6 +1,6 @@
 import WebSocket, { Data } from 'ws'
 import chalk from 'chalk'
-import { DEBUG_PORT, Received } from './shared'
+import { DEBUG_PORT, Received } from 'mincu-lib/debug'
 import { logToConsole } from './logToConsole'
 import { Decode } from 'console-feed-node-transform'
 import { openUrl, Platform } from './commands'

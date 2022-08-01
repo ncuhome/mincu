@@ -8,7 +8,8 @@ import {
   DEBUG_PORT,
   LogLevel,
   Received,
-} from './shared'
+  DEBUG_CHII_PORT,
+} from 'mincu-lib/debug'
 
 const genReceived = (recv: Received) => {
   return JSON.stringify(recv)
@@ -21,7 +22,7 @@ export class Client {
 
   initChii() {
     var script = document.createElement('script')
-    script.src = `${location.protocol}//${DEBUG_HOST}:${DEBUG_PORT}/target.js`
+    script.src = `${location.protocol}//${DEBUG_HOST}:${DEBUG_CHII_PORT}/target.js`
     document.body.appendChild(script)
   }
 

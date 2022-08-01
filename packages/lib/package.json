@@ -10,9 +10,16 @@
   "main": "dist/mincu-lib.cjs.js",
   "module": "dist/mincu-lib.esm.js",
   "files": [
-    "dist"
+    "dist",
+    "debug"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "debug.ts"
+    ]
   }
 }
