@@ -7,6 +7,11 @@ export const REGEXP_LOCAL_HOST = /(http:\/\/localhost:([0-9]+))/g
 export const CMD_RELOAD = 'CMD_RELOAD'
 export const CMD_DEV_TOOL = 'CMD_DEV_TOOL'
 
+export const enum CHII_EVENT {
+  CONNECTED,
+  TARGET_CHANGED,
+}
+
 export const DEBUG_CHII_PORT = 2334
 export const DEBUG_PORT = 2333
 export const DEBUG_HOST = _window.location?.hostname || 'localhost'

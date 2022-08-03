@@ -1,11 +1,11 @@
 import useSWR, { SWRConfiguration } from 'swr'
 import redaxios, { Response } from 'redaxios'
-import { API_HOST } from '../utils'
+import { API_HOST, CHII_URL } from '../utils'
 import { DebugTarget } from '@/shim'
 
 export const useTargets = (config?: SWRConfiguration) => {
   const { data, error, mutate } = useSWR<Response<DebugTarget[]>>(
-    `http://localhost:8080/targets`,
+    `${CHII_URL}/targets`,
     redaxios.get,
     config
   )

@@ -18,6 +18,7 @@ import {
 } from 'mincu-lib/debug'
 import openBrowser from './openBrowser'
 import { DEV_TOOL_PORT, startDevTool } from 'mincu-debug-tools/server'
+import { CHII_EVENT } from 'mincu-lib/debug'
 
 const IPV4 = internalIp.v4.sync()
 
@@ -130,9 +131,9 @@ class Cli {
 
   useChii = async () => {
     try {
-      const { wss: chiiWss } = mincuChii.start({
+      const { wss: chiiWss, onTargetChanged } = mincuChii.start({
         port: DEBUG_CHII_PORT,
-      }) as { wss: WebSocketServer }
+      }) as { wss: WebSocketServer; onTargetChanged: (cb: () => void) => void }
       if (chiiWss) {
         chiiWss.on('connection', (res: any) => {
           if (res.type === 'target') {
@@ -140,7 +141,7 @@ class Cli {
               const { id, chiiUrl, title } = res
               this.broadcast(
                 JSON.stringify({
-                  type: 'chiiConnected',
+                  type: CHII_EVENT.CONNECTED,
                   data: {
                     id,
                     title,
@@ -152,6 +153,13 @@ class Cli {
           }
         })
       }
+      onTargetChanged?.(() => {
+        this.broadcast(
+          JSON.stringify({
+            type: CHII_EVENT.TARGET_CHANGED,
+          })
+        )
+      })
       // openBrowser(`http://localhost:${DEBUG_PORT}`)
     } catch (err) {
       console.log(err)

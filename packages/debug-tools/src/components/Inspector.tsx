@@ -1,25 +1,24 @@
-import React, { FC, useCallback, useRef } from 'react'
-import { nanoid } from 'nanoid'
+import React, { FC, useRef, useCallback } from 'react'
 import { DebugTarget } from '@/shim'
-import clsx from 'clsx'
+import { chiiFrontUrl } from '@/utils'
+import { useThemeChange } from '@/hooks'
 
 const Inspector: FC<{
   data: DebugTarget
 }> = ({ data }) => {
-  const clientIdRef = useRef(nanoid(6))
-  const getUrl = useCallback(() => {
-    return `http://localhost:8080/front_end/chii_app.html?ws=localhost:8080/client/${clientIdRef.current}?target=${data.id}`
-  }, [])
+  const ref = useRef<HTMLIFrameElement>(null)
 
-  return (
-    <iframe
-      className={clsx(
-        'w-[85vw] h-[85vh] rounded-lg border-2',
-        'border-black dark:border-white'
-      )}
-      src={getUrl()}
-    />
-  )
+  useThemeChange(() => {
+    if (ref.current) {
+      ref.current.src = chiiFrontUrl(data.id, data.id)
+    }
+  })
+
+  const getUrl = useCallback(() => {
+    return chiiFrontUrl(data.id, data.id)
+  }, [data.id])
+
+  return <iframe className={'w-full h-full'} src={getUrl()} ref={ref} />
 }
 
 export default Inspector

@@ -56,7 +56,7 @@ importers:
       '@types/react': ^18.0.9
       axios: ^0.27.2
       immer: ^9.0.14
-      mincu-react: workspace:^2.6.5
+      mincu-react: workspace:^2.7.0-alpha.0
       next: ^12.1.6
       react: ^18.1.0
       react-dom: ^18.1.0
@@ -84,8 +84,8 @@ importers:
       '@vitejs/plugin-react': ^1.3.2
       autoprefixer: ^10.4.7
       axios: ^0.27.2
-      mincu-debug: workspace:^2.6.5
-      mincu-react: workspace:^2.6.5
+      mincu-debug: workspace:^2.7.0-alpha.0
+      mincu-react: workspace:^2.7.0-alpha.0
       postcss: ^8.4.14
       qrcode.react: ^3.0.2
       react: ^18.1.0
@@ -114,7 +114,7 @@ importers:
 
   example/vanilla-ts:
     specifiers:
-      mincu-debug: workspace:^2.6.5
+      mincu-debug: workspace:^2.7.0-alpha.0
       typescript: ^4.6.4
       vite: ^2.9.9
     dependencies:
@@ -127,7 +127,7 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^1.9.3
       axios: ^0.27.2
-      mincu-vanilla: workspace:^2.6.5
+      mincu-vanilla: workspace:^2.7.0-alpha.0
       typescript: ^4.4.3
       vite: ^2.7.4
       vue: ^3.2.16
@@ -156,7 +156,7 @@ importers:
     specifiers:
       '@types/react-native': ^0.67.7
       events: ^3.3.0
-      mincu-lib: workspace:^2.6.5
+      mincu-lib: workspace:^2.7.0-alpha.0
     dependencies:
       events: 3.3.0
       mincu-lib: link:../lib
@@ -184,8 +184,8 @@ importers:
 
   packages/data:
     specifiers:
-      mincu-core: workspace:^2.6.5
-      mincu-lib: workspace:^2.6.5
+      mincu-core: workspace:^2.7.0-alpha.0
+      mincu-lib: workspace:^2.7.0-alpha.0
     dependencies:
       mincu-core: link:../core
       mincu-lib: link:../lib
@@ -203,9 +203,9 @@ importers:
       isomorphic-ws: ^4.0.1
       lodash.debounce: ^4.0.8
       meow: 9.0.0
-      mincu-chii: ^1.0.0
-      mincu-debug-tools: workspace:^2.6.5
-      mincu-lib: workspace:^2.6.5
+      mincu-chii: ^1.1.0
+      mincu-debug-tools: workspace:^2.7.0-alpha.0
+      mincu-lib: workspace:^2.7.0-alpha.0
       open: ^8.4.0
       strip-ansi: 6.0.0
       terminate: ^2.5.0
@@ -219,7 +219,7 @@ importers:
       isomorphic-ws: 4.0.1_ws@8.8.0
       lodash.debounce: 4.0.8
       meow: 9.0.0
-      mincu-chii: 1.0.0
+      mincu-chii: 1.1.0
       mincu-debug-tools: link:../debug-tools
       mincu-lib: link:../lib
       open: 8.4.0
@@ -247,6 +247,7 @@ importers:
       '@unocss/reset': ^0.43.0
       '@unocss/transformer-directives': ^0.43.0
       '@vitejs/plugin-react': ^1.3.2
+      allotment: ^1.15.0
       clsx: ^1.1.1
       cross-fetch: ^3.1.5
       debug: ^4.3.4
@@ -254,6 +255,8 @@ importers:
       internal-ip: 6.2.0
       isomorphic-ws: ^4.0.1
       link-preview-js: ^2.1.15
+      million: 1.12.3-beta.3
+      mincu-lib: workspace:2.7.0-alpha.0
       nanoid: ^4.0.0
       qrcode.react: ^3.0.2
       react: 18.1.0
@@ -262,6 +265,8 @@ importers:
       react-use-clipboard: ^1.0.8
       redaxios: ^0.5.0
       serve-handler: ^6.1.3
+      simplebar: ^5.3.8
+      simplebar-react: ^2.4.1
       swr: ^1.3.0
       typescript: ^4.7.3
       unocss: ^0.43.0
@@ -270,7 +275,7 @@ importers:
       cross-fetch: 3.1.5
       debug: 4.3.4
       internal-ip: 6.2.0
-      isomorphic-ws: 4.0.1
+      isomorphic-ws: 4.0.1_ws@8.8.0
       link-preview-js: 2.1.15
       serve-handler: 6.1.3
     devDependencies:
@@ -288,8 +293,11 @@ importers:
       '@unocss/reset': 0.43.0
       '@unocss/transformer-directives': 0.43.0
       '@vitejs/plugin-react': 1.3.2
+      allotment: 1.15.0_ef5jwxihqo6n7gxfmzogljlgcm
       clsx: 1.1.1
       framer-motion: 6.3.16_ef5jwxihqo6n7gxfmzogljlgcm
+      million: 1.12.3-beta.3
+      mincu-lib: link:../lib
       nanoid: 4.0.0
       qrcode.react: 3.0.2_react@18.1.0
       react: 18.1.0
@@ -297,6 +305,8 @@ importers:
       react-use: 17.4.0_ef5jwxihqo6n7gxfmzogljlgcm
       react-use-clipboard: 1.0.8_ef5jwxihqo6n7gxfmzogljlgcm
       redaxios: 0.5.0
+      simplebar: 5.3.8
+      simplebar-react: 2.4.1_ef5jwxihqo6n7gxfmzogljlgcm
       swr: 1.3.0_react@18.1.0
       typescript: 4.7.3
       unocss: 0.43.0_vite@2.9.9
@@ -310,28 +320,33 @@ importers:
 
   packages/event:
     specifiers:
-      mincu-core: workspace:^2.6.5
+      mincu-core: workspace:^2.7.0-alpha.0
     dependencies:
       mincu-core: link:../core
 
   packages/hooks:
     specifiers:
       lodash: ^4.17.21
-      mincu-core: workspace:^2.6.5
-      mincu-data: workspace:^2.6.5
+      mincu-core: workspace:^2.7.0-alpha.0
+      mincu-data: workspace:^2.7.0-alpha.0
+      react: '>=17'
     dependencies:
       lodash: 4.17.21
       mincu-core: link:../core
       mincu-data: link:../data
+      react: 18.1.0
 
   packages/lib:
+    specifiers: {}
+
+  packages/lib/debug:
     specifiers: {}
 
   packages/network:
     specifiers:
       axios: ^0.27.2
-      mincu-core: workspace:^2.6.5
-      mincu-data: workspace:^2.6.5
+      mincu-core: workspace:^2.7.0-alpha.0
+      mincu-data: workspace:^2.7.0-alpha.0
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
@@ -340,16 +355,18 @@ importers:
 
   packages/react:
     specifiers:
-      mincu-hooks: workspace:^2.6.5
-      mincu-vanilla: workspace:^2.6.5
+      mincu-hooks: workspace:^2.7.0-alpha.0
+      mincu-vanilla: workspace:^2.7.0-alpha.0
+      react: '>=17'
     dependencies:
       mincu-hooks: link:../hooks
       mincu-vanilla: link:../vanilla
+      react: 18.1.0
 
   packages/ui:
     specifiers:
       '@types/react-native': ^0.67.7
-      mincu-core: workspace:^2.6.5
+      mincu-core: workspace:^2.7.0-alpha.0
     dependencies:
       mincu-core: link:../core
     devDependencies:
@@ -357,11 +374,11 @@ importers:
 
   packages/vanilla:
     specifiers:
-      mincu-core: workspace:^2.6.5
-      mincu-data: workspace:^2.6.5
-      mincu-event: workspace:^2.6.5
-      mincu-network: workspace:^2.6.5
-      mincu-ui: workspace:^2.6.5
+      mincu-core: workspace:^2.7.0-alpha.0
+      mincu-data: workspace:^2.7.0-alpha.0
+      mincu-event: workspace:^2.7.0-alpha.0
+      mincu-network: workspace:^2.7.0-alpha.0
+      mincu-ui: workspace:^2.7.0-alpha.0
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
@@ -514,7 +531,7 @@ packages:
       '@babel/compat-data': 7.18.6
       '@babel/core': 7.18.6
       '@babel/helper-validator-option': 7.18.6
-      browserslist: 4.20.3
+      browserslist: 4.21.1
       semver: 6.3.0
     dev: true
 
@@ -2072,6 +2089,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
 
+  /@juggle/resize-observer/3.3.1:
+    resolution: {integrity: sha512-zMM9Ds+SawiUkakS7y94Ymqx+S0ORzpG3frZirN3l+UlXUmSUR7hF4wxCVqW+ei94JzV5kt0uXBcoOEAuiydrw==}
+    dev: true
+
   /@koa/cors/3.3.0:
     resolution: {integrity: sha512-lzlkqLlL5Ond8jb6JLnVVDmD2OPym0r5kvZlMgAWiS9xle+Q5ulw1T358oW+RVguxUkANquZQz82i/STIRmsqQ==}
     engines: {node: '>= 8.0.0'}
@@ -3383,6 +3404,22 @@ packages:
       uri-js: 4.4.1
     dev: true
 
+  /allotment/1.15.0_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-9JXAm59/XD5Djfpso0rgGZdA23n3v5XeicwjNoInp2qlBa/HFZtnMDujm6NHOSjOCQPWhkOt4ybYgz8H3ed+8A==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      classnames: 2.3.1
+      eventemitter3: 4.0.7
+      lodash.clamp: 4.0.3
+      lodash.debounce: 4.0.8
+      lodash.isequal: 4.5.0
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+      use-resize-observer: 9.0.2_ef5jwxihqo6n7gxfmzogljlgcm
+    dev: true
+
   /ansi-colors/4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
     engines: {node: '>=6'}
@@ -3749,6 +3786,10 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /can-use-dom/0.1.0:
+    resolution: {integrity: sha512-ceOhN1DL7Y4O6M0j9ICgmTYziV89WMd96SvSl0REd8PMgrY0B/WBOPoed5S1KUmJqXgUXh8gzSe6E3ae27upsQ==}
+    dev: true
+
   /caniuse-lite/1.0.30001341:
     resolution: {integrity: sha512-2SodVrFFtvGENGCv0ChVJIDQ0KPaS1cg7/qtfMaICgeMolDdo/Z2OD32F0Aq9yl6F4YFwGPBS5AaPqNYiW4PoA==}
 
@@ -3837,6 +3878,10 @@ packages:
 
   /ci-info/3.3.2:
     resolution: {integrity: sha512-xmDt/QIAdeZ9+nfdPsaBCpMvHNLFiLdjj59qjqn+6iPe6YmHGQ35sBnQ8uslRBXFmXkiZQOJRjvQeoGppoTjjg==}
+    dev: true
+
+  /classnames/2.3.1:
+    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
     dev: true
 
   /clean-stack/2.2.0:
@@ -4114,6 +4159,11 @@ packages:
     dependencies:
       browserslist: 4.21.1
       semver: 7.0.0
+    dev: true
+
+  /core-js/3.24.1:
+    resolution: {integrity: sha512-0QTBSYSUZ6Gq21utGzkfITDylE8jWC9Ne1D2MrhvlsZBI1x39OdDIVbzSqtgMndIy6BlHxBXpMGqzZmnztg2rg==}
+    requiresBuild: true
     dev: true
 
   /core-util-is/1.0.3:
@@ -5922,12 +5972,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /isomorphic-ws/4.0.1:
-    resolution: {integrity: sha512-BhBvN2MBpWTaSHdWRb/bwdZJ1WaehQ2L1KngkCkfLUGF0mAWAT1sQUQacEmQ0jXkFw/czDXPNQSL5u2/Krsz1w==}
-    peerDependencies:
-      ws: '*'
-    dev: false
-
   /isomorphic-ws/4.0.1_ws@8.8.0:
     resolution: {integrity: sha512-BhBvN2MBpWTaSHdWRb/bwdZJ1WaehQ2L1KngkCkfLUGF0mAWAT1sQUQacEmQ0jXkFw/czDXPNQSL5u2/Krsz1w==}
     peerDependencies:
@@ -6140,15 +6184,31 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
+  /lodash.clamp/4.0.3:
+    resolution: {integrity: sha512-HvzRFWjtcguTW7yd8NJBshuNaCa8aqNFtnswdT7f/cMd/1YKy5Zzoq4W/Oxvnx9l7aeY258uSdDfM793+eLsVg==}
+    dev: true
+
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+
+  /lodash.isequal/4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: true
 
   /lodash.ismatch/4.4.0:
     resolution: {integrity: sha512-fPMfXjGQEV9Xsq/8MTSgUf255gawYRbjwMyDbcvDhXgV7enSZA0hynz6vMPnpAb5iONEzBHBPsT+0zes5Z301g==}
     dev: true
 
+  /lodash.memoize/4.1.2:
+    resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
+    dev: true
+
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+    dev: true
+
+  /lodash.throttle/4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
     dev: true
 
   /lodash/4.17.21:
@@ -6346,6 +6406,10 @@ packages:
       braces: 3.0.2
       picomatch: 2.3.1
 
+  /million/1.12.3-beta.3:
+    resolution: {integrity: sha512-AGl4G4g5hkn70R2CjcA6cJl9gqh4rM3S/fmquNkBUJ5sHSRcKvGQ6lQ1o3bPgiPOY1zmlt9AgXYlSLNrPGpi2A==}
+    dev: true
+
   /mime-db/1.33.0:
     resolution: {integrity: sha512-BHJ/EKruNIqJf/QahvxwQZXKygOQ256myeN/Ew+THcAa5q+PjyTTMMeNQC4DZw5AwfvelsUrA6B67NKMqXDbzQ==}
     engines: {node: '>= 0.6'}
@@ -6369,8 +6433,8 @@ packages:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
 
-  /mincu-chii/1.0.0:
-    resolution: {integrity: sha512-n7OLCngGh7DEIQJgSFsGJ63TTOvAPYqwMSfq9JPadNV5du1ejYlf26fjeL40BbWDjPHSPNMKvGBZrx98QkZpMA==}
+  /mincu-chii/1.1.0:
+    resolution: {integrity: sha512-yaanwGafYamQwADRCnbQ/AxjqUN23tSbr43xkJWDy0nWa+V8ZuUK+C3NELwaEjHfUNjDfYVTs0LHvVrob6IhWw==}
     hasBin: true
     dependencies:
       '@koa/cors': 3.3.0
@@ -7361,6 +7425,14 @@ packages:
       sisteransi: 1.0.5
     dev: false
 
+  /prop-types/15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+    dev: true
+
   /proto-list/1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
     dev: true
@@ -7555,6 +7627,10 @@ packages:
       loose-envify: 1.4.0
       react: 18.1.0
       scheduler: 0.22.0
+
+  /react-is/16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: true
 
   /react-refresh/0.13.0:
     resolution: {integrity: sha512-XP8A9BT0CpRBD+NYLLeIhld/RqG9+gktUjW1FkE+Vm7OCinbG1SshcK5tb9ls4kzvjZr9mOQc7HYgBngEyPAXg==}
@@ -8017,6 +8093,29 @@ packages:
 
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
+
+  /simplebar-react/2.4.1_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-lw0ZPj+80ez2mh1YTOligFUNzDch2sUbOzDp4WUhU5SpS+qMiyyOzNfMbHa0l4FyWox+tnGNO7jybxqIda3roQ==}
+    peerDependencies:
+      react: ^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0 || ^17.0 || ^18.0.0
+      react-dom: ^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0 || ^17.0 || ^18.0.0
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+      simplebar: 5.3.8
+    dev: true
+
+  /simplebar/5.3.8:
+    resolution: {integrity: sha512-LOHjyOcihx++zFN+vuktoZBGpCarFCtHIVDWXOf2VELbGDknq3Hw/sddafRp1aCg123VNkHWOFHUDHYEXAtufQ==}
+    dependencies:
+      '@juggle/resize-observer': 3.3.1
+      can-use-dom: 0.1.0
+      core-js: 3.24.1
+      lodash.debounce: 4.0.8
+      lodash.memoize: 4.1.2
+      lodash.throttle: 4.1.1
+    dev: true
 
   /sirv/2.0.2:
     resolution: {integrity: sha512-4Qog6aE29nIjAOKe/wowFTxOdmbEZKb+3tsLljaBRzJwtqto0BChD2zzH0LhgCSXiI+V7X+Y45v14wBZQ1TK3w==}
@@ -8757,6 +8856,17 @@ packages:
     dependencies:
       '@types/react': 18.0.11
       react: 18.1.0
+    dev: true
+
+  /use-resize-observer/9.0.2_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-JOzsmF3/IDmtjG7OE5qXOP69LEpBpwhpLSiT1XgSr+uFRX0ftJHQnDaP7Xq+uhbljLYkJt67sqsbnyXBjiY8ig==}
+    peerDependencies:
+      react: 16.8.0 - 18
+      react-dom: 16.8.0 - 18
+    dependencies:
+      '@juggle/resize-observer': 3.3.1
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
     dev: true
 
   /use-sync-external-store/1.1.0_react@18.1.0:

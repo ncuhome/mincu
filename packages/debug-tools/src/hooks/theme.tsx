@@ -18,3 +18,10 @@ export const useThemeWatcher = () => {
     setThemeClass(isDark)
   }, [isDark])
 }
+
+export const useThemeChange = (cb: (isDark: boolean) => void) => {
+  const isDark = useThemeDark()
+  useEffect(() => {
+    cb(isDark)
+  }, [isDark])
+}

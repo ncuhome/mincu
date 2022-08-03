@@ -1,28 +1,35 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Debuggable from './components/Debuggable'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { Allotment } from 'allotment'
+import SimpleBarReact from 'simplebar-react'
 
-import { useThemeWatcher } from './hooks'
-import { useTargets, useIp } from './hooks/request'
+import Space from '@/components/Space'
+import Inspector from '@/components/Inspector'
+import { useThemeWatcher, useTargets, useIp } from '@/hooks'
 import clsx from 'clsx'
 import CopyableScript from './components/CopyableScript'
+import { DebugTarget } from '@/shim'
+import { CHII_EVENT } from 'mincu-lib/debug'
 
-const DebugArea = () => {
-  const { targets, mutate: mutateTargets } = useTargets({
-    refreshInterval: 1000,
-  })
+export const App = () => {
+  const { targets, mutate: mutateTargets } = useTargets()
   const { ip } = useIp()
   const [parent] = useAutoAnimate<HTMLDivElement>()
+  const [currentTarget, setCurrentTarget] = useState<DebugTarget>()
 
   useThemeWatcher()
 
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:2333')
     ws.onmessage = async ({ data }) => {
-      console.log(data)
       try {
         const { type, payload } = JSON.parse(data)
-        if (type === 'targchiiConnected') {
+        console.log('TYPE', type)
+        if (
+          type === CHII_EVENT.TARGET_CHANGED ||
+          type === CHII_EVENT.CONNECTED
+        ) {
           mutateTargets(payload)
         }
       } catch (e) {
@@ -30,6 +37,15 @@ const DebugArea = () => {
       }
     }
   }, [])
+
+  useEffect(() => {
+    if (currentTarget) {
+      const valid = targets.some((it) => it.id === currentTarget.id)
+      if (!valid) {
+        setCurrentTarget(undefined)
+      }
+    }
+  }, [targets])
 
   return (
     <div
@@ -42,10 +58,34 @@ const DebugArea = () => {
     >
       {targets.length > 0 ? (
         <>
-          <div className="text-2xl mb-12">可调试应用</div>
-          {targets.map((target) => (
-            <Debuggable key={target.id} data={target} />
-          ))}
+          <Allotment>
+            <Allotment.Pane minSize={200} preferredSize={400}>
+              <SimpleBarReact
+                style={{ maxHeight: '100%' }}
+                className="flex flex-col py-12 px-6 w-full h-full"
+              >
+                {targets.map((target) => (
+                  <Fragment key={target.id}>
+                    <Debuggable
+                      data={target}
+                      onClick={() => setCurrentTarget(target)}
+                      active={target.id === currentTarget?.id}
+                    />
+                    <Space />
+                  </Fragment>
+                ))}
+              </SimpleBarReact>
+            </Allotment.Pane>
+            <div className="w-full h-full">
+              {currentTarget ? (
+                <Inspector data={currentTarget} />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center text-xl">
+                  🍺 从左侧选择要调试的应用
+                </div>
+              )}
+            </div>
+          </Allotment>
         </>
       ) : (
         <div className="text-2xl flex flex-col items-center justify-center">
@@ -55,13 +95,4 @@ const DebugArea = () => {
       )}
     </div>
   )
-}
-const ELEMENT_MAP: { [viewId: string]: JSX.Element } = {
-  a: <DebugArea />,
-  b: <div>Top Right</div>,
-  c: <div>Bottom Right Window</div>,
-}
-
-export const App = () => {
-  return <DebugArea />
 }

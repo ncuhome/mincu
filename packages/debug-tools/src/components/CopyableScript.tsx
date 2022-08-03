@@ -1,8 +1,9 @@
-import React, { FC, useState, useEffect } from 'react'
+import { CHII_URL } from '@/utils'
+import React, { FC } from 'react'
 import useClipboard from 'react-use-clipboard'
 import Space from './Space'
 
-const targetSrc = (host = 'localhost') => `http://${host}:8080/target.js`
+const targetSrc = (host = 'localhost') => `${CHII_URL}/target.js`
 
 const CodePart = ({ src }: { src: string }) => {
   const script = `<script src="${src}"></script>`

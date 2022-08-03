@@ -1,4 +1,5 @@
 import { useSearchParam } from 'react-use'
+import { DEBUG_CHII_PORT } from 'mincu-lib/debug'
 
 export const DEFAULT_HINT =
   '请打开 「南大家园」 - 「生活板块」 - 右上角「扫一扫」，扫描以上二维码，开始调试'
@@ -28,3 +29,8 @@ export const setThemeClass = (isDark: boolean) => {
     document.documentElement.classList.add('light')
   }
 }
+
+export const CHII_URL = `http://localhost:${DEBUG_CHII_PORT}`
+
+export const chiiFrontUrl = (clientId: string, targetId: string) =>
+  `${CHII_URL}/front_end/chii_app.html?ws=localhost:${DEBUG_CHII_PORT}/client/${clientId}?target=${targetId}`
