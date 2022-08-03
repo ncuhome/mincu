@@ -89,12 +89,14 @@ class MincuCoreBase {
 
   /**
    * 主动请求并触发客户端事件
-   * */
-  call = <T extends FuncNames, B extends keyof INativeFuncs[T]>(
-    baseClass: T,
-    method: B,
+   */
+  call = <Class extends FuncNames, Method extends keyof INativeFuncs[Class]>(
+    baseClass: Class,
+    method: Method,
     params = [],
-    success: (data?: any) => any = noop,
+    success: (res?: {
+      data: ReturnType<INativeFuncs[Class][Method]>
+    }) => any = noop,
     failed = noop
   ) => {
     this.eventKey += 1
@@ -109,6 +111,29 @@ class MincuCoreBase {
     }
 
     this.webview?.postMessage(JSON.stringify(data))
+  }
+
+  callPromise = <
+    Class extends FuncNames,
+    Method extends keyof INativeFuncs[Class]
+  >(
+    baseClass: Class,
+    method: Method,
+    params = []
+  ) => {
+    return new Promise<ReturnType<INativeFuncs[Class][Method]>>(
+      (resolve, reject) => {
+        mincuCore.call(
+          baseClass,
+          method,
+          params,
+          (res) => {
+            resolve(res.data)
+          },
+          reject
+        )
+      }
+    )
   }
 }
 
