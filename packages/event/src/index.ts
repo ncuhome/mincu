@@ -1,7 +1,7 @@
 import mincuCore from 'mincu-core'
 import { ShareConfig } from 'mincu-core'
 
-class EventModule {
+export class EventModule {
   static Instance() {
     return new EventModule()
   }

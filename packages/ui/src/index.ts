@@ -2,7 +2,7 @@ import mincuCore from 'mincu-core'
 import { NavConfig } from 'mincu-core'
 import type { StatusBarStyle } from 'react-native'
 
-class UIModule {
+export class UIModule {
   static Instance() {
     return new UIModule()
   }

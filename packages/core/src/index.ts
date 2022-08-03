@@ -8,7 +8,7 @@ export * from './channel'
 /**
  * 目前支持 web 和 native 的双向通信
  */
-class MincuCoreBase {
+export class MincuCoreBase {
   private eventKey: number
   private eventMap: EventMap
 

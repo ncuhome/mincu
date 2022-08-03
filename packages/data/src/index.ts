@@ -3,7 +3,7 @@ import { AppData, EdgeInsets } from 'mincu-core'
 import { defaultUserData } from 'mincu-lib'
 import { MincuStorage } from './storage'
 
-class DataModule {
+export class DataModule {
   static Instance() {
     return new DataModule()
   }
