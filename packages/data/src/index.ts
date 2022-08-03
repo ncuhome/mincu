@@ -1,11 +1,14 @@
 import mincuCore from 'mincu-core'
 import { AppData, EdgeInsets } from 'mincu-core'
 import { defaultUserData } from 'mincu-lib'
+import { MincuStorage } from './storage'
 
 class DataModule {
   static Instance() {
     return new DataModule()
   }
+
+  storage = new MincuStorage()
 
   get isDark() {
     return this.colorScheme === 'dark'

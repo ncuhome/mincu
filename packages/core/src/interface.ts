@@ -36,6 +36,12 @@ export interface INativeFuncs {
     toScreen: (e: NavConfig) => void
     bindBackPress: (value: boolean) => void
   }
+  Storage: {
+    getItem: (key: string) => any
+    setItem: (key: string, value: any) => void
+    remove: (key: string) => void
+    reset: () => void
+  }
 }
 
 export interface ShareConfig {
