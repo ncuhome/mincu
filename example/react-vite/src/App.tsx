@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import {
   useSafeArea,
   dataModule,
@@ -86,6 +86,37 @@ const App = () => {
     </div>
   );
 
+  const storageTests = {
+    get: () => {
+      dataModule.storage.getItem('test').then(res => {
+        uiModule.success(res)
+      }).catch(err => {
+        uiModule.fail(err)
+      })
+    },
+    set: () => {
+      dataModule.storage.setItem('test', new Date().toLocaleString()).then(() => {
+        uiModule.success('set success')
+      }).catch(err => {
+        uiModule.fail(err)
+      })
+    },
+    remove: () => {
+      dataModule.storage.removeItem('test').then(() => {
+        uiModule.success('remove success')
+      }).catch(err => {
+        uiModule.fail(err)
+      })
+    },
+    reset: () => {
+      dataModule.storage.reset().then(() => {
+        uiModule.success('reset success')
+      }).catch(err => {
+        uiModule.fail(err)
+      })
+    }
+  }
+
   return (
     <Ready fallback={<Fallback />}>
       <div>
@@ -151,6 +182,20 @@ const App = () => {
           <p className="font-medium text-xl m-2">colors 测试</p>
           <ColorItem color={colors.white} name="colors.white" />
           <ColorItem color={colors.black} name="colors.white" />
+
+          <p className="font-medium text-xl m-2">MincuStorage 测试</p>
+          <Button onClick={storageTests.get}>
+            getItem('test')
+          </Button>
+          <Button onClick={storageTests.set}>
+            setItem('test', new Date().toLocaleString())
+          </Button>
+          <Button onClick={storageTests.remove}>
+            removeItem('test')
+          </Button>
+          <Button onClick={storageTests.reset}>
+            reset()
+          </Button>
         </div>
       </div>
     </Ready>
