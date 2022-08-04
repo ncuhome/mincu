@@ -88,8 +88,7 @@ export const App = () => {
           </Allotment>
         </>
       ) : (
-        <div className="text-2xl flex flex-col items-center justify-center">
-          无可调试应用
+        <div className="flex flex-col items-center justify-center">
           <CopyableScript ip={ip} />
         </div>
       )}

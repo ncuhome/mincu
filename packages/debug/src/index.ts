@@ -13,6 +13,10 @@ class DebugModule {
     this.client = new Client()
   }
 
+  connect() {
+    this.applyChii()
+  }
+
   applyChii() {
     this.client.initChii()
   }
