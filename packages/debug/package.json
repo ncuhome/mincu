@@ -10,7 +10,8 @@
   "main": "dist/mincu-debug.cjs.js",
   "module": "dist/mincu-debug.esm.js",
   "bin": {
-    "mincud": "./bin.js"
+    "mincud": "./bin.js",
+    "mincu-debug": "./bin.js"
   },
   "files": [
     "dist",
