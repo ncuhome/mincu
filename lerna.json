@@ -1,5 +1,8 @@
 {
-  "packages": ["packages/*", "example/*"],
+  "packages": [
+    "packages/*",
+    "example/*"
+  ],
   "command": {
     "publish": {
       "exact": true,
@@ -7,5 +10,5 @@
       "registry": "https://registry.npmjs.org/"
     }
   },
-  "version": "2.7.0-alpha.0"
+  "version": "2.7.0-alpha.1"
 }
