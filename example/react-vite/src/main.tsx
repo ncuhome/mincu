@@ -6,7 +6,7 @@ import App from './App'
 
 import debug from 'mincu-debug'
 
-console.log(debug.applyChii())
+debug.connect()
 
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement)
