@@ -15,7 +15,7 @@
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky install",
     "prettier": "pretty-quick",
-    "release": "npm run build && lerna publish --force-publish --no-push",
+    "release": "npm run build:debug-tools && npm run build && lerna publish --no-push",
     "test:example": "ts-node ./tests/run_example_scripts.ts",
     "watch": "preconstruct watch"
   },
