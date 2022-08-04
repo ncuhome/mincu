@@ -1,8 +1,5 @@
 {
-  "packages": [
-    "packages/*",
-    "example/*"
-  ],
+  "packages": ["packages/*", "example/*"],
   "command": {
     "publish": {
       "exact": true,

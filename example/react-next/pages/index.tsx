@@ -11,7 +11,7 @@ import {
   useSafeArea,
 } from 'mincu-react'
 
-import axios from 'axios';
+import axios from 'axios'
 const fetcher = axios.create()
 networkModule.useAxiosInterceptors(fetcher)
 
@@ -31,7 +31,9 @@ const Index = () => {
   const fetchSchoolLife = async () => {
     const loadingTip = await uiModule.loading('加载中', 0)
     try {
-      const res = await fetcher.get('https://os.ncuos.com/api/user/profile/basic')
+      const res = await fetcher.get(
+        'https://os.ncuos.com/api/user/profile/basic'
+      )
       alert(JSON.stringify(res.data))
     } catch (e) {
       alert(e)
@@ -76,7 +78,9 @@ const Index = () => {
         />
       </Head>
       <div style={{ marginTop: top, marginRight: 10, marginLeft: 10 }}>
-        <div>学号: {dataModule.appData.user.profile.entireProfile?.base_info?.xh}</div>
+        <div>
+          学号: {dataModule.appData.user.profile.entireProfile?.base_info?.xh}
+        </div>
         <button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</button>
         <button onClick={refreshToken}>测试刷新token</button>
         <button onClick={hideHeader}>隐藏标题</button>
@@ -84,17 +88,26 @@ const Index = () => {
         <button onClick={() => uiModule.exit()}>退出</button>
         <button onClick={() => eventModule.showShare()}>分享</button>
         <div>导航</div>
-        <button onClick={() => uiModule.toScreen({ screen: '周课表' })}>周课表</button>
+        <button onClick={() => uiModule.toScreen({ screen: '周课表' })}>
+          周课表
+        </button>
         <button
           onClick={() =>
-            uiModule.toScreen({ screen: '用户资料', params: { userId: '5504118086' } })
+            uiModule.toScreen({
+              screen: '用户资料',
+              params: { userId: '5504118086' },
+            })
           }
         >
           他的资料
         </button>
-        <button onClick={() => alert(localStorage.getItem('state'))}>打印缓存</button>
+        <button onClick={() => alert(localStorage.getItem('state'))}>
+          打印缓存
+        </button>
         <button onClick={() => uiModule.info('23333')}>打开 Toast info</button>
-        <button onClick={() => uiModule.success('23333')}>打开 Toast success</button>
+        <button onClick={() => uiModule.success('23333')}>
+          打开 Toast success
+        </button>
         <button onClick={toastLoading}>打开 Toast loading</button>
         <button onClick={showVersion}>获取版本号</button>
         <button onClick={() => alert(colorScheme)}>获取当前主题</button>
@@ -110,7 +123,9 @@ const Index = () => {
           }}
         ></div>
 
-        <button onClick={() => eventModule.login('username', 'pwd')}>登录</button>
+        <button onClick={() => eventModule.login('username', 'pwd')}>
+          登录
+        </button>
       </div>
     </div>
   )

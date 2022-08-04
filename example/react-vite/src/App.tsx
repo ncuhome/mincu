@@ -1,4 +1,4 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react'
 import {
   useSafeArea,
   dataModule,
@@ -7,73 +7,73 @@ import {
   networkModule,
   useNativeState,
   Ready,
-} from 'mincu-react';
-import { Fallback } from './Fallback';
+} from 'mincu-react'
+import { Fallback } from './Fallback'
 
-import { Button } from './Button';
-import axios from 'axios';
+import { Button } from './Button'
+import axios from 'axios'
 
 const fetcher = axios.create()
 networkModule.useAxiosInterceptors(fetcher)
 
 const App = () => {
-  const { top } = useSafeArea();
-  const colors = useNativeState('colors');
-  const colorScheme = useNativeState('colorScheme');
+  const { top } = useSafeArea()
+  const colors = useNativeState('colors')
+  const colorScheme = useNativeState('colorScheme')
 
   useEffect(() => {
-    networkModule.getStoredToken();
-  }, []);
+    networkModule.getStoredToken()
+  }, [])
 
   useEffect(() => {
     eventModule.setShareConfig({
       title: '应用名',
-    });
-    hideHeader();
-  }, []);
+    })
+    hideHeader()
+  }, [])
 
   useEffect(() => {
-    document.body.style.background = colorScheme === 'dark' ? '#222' : '#fff';
-    document.body.style.color = colorScheme === 'dark' ? '#fff' : '#000';
-  }, [colorScheme]);
+    document.body.style.background = colorScheme === 'dark' ? '#222' : '#fff'
+    document.body.style.color = colorScheme === 'dark' ? '#fff' : '#000'
+  }, [colorScheme])
 
   const fetchSchoolLife = async () => {
-    const loadingTip = await uiModule.loading('加载中', 0);
+    const loadingTip = await uiModule.loading('加载中', 0)
     try {
       const res = await fetcher.get(
         'https://os.ncuos.com/api/user/profile/basic'
-      );
-      alert(JSON.stringify(res.data));
+      )
+      alert(JSON.stringify(res.data))
     } catch (e) {
-      alert(e);
+      alert(e)
     } finally {
-      loadingTip();
+      loadingTip()
     }
-  };
+  }
 
   const hideHeader = () => {
-    uiModule.handleShowHeader(false);
-  };
+    uiModule.handleShowHeader(false)
+  }
 
   const showHeader = () => {
-    uiModule.handleShowHeader(true);
-  };
+    uiModule.handleShowHeader(true)
+  }
 
   const showVersion = async () => {
-    const version = await dataModule.getVersion();
-    alert(version);
-  };
+    const version = await dataModule.getVersion()
+    alert(version)
+  }
 
   const toastLoading = async () => {
-    await uiModule.loading('加载中');
-  };
+    await uiModule.loading('加载中')
+  }
 
   const refreshToken = async () => {
-    const token = await networkModule.refreshToken();
-    alert(token);
-  };
+    const token = await networkModule.refreshToken()
+    alert(token)
+  }
 
-  const backPressCb = () => uiModule.success('onBackPress 回调触发', 1);
+  const backPressCb = () => uiModule.success('onBackPress 回调触发', 1)
 
   const ColorItem = ({ name, color }: any) => (
     <div
@@ -84,37 +84,49 @@ const App = () => {
     >
       {name}
     </div>
-  );
+  )
 
   const storageTests = {
     get: () => {
-      dataModule.storage.getItem('test').then(res => {
-        uiModule.success(res)
-      }).catch(err => {
-        uiModule.fail(err)
-      })
+      dataModule.storage
+        .getItem('test')
+        .then((res) => {
+          uiModule.success(res)
+        })
+        .catch((err) => {
+          uiModule.fail(err)
+        })
     },
     set: () => {
-      dataModule.storage.setItem('test', new Date().toLocaleString()).then(() => {
-        uiModule.success('set success')
-      }).catch(err => {
-        uiModule.fail(err)
-      })
+      dataModule.storage
+        .setItem('test', new Date().toLocaleString())
+        .then(() => {
+          uiModule.success('set success')
+        })
+        .catch((err) => {
+          uiModule.fail(err)
+        })
     },
     remove: () => {
-      dataModule.storage.removeItem('test').then(() => {
-        uiModule.success('remove success')
-      }).catch(err => {
-        uiModule.fail(err)
-      })
+      dataModule.storage
+        .removeItem('test')
+        .then(() => {
+          uiModule.success('remove success')
+        })
+        .catch((err) => {
+          uiModule.fail(err)
+        })
     },
     reset: () => {
-      dataModule.storage.reset().then(() => {
-        uiModule.success('reset success')
-      }).catch(err => {
-        uiModule.fail(err)
-      })
-    }
+      dataModule.storage
+        .reset()
+        .then(() => {
+          uiModule.success('reset success')
+        })
+        .catch((err) => {
+          uiModule.fail(err)
+        })
+    },
   }
 
   return (
@@ -162,9 +174,9 @@ const App = () => {
                   uiModule.success(
                     '绑定原生返回事件成功，请自行处理返回事件',
                     1
-                  );
+                  )
                 } else {
-                  uiModule.fail('绑定原生返回事件失败， 请先显示 header', 1);
+                  uiModule.fail('绑定原生返回事件失败， 请先显示 header', 1)
                 }
               })
             }
@@ -184,22 +196,16 @@ const App = () => {
           <ColorItem color={colors.black} name="colors.white" />
 
           <p className="font-medium text-xl m-2">MincuStorage 测试</p>
-          <Button onClick={storageTests.get}>
-            getItem('test')
-          </Button>
+          <Button onClick={storageTests.get}>getItem('test')</Button>
           <Button onClick={storageTests.set}>
             setItem('test', new Date().toLocaleString())
           </Button>
-          <Button onClick={storageTests.remove}>
-            removeItem('test')
-          </Button>
-          <Button onClick={storageTests.reset}>
-            reset()
-          </Button>
+          <Button onClick={storageTests.remove}>removeItem('test')</Button>
+          <Button onClick={storageTests.reset}>reset()</Button>
         </div>
       </div>
     </Ready>
-  );
-};
+  )
+}
 
-export default App;
+export default App

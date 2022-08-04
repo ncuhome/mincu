@@ -16,7 +16,7 @@
 import { computed } from 'vue'
 import { uiModule, networkModule } from 'mincu-vanilla'
 import useNativeState from '../hooks/useNativeState'
-import axios from 'axios';
+import axios from 'axios'
 const fetcher = axios.create()
 networkModule.useAxiosInterceptors(fetcher)
 
@@ -25,12 +25,10 @@ export default {
     const colorScheme = useNativeState('colorScheme')
     const colors = useNativeState('colors')
 
-    const square = computed(
-      () => ({
-        background: `${colors.value?.white}`,
-        border: `3px solid ${colors.value?.black}`
-      })
-    )
+    const square = computed(() => ({
+      background: `${colors.value?.white}`,
+      border: `3px solid ${colors.value?.black}`,
+    }))
 
     const toCourse = () => uiModule.toScreen({ screen: '周课表' })
 

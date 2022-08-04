@@ -2,19 +2,22 @@
   "name": "mincu-monorepo",
   "private": true,
   "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "preconstruct build",
-    "build:debug-tools": "pnpm run build --filter mincu-debug-tools",
+    "build:debug-tools": "pnpm --filter mincu-debug-tools build",
+    "dev": "preconstruct dev",
+    "dev:debug-tools": "pnpm --filter mincu-debug-tools dev",
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint -f unix \"packages/**/*.{ts,tsx}\"",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky install",
     "prettier": "pretty-quick",
-    "dev": "preconstruct dev",
-    "start": "preconstruct watch",
-    "start:debug-tools": "pnpm run dev --filter mincu-debug-tools",
+    "release": "npm run build && lerna publish --force-publish --no-push",
     "test:example": "ts-node ./tests/run_example_scripts.ts",
-    "release": "npm run build && lerna publish --force-publish --no-push"
+    "watch": "preconstruct watch"
   },
   "husky": {
     "hooks": {
@@ -55,8 +58,5 @@
     "packages": [
       "packages/*"
     ]
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }
