@@ -1,5 +1,7 @@
 # mincu-debug
 
+[![npm install size](https://packagephobia.com/badge?p=mincu-debug)](https://packagephobia.com/result?p=mincu-debug)
+
 [Mincu - 南大家园 WEB JS API](https://github.com/ncuhome/mincu)
 
 ## Install
