@@ -6,24 +6,29 @@ import execa from 'execa'
 
 const whichADB = () => {
   if (process.env.ANDROID_HOME) {
-    return `${process.env.ANDROID_HOME}/platform-tools/adb`;
+    return `${process.env.ANDROID_HOME}/platform-tools/adb`
   }
-  return 'adb';
+  return 'adb'
 }
 
 export const getAdbOutputAsync = (args: string[]) => {
-  const adb = whichADB();
+  const adb = whichADB()
   try {
-    return execa(adb, args);
+    return execa(adb, args)
   } catch (e) {
-    throw e;
+    throw e
   }
 }
 
 export const openUrlAdb = async (url: string) => {
   const args = [
-    'shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d',
-    url
+    'shell',
+    'am',
+    'start',
+    '-a',
+    'android.intent.action.VIEW',
+    '-d',
+    url,
   ]
   try {
     const success = await getAdbOutputAsync(args)

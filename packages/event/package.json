@@ -1,6 +1,6 @@
 {
   "name": "mincu-event",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -13,6 +13,6 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-core": "2.6.2"
+    "mincu-core": "workspace:^2.7.0"
   }
 }

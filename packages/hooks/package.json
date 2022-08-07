@@ -1,6 +1,6 @@
 {
   "name": "mincu-hooks",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -14,10 +14,10 @@
   ],
   "dependencies": {
     "lodash": "^4.17.21",
-    "mincu-core": "2.6.2",
-    "mincu-data": "2.6.2"
+    "mincu-core": "workspace:^2.7.0",
+    "mincu-data": "workspace:^2.7.0"
   },
   "peerDependencies": {
-    "react": "^18.1.0"
+    "react": ">=17"
   }
 }

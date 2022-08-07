@@ -1,6 +1,6 @@
 {
   "name": "mincu-network",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -13,8 +13,10 @@
     "dist"
   ],
   "dependencies": {
-    "axios": "^0.27.2",
-    "mincu-core": "2.6.2",
-    "mincu-data": "2.6.2"
+    "mincu-core": "workspace:^2.7.0",
+    "mincu-data": "workspace:^2.7.0"
+  },
+  "devDependencies": {
+    "axios": "^0.27.2"
   }
 }

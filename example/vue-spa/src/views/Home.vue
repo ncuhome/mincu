@@ -16,18 +16,19 @@
 import { computed } from 'vue'
 import { uiModule, networkModule } from 'mincu-vanilla'
 import useNativeState from '../hooks/useNativeState'
+import axios from 'axios'
+const fetcher = axios.create()
+networkModule.useAxiosInterceptors(fetcher)
 
 export default {
   setup() {
     const colorScheme = useNativeState('colorScheme')
     const colors = useNativeState('colors')
 
-    const square = computed(
-      () => ({
-        background: `${colors.value?.white}`,
-        border: `3px solid ${colors.value?.black}`
-      })
-    )
+    const square = computed(() => ({
+      background: `${colors.value?.white}`,
+      border: `3px solid ${colors.value?.black}`,
+    }))
 
     const toCourse = () => uiModule.toScreen({ screen: '周课表' })
 
@@ -35,7 +36,7 @@ export default {
 
     const fetchSchoolLife = async () => {
       const loadingTip = await uiModule.loading('加载中', 0)
-      const { status } = await networkModule.fetch.get(
+      const { status } = await fetcher.get(
         'https://incu-api.ncuos.com/v2/api/schoolLife'
       )
       loadingTip()

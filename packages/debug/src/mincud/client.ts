@@ -1,7 +1,15 @@
 import { Encode } from 'console-feed-node-transform'
 import WebSocket, { MessageEvent } from 'isomorphic-ws'
 import { _window } from 'mincu-lib'
-import { CMD_DEV_TOOL, CMD_RELOAD, DEBUG_HOST, DEBUG_PORT, LogLevel, Received } from './shared'
+import {
+  CMD_DEV_TOOL,
+  CMD_RELOAD,
+  DEBUG_HOST,
+  DEBUG_PORT,
+  LogLevel,
+  Received,
+  DEBUG_CHII_PORT,
+} from 'mincu-lib/debug'
 
 const genReceived = (recv: Received) => {
   return JSON.stringify(recv)
@@ -11,6 +19,12 @@ export class Client {
   static KEY_DEV_TOOL = 'DEV_TOOL'
   private client: WebSocket
   private opened: boolean = false
+
+  initChii() {
+    var script = document.createElement('script')
+    script.src = `${location.protocol}//${DEBUG_HOST}:${DEBUG_CHII_PORT}/target.js`
+    document.body.appendChild(script)
+  }
 
   init() {
     if (this.client || this.opened) return true
@@ -43,7 +57,10 @@ export class Client {
       this.client = new WebSocket(`ws://${DEBUG_HOST}:${DEBUG_PORT}`)
       this.client.onopen = () => {
         this.opened = true
-        this.log('info', `DebugTools at ${_window.location?.origin} has connected`)
+        this.log(
+          'info',
+          `DebugTools at ${_window.location?.origin} has connected`
+        )
       }
       this.client.onerror = () => {
         this.opened = false
@@ -60,10 +77,10 @@ export class Client {
     switch (cmd) {
       case CMD_RELOAD:
         _window.location?.reload()
-        break;
+        break
       case CMD_DEV_TOOL:
         this.toggleDevTool()
-        break;
+        break
     }
   }
 
@@ -86,10 +103,12 @@ export class Client {
    * @see https://github.com/liriliri/eruda
    */
   injectDevTool() {
-    const script = document.createElement('script');
-    script.src = "//cdn.jsdelivr.net/npm/eruda";
-    document.body.appendChild(script);
-    script.onload = () => { _window.eruda?.init() }
+    const script = document.createElement('script')
+    script.src = '//cdn.jsdelivr.net/npm/eruda'
+    document.body.appendChild(script)
+    script.onload = () => {
+      _window.eruda?.init()
+    }
   }
 
   /**
@@ -109,9 +128,9 @@ export class Client {
         genReceived({
           type: 'log',
           level,
-          data: Encode(args)
-        }),
-      );
+          data: Encode(args),
+        })
+      )
     } catch (err) {
       console.error(err)
     }
@@ -119,10 +138,12 @@ export class Client {
 
   command(command: string, args: any[]) {
     if (this.opened) {
-      this.client.send(genReceived({
-        type: 'command',
-        data: [command, ...args]
-      }))
+      this.client.send(
+        genReceived({
+          type: 'command',
+          data: [command, ...args],
+        })
+      )
       return true
     }
     return false

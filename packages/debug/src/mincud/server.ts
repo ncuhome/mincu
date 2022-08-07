@@ -1,9 +1,8 @@
-import WebSocket, { Data } from 'ws';
+import WebSocket, { Data } from 'ws'
 import chalk from 'chalk'
-import { DEBUG_PORT, Received } from './shared'
-import { logToConsole } from './logToConsole';
-import { Decode } from 'console-feed-node-transform';
-import { startDevTool } from 'mincu-debug-tools/server';
+import { DEBUG_PORT, Received } from 'mincu-lib/debug'
+import { logToConsole } from './logToConsole'
+import { Decode } from 'console-feed-node-transform'
 import { openUrl, Platform } from './commands'
 
 const formatMessage = (message: Data) => {
@@ -12,7 +11,8 @@ const formatMessage = (message: Data) => {
 }
 
 const logLogo = () => {
-  console.log(chalk.cyan(`
+  console.log(
+    chalk.cyan(`
   ****     **** ** ****     **   ******  **     **
   /**/**   **/**/**/**/**   /**  **////**/**    /**
   /**//** ** /**/**/**//**  /** **    // /**    /**
@@ -25,8 +25,8 @@ const logLogo = () => {
         !Fast - !Scalable - !Integrated
   
         Mincud listening on ws://localhost:${DEBUG_PORT}
-  `))
-
+  `)
+  )
 
   console.log(`
 > Press "r" | Reload the client page
@@ -34,12 +34,11 @@ const logLogo = () => {
   `)
 }
 
-const startWebSocketServer = () => {
-
-  const wss = new WebSocket.Server({ port: DEBUG_PORT });
+const startWebSocketServer = (baseWss?: WebSocket.WebSocketServer) => {
+  const wss = baseWss || new WebSocket.Server({ port: DEBUG_PORT })
 
   wss.on('connection', (ws) => {
-    ws.on('message', message => {
+    ws.on('message', (message) => {
       const { type, level, data } = formatMessage(message)
       if (data.length === 0) return
       if (type === 'log') {
@@ -51,8 +50,8 @@ const startWebSocketServer = () => {
           openUrl(data[1], data[2] as Platform)
         }
       }
-    });
-  });
+    })
+  })
 
   wss.on('error', (err) => {
     console.log(err)
@@ -63,16 +62,6 @@ const startWebSocketServer = () => {
   return wss
 }
 
-export const startServer = () => {
-  startDevTool()
-  // @TODO: integrate with vscode-extension
-  // isVsCodeRunning().then(isRunning => {
-  //   if (isRunning) {
-  //     // TODO: add detail doc url
-  //     console.log('Note: You can use the Mincu Debugger')
-  //   } else {
-  //   }
-  // })
-
-  return startWebSocketServer()
+export const startServer = (wss?: WebSocket.WebSocketServer) => {
+  return startWebSocketServer(wss)
 }

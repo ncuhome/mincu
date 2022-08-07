@@ -1,6 +1,6 @@
 import mincuCore from 'mincu-core'
 import dataModule from 'mincu-data'
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 type failedItem = {
   resolve: (value: unknown) => any
@@ -18,33 +18,44 @@ export class NetWorkModule {
   private isRefreshing = false
 
   public token: string = ''
-  public fetch = axios.create()
+
+  /**
+   * @deprecated
+   * networkModule.useAxiosInterceptors is for your need
+   */
+  public fetch: any
 
   static Instance() {
     return new NetWorkModule()
   }
 
-  constructor(config?: AxiosRequestConfig) {
+  constructor() {
     this.token = dataModule.appData.user.token || ''
+  }
 
-    this.fetch = axios.create(config)
-    this.fetch.defaults.timeout = 7000
+  public axiosInterceptors = () => ({
+    request: (config: AxiosRequestConfig) => {
+      if (this.token) {
+        config.headers.Authorization = this.getAuthorization(this.token)
+      }
+      return config
+    },
+    response: (response: AxiosResponse) => response,
+    error: this.handleTokenExpired,
+  })
 
-    /** 设置 axios 拦截器 */
-    const interceptors = {
-      request: (config: AxiosRequestConfig) => {
-        if (this.token) {
-          config.headers.Authorization = this.getAuthorization(this.token)
-        }
-        return config
-      },
-      response: (response: AxiosResponse) => response,
-      error: this.handleTokenExpired,
-    }
-
-    /** 初始化 axios 拦截器 */
-    this.fetch.interceptors.request.use(interceptors.request)
-    this.fetch.interceptors.response.use(interceptors.response, interceptors.error)
+  /**
+   * @exmaple
+   * const fetcher = axios.create()
+   * networkModule.useAxiosInterceptors(fetcher)
+   */
+  public useAxiosInterceptors(axiosInstance: AxiosInstance) {
+    const interceptors = this.axiosInterceptors()
+    axiosInstance.interceptors.request.use(interceptors.request)
+    axiosInstance.interceptors.response.use(
+      interceptors.response,
+      interceptors.error
+    )
   }
 
   private setToken = (token: string) => {
@@ -79,8 +90,9 @@ export class NetWorkModule {
           this.failedQueue.push({ resolve, reject })
         })
           .then((token: string) => {
-            originalRequest.headers['Authorization'] = this.getAuthorization(token)
-            return this.fetch(originalRequest)
+            originalRequest.headers['Authorization'] =
+              this.getAuthorization(token)
+            return originalRequest
           })
           .catch((err) => {
             return Promise.reject(err)
@@ -93,10 +105,10 @@ export class NetWorkModule {
       return new Promise((resolve, reject) => {
         this.refreshToken()
           .then((token) => {
-            this.fetch.defaults.headers.common['Authorization'] = this.getAuthorization(token)
-            originalRequest.headers['Authorization'] = this.getAuthorization(token)
+            originalRequest.headers['Authorization'] =
+              this.getAuthorization(token)
             this.processQueue(null, token)
-            resolve(this.fetch(originalRequest))
+            resolve(originalRequest)
           })
           .catch((err) => {
             this.processQueue(err)

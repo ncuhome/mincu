@@ -1,17 +1,24 @@
 {
   "name": "vite-react-typescript-starter",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "private": true,
   "scripts": {
+    "start": "mincud npm run dev",
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "mincu-react": "2.6.2",
+    "autoprefixer": "^10.4.7",
+    "axios": "^0.27.2",
+    "mincu-debug": "workspace:^2.7.0",
+    "mincu-react": "workspace:^2.7.0",
+    "postcss": "^8.4.14",
+    "qrcode.react": "^3.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-router-dom": "6.3.0"
+    "react-router-dom": "6.3.0",
+    "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
     "@types/react": "^18.0.9",

@@ -1,4 +1,8 @@
-import type { LinkingStatic, ToastAndroidStatic, StatusBarStyle } from 'react-native'
+import type {
+  LinkingStatic,
+  ToastAndroidStatic,
+  StatusBarStyle,
+} from 'react-native'
 import { Base_info } from './base_type'
 
 export type FuncNames = keyof INativeFuncs
@@ -31,6 +35,12 @@ export interface INativeFuncs {
     exitWebView: () => void
     toScreen: (e: NavConfig) => void
     bindBackPress: (value: boolean) => void
+  }
+  Storage: {
+    getItem: (key: string) => any
+    setItem: (key: string, value: any) => void
+    remove: (key: string) => void
+    reset: () => void
   }
 }
 

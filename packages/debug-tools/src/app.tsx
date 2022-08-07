@@ -1,77 +1,97 @@
-import QRCode from 'qrcode'
-import { useEffect, useState } from 'react'
-import { useSearchParam } from 'react-use'
-import Button from '@/components/Button'
-import { DEFAULT_HINT, DEBUG_URL_KEY, getHtmlTitle, requestHtml, useDecodeUrl } from './utils'
-import debug from 'mincu-debug'
+import React, { Fragment, useEffect, useState } from 'react'
+import Debuggable from './components/Debuggable'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { Allotment } from 'allotment'
+import SimpleBarReact from 'simplebar-react'
 
-export function App() {
-  const [imgSrc, setImgSrc] = useState('')
-  const [title, setTitle] = useState('')
-  const url = useDecodeUrl()
-  const origin = useSearchParam('origin')
-  const hint = useSearchParam('hint') || DEFAULT_HINT
+import Space from '@/components/Space'
+import Inspector from '@/components/Inspector'
+import { useThemeWatcher, useTargets, useIp } from '@/hooks'
+import clsx from 'clsx'
+import CopyableScript from './components/CopyableScript'
+import { DebugTarget } from '@/shim'
+import { CHII_EVENT } from 'mincu-lib/debug'
+
+export const App = () => {
+  const { targets, mutate: mutateTargets } = useTargets()
+  const { ip } = useIp()
+  const [parent] = useAutoAnimate<HTMLDivElement>()
+  const [currentTarget, setCurrentTarget] = useState<DebugTarget>()
+
+  useThemeWatcher()
 
   useEffect(() => {
-    if (url) {
-      localStorage.setItem(DEBUG_URL_KEY, url)
+    const ws = new WebSocket('ws://localhost:2333')
+    ws.onmessage = async ({ data }) => {
+      try {
+        const { type, payload } = JSON.parse(data)
+        console.log('TYPE', type)
+        if (
+          type === CHII_EVENT.TARGET_CHANGED ||
+          type === CHII_EVENT.CONNECTED
+        ) {
+          mutateTargets(payload)
+        }
+      } catch (e) {
+        console.error(e)
+      }
     }
   }, [])
 
   useEffect(() => {
-    updateImgSrc()
-    checkUsable()
-  }, [url])
-
-  const updateImgSrc = async () => {
-    if (!url) return
-    const nextImgSrc = await QRCode.toDataURL(url, {
-      width: 300,
-      margin: 1
-    })
-    setImgSrc(nextImgSrc)
-  }
-  
-  const checkUsable = async () => {
-    if (!url) return
-    const html = await requestHtml(url)
-    if (html) {
-      const title = getHtmlTitle(html)
-      setTitle(title)
-    } else {
-      setTitle(url.split('/?')[0])
+    if (currentTarget) {
+      const valid = targets.some((it) => it.id === currentTarget.id)
+      if (!valid) {
+        setCurrentTarget(undefined)
+      }
     }
-  }
-  
-  const openOnDevice = (platform: string) => {
-    debug.command('openUrl', [url, platform])
-  }
-  
-  const finalTitle = title == origin
-    ? title
-    : [title, origin].filter(item => item && item.length > 0).join(' | ')
+  }, [targets])
 
   return (
-    <div class="text-light-600 body-font overflow-hidden bg-dark-900 w-screen h-screen">
-      <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-        <h1 class="title-font sm:text-2xl text-2xl mb-8 font-medium subpixel-antialiased">
-          {finalTitle}
-        </h1>
-        <img src={imgSrc} alt={origin || url || ''} class="lg:w-1/4 md:w-3/6 w-4/6 mb-8 object-cover object-center rounded-2xl" />
-        <div class="text-center lg:w-2/3 w-full">
-          <p class="sm:text-1xl text-2xl mb-8 text-gray-300">
-            {hint}
-          </p>
-          <div class="flex flex-col items-center">
-            <Button onClick={() => openOnDevice('android')}>
-              在 Android 上打开页面
-            </Button>
-            <Button onClick={() => openOnDevice('ios')}>
-              在 iOS 上打开页面
-            </Button>
-          </div>
+    <div
+      ref={parent}
+      className={clsx(
+        'dark:text-white dark:bg-zinc-900',
+        'overflow-hidden items-center justify-center',
+        'w-screen h-screen flex flex-col'
+      )}
+    >
+      {targets.length > 0 ? (
+        <>
+          <Allotment>
+            <Allotment.Pane minSize={200} preferredSize={400}>
+              <SimpleBarReact
+                style={{ maxHeight: '100%' }}
+                className="flex flex-col py-12 px-6 w-full h-full"
+              >
+                {targets.map((target) => (
+                  <Fragment key={target.id}>
+                    <Debuggable
+                      data={target}
+                      onClick={() => setCurrentTarget(target)}
+                      active={target.id === currentTarget?.id}
+                    />
+                    <Space />
+                  </Fragment>
+                ))}
+              </SimpleBarReact>
+            </Allotment.Pane>
+            <div className="w-full h-full">
+              {currentTarget ? (
+                <Inspector data={currentTarget} />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center text-xl">
+                  🍺 从左侧选择要调试的应用
+                </div>
+              )}
+            </div>
+          </Allotment>
+        </>
+      ) : (
+        <div className="flex flex-col items-center justify-center">
+          <CopyableScript ip={ip} />
         </div>
-      </div>
+      )}
     </div>
   )
 }

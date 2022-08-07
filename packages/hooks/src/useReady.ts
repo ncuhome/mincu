@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { isFunction } from 'lodash'
+import isFunction from 'lodash/isFunction'
 import mincuCore from 'mincu-core'
 
 function useIsReady(resolve: () => void, deps?: any[]): void

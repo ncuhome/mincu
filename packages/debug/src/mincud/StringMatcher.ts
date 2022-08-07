@@ -18,7 +18,10 @@ export class StringMatcher {
   private debouncedCheck: () => void
   private idx: number
 
-  constructor(regexExps: RegExp[], { cycle = 3, debounceDelay = 1000, once = true } = {}) {
+  constructor(
+    regexExps: RegExp[],
+    { cycle = 3, debounceDelay = 1000, once = true } = {}
+  ) {
     this.queue = []
     this.cycle = cycle
     this.regexExps = regexExps
@@ -52,7 +55,7 @@ export class StringMatcher {
     for (const regex of this.regexExps) {
       const matchRes = wholeStr.match(regex)
       if (matchRes?.length > 0) {
-        this.matchCallbacks.forEach(cb => cb(matchRes))
+        this.matchCallbacks.forEach((cb) => cb(matchRes))
         if (this.once) {
           this.matchCallbacks = []
         }
@@ -60,5 +63,4 @@ export class StringMatcher {
       }
     }
   }
-
 }

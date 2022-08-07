@@ -1,36 +1,36 @@
 import { useSearchParam } from 'react-use'
+import { DEBUG_CHII_PORT } from 'mincu-lib/debug'
 
-export const DEFAULT_HINT = '请打开 「南大家园」 - 「生活板块」 - 右上角「扫一扫」，扫描以上二维码，开始调试'
+export const DEFAULT_HINT =
+  '请打开 「南大家园」 - 「生活板块」 - 右上角「扫一扫」，扫描以上二维码，开始调试'
 
-const API_HOST = import.meta.env.DEV ? `http://localhost:23333/api` : '/api'
-
-export const DEBUG_URL_KEY = '$DEBUG_URL';
+export const API_HOST = import.meta.env.DEV
+  ? `http://localhost:23333/api`
+  : '/api'
 
 export const useDecodeUrl = () => {
-  const urlParam = useSearchParam('url')
-  const urlStorage = localStorage.getItem(DEBUG_URL_KEY)
-  return urlParam ? decodeURIComponent(urlParam) : urlStorage
+  const urlParam = useSearchParam('url') || ''
+  return urlParam ? decodeURIComponent(urlParam) : ''
 }
 
-const getReallyUrl = (url: string) => {
-  return url.includes('http://localhost')
-    ? url
-    : `${API_HOST}/fetch?target=${encodeURIComponent(url)}`
+export const previewUrl = async (url: string) => {
+  const res = await fetch(
+    `${API_HOST}/preview?target=${encodeURIComponent(url)}`
+  )
+  return res.json()
 }
 
-export const requestHtml = async (url: string) => {
-  const res = await fetch(getReallyUrl(url));
-  const html = await res.text();
-
-  if (html.includes('<html')) {
-    return html
+export const setThemeClass = (isDark: boolean) => {
+  if (isDark) {
+    document.documentElement.classList.remove('light')
+    document.documentElement.classList.add('dark')
   } else {
-    return false
+    document.documentElement.classList.remove('dark')
+    document.documentElement.classList.add('light')
   }
 }
 
-export const getHtmlTitle = (html: string) => {
-  const parser = new DOMParser()
-  const doc = parser.parseFromString(html, 'text/html')
-  return doc.title
-}
+export const CHII_URL = `http://localhost:${DEBUG_CHII_PORT}`
+
+export const chiiFrontUrl = (clientId: string, targetId: string) =>
+  `${CHII_URL}/front_end/chii_app.html?ws=localhost:${DEBUG_CHII_PORT}/client/${clientId}?target=${targetId}`

@@ -1,0 +1,4 @@
+{
+  "main": "dist/mincu-lib-debug.cjs.js",
+  "module": "dist/mincu-lib-debug.esm.js"
+}

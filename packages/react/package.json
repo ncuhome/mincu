@@ -1,6 +1,6 @@
 {
   "name": "mincu-react",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -13,10 +13,10 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-hooks": "2.6.2",
-    "mincu-vanilla": "2.6.2"
+    "mincu-hooks": "workspace:^2.7.0",
+    "mincu-vanilla": "workspace:^2.7.0"
   },
   "peerDependencies": {
-    "react": "^18.1.0"
+    "react": ">=17"
   }
 }

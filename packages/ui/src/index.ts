@@ -2,7 +2,7 @@ import mincuCore from 'mincu-core'
 import { NavConfig } from 'mincu-core'
 import type { StatusBarStyle } from 'react-native'
 
-class UIModule {
+export class UIModule {
   static Instance() {
     return new UIModule()
   }
@@ -64,24 +64,30 @@ class UIModule {
    * unbind()
    * // 或者
    * uiModule.unBindBackPress(cb)
-   * @param hitCb 触发返回事件时的回调 
+   * @param hitCb 触发返回事件时的回调
    * @param bindCb 绑定结果，成功或失败
    */
   bindBackPress(hitCb: () => void, bindCb?: (success: boolean) => void) {
-    mincuCore.call('Webview', 'bindBackPress', [true], () => {
-      bindCb?.(true)
-      mincuCore.listener('back-press', hitCb)
-    }, () => {
-      console.error('绑定原生返回事件失败， 请先显示 header')
-      bindCb?.(false)
-    })
+    mincuCore.call(
+      'Webview',
+      'bindBackPress',
+      [true],
+      () => {
+        bindCb?.(true)
+        mincuCore.listener('back-press', hitCb)
+      },
+      () => {
+        console.error('绑定原生返回事件失败， 请先显示 header')
+        bindCb?.(false)
+      }
+    )
     return () => {
       this.unBindBackPress(hitCb)
     }
   }
 
   bindBackPressPromise(hitCb: () => void): Promise<boolean> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.bindBackPress(hitCb, (success) => {
         resolve(success)
       })
