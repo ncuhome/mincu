@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.7.0 (WIP)
+## 2.7.0
 
 - **refactor** `mincu-vanilla` exports `mincu` that include all variables from `mincuCore`, `networkModule`, `uiModule`, `dataModule`, `eventModule`
 
