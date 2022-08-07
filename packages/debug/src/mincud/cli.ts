@@ -81,7 +81,7 @@ class Cli {
       return
     }
 
-    this.start()
+    this.init()
   }
 
   startAndBindServer = async () => {
@@ -91,20 +91,12 @@ class Cli {
     }
   }
 
-  async start() {
-    const flags = this.flags
+  async init() {
     const input = this.input
 
     // Directly start if no input
     if (this.input.length === 0) {
-      this.startAndBindServer()
-      if (this.flags.chii) {
-        this.useChii()
-      }
-      if (this.flags.qrcode) {
-        this.startDevtool()
-        openBrowser(LOCALHOST + ':' + this.devtoolPort)
-      }
+      this.start()
       return
     }
 
@@ -118,15 +110,22 @@ class Cli {
 
     // Only start after child process running successfully
     stdout.once('data', async () => {
-      if (flags.chii) {
-        this.useChii()
-      } else if (flags.qrcode) {
-        this.useQrcode(stdout)
-      }
+      this.start()
     })
 
     stdout?.pipe(process.stdout)
     stderr?.pipe(process.stderr)
+  }
+
+  start = () => {
+    this.startAndBindServer()
+    if (this.flags.chii) {
+      this.useChii()
+    }
+    if (this.flags.qrcode) {
+      this.startDevtool()
+      openBrowser(LOCALHOST + ':' + this.devtoolPort)
+    }
   }
 
   useChii = async () => {
@@ -217,7 +216,7 @@ class Cli {
         rLog(TAG, 'No client connected')
       }
     }
-    this.wss.clients.forEach((client) => {
+    this.wss.clients?.forEach((client) => {
       client.send(data)
     })
   }
@@ -239,7 +238,7 @@ class Cli {
           case 'c':
             if (this.childPid >= 0) {
               // @ts-ignore
-              terminate(childPid, 'SIGINT', { timeout: 0 }, exitWithLog)
+              terminate(this.childPid, 'SIGINT', { timeout: 0 }, exitWithLog)
             } else {
               exitWithLog()
             }
