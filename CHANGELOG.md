@@ -7,8 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package mincu-monorepo
 
-# Changelog
-
 ## 2.7.0
 
 - **refactor** `mincu-vanilla` exports `mincu` that include all variables from `mincuCore`, `networkModule`, `uiModule`, `dataModule`, `eventModule`
