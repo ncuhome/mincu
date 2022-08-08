@@ -5,6 +5,7 @@
   ],
   "command": {
     "publish": {
+      "conventionalCommits": true,
       "exact": true,
       "message": ":bookmark: release: publish %s",
       "registry": "https://registry.npmjs.org/"
