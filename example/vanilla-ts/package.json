@@ -1,7 +1,7 @@
 {
   "name": "debug-module",
   "private": true,
-  "version": "2.7.1",
+  "version": "2.7.2",
   "scripts": {
     "start": "mincud npm run dev",
     "dev": "vite --host",
@@ -13,6 +13,6 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
-    "mincu-debug": "workspace:^2.7.1"
+    "mincu-debug": "workspace:^2.7.2"
   }
 }
