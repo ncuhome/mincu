@@ -3,6 +3,7 @@ import dataModule, { DataModule } from 'mincu-data'
 import eventModule, { EventModule } from 'mincu-event'
 import networkModule, { NetWorkModule } from 'mincu-network'
 import uiModule, { UIModule } from 'mincu-ui'
+import { toObj } from './utils'
 
 export { mincuCore, dataModule, eventModule, networkModule, uiModule }
 export type {
@@ -24,9 +25,9 @@ interface Mincu
 
 export const mincu = Object.assign(
   {},
-  eventModule,
-  dataModule,
-  uiModule,
-  networkModule,
-  mincuCore
+  toObj(eventModule),
+  toObj(dataModule),
+  toObj(uiModule),
+  toObj(networkModule),
+  toObj(mincuCore)
 ) as Mincu
