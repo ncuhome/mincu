@@ -56,7 +56,7 @@ importers:
       '@types/react': ^18.0.9
       axios: ^0.27.2
       immer: ^9.0.14
-      mincu-react: workspace:^2.7.0-alpha.0
+      mincu-react: workspace:^2.7.2
       next: ^12.1.6
       react: ^18.1.0
       react-dom: ^18.1.0
@@ -84,8 +84,8 @@ importers:
       '@vitejs/plugin-react': ^1.3.2
       autoprefixer: ^10.4.7
       axios: ^0.27.2
-      mincu-debug: workspace:^2.7.0-alpha.0
-      mincu-react: workspace:^2.7.0-alpha.0
+      mincu-debug: workspace:^2.7.2
+      mincu-react: workspace:^2.7.2
       postcss: ^8.4.14
       qrcode.react: ^3.0.2
       react: ^18.1.0
@@ -114,7 +114,7 @@ importers:
 
   example/vanilla-ts:
     specifiers:
-      mincu-debug: workspace:^2.7.0-alpha.0
+      mincu-debug: workspace:^2.7.2
       typescript: ^4.6.4
       vite: ^2.9.9
     dependencies:
@@ -127,7 +127,7 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^1.9.3
       axios: ^0.27.2
-      mincu-vanilla: workspace:^2.7.0-alpha.0
+      mincu-vanilla: workspace:^2.7.2
       typescript: ^4.4.3
       vite: ^2.7.4
       vue: ^3.2.16
@@ -156,7 +156,7 @@ importers:
     specifiers:
       '@types/react-native': ^0.67.7
       events: ^3.3.0
-      mincu-lib: workspace:^2.7.0-alpha.0
+      mincu-lib: workspace:^2.7.2
     dependencies:
       events: 3.3.0
       mincu-lib: link:../lib
@@ -184,8 +184,8 @@ importers:
 
   packages/data:
     specifiers:
-      mincu-core: workspace:^2.7.0-alpha.0
-      mincu-lib: workspace:^2.7.0-alpha.0
+      mincu-core: workspace:^2.7.2
+      mincu-lib: workspace:^2.7.2
     dependencies:
       mincu-core: link:../core
       mincu-lib: link:../lib
@@ -204,8 +204,8 @@ importers:
       lodash.debounce: ^4.0.8
       meow: 9.0.0
       mincu-chii: ^1.1.0
-      mincu-debug-tools: workspace:^2.7.0
-      mincu-lib: workspace:^2.7.0
+      mincu-debug-tools: workspace:^2.7.2
+      mincu-lib: workspace:^2.7.2
       open: ^8.4.0
       strip-ansi: 6.0.0
       terminate: ^2.5.0
@@ -258,7 +258,7 @@ importers:
       isomorphic-ws: ^4.0.1
       link-preview-js: ^2.1.15
       million: 1.12.3-beta.3
-      mincu-lib: workspace:2.7.0-alpha.0
+      mincu-lib: workspace:2.7.2
       nanoid: ^4.0.0
       prism-react-renderer: ^1.3.5
       qrcode.react: ^3.0.2
@@ -326,15 +326,15 @@ importers:
 
   packages/event:
     specifiers:
-      mincu-core: workspace:^2.7.0-alpha.0
+      mincu-core: workspace:^2.7.2
     dependencies:
       mincu-core: link:../core
 
   packages/hooks:
     specifiers:
       lodash: ^4.17.21
-      mincu-core: workspace:^2.7.0-alpha.0
-      mincu-data: workspace:^2.7.0-alpha.0
+      mincu-core: workspace:^2.7.2
+      mincu-data: workspace:^2.7.2
       react: '>=17'
     dependencies:
       lodash: 4.17.21
@@ -351,8 +351,8 @@ importers:
   packages/network:
     specifiers:
       axios: ^0.27.2
-      mincu-core: workspace:^2.7.0-alpha.0
-      mincu-data: workspace:^2.7.0-alpha.0
+      mincu-core: workspace:^2.7.2
+      mincu-data: workspace:^2.7.2
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
@@ -361,8 +361,8 @@ importers:
 
   packages/react:
     specifiers:
-      mincu-hooks: workspace:^2.7.0-alpha.0
-      mincu-vanilla: workspace:^2.7.0-alpha.0
+      mincu-hooks: workspace:^2.7.2
+      mincu-vanilla: workspace:^2.7.2
       react: '>=17'
     dependencies:
       mincu-hooks: link:../hooks
@@ -372,7 +372,7 @@ importers:
   packages/ui:
     specifiers:
       '@types/react-native': ^0.67.7
-      mincu-core: workspace:^2.7.0-alpha.0
+      mincu-core: workspace:^2.7.2
     dependencies:
       mincu-core: link:../core
     devDependencies:
@@ -380,11 +380,11 @@ importers:
 
   packages/vanilla:
     specifiers:
-      mincu-core: workspace:^2.7.0-alpha.0
-      mincu-data: workspace:^2.7.0-alpha.0
-      mincu-event: workspace:^2.7.0-alpha.0
-      mincu-network: workspace:^2.7.0-alpha.0
-      mincu-ui: workspace:^2.7.0-alpha.0
+      mincu-core: workspace:^2.7.2
+      mincu-data: workspace:^2.7.2
+      mincu-event: workspace:^2.7.2
+      mincu-network: workspace:^2.7.2
+      mincu-ui: workspace:^2.7.2
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data

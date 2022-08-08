@@ -180,7 +180,13 @@ const App = () => {
           >
             绑定原生返回事件
           </Button>
-          <Button onClick={() => mincu.backPress.unbind(backPressCb)}>
+          <Button onClick={() => {
+            mincu.backPress.unbind(backPressCb)
+            mincu.toast.success(
+              '取消绑定原生返回事件',
+              1
+            )
+          }}>
             取消绑定原生返回事件
           </Button>
 
