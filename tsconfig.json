@@ -26,12 +26,15 @@
     "paths": {
       "mincu-*": ["./packages/*/src"]
     },
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noEmit": true
   },
   "exclude": [
     "node_modules",
     "**/__tests__/*",
     "example",
-    "dist"
+    "**/dist",
+    "**/output",
+    "packages/debug-tools"
   ]
 }
