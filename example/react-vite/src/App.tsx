@@ -1,12 +1,9 @@
 import { useEffect } from 'react'
 import {
   useSafeArea,
-  dataModule,
-  eventModule,
-  uiModule,
-  networkModule,
   useNativeState,
   Ready,
+  mincu
 } from 'mincu-react'
 import { Fallback } from './Fallback'
 
@@ -14,7 +11,7 @@ import { Button } from './Button'
 import axios from 'axios'
 
 const fetcher = axios.create()
-networkModule.useAxiosInterceptors(fetcher)
+mincu.useAxiosInterceptors(fetcher)
 
 const App = () => {
   const { top } = useSafeArea()
@@ -22,11 +19,11 @@ const App = () => {
   const colorScheme = useNativeState('colorScheme')
 
   useEffect(() => {
-    networkModule.getStoredToken()
+    mincu.getStoredToken()
   }, [])
 
   useEffect(() => {
-    eventModule.setShareConfig({
+    mincu.setShareConfig({
       title: '应用名',
     })
     hideHeader()
@@ -38,7 +35,7 @@ const App = () => {
   }, [colorScheme])
 
   const fetchSchoolLife = async () => {
-    const loadingTip = await uiModule.loading('加载中', 0)
+    const loadingTip = await mincu.toast.loading('加载中', 0)
     try {
       const res = await fetcher.get(
         'https://os.ncuos.com/api/user/profile/basic'
@@ -52,28 +49,28 @@ const App = () => {
   }
 
   const hideHeader = () => {
-    uiModule.handleShowHeader(false)
+    mincu.handleShowHeader(false)
   }
 
   const showHeader = () => {
-    uiModule.handleShowHeader(true)
+    mincu.handleShowHeader(true)
   }
 
   const showVersion = async () => {
-    const version = await dataModule.getVersion()
+    const version = await mincu.getVersion()
     alert(version)
   }
 
   const toastLoading = async () => {
-    await uiModule.loading('加载中')
+    await mincu.toast.loading('加载中')
   }
 
   const refreshToken = async () => {
-    const token = await networkModule.refreshToken()
+    const token = await mincu.refreshToken()
     alert(token)
   }
 
-  const backPressCb = () => uiModule.success('onBackPress 回调触发', 1)
+  const backPressCb = () => mincu.toast.success('onBackPress 回调触发', 1)
 
   const ColorItem = ({ name, color }: any) => (
     <div
@@ -88,43 +85,43 @@ const App = () => {
 
   const storageTests = {
     get: () => {
-      dataModule.storage
+      mincu.storage
         .getItem('test')
         .then((res) => {
-          uiModule.success(res)
+          mincu.toast.success(res)
         })
         .catch((err) => {
-          uiModule.fail(err)
+          mincu.toast.fail(err)
         })
     },
     set: () => {
-      dataModule.storage
+      mincu.storage
         .setItem('test', new Date().toLocaleString())
         .then(() => {
-          uiModule.success('set success')
+          mincu.toast.success('set success')
         })
         .catch((err) => {
-          uiModule.fail(err)
+          mincu.toast.fail(err)
         })
     },
     remove: () => {
-      dataModule.storage
+      mincu.storage
         .removeItem('test')
         .then(() => {
-          uiModule.success('remove success')
+          mincu.toast.success('remove success')
         })
         .catch((err) => {
-          uiModule.fail(err)
+          mincu.toast.fail(err)
         })
     },
     reset: () => {
-      dataModule.storage
+      mincu.storage
         .reset()
         .then(() => {
-          uiModule.success('reset success')
+          mincu.toast.success('reset success')
         })
         .catch((err) => {
-          uiModule.fail(err)
+          mincu.toast.fail(err)
         })
     },
   }
@@ -142,15 +139,15 @@ const App = () => {
           <Button onClick={refreshToken}>测试刷新token</Button>
           <Button onClick={hideHeader}>隐藏标题</Button>
           <Button onClick={showHeader}>显示标题</Button>
-          <Button onClick={() => uiModule.exit()}>退出</Button>
-          <Button onClick={() => eventModule.showShare()}>分享</Button>
+          <Button onClick={() => mincu.exit()}>退出</Button>
+          <Button onClick={() => mincu.showShare()}>分享</Button>
           <p className="font-medium text-xl m-2">导航</p>
-          <Button onClick={() => uiModule.toScreen({ screen: '周课表' })}>
+          <Button onClick={() => mincu.toScreen({ screen: '周课表' })}>
             周课表
           </Button>
           <Button
             onClick={() =>
-              uiModule.toScreen({
+              mincu.toScreen({
                 screen: '用户资料',
                 params: { userId: '5504118086' },
               })
@@ -158,10 +155,10 @@ const App = () => {
           >
             他的资料
           </Button>
-          <Button onClick={() => uiModule.info('23333')}>
+          <Button onClick={() => mincu.toast.info('23333')}>
             打开 Toast info
           </Button>
-          <Button onClick={() => uiModule.success('23333')}>
+          <Button onClick={() => mincu.toast.success('23333')}>
             打开 Toast success
           </Button>
           <Button onClick={toastLoading}>打开 Toast loading</Button>
@@ -169,25 +166,25 @@ const App = () => {
           <Button onClick={() => alert(colorScheme)}>获取当前主题</Button>
           <Button
             onClick={() =>
-              uiModule.bindBackPress(backPressCb, (success) => {
+              mincu.backPress.bind(backPressCb, (success) => {
                 if (success) {
-                  uiModule.success(
+                  mincu.toast.success(
                     '绑定原生返回事件成功，请自行处理返回事件',
                     1
                   )
                 } else {
-                  uiModule.fail('绑定原生返回事件失败， 请先显示 header', 1)
+                  mincu.toast.fail('绑定原生返回事件失败， 请先显示 header', 1)
                 }
               })
             }
           >
             绑定原生返回事件
           </Button>
-          <Button onClick={() => uiModule.unBindBackPress(backPressCb)}>
+          <Button onClick={() => mincu.backPress.unbind(backPressCb)}>
             取消绑定原生返回事件
           </Button>
 
-          <Button onClick={() => eventModule.login('username', 'pwd')}>
+          <Button onClick={() => mincu.login('username', 'pwd')}>
             登录
           </Button>
 
