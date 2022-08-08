@@ -9,6 +9,10 @@
       "exact": true,
       "message": ":bookmark: release: publish %s",
       "registry": "https://registry.npmjs.org/"
+    },
+    "version": {
+      "conventionalCommits": true,
+      "syncWorkspaceLock": true
     }
   },
   "version": "2.8.0"
