@@ -93,7 +93,7 @@ export class MincuCoreBase {
   call = <Class extends FuncNames, Method extends keyof INativeFuncs[Class]>(
     baseClass: Class,
     method: Method,
-    params = [],
+    params: Parameters<INativeFuncs[Class][Method]>,
     success: (res?: {
       data: ReturnType<INativeFuncs[Class][Method]>
     }) => any = noop,
@@ -119,7 +119,7 @@ export class MincuCoreBase {
   >(
     baseClass: Class,
     method: Method,
-    params = []
+    params: Parameters<INativeFuncs[Class][Method]>
   ) => {
     return new Promise<ReturnType<INativeFuncs[Class][Method]>>(
       (resolve, reject) => {

@@ -23,11 +23,15 @@ export interface INativeFuncs {
   Clipboard
   Vibration
   ToastAndroid: ToastAndroidStatic
-  Toast
+  Toast: {
+    [key: string]: (title: string, during: number) => number
+  }
   StatusBar: {
     setBarStyle: (style: StatusBarStyle, animated?: boolean) => void
   }
-  Portal: any
+  Portal: {
+    remove: (id: number) => void
+  }
   Share
   Webview: {
     handleShowHeader: (value?: boolean) => boolean
