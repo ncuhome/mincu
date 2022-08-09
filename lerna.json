@@ -7,7 +7,7 @@
     "publish": {
       "conventionalCommits": true,
       "exact": true,
-      "message": ":bookmark: release: publish %s",
+      "message": "chore: publish %s",
       "registry": "https://registry.npmjs.org/"
     },
     "version": {
