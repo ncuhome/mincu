@@ -16,7 +16,7 @@
     "prepare": "husky install",
     "prettier": "pretty-quick",
     "release": "npm run build:debug-tools && npm run build && lerna publish --no-push",
-    "test:example": "zx ./tests/run_example_scripts",
+    "test:example": "zx ./tests/run_example_scripts.mjs",
     "watch": "preconstruct watch"
   },
   "husky": {
