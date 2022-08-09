@@ -2,3 +2,5 @@ dist
 example
 node_modules
 .eslintrc.js
+packages/debug-tools
+tests
