@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1](https://github.com/ncuhome/mincu/compare/v2.8.0...v2.8.1) (2022-08-11)
+
+### Bug Fixes
+
+* lerna npmClient to pnpm ([c3caeb1](https://github.com/ncuhome/mincu/commit/c3caeb18f7b32414cc9241decb0124aad2186172))
+* test:example ([19a0e6e](https://github.com/ncuhome/mincu/commit/19a0e6e837ed2a52574e032b14b5fd56d158eccf))
+
+### Features
+
+* add example/vue-vite, remove vue-spa ([0659af4](https://github.com/ncuhome/mincu/commit/0659af48f5435a00f409383d790a72a400ab6fa6))
+* mincu-vanilla export Mincu interface ([5b4d4df](https://github.com/ncuhome/mincu/commit/5b4d4dfb4a3c1ba3b08290b465b05cb742fd0b1e))
+* upgrade deps ([015efd2](https://github.com/ncuhome/mincu/commit/015efd26a5cd4baf99d89f533c26b1df87d7b33a))
+
 # [2.8.0](https://github.com/ncuhome/mincu/compare/v2.7.0...v2.8.0) (2022-08-08)
 
 ### Bug Fixes

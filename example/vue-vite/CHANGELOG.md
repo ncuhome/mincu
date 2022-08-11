@@ -7,12 +7,5 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
+* add example/vue-vite, remove vue-spa ([0659af4](https://github.com/ncuhome/mincu/commit/0659af48f5435a00f409383d790a72a400ab6fa6))
 * upgrade deps ([015efd2](https://github.com/ncuhome/mincu/commit/015efd26a5cd4baf99d89f533c26b1df87d7b33a))
-
-# [2.8.0](https://github.com/ncuhome/mincu/compare/v2.7.0...v2.8.0) (2022-08-08)
-
-**Note:** Version bump only for package debug-module
-
-## [2.7.2](https://github.com/ncuhome/mincu/compare/v2.7.1...v2.7.2) (2022-08-08)
-
-**Note:** Version bump only for package debug-module
