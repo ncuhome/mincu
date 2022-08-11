@@ -16,7 +16,7 @@ export type {
   ColorSchemeName,
 } from 'mincu-core'
 
-interface Mincu
+export interface Mincu
   extends MincuCoreBase,
     DataModule,
     EventModule,
