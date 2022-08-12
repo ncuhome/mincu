@@ -5,6 +5,10 @@ import { EventEmitter } from 'events'
 
 export * from './interface'
 export * from './channel'
+
+type ParamType<T> = T extends (...args: infer U) => any ? U : never
+type CallReturnType<T> = T extends (...args: any[]) => infer R ? R : T
+
 /**
  * 目前支持 web 和 native 的双向通信
  */
@@ -19,22 +23,38 @@ export class MincuCoreBase {
     channelGenerator(eventMap)
   }
 
+  /**
+   * 通过 userAgent 判断是否在 iNCU 环境
+   * userAgent: iNCU.*
+   */
   get isApp() {
     return _window?.navigator?.userAgent?.indexOf('iNCU') !== -1
   }
 
+  /**
+   * 与 App 端通信的消息通道
+   */
   get messageChannel(): EventEmitter {
     return _window.RNMessageChannel
   }
 
+  /**
+   * 由 iNCU WebView 注入的来自 App 的数据
+   */
   get appData(): AppData {
     return _window.appData
   }
 
+  /**
+   * App 端的 Webview JavaScriptInterface，用以向 App 端发送信息
+   */
   get webview() {
     return _window.ReactNativeWebView
   }
 
+  /**
+   * 由 App 端注入的数据段，用以判断是否注入成功
+   */
   get isReady() {
     return _window.appReady ?? false
   }
@@ -93,9 +113,9 @@ export class MincuCoreBase {
   call = <Class extends FuncNames, Method extends keyof INativeFuncs[Class]>(
     baseClass: Class,
     method: Method,
-    params: Parameters<INativeFuncs[Class][Method]>,
+    params: ParamType<INativeFuncs[Class][Method]>,
     success: (res?: {
-      data: ReturnType<INativeFuncs[Class][Method]>
+      data: CallReturnType<INativeFuncs[Class][Method]>
     }) => any = noop,
     failed = noop
   ) => {
@@ -119,9 +139,9 @@ export class MincuCoreBase {
   >(
     baseClass: Class,
     method: Method,
-    params: Parameters<INativeFuncs[Class][Method]>
+    params: ParamType<INativeFuncs[Class][Method]>
   ) => {
-    return new Promise<ReturnType<INativeFuncs[Class][Method]>>(
+    return new Promise<CallReturnType<INativeFuncs[Class][Method]>>(
       (resolve, reject) => {
         mincuCore.call(
           baseClass,

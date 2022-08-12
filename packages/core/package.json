@@ -15,8 +15,5 @@
   "dependencies": {
     "events": "^3.3.0",
     "mincu-lib": "workspace:^2.8.1"
-  },
-  "devDependencies": {
-    "@types/react-native": "^0.67.7"
   }
 }

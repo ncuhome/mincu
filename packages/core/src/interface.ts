@@ -1,9 +1,16 @@
-import type {
-  LinkingStatic,
+export * from './types/ncuos'
+export * from './types/rn'
+
+import { Base_info } from './types/ncuos'
+import {
+  RNLinking,
   ToastAndroidStatic,
   StatusBarStyle,
-} from 'react-native'
-import { Base_info } from './base_type'
+  NetInfo,
+  DeviceInfo,
+  Clipboard,
+  VibrationStatic,
+} from './types/rn'
 
 export type FuncNames = keyof INativeFuncs
 
@@ -13,15 +20,15 @@ export type States = {
 }
 
 export interface INativeFuncs {
-  Linking: LinkingStatic
-  NetInfo
+  Linking: RNLinking
+  NetInfo: NetInfo
   Auth: {
     refreshToken: () => { token: string }
     login: (data: { username: string; password: string }) => number
   }
-  DeviceInfo
-  Clipboard
-  Vibration
+  DeviceInfo: DeviceInfo
+  Clipboard: Clipboard
+  Vibration: VibrationStatic
   ToastAndroid: ToastAndroidStatic
   Toast: {
     [key: string]: (title: string, during: number) => number
@@ -32,7 +39,10 @@ export interface INativeFuncs {
   Portal: {
     remove: (id: number) => void
   }
-  Share
+  Share: {
+    openShareMenu: () => void
+    setShareConfig: (config: ShareConfig) => void
+  }
   Webview: {
     handleShowHeader: (value?: boolean) => boolean
     disableAutoSetTitle: () => void

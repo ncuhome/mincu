@@ -160,14 +160,11 @@ importers:
 
   packages/core:
     specifiers:
-      '@types/react-native': ^0.67.7
       events: ^3.3.0
       mincu-lib: workspace:^2.8.1
     dependencies:
       events: 3.3.0
       mincu-lib: link:../lib
-    devDependencies:
-      '@types/react-native': 0.67.11
 
   packages/create:
     specifiers:
@@ -379,12 +376,9 @@ importers:
 
   packages/ui:
     specifiers:
-      '@types/react-native': ^0.67.7
       mincu-core: workspace:^2.8.1
     dependencies:
       mincu-core: link:../core
-    devDependencies:
-      '@types/react-native': 0.67.11
 
   packages/vanilla:
     specifiers:
@@ -3139,12 +3133,6 @@ packages:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
       '@types/react': 18.0.17
-    dev: true
-
-  /@types/react-native/0.67.11:
-    resolution: {integrity: sha512-+cw8/0jf+sAFOTmyfzIsXTcjjkqF7hCZZT8sGZNxLFZ4/pzAFyd8IipKUwhu4PJ7hLS60A4SAQQt+Ehl1a6diw==}
-    dependencies:
-      '@types/react': 18.0.11
     dev: true
 
   /@types/react/18.0.11:

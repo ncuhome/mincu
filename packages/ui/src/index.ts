@@ -1,6 +1,5 @@
 import mincuCore from 'mincu-core'
-import { NavConfig } from 'mincu-core'
-import type { StatusBarStyle } from 'react-native'
+import { NavConfig, StatusBarStyle } from 'mincu-core'
 import { backPress } from './back-press'
 import { toast } from './toast'
 
