@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.2](https://github.com/ncuhome/mincu/compare/v2.8.1...v2.8.2) (2022-08-12)
+
+### Features
+
+* mincu-core fill interface ([c29a122](https://github.com/ncuhome/mincu/commit/c29a122d2980332e959b4bd9960a3bd09b56f72c))
+
 ## [2.8.1](https://github.com/ncuhome/mincu/compare/v2.8.0...v2.8.1) (2022-08-11)
 
 **Note:** Version bump only for package mincu-ui

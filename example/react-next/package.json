@@ -1,7 +1,7 @@
 {
   "name": "incu-react-next-example",
   "private": true,
-  "version": "2.8.1",
+  "version": "2.8.2",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
@@ -12,7 +12,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "immer": "^9.0.15",
-    "mincu-react": "workspace:^2.8.1",
+    "mincu-react": "workspace:^2.8.2",
     "next": "^12.2.2",
     "qrcode.react": "^3.0.2",
     "react": "^18.2.0",

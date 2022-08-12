@@ -58,7 +58,7 @@ importers:
       autoprefixer: ^10.4.7
       axios: ^0.27.2
       immer: ^9.0.15
-      mincu-react: workspace:^2.8.1
+      mincu-react: workspace:^2.8.2
       next: ^12.2.2
       postcss: ^8.4.14
       qrcode.react: ^3.0.2
@@ -95,7 +95,7 @@ importers:
       autoprefixer: ^10.4.8
       axios: ^0.27.2
       mincu-debug: workspace:^2.8.1
-      mincu-react: workspace:^2.8.1
+      mincu-react: workspace:^2.8.2
       postcss: ^8.4.16
       qrcode.react: ^3.1.0
       react: ^18.2.0
@@ -137,7 +137,7 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^3.0.1
       autoprefixer: ^10.4.8
-      mincu-vanilla: workspace:^2.8.1
+      mincu-vanilla: workspace:^2.8.2
       postcss: ^8.4.16
       qrcode.vue: ^3.3.3
       tailwindcss: ^3.1.8
@@ -187,7 +187,7 @@ importers:
 
   packages/data:
     specifiers:
-      mincu-core: workspace:^2.8.1
+      mincu-core: workspace:^2.8.2
       mincu-lib: workspace:^2.8.1
     dependencies:
       mincu-core: link:../core
@@ -329,15 +329,15 @@ importers:
 
   packages/event:
     specifiers:
-      mincu-core: workspace:^2.8.1
+      mincu-core: workspace:^2.8.2
     dependencies:
       mincu-core: link:../core
 
   packages/hooks:
     specifiers:
       lodash: ^4.17.21
-      mincu-core: workspace:^2.8.1
-      mincu-data: workspace:^2.8.1
+      mincu-core: workspace:^2.8.2
+      mincu-data: workspace:^2.8.2
       react: '>=17'
     dependencies:
       lodash: 4.17.21
@@ -355,8 +355,8 @@ importers:
   packages/network:
     specifiers:
       axios: ^0.27.2
-      mincu-core: workspace:^2.8.1
-      mincu-data: workspace:^2.8.1
+      mincu-core: workspace:^2.8.2
+      mincu-data: workspace:^2.8.2
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
@@ -365,8 +365,8 @@ importers:
 
   packages/react:
     specifiers:
-      mincu-hooks: workspace:^2.8.1
-      mincu-vanilla: workspace:^2.8.1
+      mincu-hooks: workspace:^2.8.2
+      mincu-vanilla: workspace:^2.8.2
       react: '>=17'
     dependencies:
       mincu-hooks: link:../hooks
@@ -376,17 +376,17 @@ importers:
 
   packages/ui:
     specifiers:
-      mincu-core: workspace:^2.8.1
+      mincu-core: workspace:^2.8.2
     dependencies:
       mincu-core: link:../core
 
   packages/vanilla:
     specifiers:
-      mincu-core: workspace:^2.8.1
-      mincu-data: workspace:^2.8.1
-      mincu-event: workspace:^2.8.1
-      mincu-network: workspace:^2.8.1
-      mincu-ui: workspace:^2.8.1
+      mincu-core: workspace:^2.8.2
+      mincu-data: workspace:^2.8.2
+      mincu-event: workspace:^2.8.2
+      mincu-network: workspace:^2.8.2
+      mincu-ui: workspace:^2.8.2
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data

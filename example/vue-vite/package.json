@@ -1,7 +1,7 @@
 {
   "name": "vue-vite",
   "private": true,
-  "version": "2.8.1",
+  "version": "2.8.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "mincu-vanilla": "workspace:^2.8.1",
+    "mincu-vanilla": "workspace:^2.8.2",
     "qrcode.vue": "^3.3.3",
     "vue": "^3.2.37"
   },
