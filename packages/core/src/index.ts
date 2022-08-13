@@ -117,7 +117,7 @@ export class MincuCoreBase {
     success: (res?: {
       data: CallReturnType<INativeFuncs[Class][Method]>
     }) => any = noop,
-    failed = noop
+    failed: (...args: any[]) => void = noop
   ) => {
     this.eventKey += 1
     this.eventMap[this.eventKey] = { success, failed }
