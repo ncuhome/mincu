@@ -143,7 +143,7 @@ export class MincuCoreBase {
   ) => {
     return new Promise<CallReturnType<INativeFuncs[Class][Method]>>(
       (resolve, reject) => {
-        mincuCore.call(
+        this.call(
           baseClass,
           method,
           params,
@@ -154,6 +154,21 @@ export class MincuCoreBase {
         )
       }
     )
+  }
+
+  /**
+   * Return a proxy handle callPromise from INativeFuncs
+   */
+  makeProxyFromNativeFunc = <Class extends FuncNames>(func: Class) => {
+    return new Proxy(
+      {},
+      {
+        get: (_, prop: any) => {
+          return (...args: any) =>
+            this.callPromise(func, prop, [...args] as any)
+        },
+      }
+    ) as any as INativeFuncs[Class]
   }
 }
 
