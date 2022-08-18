@@ -1,6 +1,7 @@
 export * from './net_info'
 export * from './device_info'
 export * from './clipboard'
+export * from './orientation'
 
 export interface RNLinking {
   /**

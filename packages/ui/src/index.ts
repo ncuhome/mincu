@@ -2,6 +2,7 @@ import mincuCore from 'mincu-core'
 import { NavConfig, StatusBarStyle } from 'mincu-core'
 import { backPress } from './back-press'
 import { toast } from './toast'
+import { orientation } from './orientation'
 
 export class UIModule {
   static Instance() {
@@ -11,6 +12,11 @@ export class UIModule {
   toast = toast
 
   backPress = backPress
+
+  /**
+   * @since iNCU 5.9.7+
+   */
+  orientation = orientation
 
   setBarStyle(style: StatusBarStyle) {
     mincuCore.call('StatusBar', 'setBarStyle', [style])

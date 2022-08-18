@@ -10,6 +10,7 @@ import {
   DeviceInfo,
   Clipboard,
   VibrationStatic,
+  Orientation,
 } from './types/rn'
 
 export type FuncNames = keyof INativeFuncs
@@ -56,6 +57,10 @@ export interface INativeFuncs {
     remove: (key: string) => void
     reset: () => void
   }
+  /**
+   * @since iNCU 5.9.7+
+   */
+  Orientation: typeof Orientation
 }
 
 export interface ShareConfig {
