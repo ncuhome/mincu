@@ -1,6 +1,6 @@
 {
   "name": "mincu-react-demo-shared",
-  "version": "2.8.3",
+  "version": "2.9.1",
   "main": "dist/mincu-react-demo-shared.cjs.js",
   "module": "dist/mincu-react-demo-shared.esm.js",
   "dependencies": {
