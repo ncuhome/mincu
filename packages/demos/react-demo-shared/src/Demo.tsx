@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Button } from './Button'
 import { useSafeArea, useNativeState, mincu } from 'mincu-react'
 import axios from 'axios'
+import { tw } from 'twind'
 
 const fetcher = axios.create()
 mincu.useAxiosInterceptors(fetcher)
@@ -67,7 +68,9 @@ export const Demo: React.FC = () => {
 
   const ColorItem = ({ name, color }: any) => (
     <div
-      className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-3"
+      className={tw(
+        'text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-3'
+      )}
       style={{
         color,
         marginBottom: 12,
@@ -122,7 +125,7 @@ export const Demo: React.FC = () => {
   return (
     <div>
       <div style={{ marginTop: top + 12, marginRight: 10, marginLeft: 10 }}>
-        <p className="font-medium text-xl m-2">
+        <p className={tw('font-medium text-xl m-2')}>
           学号: {localStorage.getItem('studentID')}
         </p>
         <Button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</Button>
@@ -131,7 +134,7 @@ export const Demo: React.FC = () => {
         <Button onClick={showHeader}>显示标题</Button>
         <Button onClick={() => mincu.exit()}>退出</Button>
         <Button onClick={() => mincu.showShare()}>分享</Button>
-        <p className="font-medium text-xl m-2">UI 相关</p>
+        <p className={tw('font-medium text-xl m-2')}>UI 相关</p>
         <Button onClick={() => mincu.toScreen({ screen: '周课表' })}>
           周课表
         </Button>
@@ -186,11 +189,11 @@ export const Demo: React.FC = () => {
           切换竖屏
         </Button>
 
-        <p className="font-medium text-xl m-2">colors 测试</p>
+        <p className={tw('font-medium text-xl m-2')}>colors 测试</p>
         <ColorItem color={colors.white} name="colors.white" />
         <ColorItem color={colors.black} name="colors.white" />
 
-        <p className="font-medium text-xl m-2">MincuStorage 测试</p>
+        <p className={tw('font-medium text-xl m-2')}>MincuStorage 测试</p>
         <Button onClick={storageTests.get}>getItem('test')</Button>
         <Button onClick={storageTests.set}>
           setItem('test', new Date().toLocaleString())

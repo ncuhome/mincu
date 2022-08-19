@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { tw } from 'twind'
 
 const buttonClass = [
   'text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2',
@@ -25,7 +26,7 @@ export const Button = (props: Props) => {
   const [className, setClassName] = useState<string>()
 
   useEffect(() => {
-    setClassName(buttonClass[randInt(0, buttonClass.length - 1)])
+    setClassName(tw(buttonClass[randInt(0, buttonClass.length - 1)]))
   }, [])
 
   return <button className={className + ' m-1'} {...props} />
