@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/ncuhome/mincu/compare/v2.8.3...v2.9.0) (2022-08-19)
+
+### Features
+
+* mincu-{core, event} -> orientation API ([5e5467a](https://github.com/ncuhome/mincu/commit/5e5467a7199276c99460f11e5e428afd49354862))
+
 ## [2.8.3](https://github.com/ncuhome/mincu/compare/v2.8.2...v2.8.3) (2022-08-13)
 
 **Note:** Version bump only for package mincu-ui

@@ -1,6 +1,6 @@
 {
   "name": "incu-react-next-example",
-  "version": "2.8.3",
+  "version": "2.9.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "mincu-react": "workspace:^2.8.3",
+    "mincu-react": "workspace:^2.9.0",
     "mincu-react-demo-shared": "workspace:^2.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

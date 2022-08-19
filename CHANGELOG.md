@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/ncuhome/mincu/compare/v2.8.3...v2.9.0) (2022-08-19)
+
+### Features
+
+* mincu-{core, event} -> orientation API ([5e5467a](https://github.com/ncuhome/mincu/commit/5e5467a7199276c99460f11e5e428afd49354862))
+* mincu-core -> makeProxyFromNativeFunc ([78eacfc](https://github.com/ncuhome/mincu/commit/78eacfc6998fb2dda213531e1b8daea9b836f2ec))
+* mincu-react-demo-shared ([0093880](https://github.com/ncuhome/mincu/commit/0093880fc1fd44e141b9011784bbea3497a59365))
+
 ## [2.8.3](https://github.com/ncuhome/mincu/compare/v2.8.2...v2.8.3) (2022-08-13)
 
 ### Bug Fixes
