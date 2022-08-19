@@ -56,7 +56,7 @@ importers:
       '@types/prop-types': ^15.7.5
       '@types/react': ^18.0.16
       mincu-react: workspace:^2.9.0
-      mincu-react-demo-shared: workspace:^2.9.1
+      mincu-react-demo-shared: workspace:^2.10.0
       next: ^12.2.2
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -82,7 +82,7 @@ importers:
       '@vitejs/plugin-react': ^2.0.0
       mincu-debug: ^2.8.1
       mincu-react: ^2.9.0
-      mincu-react-demo-shared: ^2.9.1
+      mincu-react-demo-shared: 2.10.0
       react: ^18.2.0
       react-dom: ^18.2.0
       react-router-dom: 6.3.0
