@@ -1,11 +1,11 @@
-import React from 'react';
-import { QRCodeSVG } from 'qrcode.react';
+import React from 'react'
+import { QRCodeSVG } from 'qrcode.react'
 
 const getPreviewUrl = () => {
-  return location.href + '?devSecret=iNCUDeveloper++';
-};
+  return location.href + '?devSecret=iNCUDeveloper++'
+}
 
-export const Fallback = () => (
+export const Fallback: React.FC = () => (
   <div className="flex flex-col justify-center items-center h-screen text-sm md:text-lg">
     <div className="mb-8">请使用南大家园扫描以下二维码，即刻预览 🚀</div>
     <QRCodeSVG value={getPreviewUrl()} size={180} />
@@ -22,4 +22,4 @@ export const Fallback = () => (
       </a>
     </span>
   </div>
-);
+)

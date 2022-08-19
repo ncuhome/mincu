@@ -56,7 +56,8 @@
   },
   "preconstruct": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "packages/demos/*"
     ]
   }
 }
