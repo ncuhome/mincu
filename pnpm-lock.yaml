@@ -55,8 +55,8 @@ importers:
       '@types/node': ^18.6.4
       '@types/prop-types': ^15.7.5
       '@types/react': ^18.0.16
-      mincu-react: workspace:^2.9.0
-      mincu-react-demo-shared: workspace:^2.10.0
+      mincu-react: workspace:^2.10.1
+      mincu-react-demo-shared: workspace:^2.10.1
       next: ^12.2.2
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -80,9 +80,9 @@ importers:
       '@types/react': ^18.0.17
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.0.0
-      mincu-debug: ^2.8.1
-      mincu-react: ^2.9.0
-      mincu-react-demo-shared: 2.10.0
+      mincu-debug: 2.10.1
+      mincu-react: 2.10.1
+      mincu-react-demo-shared: 2.10.1
       react: ^18.2.0
       react-dom: ^18.2.0
       react-router-dom: 6.3.0
@@ -104,7 +104,7 @@ importers:
 
   example/vanilla-ts:
     specifiers:
-      mincu-debug: workspace:^2.8.1
+      mincu-debug: workspace:^2.10.1
       typescript: ^4.7.4
       vite: ^3.0.4
     dependencies:
@@ -117,7 +117,7 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^3.0.1
       autoprefixer: ^10.4.8
-      mincu-vanilla: workspace:^2.9.0
+      mincu-vanilla: workspace:^2.10.1
       postcss: ^8.4.16
       qrcode.vue: ^3.3.3
       tailwindcss: ^3.1.8
@@ -141,7 +141,7 @@ importers:
   packages/core:
     specifiers:
       events: ^3.3.0
-      mincu-lib: workspace:^2.8.1
+      mincu-lib: workspace:^2.10.1
     dependencies:
       events: 3.3.0
       mincu-lib: link:../lib
@@ -167,8 +167,8 @@ importers:
 
   packages/data:
     specifiers:
-      mincu-core: workspace:^2.9.0
-      mincu-lib: workspace:^2.8.1
+      mincu-core: workspace:^2.10.1
+      mincu-lib: workspace:^2.10.1
     dependencies:
       mincu-core: link:../core
       mincu-lib: link:../lib
@@ -187,8 +187,8 @@ importers:
       lodash.debounce: ^4.0.8
       meow: 9.0.0
       mincu-chii: ^1.1.0
-      mincu-debug-tools: workspace:^2.8.1
-      mincu-lib: workspace:^2.8.1
+      mincu-debug-tools: workspace:^2.10.1
+      mincu-lib: workspace:^2.10.1
       open: ^8.4.0
       strip-ansi: 6.0.0
       terminate: ^2.5.0
@@ -241,7 +241,7 @@ importers:
       isomorphic-ws: ^4.0.1
       link-preview-js: ^2.1.15
       million: 1.12.3-beta.3
-      mincu-lib: workspace:2.8.1
+      mincu-lib: workspace:2.10.1
       nanoid: ^4.0.0
       prism-react-renderer: ^1.3.5
       qrcode.react: ^3.0.2
@@ -334,15 +334,15 @@ importers:
 
   packages/event:
     specifiers:
-      mincu-core: workspace:^2.9.0
+      mincu-core: workspace:^2.10.1
     dependencies:
       mincu-core: link:../core
 
   packages/hooks:
     specifiers:
       lodash: ^4.17.21
-      mincu-core: workspace:^2.9.0
-      mincu-data: workspace:^2.9.0
+      mincu-core: workspace:^2.10.1
+      mincu-data: workspace:^2.10.1
       react: '>=17'
     dependencies:
       lodash: 4.17.21
@@ -360,8 +360,8 @@ importers:
   packages/network:
     specifiers:
       axios: ^0.27.2
-      mincu-core: workspace:^2.9.0
-      mincu-data: workspace:^2.9.0
+      mincu-core: workspace:^2.10.1
+      mincu-data: workspace:^2.10.1
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
@@ -370,8 +370,8 @@ importers:
 
   packages/react:
     specifiers:
-      mincu-hooks: workspace:^2.9.0
-      mincu-vanilla: workspace:^2.9.0
+      mincu-hooks: workspace:^2.10.1
+      mincu-vanilla: workspace:^2.10.1
       react: '>=17'
     dependencies:
       mincu-hooks: link:../hooks
@@ -381,17 +381,17 @@ importers:
 
   packages/ui:
     specifiers:
-      mincu-core: workspace:^2.9.0
+      mincu-core: workspace:^2.10.1
     dependencies:
       mincu-core: link:../core
 
   packages/vanilla:
     specifiers:
-      mincu-core: workspace:^2.9.0
-      mincu-data: workspace:^2.9.0
-      mincu-event: workspace:^2.9.0
-      mincu-network: workspace:^2.9.0
-      mincu-ui: workspace:^2.9.0
+      mincu-core: workspace:^2.10.1
+      mincu-data: workspace:^2.10.1
+      mincu-event: workspace:^2.10.1
+      mincu-network: workspace:^2.10.1
+      mincu-ui: workspace:^2.10.1
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data

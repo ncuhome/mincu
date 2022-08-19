@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.1](https://github.com/ncuhome/mincu/compare/v2.10.0...v2.10.1) (2022-08-19)
+
+**Note:** Version bump only for package vue-vite
+
 # [2.9.0](https://github.com/ncuhome/mincu/compare/v2.8.3...v2.9.0) (2022-08-19)
 
 **Note:** Version bump only for package vue-vite
