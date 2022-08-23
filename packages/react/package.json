@@ -13,8 +13,8 @@
     "dist"
   ],
   "dependencies": {
-    "mincu-hooks": "workspace:^2.10.1",
-    "mincu-vanilla": "workspace:^2.10.1"
+    "mincu-hooks": "workspace:2.10.1",
+    "mincu-vanilla": "workspace:2.10.1"
   },
   "peerDependencies": {
     "react": ">=17"

@@ -14,8 +14,8 @@
   ],
   "dependencies": {
     "lodash": "^4.17.21",
-    "mincu-core": "workspace:^2.10.1",
-    "mincu-data": "workspace:^2.10.1"
+    "mincu-core": "workspace:2.10.1",
+    "mincu-data": "workspace:2.10.1"
   },
   "peerDependencies": {
     "react": ">=17"

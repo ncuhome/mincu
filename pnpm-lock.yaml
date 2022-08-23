@@ -55,8 +55,8 @@ importers:
       '@types/node': ^18.6.4
       '@types/prop-types': ^15.7.5
       '@types/react': ^18.0.16
-      mincu-react: workspace:^2.10.1
-      mincu-react-demo-shared: workspace:^2.10.1
+      mincu-react: workspace:2.10.1
+      mincu-react-demo-shared: workspace:2.10.1
       next: ^12.2.2
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -104,7 +104,7 @@ importers:
 
   example/vanilla-ts:
     specifiers:
-      mincu-debug: workspace:^2.10.1
+      mincu-debug: workspace:2.10.1
       typescript: ^4.7.4
       vite: ^3.0.4
     dependencies:
@@ -117,7 +117,7 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^3.0.1
       autoprefixer: ^10.4.8
-      mincu-vanilla: workspace:^2.10.1
+      mincu-vanilla: workspace:2.10.1
       postcss: ^8.4.16
       qrcode.vue: ^3.3.3
       tailwindcss: ^3.1.8
@@ -133,7 +133,7 @@ importers:
       '@vitejs/plugin-vue': 3.0.1_vite@3.0.4+vue@3.2.37
       autoprefixer: 10.4.8_postcss@8.4.16
       postcss: 8.4.16
-      tailwindcss: 3.1.8
+      tailwindcss: 3.1.8_postcss@8.4.16
       typescript: 4.7.4
       vite: 3.0.4
       vue-tsc: 0.39.5_typescript@4.7.4
@@ -141,7 +141,7 @@ importers:
   packages/core:
     specifiers:
       events: ^3.3.0
-      mincu-lib: workspace:^2.10.1
+      mincu-lib: workspace:2.10.1
     dependencies:
       events: 3.3.0
       mincu-lib: link:../lib
@@ -167,8 +167,8 @@ importers:
 
   packages/data:
     specifiers:
-      mincu-core: workspace:^2.10.1
-      mincu-lib: workspace:^2.10.1
+      mincu-core: workspace:2.10.1
+      mincu-lib: workspace:2.10.1
     dependencies:
       mincu-core: link:../core
       mincu-lib: link:../lib
@@ -187,8 +187,8 @@ importers:
       lodash.debounce: ^4.0.8
       meow: 9.0.0
       mincu-chii: ^1.1.0
-      mincu-debug-tools: workspace:^2.10.1
-      mincu-lib: workspace:^2.10.1
+      mincu-debug-tools: workspace:2.10.1
+      mincu-lib: workspace:2.10.1
       open: ^8.4.0
       strip-ansi: 6.0.0
       terminate: ^2.5.0
@@ -334,15 +334,15 @@ importers:
 
   packages/event:
     specifiers:
-      mincu-core: workspace:^2.10.1
+      mincu-core: workspace:2.10.1
     dependencies:
       mincu-core: link:../core
 
   packages/hooks:
     specifiers:
       lodash: ^4.17.21
-      mincu-core: workspace:^2.10.1
-      mincu-data: workspace:^2.10.1
+      mincu-core: workspace:2.10.1
+      mincu-data: workspace:2.10.1
       react: '>=17'
     dependencies:
       lodash: 4.17.21
@@ -360,8 +360,8 @@ importers:
   packages/network:
     specifiers:
       axios: ^0.27.2
-      mincu-core: workspace:^2.10.1
-      mincu-data: workspace:^2.10.1
+      mincu-core: workspace:2.10.1
+      mincu-data: workspace:2.10.1
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
@@ -370,8 +370,8 @@ importers:
 
   packages/react:
     specifiers:
-      mincu-hooks: workspace:^2.10.1
-      mincu-vanilla: workspace:^2.10.1
+      mincu-hooks: workspace:2.10.1
+      mincu-vanilla: workspace:2.10.1
       react: '>=17'
     dependencies:
       mincu-hooks: link:../hooks
@@ -381,17 +381,17 @@ importers:
 
   packages/ui:
     specifiers:
-      mincu-core: workspace:^2.10.1
+      mincu-core: workspace:2.10.1
     dependencies:
       mincu-core: link:../core
 
   packages/vanilla:
     specifiers:
-      mincu-core: workspace:^2.10.1
-      mincu-data: workspace:^2.10.1
-      mincu-event: workspace:^2.10.1
-      mincu-network: workspace:^2.10.1
-      mincu-ui: workspace:^2.10.1
+      mincu-core: workspace:2.10.1
+      mincu-data: workspace:2.10.1
+      mincu-event: workspace:2.10.1
+      mincu-network: workspace:2.10.1
+      mincu-ui: workspace:2.10.1
     dependencies:
       mincu-core: link:../core
       mincu-data: link:../data
@@ -8723,10 +8723,12 @@ packages:
       react: 18.1.0
     dev: true
 
-  /tailwindcss/3.1.8:
+  /tailwindcss/3.1.8_postcss@8.4.16:
     resolution: {integrity: sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3

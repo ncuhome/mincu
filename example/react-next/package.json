@@ -10,8 +10,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "mincu-react": "workspace:^2.10.1",
-    "mincu-react-demo-shared": "workspace:^2.10.1",
+    "mincu-react": "workspace:2.10.1",
+    "mincu-react-demo-shared": "workspace:2.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

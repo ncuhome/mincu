@@ -13,6 +13,6 @@
     "vite": "^3.0.4"
   },
   "dependencies": {
-    "mincu-debug": "workspace:^2.10.1"
+    "mincu-debug": "workspace:2.10.1"
   }
 }
