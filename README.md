@@ -60,7 +60,7 @@ $ npx create-mincu
 ```sh
 $ npm install mincu-react
 # or
-$ yarn add mincu
+$ yarn add mincu-react
 ```
 
 #### 其他 (Vue、Vanilla)
