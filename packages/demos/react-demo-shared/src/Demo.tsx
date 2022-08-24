@@ -13,10 +13,6 @@ export const Demo: React.FC = () => {
   const colorScheme = useNativeState('colorScheme')
 
   useEffect(() => {
-    mincu.getStoredToken()
-  }, [])
-
-  useEffect(() => {
     mincu.setShareConfig({
       title: '应用名',
     })
@@ -126,7 +122,7 @@ export const Demo: React.FC = () => {
     <div>
       <div style={{ marginTop: top + 12, marginRight: 10, marginLeft: 10 }}>
         <p className={tw('font-medium text-xl m-2')}>
-          学号: {localStorage.getItem('studentID')}
+          学号: {mincu.appData.user.profile.entireProfile.base_info.xh}
         </p>
         <Button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</Button>
         <Button onClick={refreshToken}>测试刷新token</Button>

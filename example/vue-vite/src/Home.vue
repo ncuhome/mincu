@@ -13,7 +13,6 @@ watch(colorScheme, (newVal) => {
   document.body.style.color = newVal === 'dark' ? '#fff' : '#000'
 })
 
-mincu.getStoredToken()
 mincu.setShareConfig({
   title: 'vue-vite example',
 })
