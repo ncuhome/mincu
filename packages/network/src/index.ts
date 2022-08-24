@@ -60,20 +60,12 @@ export class NetWorkModule {
 
   private setToken = (token: string) => {
     this.token = token
-    localStorage.setItem('token', token)
   }
 
   /**
-   * 从浏览器缓存中拿取 token
-   *
-   * 一般放在该组件挂载 (渲染) 阶段结束后执行
-   *
-   * @returns 取出缓存中的 token
+   * @deprecated should not use
    */
-  public getStoredToken() {
-    this.token = localStorage.getItem('token') ?? ''
-    return this.token
-  }
+  public getStoredToken() {}
 
   private getAuthorization(token: string) {
     return `passport ${token}`
@@ -84,7 +76,9 @@ export class NetWorkModule {
     const { response } = error
     const originalRequest = error?.config
 
-    if (response?.status === 401 && !originalRequest._retry) {
+    const mayExpired = response?.status === 401 || response?.status === 400
+
+    if (mayExpired && !originalRequest._retry) {
       if (this.isRefreshing) {
         return new Promise((resolve, reject) => {
           this.failedQueue.push({ resolve, reject })
