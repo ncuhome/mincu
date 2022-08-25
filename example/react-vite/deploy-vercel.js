@@ -28,5 +28,5 @@ try {
 } catch (error) {
   throw error
 } finally {
-  fs.writeFileSync(path.join(__dirname, './package.json'), JSON.stringify(pkgJson, null, 2))
+  fs.writeFileSync(path.join(__dirname, './package.json'), JSON.stringify(pkgJson, null, 2) + '\n')
 }
