@@ -121,7 +121,7 @@ export const Demo: React.FC = () => {
   }
 
   const startBench = async () => {
-    const bench = await mincuBench()
+    const bench = await mincuBench(20)
     alert(JSON.stringify(bench[0].result, null, 2))
   }
 
@@ -193,7 +193,7 @@ export const Demo: React.FC = () => {
         </Button>
 
         <p className={tw('font-medium text-xl m-2')}>Benckmark</p>
-        <Button onClick={startBench}>mincu.handleShowHeader x 30</Button>
+        <Button onClick={startBench}>mincu.handleShowHeader x 150</Button>
 
         <p className={tw('font-medium text-xl m-2')}>colors 测试</p>
         <ColorItem color={colors.white} name="colors.white" />

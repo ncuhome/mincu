@@ -2,7 +2,7 @@ import { mincu } from 'mincu-react'
 import { Bench } from 'tinybench'
 
 export const mincuBench = (times = 10) => {
-  const bench = new Bench({ time: times })
+  const bench = new Bench({ iterations: times })
 
   bench.add('handleShowHeader', async () => {
     await mincu.handleShowHeader(true)
