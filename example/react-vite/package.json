@@ -1,6 +1,6 @@
 {
   "name": "vite-react-typescript-starter",
-  "version": "2.10.3",
+  "version": "2.11.0",
   "private": true,
   "scripts": {
     "build": "vite build",
@@ -10,8 +10,8 @@
     "deploy:vercel": "node deploy-vercel.js"
   },
   "dependencies": {
-    "mincu-react": "2.10.3",
-    "mincu-react-demo-shared": "2.10.3",
+    "mincu-react": "2.11.0",
+    "mincu-react-demo-shared": "2.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6.3.0"
@@ -21,7 +21,7 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.0",
     "lodash": "^4.17.21",
-    "mincu-debug": "2.10.2",
+    "mincu-debug": "2.11.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.4"
   }

@@ -1,6 +1,6 @@
 {
   "name": "mincu-debug-tools",
-  "version": "2.10.1",
+  "version": "2.11.0",
   "homepage": "https://github.com/ncuhome",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "clsx": "^1.1.1",
     "framer-motion": "^6.3.16",
     "million": "1.12.3-beta.3",
-    "mincu-lib": "workspace:2.10.1",
+    "mincu-lib": "workspace:2.11.0",
     "nanoid": "^4.0.0",
     "prism-react-renderer": "^1.3.5",
     "qrcode.react": "^3.0.2",

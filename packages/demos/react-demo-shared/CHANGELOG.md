@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/ncuhome/mincu/compare/v2.10.3...v2.11.0) (2022-08-25)
+
+### Bug Fixes
+
+* react-demo-shared button broken class ([9f355ee](https://github.com/ncuhome/mincu/commit/9f355eedbdd0371fdc62e66b81d1e98976869e87))
+
+### Features
+
+* react-demo-shared bench case ([185a43a](https://github.com/ncuhome/mincu/commit/185a43a2f85bbb03b3d66811456534a741504213))
+* react-demo-shared bench iterations ([141b2e4](https://github.com/ncuhome/mincu/commit/141b2e47142f8161ed0280bd771927517c6542d8))
+
 ## [2.10.3](https://github.com/ncuhome/mincu/compare/v2.10.2...v2.10.3) (2022-08-24)
 
 **Note:** Version bump only for package mincu-react-demo-shared

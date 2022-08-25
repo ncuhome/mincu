@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/ncuhome/mincu/compare/v2.10.3...v2.11.0) (2022-08-25)
+
+### Bug Fixes
+
+* example/react-vite -> deploy:vercel ([7cd584d](https://github.com/ncuhome/mincu/commit/7cd584d27abb40b47390a9a231c428d87e682c37))
+
 ## [2.10.3](https://github.com/ncuhome/mincu/compare/v2.10.2...v2.10.3) (2022-08-24)
 
 **Note:** Version bump only for package vite-react-typescript-starter
