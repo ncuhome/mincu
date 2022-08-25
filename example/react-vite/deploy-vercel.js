@@ -1,11 +1,12 @@
 // mincu-react-vite
 const { execSync } = require('child_process');
 const pkgJson = require('./package.json')
+const cloneDeep = require('lodash/cloneDeep')
 
 const fs = require('fs');
 const path = require('path');
 
-const buildJson = Object.assign({}, pkgJson)
+const buildJson = cloneDeep(pkgJson)
 
 const { dependencies, devDependencies } = buildJson
 
@@ -24,10 +25,8 @@ try {
   execSync('vercel --prod', {
     stdio: 'inherit'
   })
-}
-catch (error) {
+} catch (error) {
   throw error
-}
-finally {
+} finally {
   fs.writeFileSync(path.join(__dirname, './package.json'), JSON.stringify(pkgJson, null, 2))
 }

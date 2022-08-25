@@ -80,9 +80,10 @@ importers:
       '@types/react': ^18.0.17
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.0.0
-      mincu-debug: 2.10.2
-      mincu-react: 2.10.3
-      mincu-react-demo-shared: 2.10.3
+      lodash: ^4.17.21
+      mincu-debug: workspace:2.10.2
+      mincu-react: workspace:2.10.3
+      mincu-react-demo-shared: workspace:2.10.3
       react: ^18.2.0
       react-dom: ^18.2.0
       react-router-dom: 6.3.0
@@ -98,6 +99,7 @@ importers:
       '@types/react': 18.0.17
       '@types/react-dom': 18.0.6
       '@vitejs/plugin-react': 2.0.0_vite@3.0.4
+      lodash: 4.17.21
       mincu-debug: link:../../packages/debug
       typescript: 4.7.4
       vite: 3.0.4
