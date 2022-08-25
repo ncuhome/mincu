@@ -316,6 +316,7 @@ importers:
       mincu-react: workspace:*
       qrcode.react: ^3.1.0
       react: '>=17'
+      tinybench: ^2.0.9
       twind: ^0.16.17
       typescript: ^4.7.4
       vite: ^3.0.4
@@ -324,6 +325,7 @@ importers:
       mincu-react: link:../../react
       qrcode.react: 3.1.0_react@18.2.0
       react: 18.2.0
+      tinybench: 2.0.9
       twind: 0.16.17_typescript@4.7.4
     devDependencies:
       '@types/react': 18.0.17
@@ -8820,6 +8822,11 @@ packages:
     dependencies:
       readable-stream: 3.6.0
     dev: true
+
+  /tinybench/2.0.9:
+    resolution: {integrity: sha512-5CdQB8uXKwB9ru41FawVKvx1blQl8GYsjvwO3J6a/0uPNx7IgxUmhUzgtqALf55PTy+6qW/ZoRce7QFAa+by0g==}
+    engines: {node: '>=14.0.0'}
+    dev: false
 
   /tmp/0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}

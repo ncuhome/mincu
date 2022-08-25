@@ -3,6 +3,7 @@ import { Button } from './Button'
 import { useSafeArea, useNativeState, mincu } from 'mincu-react'
 import axios from 'axios'
 import { tw } from 'twind'
+import { mincuBench } from './mincu-bench'
 
 const fetcher = axios.create()
 mincu.useAxiosInterceptors(fetcher)
@@ -118,6 +119,12 @@ export const Demo: React.FC = () => {
         })
     },
   }
+
+  const startBench = async () => {
+    const bench = await mincuBench()
+    alert(JSON.stringify(bench[0].result, null, 2))
+  }
+
   return (
     <div>
       <div style={{ marginTop: top + 12, marginRight: 10, marginLeft: 10 }}>
@@ -184,6 +191,9 @@ export const Demo: React.FC = () => {
         <Button onClick={() => mincu.orientation.lockToPortrait()}>
           切换竖屏
         </Button>
+
+        <p className={tw('font-medium text-xl m-2')}>Benckmark</p>
+        <Button onClick={startBench}>mincu.handleShowHeader x 30</Button>
 
         <p className={tw('font-medium text-xl m-2')}>colors 测试</p>
         <ColorItem color={colors.white} name="colors.white" />
