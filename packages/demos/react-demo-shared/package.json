@@ -4,6 +4,7 @@
   "main": "dist/mincu-react-demo-shared.cjs.js",
   "module": "dist/mincu-react-demo-shared.esm.js",
   "dependencies": {
+    "@headlessui/react": "^1.6.5",
     "axios": "^0.27.2",
     "mincu-react": "workspace:*",
     "qrcode.react": "^3.1.0",

@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from './Button'
 import { useSafeArea, useNativeState, mincu } from 'mincu-react'
 import axios from 'axios'
 import { tw } from 'twind'
 import { mincuBench } from './mincu-bench'
+import BenchModal from './Modal'
+import { Task } from 'tinybench'
 
 const fetcher = axios.create()
 mincu.useAxiosInterceptors(fetcher)
@@ -12,6 +14,7 @@ export const Demo: React.FC = () => {
   const { top } = useSafeArea()
   const colors = useNativeState('colors')
   const colorScheme = useNativeState('colorScheme')
+  const [benchResult, setBenchResult] = useState<Task['result']>()
 
   useEffect(() => {
     mincu.setShareConfig({
@@ -122,91 +125,100 @@ export const Demo: React.FC = () => {
 
   const startBench = async () => {
     const bench = await mincuBench(20)
-    alert(JSON.stringify(bench[0].result, null, 2))
+    setBenchResult(bench[0].result)
   }
 
   return (
-    <div>
-      <div style={{ marginTop: top + 12, marginRight: 10, marginLeft: 10 }}>
-        <p className={tw('font-medium text-xl m-2')}>
-          学号: {mincu.appData.user.profile.entireProfile.base_info.xh}
-        </p>
-        <Button onClick={fetchSchoolLife}>测试云家园接口是否能成功拉取</Button>
-        <Button onClick={refreshToken}>测试刷新token</Button>
-        <Button onClick={hideHeader}>隐藏标题</Button>
-        <Button onClick={showHeader}>显示标题</Button>
-        <Button onClick={() => mincu.exit()}>退出</Button>
-        <Button onClick={() => mincu.showShare()}>分享</Button>
-        <p className={tw('font-medium text-xl m-2')}>UI 相关</p>
-        <Button onClick={() => mincu.toScreen({ screen: '周课表' })}>
-          周课表
-        </Button>
-        <Button
-          onClick={() =>
-            mincu.toScreen({
-              screen: '用户资料',
-              params: { userId: '5504118086' },
-            })
-          }
-        >
-          他的资料
-        </Button>
-        <Button onClick={() => mincu.toast.info('23333')}>
-          打开 Toast info
-        </Button>
-        <Button onClick={() => mincu.toast.success('23333')}>
-          打开 Toast success
-        </Button>
-        <Button onClick={toastLoading}>打开 Toast loading</Button>
-        <Button onClick={showVersion}>获取版本号</Button>
-        <Button onClick={() => alert(colorScheme)}>获取当前主题</Button>
-        <Button
-          onClick={() =>
-            mincu.backPress.bind(backPressCb, (success) => {
-              if (success) {
-                mincu.toast.success(
-                  '绑定原生返回事件成功，请自行处理返回事件',
-                  1
-                )
-              } else {
-                mincu.toast.fail('绑定原生返回事件失败， 请先显示 header', 1)
-              }
-            })
-          }
-        >
-          绑定原生返回事件
-        </Button>
-        <Button
-          onClick={() => {
-            mincu.backPress.unbind(backPressCb)
-            mincu.toast.success('取消绑定原生返回事件', 1)
-          }}
-        >
-          取消绑定原生返回事件
-        </Button>
-        <Button onClick={() => mincu.login('username', 'pwd')}>登录</Button>
-        <Button onClick={() => mincu.orientation.lockToLandscape()}>
-          切换横屏
-        </Button>
-        <Button onClick={() => mincu.orientation.lockToPortrait()}>
-          切换竖屏
-        </Button>
+    <>
+      <div>
+        <div style={{ marginTop: top + 12, marginRight: 10, marginLeft: 10 }}>
+          <p className={tw('font-medium text-xl m-2')}>
+            学号: {mincu.appData.user.profile.entireProfile.base_info.xh}
+          </p>
+          <Button onClick={fetchSchoolLife}>
+            测试云家园接口是否能成功拉取
+          </Button>
+          <Button onClick={refreshToken}>测试刷新token</Button>
+          <Button onClick={hideHeader}>隐藏标题</Button>
+          <Button onClick={showHeader}>显示标题</Button>
+          <Button onClick={() => mincu.exit()}>退出</Button>
+          <Button onClick={() => mincu.showShare()}>分享</Button>
+          <p className={tw('font-medium text-xl m-2')}>UI 相关</p>
+          <Button onClick={() => mincu.toScreen({ screen: '周课表' })}>
+            周课表
+          </Button>
+          <Button
+            onClick={() =>
+              mincu.toScreen({
+                screen: '用户资料',
+                params: { userId: '5504118086' },
+              })
+            }
+          >
+            他的资料
+          </Button>
+          <Button onClick={() => mincu.toast.info('23333')}>
+            打开 Toast info
+          </Button>
+          <Button onClick={() => mincu.toast.success('23333')}>
+            打开 Toast success
+          </Button>
+          <Button onClick={toastLoading}>打开 Toast loading</Button>
+          <Button onClick={showVersion}>获取版本号</Button>
+          <Button onClick={() => alert(colorScheme)}>获取当前主题</Button>
+          <Button
+            onClick={() =>
+              mincu.backPress.bind(backPressCb, (success) => {
+                if (success) {
+                  mincu.toast.success(
+                    '绑定原生返回事件成功，请自行处理返回事件',
+                    1
+                  )
+                } else {
+                  mincu.toast.fail('绑定原生返回事件失败， 请先显示 header', 1)
+                }
+              })
+            }
+          >
+            绑定原生返回事件
+          </Button>
+          <Button
+            onClick={() => {
+              mincu.backPress.unbind(backPressCb)
+              mincu.toast.success('取消绑定原生返回事件', 1)
+            }}
+          >
+            取消绑定原生返回事件
+          </Button>
+          <Button onClick={() => mincu.login('username', 'pwd')}>登录</Button>
+          <Button onClick={() => mincu.orientation.lockToLandscape()}>
+            切换横屏
+          </Button>
+          <Button onClick={() => mincu.orientation.lockToPortrait()}>
+            切换竖屏
+          </Button>
 
-        <p className={tw('font-medium text-xl m-2')}>Benckmark</p>
-        <Button onClick={startBench}>mincu.handleShowHeader x 150</Button>
+          <p className={tw('font-medium text-xl m-2')}>Benckmark</p>
+          <Button onClick={startBench}>mincu.handleShowHeader x 150</Button>
 
-        <p className={tw('font-medium text-xl m-2')}>colors 测试</p>
-        <ColorItem color={colors.white} name="colors.white" />
-        <ColorItem color={colors.black} name="colors.white" />
+          <p className={tw('font-medium text-xl m-2')}>colors 测试</p>
+          <ColorItem color={colors.white} name="colors.white" />
+          <ColorItem color={colors.black} name="colors.white" />
 
-        <p className={tw('font-medium text-xl m-2')}>MincuStorage 测试</p>
-        <Button onClick={storageTests.get}>getItem('test')</Button>
-        <Button onClick={storageTests.set}>
-          setItem('test', new Date().toLocaleString())
-        </Button>
-        <Button onClick={storageTests.remove}>removeItem('test')</Button>
-        <Button onClick={storageTests.reset}>reset()</Button>
+          <p className={tw('font-medium text-xl m-2')}>MincuStorage 测试</p>
+          <Button onClick={storageTests.get}>getItem('test')</Button>
+          <Button onClick={storageTests.set}>
+            setItem('test', new Date().toLocaleString())
+          </Button>
+          <Button onClick={storageTests.remove}>removeItem('test')</Button>
+          <Button onClick={storageTests.reset}>reset()</Button>
+        </div>
       </div>
-    </div>
+      <BenchModal
+        visible={!!benchResult}
+        result={benchResult}
+        onClose={() => setBenchResult(undefined)}
+      />
+    </>
   )
 }

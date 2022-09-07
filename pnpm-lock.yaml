@@ -311,6 +311,7 @@ importers:
 
   packages/demos/react-demo-shared:
     specifiers:
+      '@headlessui/react': ^1.6.5
       '@types/react': ^18.0.17
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.0.0
@@ -323,6 +324,7 @@ importers:
       typescript: ^4.7.4
       vite: ^3.0.4
     dependencies:
+      '@headlessui/react': 1.6.5_biqbaboplfbrettd7655fr4n2y
       axios: 0.27.2
       mincu-react: link:../../react
       qrcode.react: 3.1.0_react@18.2.0
@@ -2278,6 +2280,17 @@ packages:
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
+
+  /@headlessui/react/1.6.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-3VkKteDxlxf3fE0KbfO9t60KC1lM7YNpZggLpwzVNg1J/zwL+h+4N7MBlFDVpInZI3rKlZGpNx0PWsG/9c2vQg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /@headlessui/react/1.6.5_ef5jwxihqo6n7gxfmzogljlgcm:
     resolution: {integrity: sha512-3VkKteDxlxf3fE0KbfO9t60KC1lM7YNpZggLpwzVNg1J/zwL+h+4N7MBlFDVpInZI3rKlZGpNx0PWsG/9c2vQg==}
