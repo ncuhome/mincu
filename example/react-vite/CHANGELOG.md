@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/ncuhome/mincu/compare/v2.11.0...v2.12.0) (2022-09-07)
+
+### Bug Fixes
+
+* example/react-vite -> deploy:vercel[#2](https://github.com/ncuhome/mincu/issues/2) ([75f9f22](https://github.com/ncuhome/mincu/commit/75f9f223861c7f472d53de6046b7e2524f90242f))
+
 # [2.11.0](https://github.com/ncuhome/mincu/compare/v2.10.3...v2.11.0) (2022-08-25)
 
 ### Bug Fixes

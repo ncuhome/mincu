@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/ncuhome/mincu/compare/v2.11.0...v2.12.0) (2022-09-07)
+
+### Features
+
+* demo benchmark modal ([27b34b6](https://github.com/ncuhome/mincu/commit/27b34b6905429c79c4931c6317bc7cf81ac4c843))
+
 # [2.11.0](https://github.com/ncuhome/mincu/compare/v2.10.3...v2.11.0) (2022-08-25)
 
 ### Bug Fixes
