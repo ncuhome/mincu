@@ -128,6 +128,12 @@ export const Demo: React.FC = () => {
     setBenchResult(bench[0].result)
   }
 
+  const copyToken = async () => {
+    const token = mincu.appData.user.token
+    await mincu.callPromise('Clipboard', 'setString', [token])
+    mincu.toast.success('复制成功')
+  }
+
   return (
     <>
       <div>
@@ -138,6 +144,7 @@ export const Demo: React.FC = () => {
           <Button onClick={fetchSchoolLife}>
             测试云家园接口是否能成功拉取
           </Button>
+          <Button onClick={copyToken}>复制token</Button>
           <Button onClick={refreshToken}>测试刷新token</Button>
           <Button onClick={hideHeader}>隐藏标题</Button>
           <Button onClick={showHeader}>显示标题</Button>
