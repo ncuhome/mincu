@@ -46,6 +46,14 @@ pnpm --filter <target-package-name> add <package-name>
 
 ## 发版（需要 NPM 账号权限）
 
+更新版本号，然后执行：
+
 ```cmd
-pnpm release
+pnpm bump #--dry-run 
+```
+
+发布到 npm
+
+```cmd
+pnpm release #--dry-run
 ```
