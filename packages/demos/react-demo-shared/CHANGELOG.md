@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/ncuhome/mincu/compare/v2.12.0...v2.13.0) (2023-04-22)
+
+### Features
+
+* react-demo-shared copyToken ([e288e3e](https://github.com/ncuhome/mincu/commit/e288e3e0c81c98db5f35d3c04bfa0d9f22ba340d))
+
 # [2.12.0](https://github.com/ncuhome/mincu/compare/v2.11.0...v2.12.0) (2022-09-07)
 
 ### Features
