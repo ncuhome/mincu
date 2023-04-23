@@ -1,25 +1,32 @@
 // mincu-react-vite
 const { execSync } = require('child_process');
-const pkgJson = require('./package.json')
 const cloneDeep = require('lodash/cloneDeep')
 
 const fs = require('fs');
 const path = require('path');
 
-const buildJson = cloneDeep(pkgJson)
+const rewrite = (pkgPath) => {
+  const pkgJson = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
+  const clonedJson = cloneDeep(pkgJson)
+  const { dependencies, devDependencies } = clonedJson
 
-const { dependencies, devDependencies } = buildJson
+  for (const [key, value] of Object.entries(dependencies)) {
+    dependencies[key] = value.replace('workspace:', '')
+  }
 
-const rewrite = (deps) => {
-  for (const [key, value] of Object.entries(deps)) {
-    deps[key] = value.replace('workspace:', '')
+  for (const [key, value] of Object.entries(devDependencies)) {
+    devDependencies[key] = value.replace('workspace:', '')
+  }
+
+  fs.writeFileSync(pkgPath, JSON.stringify(clonedJson, null, 2))
+
+  return () => {
+    fs.writeFileSync(pkgPath, JSON.stringify(pkgJson, null, 2))
   }
 }
 
-rewrite(dependencies)
-rewrite(devDependencies)
-
-fs.writeFileSync('./package.json', JSON.stringify(buildJson, null, 2))
+const pwdPkgPath = path.join(__dirname, './package.json')
+const recoverPwdPkg = rewrite(pwdPkgPath)
 
 try {
   execSync('vercel --prod', {
@@ -28,5 +35,5 @@ try {
 } catch (error) {
   throw error
 } finally {
-  fs.writeFileSync(path.join(__dirname, './package.json'), JSON.stringify(pkgJson, null, 2) + '\n')
+  recoverPwdPkg()
 }
