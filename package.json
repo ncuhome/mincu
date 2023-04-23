@@ -15,8 +15,7 @@
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky install",
     "prettier": "pretty-quick",
-    "bump": "lerna version --no-push --force-publish",
-    "release": "npm run build:debug-tools && npm run build && lerna publish --no-push force-publish",
+    "release": "npm run build:debug-tools && npm run build && lerna publish --no-push --force-publish",
     "test:example": "zx ./tests/run_example_scripts.mjs",
     "watch": "preconstruct watch"
   },
