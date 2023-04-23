@@ -6,7 +6,8 @@ const fs = require('fs');
 const path = require('path');
 
 const rewrite = (pkgPath) => {
-  const pkgJson = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
+  const pkgContent = fs.readFileSync(pkgPath, 'utf8')
+  const pkgJson = JSON.parse(pkgContent)
   const clonedJson = cloneDeep(pkgJson)
   const { dependencies, devDependencies } = clonedJson
 
@@ -21,7 +22,7 @@ const rewrite = (pkgPath) => {
   fs.writeFileSync(pkgPath, JSON.stringify(clonedJson, null, 2))
 
   return () => {
-    fs.writeFileSync(pkgPath, JSON.stringify(pkgJson, null, 2))
+    fs.writeFileSync(pkgPath, pkgContent)
   }
 }
 
