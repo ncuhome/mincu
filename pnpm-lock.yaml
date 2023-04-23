@@ -74,10 +74,10 @@ importers:
   example/react-next:
     dependencies:
       mincu-react:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../../packages/react
       mincu-react-demo-shared:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../../packages/demos/react-demo-shared
       react:
         specifier: ^18.2.0
@@ -111,10 +111,10 @@ importers:
   example/react-vite:
     dependencies:
       mincu-react:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../../packages/react
       mincu-react-demo-shared:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../../packages/demos/react-demo-shared
       react:
         specifier: ^18.2.0
@@ -139,7 +139,7 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       mincu-debug:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../../packages/debug
       typescript:
         specifier: ^4.7.4
@@ -151,7 +151,7 @@ importers:
   example/vanilla-ts:
     dependencies:
       mincu-debug:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../../packages/debug
     devDependencies:
       typescript:
@@ -164,7 +164,7 @@ importers:
   example/vue-vite:
     dependencies:
       mincu-vanilla:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../../packages/vanilla
       qrcode.vue:
         specifier: ^3.3.3
@@ -201,7 +201,7 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0
       mincu-lib:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../lib
 
   packages/create:
@@ -232,10 +232,10 @@ importers:
   packages/data:
     dependencies:
       mincu-core:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../core
       mincu-lib:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../lib
 
   packages/debug:
@@ -268,10 +268,10 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       mincu-debug-tools:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../debug-tools
       mincu-lib:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../lib
       open:
         specifier: ^8.4.0
@@ -375,7 +375,7 @@ importers:
         specifier: 1.12.3-beta.3
         version: 1.12.3-beta.3
       mincu-lib:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../lib
       nanoid:
         specifier: ^4.0.0
@@ -470,7 +470,7 @@ importers:
   packages/event:
     dependencies:
       mincu-core:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../core
 
   packages/hooks:
@@ -479,10 +479,10 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       mincu-core:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../core
       mincu-data:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../data
       react:
         specifier: '>=17'
@@ -495,10 +495,10 @@ importers:
   packages/network:
     dependencies:
       mincu-core:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../core
       mincu-data:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../data
     devDependencies:
       axios:
@@ -508,10 +508,10 @@ importers:
   packages/react:
     dependencies:
       mincu-hooks:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../hooks
       mincu-vanilla:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../vanilla
       react:
         specifier: '>=17'
@@ -520,25 +520,25 @@ importers:
   packages/ui:
     dependencies:
       mincu-core:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../core
 
   packages/vanilla:
     dependencies:
       mincu-core:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../core
       mincu-data:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../data
       mincu-event:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../event
       mincu-network:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../network
       mincu-ui:
-        specifier: workspace:2.13.1
+        specifier: workspace:2.13.2
         version: link:../ui
 
 packages:
